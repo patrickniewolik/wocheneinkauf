@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex, nofollow">
+<title>Wocheneinkauf KW 43</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+/* Layout: a kitchen week in one column. Summary bon, seven day cards with illustration and fold-out recipe, then the shopping checklist per store. */
+:root {
+  --bg: #fffdf7;
+  --surface: #ffffff;
+  --tile: #eef6ea;
+  --ink: #1d2721;
+  --muted: #5b675f;
+  --line: #ebe6da;
+  --basil: #1d8a4a;
+  --basil-soft: #daf4e3;
+  --pumpkin: #d4520c;
+  --pumpkin-soft: #ffe4cf;
+  --new: #ff5a1f;
+  --new-ink: #ffffff;
+  --done: #a3ada6;
+  --sun: #ffd23f;
+  --lidl: #0a5cb8; --lidl-soft: #dcebff;
+  --rewe: #d1192b; --rewe-soft: #ffe0e3;
+  --t-orange: #ffe1c7; --a-orange: #e45f0b;
+  --t-yellow: #fff0b0; --a-yellow: #a87600;
+  --t-sky: #d6efff; --a-sky: #1c74bd;
+  --t-red: #ffdcd6; --a-red: #d1372a;
+  --t-pink: #ffdcee; --a-pink: #c7347d;
+  --t-green: #e1f5c8; --a-green: #3a8410;
+  --t-violet: #e8e1ff; --a-violet: #5f43cc;
+  --acc-ink: #ffffff;
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap {
+  max-width: 880px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 64px;
+  display: flex; flex-direction: column; gap: 40px;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.05; font-weight: 700; }
+h2 { font-size: 1.45rem; font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+h4 { margin: 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); font-weight: 600; }
+.eyebrow { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); font-weight: 600; }
+.fine { color: var(--muted); font-size: 0.84rem; margin: 0; max-width: 65ch; }
+
+/* Header */
+header { display: grid; grid-template-columns: 1fr minmax(240px, 300px); gap: 20px 28px; align-items: end; }
+header .intro { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.meta { color: var(--muted); margin: 0; max-width: 52ch; }
+.hl { background: linear-gradient(transparent 58%, var(--sun) 58%, var(--sun) 92%, transparent 92%); padding-inline: 2px; }
+.bon {
+  background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--sun); border-radius: 10px;
+  padding: 14px 16px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.9rem;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.bon .row { display: flex; justify-content: space-between; gap: 12px; }
+.bon .rule { border-top: 1px dashed var(--line); margin-block: 6px; }
+.bon .sum { font-weight: 500; font-size: 1rem; }
+.bon .open { color: var(--basil); }
+.bon small { color: var(--muted); font-family: var(--font-body); font-size: 0.78rem; margin-top: 4px; }
+
+/* Section nav */
+nav.jump {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px; display: flex; gap: 6px; overflow-x: auto;
+}
+nav.jump a {
+  color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.9rem;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); white-space: nowrap;
+}
+nav.jump a:hover { border-color: var(--basil); }
+nav.jump a:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+
+/* Week strip */
+.strip { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: -16px; }
+.strip a {
+  background: var(--tile-day); color: var(--ink); text-decoration: none; border-radius: 12px;
+  border-bottom: 4px solid var(--acc); padding: 9px 10px; display: flex; flex-direction: column; gap: 3px; min-width: 0;
+}
+.strip a:hover { filter: saturate(1.15); }
+.strip a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+.strip .sd { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--acc); }
+.strip .sn { font-size: 0.8rem; font-weight: 600; line-height: 1.25; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+
+/* Week */
+.week { display: flex; flex-direction: column; gap: 16px; }
+.week-head { display: flex; flex-direction: column; gap: 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 0.82rem; color: var(--muted); }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+.c-orange { --tile-day: var(--t-orange); --acc: var(--a-orange); }
+.c-yellow { --tile-day: var(--t-yellow); --acc: var(--a-yellow); }
+.c-sky { --tile-day: var(--t-sky); --acc: var(--a-sky); }
+.c-red { --tile-day: var(--t-red); --acc: var(--a-red); }
+.c-pink { --tile-day: var(--t-pink); --acc: var(--a-pink); }
+.c-green { --tile-day: var(--t-green); --acc: var(--a-green); }
+.c-violet { --tile-day: var(--t-violet); --acc: var(--a-violet); }
+.day {
+  background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--acc, var(--basil)); border-radius: 14px; overflow: hidden;
+  display: grid; grid-template-columns: 220px 1fr; scroll-margin-top: 70px;
+}
+.day .art { background: var(--tile-day, var(--tile)); display: grid; place-items: center; min-height: 100%; }
+.day .art svg { width: 100%; height: auto; display: block; max-width: 260px; }
+.day .info { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.dayline { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 0.82rem; }
+.dayline .d { font-family: var(--font-mono); background: var(--acc, var(--basil)); color: var(--acc-ink); font-weight: 600; padding: 1px 9px; border-radius: 999px; }
+.dayline .t { color: var(--muted); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.chip.new { background: var(--new); color: var(--new-ink); text-transform: uppercase; letter-spacing: 0.06em; }
+.chip.fav { background: var(--basil-soft); color: var(--basil); }
+.chip.var { background: var(--t-violet); color: var(--a-violet); }
+.chip.veg { background: var(--t-green); color: var(--a-green); }
+.chip.left { background: var(--t-sky); color: var(--a-sky); }
+.chip.offer { background: var(--pumpkin-soft); color: var(--pumpkin); }
+.chip.swap { background: var(--basil-soft); color: var(--basil); }
+.chip.cond { border: 1px solid var(--line); color: var(--muted); }
+.offers { margin: 0; font-size: 0.86rem; color: var(--muted); }
+.offers b { color: var(--pumpkin); font-weight: 600; }
+details.recipe { border-top: 1px solid var(--line); margin-top: 4px; }
+details.recipe summary {
+  cursor: pointer; list-style: none; padding-top: 10px; font-weight: 600; color: var(--acc, var(--basil));
+  display: inline-flex; align-items: center; gap: 6px;
+}
+details.recipe summary::-webkit-details-marker { display: none; }
+details.recipe summary::before { content: "+"; font-family: var(--font-mono); width: 1em; }
+details.recipe[open] summary::before { content: "–"; }
+details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; border-radius: 4px; }
+.recipe-body { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 18px 24px; padding-top: 12px; }
+.recipe-body ul, .recipe-body ol { margin: 6px 0 0; padding-left: 1.15em; display: flex; flex-direction: column; gap: 4px; }
+.recipe-body ul li::marker { color: var(--muted); }
+.recipe-body ol li::marker { color: var(--acc, var(--basil)); font-family: var(--font-mono); font-size: 0.85em; }
+.recipe-body .qty { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.86rem; color: var(--muted); }
+.recipe-body .src { grid-column: 1 / -1; font-size: 0.84rem; color: var(--muted); }
+.recipe-body .src a { color: var(--basil); }
+
+/* Shopping */
+.shop { display: flex; flex-direction: column; gap: 28px; }
+.store { display: flex; flex-direction: column; gap: 8px; }
+.store-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.store-name { display: inline-block; padding: 2px 12px; border-radius: 8px; }
+.store-name.lidl { background: var(--lidl-soft); color: var(--lidl); }
+.store-name.rewe { background: var(--rewe-soft); color: var(--rewe); }
+#lidl .items { border-top: 4px solid var(--lidl); }
+#rewe .items { border-top: 4px solid var(--rewe); }
+.store-head .addr { color: var(--muted); font-size: 0.86rem; margin: 2px 0 0; }
+.store-head .sub { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.9rem; text-align: right; }
+.store-head .sub span { display: block; color: var(--muted); font-family: var(--font-body); font-size: 0.75rem; }
+.group-label { margin: 8px 0 0; }
+.items { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.item { border-bottom: 1px solid var(--line); }
+.item:last-child { border-bottom: 0; }
+.item label { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; align-items: start; padding: 11px 14px; cursor: pointer; }
+.item input { appearance: none; -webkit-appearance: none; margin: 2px 0 0; width: 22px; height: 22px;
+  border: 2px solid var(--muted); border-radius: 6px; display: grid; place-content: center; cursor: pointer; background: var(--surface); }
+.item input::after { content: ""; width: 11px; height: 6px; border-left: 2.5px solid var(--surface); border-bottom: 2.5px solid var(--surface); transform: rotate(-45deg) translate(1px, -1px); opacity: 0; }
+.item input:checked { background: var(--basil); border-color: var(--basil); }
+.item input:checked::after { opacity: 1; }
+.item input:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+.item .txt { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.item .name { font-weight: 600; }
+.item .amt { color: var(--muted); }
+.item .for { font-size: 0.82rem; color: var(--muted); }
+.item .price { font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; font-size: 0.92rem; }
+.item .price s { display: block; color: var(--muted); font-size: 0.75rem; }
+.item.is-done .name, .item.is-done .amt, .item.is-done .price { color: var(--done); text-decoration: line-through; }
+.item.is-done .for, .item.is-done .chips { opacity: 0.55; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.two > section { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.plain { margin: 0; padding-left: 1.1em; }
+.plain li { padding-block: 2px; }
+.plain .mono { font-family: var(--font-mono); color: var(--muted); font-size: 0.84rem; }
+.reset { align-self: flex-start; font: inherit; font-size: 0.86rem; font-weight: 600; color: var(--basil);
+  background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.reset:hover { border-color: var(--basil); }
+.reset:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+
+@media (max-width: 680px) {
+  header { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: -20px; }
+  .day { grid-template-columns: 1fr; }
+  .day .art svg { max-width: 300px; }
+  .recipe-body { grid-template-columns: 1fr; }
+  .two { grid-template-columns: 1fr; }
+  .item label { padding: 11px 12px; gap: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .item input { transition: background-color .12s ease, border-color .12s ease; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="intro">
+      <span class="eyebrow">19.–25. Oktober 2026 · 2 Personen · vegetarisch</span>
+      <h1>Wocheneinkauf <span class="hl">KW 43</span></h1>
+      <p class="meta">Sieben Abendessen und zwei Mittagessen aus Resten. Gekauft wird immer das Produkt aus dem Rezept, in der Variante mit dem niedrigsten Kilopreis.</p>
+    </div>
+    <div class="bon" aria-live="polite">
+      <div class="row"><span>Lidl</span><span id="sum-lidl">37,36</span></div>
+      <div class="row"><span>REWE</span><span id="sum-rewe">16,38</span></div>
+      <div class="rule"></div>
+      <div class="row sum"><span>SUMME ca. EUR</span><span id="sum-all">53,74</span></div>
+      <div class="row"><span>pro Portion (18)</span><span id="per-portion">2,99</span></div>
+      <div class="row open"><span>noch offen</span><span id="sum-open">53,74</span></div>
+      <small>5,97 € davon nur, falls Reis, Walnüsse oder Rosmarin fehlen.</small>
+    </div>
+  </header>
+
+  <nav class="strip" id="strip" lang="de" aria-label="Wochentage"><a class="c-orange" href="#mo"><span class="sd">Mo</span><span class="sn">Ofenkürbis</span></a><a class="c-yellow" href="#di"><span class="sd">Di</span><span class="sn">Linsen-Curry</span></a><a class="c-sky" href="#mi"><span class="sd">Mi</span><span class="sn">Falafel-Pita</span></a><a class="c-red" href="#do"><span class="sd">Do</span><span class="sn">Lasagne</span></a><a class="c-pink" href="#fr"><span class="sd">Fr</span><span class="sn">Poke Bowl</span></a><a class="c-green" href="#sa"><span class="sd">Sa</span><span class="sn">Zucchini</span></a><a class="c-violet" href="#so"><span class="sd">So</span><span class="sn">Gnocchi</span></a></nav>
+
+  <nav class="jump" aria-label="Abschnitte">
+    <a href="#woche">Woche</a>
+    <a href="#einkauf">Einkauf</a>
+    <a href="#lidl">Lidl</a>
+    <a href="#rewe">REWE</a>
+    <a href="#vorrat">Vorrat</a>
+  </nav>
+
+  <section class="week" id="woche" aria-labelledby="woche-h">
+    <div class="week-head">
+      <h2 id="woche-h">Essensplan</h2>
+      <div class="legend">
+        <span><span class="chip new">Neu</span> noch nie gekocht</span>
+        <span><span class="chip fav">Favorit</span> aus deiner Sammlung</span>
+        <span><span class="chip var">Variante</span> leicht abgewandelt</span>
+      </div>
+      <p class="fine">Diese Woche stammen alle sieben Gerichte aus deiner Sammlung. Neue Rezepte bekommen ab jetzt die orange Markierung.</p>
+    </div>
+    <div id="days" class="week">
+    <article class="day c-orange" id="mo">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="82" rx="82" ry="52" fill="rgba(0,0,0,0.10)"></ellipse><rect x="20" y="22" width="164" height="108" rx="12" fill="#3b3d40"></rect><rect x="26" y="28" width="152" height="96" rx="9" fill="#e9e1cf"></rect><path transform="translate(46 50) rotate(-24.995695496907317)" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"></path><path transform="translate(80 50) rotate(-2.6542165212585687)" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"></path><path transform="translate(114 50) rotate(-9.417072792731727)" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"></path><path transform="translate(148 50) rotate(-22.74242744210289)" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"></path><path transform="translate(63 90) rotate(18.021980576693068)" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"></path><path transform="translate(97 90) rotate(-4.572447519550309)" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"></path><path transform="translate(131 90) rotate(0.8745389179673708)" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"></path><circle cx="58.58568511676134" cy="81.29368985228137" r="6.5" fill="#7aa83f"></circle><path d="M54.58568511676134 81.29368985228137 Q58.58568511676134 77.29368985228137 62.58568511676134 81.29368985228137" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><circle cx="113.95482771786176" cy="107.47423239167391" r="6.5" fill="#7aa83f"></circle><path d="M109.95482771786176 107.47423239167391 Q113.95482771786176 103.47423239167391 117.95482771786176 107.47423239167391" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><circle cx="66.04100053641076" cy="95.90906145708907" r="6.5" fill="#7aa83f"></circle><path d="M62.04100053641076 95.90906145708907 Q66.04100053641076 91.90906145708907 70.04100053641076 95.90906145708907" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><circle cx="88.78309872673586" cy="83.4347673778444" r="6.5" fill="#7aa83f"></circle><path d="M84.78309872673586 83.4347673778444 Q88.78309872673586 79.4347673778444 92.78309872673586 83.4347673778444" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><circle cx="98.30373769928664" cy="46.87894066856741" r="6.5" fill="#7aa83f"></circle><path d="M94.30373769928664 46.87894066856741 Q98.30373769928664 42.87894066856741 102.30373769928664 46.87894066856741" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><circle cx="71.30365823481833" cy="78.45201085560521" r="6.5" fill="#7aa83f"></circle><path d="M67.30365823481833 78.45201085560521 Q71.30365823481833 74.45201085560521 75.30365823481833 78.45201085560521" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><circle cx="105.03651505450014" cy="72.07629293204874" r="6.5" fill="#7aa83f"></circle><path d="M101.03651505450014 72.07629293204874 Q105.03651505450014 68.07629293204874 109.03651505450014 72.07629293204874" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><circle cx="53.49970551438481" cy="61.25375513403809" r="6.5" fill="#7aa83f"></circle><path d="M49.49970551438481 61.25375513403809 Q53.49970551438481 57.25375513403809 57.49970551438481 61.25375513403809" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><circle cx="56.58692151665505" cy="99.8054960478589" r="6.5" fill="#7aa83f"></circle><path d="M52.58692151665505 99.8054960478589 Q56.58692151665505 95.8054960478589 60.58692151665505 99.8054960478589" stroke="#4f7d27" stroke-width="1.3" fill="none"></path><rect x="147.86891321362737" y="93.87581118296956" width="5.5" height="5" rx="1" transform="rotate(57.54145480577902 147.86891321362737 93.87581118296956)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="74.50819308184712" y="110.31014376726259" width="5.5" height="5" rx="1" transform="rotate(1.1235226789133264 74.50819308184712 110.31014376726259)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="90.21178930710995" y="40.79368287568085" width="5.5" height="5" rx="1" transform="rotate(56.955864511875376 90.21178930710995 40.79368287568085)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="96.43032685229733" y="91.89445364898117" width="5.5" height="5" rx="1" transform="rotate(47.97268274611453 96.43032685229733 91.89445364898117)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="159.7108498895915" y="65.0143881109831" width="5.5" height="5" rx="1" transform="rotate(59.98857806436186 159.7108498895915 65.0143881109831)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="117.35258837100352" y="51.03915402677233" width="5.5" height="5" rx="1" transform="rotate(15.302964903089668 117.35258837100352 51.03915402677233)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="94.89313385636297" y="71.88899282681291" width="5.5" height="5" rx="1" transform="rotate(57.11488634213567 94.89313385636297 71.88899282681291)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="123.35875996215773" y="55.327171834033535" width="5.5" height="5" rx="1" transform="rotate(52.45314912519099 123.35875996215773 55.327171834033535)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="160.1332048231352" y="76.26444332150228" width="5.5" height="5" rx="1" transform="rotate(57.07104094190106 160.1332048231352 76.26444332150228)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="48.10581363627794" y="65.86193040472168" width="5.5" height="5" rx="1" transform="rotate(30.56174116700969 48.10581363627794 65.86193040472168)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="130.81053396810626" y="54.98946797836539" width="5.5" height="5" rx="1" transform="rotate(55.65537476709829 130.81053396810626 54.98946797836539)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="148.65286366162582" y="75.68229787846286" width="5.5" height="5" rx="1" transform="rotate(48.674389640183364 148.65286366162582 75.68229787846286)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="69.794215674906" y="75.0719490296171" width="5.5" height="5" rx="1" transform="rotate(2.873988190141501 69.794215674906 75.0719490296171)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="163.2991911206127" y="87.6743859912923" width="5.5" height="5" rx="1" transform="rotate(6.5342444677530995 163.2991911206127 87.6743859912923)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="72.2549564451686" y="99.93371130424927" width="5.5" height="5" rx="1" transform="rotate(22.599413042235845 72.2549564451686 99.93371130424927)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><rect x="80.55622372889555" y="78.25908707618312" width="5.5" height="5" rx="1" transform="rotate(22.741147895688727 80.55622372889555 78.25908707618312)" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"></rect><path transform="translate(125.80871647345629 100.24535738651021) rotate(99.12932087626743)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(121.45206088532217 70.86996370218438) rotate(176.31575692273478)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(161.0352761591576 74.81334980727362) rotate(101.72585929824311)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(61.20243290153075 100.41912953206) rotate(116.28193043930546)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(66.50635166564979 75.71864616780015) rotate(95.91992568965998)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(100.30871212361458 111.28784609346584) rotate(102.48133883927079)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(124.4013931267122 68.62709671473003) rotate(28.680495558623456)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(156.27156850945045 68.85087373199869) rotate(51.876525456028304)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path d="M122.50736571120481 54.61100764495029 l3.193725800727745 -5.079381410148869" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M53.33586939164338 78.99218534678157 l1.094721613716747 5.899286786422695" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M153.4949622908051 97.08106049139687 l3.021099965544135 -5.1839130970907705" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M98.2446513502636 110.706259505856 l-2.7216159026784585 5.347224221807771" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M132.82097512119398 55.871929578211606 l5.999913740023096 0.03217316089631883" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M115.61026455778843 76.9319226205143 l-5.878289136887519 -1.202379650173019" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M85.20257009633904 110.48763182882061 l-1.946672858872756 5.675426396362495" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M58.2772671362988 45.493170249611964 l-5.898736629979627 1.097682180841336" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M104.26007887872282 59.395349804225745 l-4.263281023635674 -4.221899443793985" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path><path d="M68.44365501995404 76.64436061793937 l-0.11444859865761323 5.998908360549051" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Mo 19.10.</span><span class="t">40 Min · 2 Portionen</span></div>
+        <h3>Ofenkürbis mit Feta und Rosenkohl</h3>
+        <div class="chips"><span class="chip fav">Favorit</span><span class="chip var">Variante: mit Rosenkohl und Baguette</span></div>
+        <p class="offers"><b>Günstig:</b> Hokkaido 0,89 €/kg, Rosenkohl 0,79 € (REWE)</p>
+        <details class="recipe" id="rezept-mo">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">ca. 800 g</span> Hokkaido-Kürbis (der Rest ist für Dienstag)</li><li><span class="qty">500 g</span> Rosenkohl</li><li><span class="qty">150 g</span> Feta</li><li><span class="qty">10</span> Walnusshälften</li><li><span class="qty">1 Zweig</span> Rosmarin</li><li><span class="qty">4 EL</span> Olivenöl</li><li><span class="qty">je 1 Prise</span> Curry, Kreuzkümmel, Pfeffer, Salz</li><li><span class="qty">4 TL</span> Honig</li><li><span class="qty">1</span> Baguette</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Ofen auf 180 °C Ober- und Unterhitze vorheizen.</li><li>Kürbis vierteln, entkernen und mit Schale in Spalten schneiden. Rosenkohl putzen und halbieren.</li><li>Beides mit Olivenöl, gehacktem Rosmarin und den Gewürzen mischen und auf ein Blech geben.</li><li>Feta darüberbröseln, Walnüsse grob hacken und verteilen. 30–35 Minuten backen.</li><li>Mit Honig beträufeln und mit Baguette servieren.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.gaumenfreundin.de/ofenkuerbis/" target="_blank" rel="noopener">Gaumenfreundin</a></p>
+          </div>
+        </details>
+      </div>
+    </article>
+    <article class="day c-yellow" id="di">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="80" rx="60" ry="57.599999999999994" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="100" cy="75" r="60" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"></circle><circle cx="100" cy="75" r="54" fill="#e8a43c"></circle><path d="M58 55 Q70 40 92 44 Q98 62 88 82 Q72 92 56 82 Q48 68 58 55Z" fill="#fbf8ef"></path><ellipse cx="74.38915180329465" cy="64.00288231002938" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="64.80004337365125" cy="61.56036795507727" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.22601739369932" cy="70.17870550364404" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="58.413528025330315" cy="64.18789778112003" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.18719465628523" cy="73.24571364368474" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="76.0435691005394" cy="73.6500981115096" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="76.59159061965595" cy="53.34262406000204" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="75.14522337638408" cy="52.65808278907839" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="66.96594139712832" cy="65.31277071835518" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.94715176171437" cy="67.00878287870297" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.09101793616229" cy="59.531925410752244" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="84.13015928823837" cy="72.40456093718076" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="63.01908945993123" cy="60.8416018606538" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="61.85302509646921" cy="71.57747366931301" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="65.78950802454494" cy="57.68534815635997" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="66.8579277695479" cy="53.753959595397404" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="71.59400874089529" cy="67.06640144326457" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.24046811175029" cy="63.16315452667625" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="70.87714854672714" cy="78.52445837453885" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="63.299298532572266" cy="51.863896229249505" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="76.0879333193454" cy="52.35452132405896" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="65.4594292126966" cy="75.3435305199926" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="75.19728387659494" cy="67.2564106655827" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="68.42757453535566" cy="53.1536734510477" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="70.60381902348826" cy="65.52944562246918" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="67.03510825085633" cy="52.31909356439668" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="59.37396645255216" cy="62.74160169529804" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="78.73687214944577" cy="57.53544488794074" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.19901151410744" cy="61.902337764524674" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="66.03502624486306" cy="49.42863010452023" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="69.90929717647185" cy="66.5786956509144" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="75.94155441673136" cy="52.389641364194084" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="63.15225494801804" cy="65.32153356195344" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="63.53822428027631" cy="60.80953861953905" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="68.23960821206332" cy="60.85282328258658" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="78.04874711407801" cy="72.65659611634356" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="69.31034129180493" cy="74.52710578207206" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="75.18421589696399" cy="77.48530707470007" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="65.71668338472824" cy="71.00069245161225" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="79.78095313511233" cy="57.417633689183376" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><circle cx="131.13058188336407" cy="90.03958944794766" r="1.4" fill="#f4bb55"></circle><circle cx="96.3436934927822" cy="78.32801194773785" r="1.4" fill="#f4bb55"></circle><circle cx="99.85589346164498" cy="73.85906914478764" r="1.4" fill="#f4bb55"></circle><circle cx="112.1624737997076" cy="97.54182562838515" r="1.4" fill="#f4bb55"></circle><circle cx="95.86961143907337" cy="87.59311714919438" r="1.4" fill="#f4bb55"></circle><circle cx="135.1064694096271" cy="72.96375457203486" r="1.4" fill="#f4bb55"></circle><circle cx="99.2641558969095" cy="81.42127036349501" r="1.4" fill="#f4bb55"></circle><circle cx="142.58692313702846" cy="78.29613098071945" r="1.4" fill="#f4bb55"></circle><circle cx="104.76463830134725" cy="71.02452845869713" r="1.4" fill="#f4bb55"></circle><circle cx="143.000312401319" cy="80.93002845959641" r="1.4" fill="#f4bb55"></circle><circle cx="113.76084921699731" cy="74.54263026114995" r="1.4" fill="#f4bb55"></circle><circle cx="104.40843922377763" cy="73.49053599700355" r="1.4" fill="#f4bb55"></circle><circle cx="141.78923390961808" cy="68.81952411338531" r="1.4" fill="#f4bb55"></circle><circle cx="94.96402252639936" cy="85.98597628279782" r="1.4" fill="#f4bb55"></circle><circle cx="140.05549287855695" cy="75.94180834896665" r="1.4" fill="#f4bb55"></circle><circle cx="116.17984194401866" cy="58.66922243220187" r="1.4" fill="#f4bb55"></circle><circle cx="122.85119521276008" cy="65.40919159788703" r="1.4" fill="#f4bb55"></circle><circle cx="111.36431265095861" cy="88.56878468593958" r="1.4" fill="#f4bb55"></circle><circle cx="106.20311455895515" cy="69.6591892397284" r="1.4" fill="#f4bb55"></circle><circle cx="120.4451782366085" cy="83.81939405402223" r="1.4" fill="#f4bb55"></circle><circle cx="135.24048152443356" cy="86.0092837636966" r="1.4" fill="#f4bb55"></circle><circle cx="92.93104792100526" cy="93.221097334986" r="1.4" fill="#f4bb55"></circle><circle cx="99.84012981806572" cy="63.90122693405603" r="1.4" fill="#f4bb55"></circle><circle cx="125.89125807418611" cy="59.33961585456268" r="1.4" fill="#f4bb55"></circle><circle cx="127.10320858715097" cy="60.27459837535613" r="1.4" fill="#f4bb55"></circle><circle cx="100.20239080892239" cy="64.03501103989" r="1.4" fill="#f4bb55"></circle><circle cx="139.81056684534843" cy="97.62767930905295" r="1.4" fill="#f4bb55"></circle><circle cx="131.7223326200859" cy="99.71370757886004" r="1.4" fill="#f4bb55"></circle><circle cx="98.09862829446818" cy="71.96089401078672" r="1.4" fill="#f4bb55"></circle><circle cx="126.49298051640599" cy="68.07174205219219" r="1.4" fill="#f4bb55"></circle><circle cx="116.97902082213082" cy="92.38965811318565" r="1.4" fill="#f4bb55"></circle><circle cx="123.94927016058105" cy="56.686081702463255" r="1.4" fill="#f4bb55"></circle><circle cx="105.87235219090248" cy="88.51112209836027" r="1.4" fill="#f4bb55"></circle><circle cx="102.01397033207857" cy="87.97180171837537" r="1.4" fill="#f4bb55"></circle><circle cx="107.02410162505629" cy="66.71080787441736" r="1.4" fill="#f4bb55"></circle><circle cx="118.45247592804527" cy="97.52087545088541" r="1.4" fill="#f4bb55"></circle><circle cx="111.19979667761619" cy="78.00610218255883" r="1.4" fill="#f4bb55"></circle><circle cx="98.33252148849846" cy="85.43272147879797" r="1.4" fill="#f4bb55"></circle><circle cx="102.72629615422376" cy="99.59143133686904" r="1.4" fill="#f4bb55"></circle><circle cx="117.23166674366234" cy="95.28527522220446" r="1.4" fill="#f4bb55"></circle><circle cx="116.54686047500607" cy="90.66211980809554" r="1.4" fill="#f4bb55"></circle><circle cx="101.29079779227727" cy="76.63894093692258" r="1.4" fill="#f4bb55"></circle><circle cx="138.27374008022898" cy="79.58367248618949" r="1.4" fill="#f4bb55"></circle><circle cx="119.46766659065305" cy="84.71926571203984" r="1.4" fill="#f4bb55"></circle><circle cx="123.52084562085875" cy="60.405476899148404" r="1.4" fill="#f4bb55"></circle><circle cx="99.76504456784564" cy="68.40911449642813" r="1.4" fill="#f4bb55"></circle><circle cx="115.52849673010232" cy="69.53447085468835" r="1.4" fill="#f4bb55"></circle><circle cx="128.8712687097822" cy="86.01756473732873" r="1.4" fill="#f4bb55"></circle><circle cx="100.55565151597555" cy="74.11347838947117" r="1.4" fill="#f4bb55"></circle><circle cx="140.11700187730287" cy="69.2502534537924" r="1.4" fill="#f4bb55"></circle><circle cx="138.14875230781442" cy="68.34777872447859" r="1.4" fill="#f4bb55"></circle><circle cx="127.58104681055018" cy="105.29575632070103" r="1.4" fill="#f4bb55"></circle><circle cx="121.2126655905552" cy="78.73859688018317" r="1.4" fill="#f4bb55"></circle><circle cx="99.02435212071205" cy="83.15466579538432" r="1.4" fill="#f4bb55"></circle><circle cx="99.32625296117392" cy="92.7087710101748" r="1.4" fill="#f4bb55"></circle><circle cx="124.31842557075556" cy="74.30724995234266" r="1.4" fill="#f4bb55"></circle><circle cx="121.24828020366768" cy="75.91410276565733" r="1.4" fill="#f4bb55"></circle><circle cx="101.47078120158909" cy="66.09823339195972" r="1.4" fill="#f4bb55"></circle><circle cx="106.6565918944286" cy="92.83099228576896" r="1.4" fill="#f4bb55"></circle><circle cx="115.93881922750424" cy="80.63678507518367" r="1.4" fill="#f4bb55"></circle><rect x="130.09989778779368" y="76.65311680687405" width="9" height="9" rx="1.5" transform="rotate(15.958990629743315 134.59989778779368 81.15311680687405)" fill="#f0862a" stroke="#cf6418" stroke-width="0.8"></rect><rect x="102.61273628807999" y="70.00340001580564" width="9" height="9" rx="1.5" transform="rotate(30.359305474143152 107.11273628807999 74.50340001580564)" fill="#f0862a" stroke="#cf6418" stroke-width="0.8"></rect><rect x="118.19776947188932" y="89.10029483499105" width="9" height="9" rx="1.5" transform="rotate(3.847685011032822 122.69776947188932 93.60029483499105)" fill="#f0862a" stroke="#cf6418" stroke-width="0.8"></rect><rect x="109.72054600522749" y="58.70488247015148" width="9" height="9" rx="1.5" transform="rotate(4.033414555729094 114.22054600522749 63.20488247015148)" fill="#f0862a" stroke="#cf6418" stroke-width="0.8"></rect><rect x="114.31391011377087" y="58.165686558435794" width="9" height="9" rx="1.5" transform="rotate(23.29307730463011 118.81391011377087 62.665686558435794)" fill="#f0862a" stroke="#cf6418" stroke-width="0.8"></rect><rect x="122.3413819023758" y="86.77753714086701" width="9" height="9" rx="1.5" transform="rotate(28.75269228068771 126.8413819023758 91.27753714086701)" fill="#f0862a" stroke="#cf6418" stroke-width="0.8"></rect><rect x="127.54035894782447" y="93.63132851824749" width="9" height="9" rx="1.5" transform="rotate(28.204455817213496 132.04035894782447 98.13132851824749)" fill="#f0862a" stroke="#cf6418" stroke-width="0.8"></rect><circle cx="128.53912905317014" cy="59.69998084353588" r="5.5" fill="#df3f2b"></circle><circle cx="128.53912905317014" cy="59.69998084353588" r="3" fill="#f2826b"></circle><circle cx="127.02085968496603" cy="90.68925405336567" r="5.5" fill="#df3f2b"></circle><circle cx="127.02085968496603" cy="90.68925405336567" r="3" fill="#f2826b"></circle><circle cx="89.69312122244519" cy="79.83901914765286" r="5.5" fill="#df3f2b"></circle><circle cx="89.69312122244519" cy="79.83901914765286" r="3" fill="#f2826b"></circle><circle cx="138.6162257392555" cy="78.61165058917024" r="5.5" fill="#df3f2b"></circle><circle cx="138.6162257392555" cy="78.61165058917024" r="3" fill="#f2826b"></circle><circle cx="112.90912624515731" cy="108.89513892843019" r="5.5" fill="#df3f2b"></circle><circle cx="112.90912624515731" cy="108.89513892843019" r="3" fill="#f2826b"></circle><circle cx="94.18816656295611" cy="94.72165100317497" r="5.5" fill="#df3f2b"></circle><circle cx="94.18816656295611" cy="94.72165100317497" r="3" fill="#f2826b"></circle><path d="M150 108 A14 14 0 0 1 178 108Z" fill="#7cb342" stroke="#4e8a22" stroke-width="2"></path><path d="M164 108 L158 98 M164 108 L170 98 M164 108 L164 96" stroke="#c5e1a5" stroke-width="1"></path><path transform="translate(110 60) rotate(30) scale(0.9)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#4f8f3a"></path><path transform="translate(110 60) rotate(30) scale(0.9)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(132 92) rotate(-20) scale(0.8)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#4f8f3a"></path><path transform="translate(132 92) rotate(-20) scale(0.8)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Di 20.10.</span><span class="t">30 Min · 4 Portionen</span></div>
+        <h3>Rote-Linsen-Curry mit Kürbis</h3>
+        <div class="chips"><span class="chip fav">Favorit</span><span class="chip var">Variante: mit Kürbis und Reis</span><span class="chip left">Rest: Mi mittags</span></div>
+        <p class="offers"><b>Günstig:</b> Kürbis vom Montag, Bio rote Linsen (Lidl)</p>
+        <details class="recipe" id="rezept-di">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 4 Portionen</h4><ul><li><span class="qty">250 g</span> rote Linsen</li><li><span class="qty">ca. 500 g</span> Hokkaido-Kürbis, gewürfelt</li><li><span class="qty">250 g</span> Cherrytomaten</li><li><span class="qty">2</span> Knoblauchzehen</li><li><span class="qty">1 Stück</span> Ingwer</li><li><span class="qty">1 EL</span> Rapsöl</li><li><span class="qty">½ TL</span> Kreuzkümmel</li><li><span class="qty">½ TL</span> Zimt</li><li><span class="qty">1 TL</span> Currypulver</li><li><span class="qty">400 ml</span> Kokosmilch</li><li><span class="qty">250 ml</span> Gemüsebrühe, plus etwas Wasser</li><li><span class="qty">2 EL</span> Limettensaft</li><li><span class="qty">250 g</span> Jasminreis</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Reis nach Packungsangabe kochen.</li><li>Knoblauch und Ingwer fein hacken und im Öl andünsten. Kreuzkümmel, Zimt und Curry kurz mitrösten.</li><li>Kürbiswürfel, Kokosmilch, Brühe, geviertelte Tomaten und gewaschene Linsen zugeben.</li><li>Etwa 20 Minuten köcheln, bis Linsen und Kürbis weich sind. Bei Bedarf Wasser nachgießen.</li><li>Mit Salz, Pfeffer und Limettensaft abschmecken.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.gaumenfreundin.de/rote-linsen-curry/" target="_blank" rel="noopener">Gaumenfreundin</a></p>
+          </div>
+        </details>
+      </div>
+    </article>
+    <article class="day c-sky" id="mi">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="101" cy="83" rx="62" ry="59.519999999999996" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="98" cy="78" r="62" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"></circle><circle cx="98" cy="78" r="48.36" fill="none" stroke="#ece8de" stroke-width="1"></circle><circle cx="72" cy="34" r="11" fill="#ead9b8"></circle><path d="M64 34 Q72 27 80 34 Q72 40 66 35" stroke="#d2bd94" stroke-width="1.6" fill="none"></path><circle cx="73" cy="34" r="2" fill="#b9a53a"></circle><path d="M44 92 Q44 58 96 54 Q148 58 148 92 Z" fill="#e9c895" stroke="#c99f62" stroke-width="2"></path><path d="M48 70 Q58 58 70 66 Q80 54 92 62 Q104 52 114 62 Q126 54 136 66 Q146 62 146 72 Q96 64 48 74Z" fill="#8cc152"></path><rect x="130.24288477544786" y="63.01016428839125" width="6" height="6" rx="1" fill="#e2412e"></rect><rect x="126.16540243266087" y="62.052781933078975" width="6" height="6" rx="1" fill="#e2412e"></rect><rect x="92.19333086521551" y="60.942535108681554" width="6" height="6" rx="1" fill="#e2412e"></rect><rect x="77.93380473804206" y="61.689470784802836" width="6" height="6" rx="1" fill="#e2412e"></rect><rect x="92.43142642833936" y="59.830965838826465" width="6" height="6" rx="1" fill="#e2412e"></rect><rect x="63.32656032097482" y="59.812612890276746" width="6" height="6" rx="1" fill="#e2412e"></rect><rect x="103.70820351080665" y="66.8018263861037" width="6" height="6" rx="1" fill="#e2412e"></rect><circle cx="64" cy="60" r="9" fill="#8a5a2b"></circle><circle cx="61" cy="57" r="2" fill="#a8743e"></circle><circle cx="67" cy="62" r="1.4" fill="#6f4520"></circle><circle cx="84" cy="55" r="9" fill="#8a5a2b"></circle><circle cx="81" cy="52" r="2" fill="#a8743e"></circle><circle cx="87" cy="57" r="1.4" fill="#6f4520"></circle><circle cx="104" cy="60" r="9" fill="#8a5a2b"></circle><circle cx="101" cy="57" r="2" fill="#a8743e"></circle><circle cx="107" cy="62" r="1.4" fill="#6f4520"></circle><circle cx="124" cy="55" r="9" fill="#8a5a2b"></circle><circle cx="121" cy="52" r="2" fill="#a8743e"></circle><circle cx="127" cy="57" r="1.4" fill="#6f4520"></circle><path d="M44 92 Q96 98 148 92" stroke="#c99f62" stroke-width="2" fill="none"></path><path transform="translate(62 108) rotate(-15) scale(0.8)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3e8a3a"></path><path transform="translate(62 108) rotate(-15) scale(0.8)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(74 112) rotate(25) scale(0.7)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3e8a3a"></path><path transform="translate(74 112) rotate(25) scale(0.7)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Mi 21.10.</span><span class="t">25 Min · 2 Portionen</span></div>
+        <h3>Falafel-Pita</h3>
+        <div class="chips"><span class="chip fav">Favorit</span></div>
+        <p class="offers"><b>Günstig:</b> Bio-Falafelbällchen 1,79 € (REWE)</p>
+        <details class="recipe" id="rezept-mi">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">2</span> Pita-Taschen</li><li><span class="qty">6</span> Falafel</li><li><span class="qty">100 g</span> Hummus</li><li><span class="qty">200 g</span> Tomaten</li><li><span class="qty">1</span> Zwiebel</li><li><span class="qty">½ Bund</span> glatte Petersilie</li><li><span class="qty">4 Blätter</span> Eisbergsalat</li><li><span class="qty">1 TL</span> Rapsöl</li><li>Salz, Pfeffer</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Falafel nach Packungsangabe in Öl anbraten.</li><li>Tomate und Zwiebel fein würfeln, Petersilie hacken und alles mit Salz und Pfeffer mischen.</li><li>Pita im Toaster aufwärmen, aufschneiden und innen mit Hummus bestreichen.</li><li>Mit Salat, Tomatenmischung und Falafel füllen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://my.choosy.de/recipes/falafel-pita" target="_blank" rel="noopener">choosy</a></p>
+          </div>
+        </details>
+      </div>
+    </article>
+    <article class="day c-red" id="do">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="89" rx="58" ry="55.68" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="100" cy="84" r="58" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"></circle><circle cx="100" cy="84" r="45.24" fill="none" stroke="#ece8de" stroke-width="1"></circle><ellipse cx="104" cy="104" rx="50" ry="9" fill="rgba(0,0,0,0.10)"></ellipse><rect x="58" y="98" width="84" height="6.4" fill="#e9c98f"></rect><rect x="58" y="91" width="84" height="7.4" fill="#c8402c"></rect><rect x="58" y="87" width="84" height="4.4" fill="#f5efe0"></rect><rect x="58" y="81" width="84" height="6.4" fill="#e9c98f"></rect><rect x="58" y="74" width="84" height="7.4" fill="#c8402c"></rect><rect x="58" y="70" width="84" height="4.4" fill="#f5efe0"></rect><rect x="58" y="64" width="84" height="6.4" fill="#e9c98f"></rect><path d="M56 66 Q60 55 74 58 Q88 53 100 58 Q114 53 128 58 Q140 55 144 66 Z" fill="#f3c85d"></path><ellipse cx="70" cy="60" rx="4" ry="2" fill="#c9892d"></ellipse><ellipse cx="92" cy="58" rx="4" ry="2" fill="#c9892d"></ellipse><ellipse cx="116" cy="59" rx="4" ry="2" fill="#c9892d"></ellipse><ellipse cx="134" cy="61" rx="4" ry="2" fill="#c9892d"></ellipse><path d="M142 68 Q150 84 146 104" stroke="#c8402c" stroke-width="3" fill="none" stroke-linecap="round"></path><path transform="translate(86 55) rotate(-20) scale(0.9)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3f8a3a"></path><path transform="translate(86 55) rotate(-20) scale(0.9)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(98 53) rotate(25) scale(0.8)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3f8a3a"></path><path transform="translate(98 53) rotate(25) scale(0.8)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Do 22.10.</span><span class="t">50 Min · 4 Portionen</span></div>
+        <h3>Rote-Linsen-Lasagne</h3>
+        <div class="chips"><span class="chip fav">Favorit</span><span class="chip left">Rest: Fr mittags</span></div>
+        <p class="offers"><b>Günstig:</b> Passierte Tomaten 1,30 €/kg (Lidl), Möhren mit 0,40 € Bonus (REWE)</p>
+        <details class="recipe" id="rezept-do">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 4 Portionen</h4><ul><li><span class="qty">200 g</span> rote Linsen</li><li><span class="qty">1</span> Zwiebel</li><li><span class="qty">2</span> Knoblauchzehen</li><li><span class="qty">2</span> Möhren</li><li><span class="qty">2 EL</span> Olivenöl</li><li><span class="qty">600 ml</span> Gemüsebrühe</li><li><span class="qty">500 g</span> passierte Tomaten</li><li><span class="qty">1 EL</span> italienische Kräuter</li><li><span class="qty">12</span> Lasagneplatten</li><li><span class="qty">200 g</span> Crème fraîche (2 EL für Samstag aufheben)</li><li><span class="qty">100 g</span> Mozzarella</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Zwiebel, Knoblauch und Möhren fein würfeln und im Öl andünsten.</li><li>Linsen und Brühe zugeben und zugedeckt 10–15 Minuten köcheln.</li><li>Tomaten und Kräuter unterrühren, mit Salz und Pfeffer abschmecken. Ofen auf 200 °C vorheizen.</li><li>Soße und Lasagneplatten abwechselnd in eine gefettete Form schichten, mit Soße enden.</li><li>Crème fraîche mit 3 EL Wasser verrühren und verstreichen, Mozzarella zupfen und verteilen. Etwa 30 Minuten backen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.gaumenfreundin.de/rote-linsen-lasagne/" target="_blank" rel="noopener">Gaumenfreundin</a></p>
+          </div>
+        </details>
+      </div>
+    </article>
+    <article class="day c-pink" id="fr">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="80" rx="62" ry="59.519999999999996" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="100" cy="75" r="62" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"></circle><circle cx="100" cy="75" r="56" fill="#f8f5ec"></circle><ellipse cx="149.28225270399622" cy="75.128442162024" rx="2.3" ry="1.2" transform="rotate(144.9757689279736 149.28225270399622 75.128442162024)" fill="#ece6d4"></ellipse><ellipse cx="91.26540225208304" cy="97.70166864559752" rx="2.3" ry="1.2" transform="rotate(98.85781576458123 91.26540225208304 97.70166864559752)" fill="#ece6d4"></ellipse><ellipse cx="50.54982575297807" cy="77.06282621454889" rx="2.3" ry="1.2" transform="rotate(173.84878027084653 50.54982575297807 77.06282621454889)" fill="#ece6d4"></ellipse><ellipse cx="72.30921002782611" cy="68.12646974813286" rx="2.3" ry="1.2" transform="rotate(146.16447019478278 72.30921002782611 68.12646974813286)" fill="#ece6d4"></ellipse><ellipse cx="144.09863218359556" cy="86.66684552158779" rx="2.3" ry="1.2" transform="rotate(108.69042528516889 144.09863218359556 86.66684552158779)" fill="#ece6d4"></ellipse><ellipse cx="133.75717259948868" cy="91.96309783980902" rx="2.3" ry="1.2" transform="rotate(36.300208196420726 133.75717259948868 91.96309783980902)" fill="#ece6d4"></ellipse><ellipse cx="84.10245300558019" cy="108.22445591382304" rx="2.3" ry="1.2" transform="rotate(48.71717103906133 84.10245300558019 108.22445591382304)" fill="#ece6d4"></ellipse><ellipse cx="81.3006470376373" cy="88.7745917296609" rx="2.3" ry="1.2" transform="rotate(29.10452926346113 81.3006470376373 88.7745917296609)" fill="#ece6d4"></ellipse><ellipse cx="127.52205878637206" cy="35.49557859774437" rx="2.3" ry="1.2" transform="rotate(172.65441150460435 127.52205878637206 35.49557859774437)" fill="#ece6d4"></ellipse><ellipse cx="93.99968629917001" cy="65.83970424895193" rx="2.3" ry="1.2" transform="rotate(117.99780409419009 93.99968629917001 65.83970424895193)" fill="#ece6d4"></ellipse><ellipse cx="100.59262938494555" cy="106.47839018654919" rx="2.3" ry="1.2" transform="rotate(164.14840569461887 100.59262938494555 106.47839018654919)" fill="#ece6d4"></ellipse><ellipse cx="94.47247418766614" cy="74.45578868620643" rx="2.3" ry="1.2" transform="rotate(121.3073193136629 94.47247418766614 74.45578868620643)" fill="#ece6d4"></ellipse><ellipse cx="85.28295554360167" cy="72.20751167743033" rx="2.3" ry="1.2" transform="rotate(56.980688805211685 85.28295554360167 72.20751167743033)" fill="#ece6d4"></ellipse><ellipse cx="90.06128308314462" cy="86.57040397315104" rx="2.3" ry="1.2" transform="rotate(90.42898158201228 90.06128308314462 86.57040397315104)" fill="#ece6d4"></ellipse><ellipse cx="84.82903423355543" cy="120.7109388777221" rx="2.3" ry="1.2" transform="rotate(53.80323963488809 84.82903423355543 120.7109388777221)" fill="#ece6d4"></ellipse><ellipse cx="120.70052878530427" cy="47.375947863659704" rx="2.3" ry="1.2" transform="rotate(124.90370149712987 120.70052878530427 47.375947863659704)" fill="#ece6d4"></ellipse><ellipse cx="82.74504110315718" cy="80.1747118023849" rx="2.3" ry="1.2" transform="rotate(39.21528772210024 82.74504110315718 80.1747118023849)" fill="#ece6d4"></ellipse><ellipse cx="83.52931760373473" cy="110.1259033171813" rx="2.3" ry="1.2" transform="rotate(44.70522322614306 83.52931760373473 110.1259033171813)" fill="#ece6d4"></ellipse><ellipse cx="143.90979196254392" cy="86.58163308249438" rx="2.3" ry="1.2" transform="rotate(107.36854373780739 143.90979196254392 86.58163308249438)" fill="#ece6d4"></ellipse><ellipse cx="80.73059965833488" cy="65.06200833781186" rx="2.3" ry="1.2" transform="rotate(25.11419760834417 80.73059965833488 65.06200833781186)" fill="#ece6d4"></ellipse><ellipse cx="140.60660596178653" cy="60.84418473368855" rx="2.3" ry="1.2" transform="rotate(84.24624173250572 140.60660596178653 60.84418473368855)" fill="#ece6d4"></ellipse><ellipse cx="122.69893988110744" cy="60.342647897839626" rx="2.3" ry="1.2" transform="rotate(138.89257916775205 122.69893988110744 60.342647897839626)" fill="#ece6d4"></ellipse><ellipse cx="135.4171772330198" cy="102.70797950878146" rx="2.3" ry="1.2" transform="rotate(47.92024063113854 135.4171772330198 102.70797950878146)" fill="#ece6d4"></ellipse><ellipse cx="130.7886620337816" cy="55.10657520829923" rx="2.3" ry="1.2" transform="rotate(15.52063423647121 130.7886620337816 55.10657520829923)" fill="#ece6d4"></ellipse><ellipse cx="87.00710398056907" cy="44.800733193324675" rx="2.3" ry="1.2" transform="rotate(69.04972786398343 87.00710398056907 44.800733193324675)" fill="#ece6d4"></ellipse><ellipse cx="65.1004598991891" cy="43.98603567851357" rx="2.3" ry="1.2" transform="rotate(95.70321929432373 65.1004598991891 43.98603567851357)" fill="#ece6d4"></ellipse><ellipse cx="71.06852240650511" cy="109.85788360195785" rx="2.3" ry="1.2" transform="rotate(137.47965684553577 71.06852240650511 109.85788360195785)" fill="#ece6d4"></ellipse><ellipse cx="71.7522032627917" cy="38.881688879292454" rx="2.3" ry="1.2" transform="rotate(142.26542283954188 71.7522032627917 38.881688879292454)" fill="#ece6d4"></ellipse><ellipse cx="130.0664096097137" cy="78.24251197349149" rx="2.3" ry="1.2" transform="rotate(10.464867267995942 130.0664096097137 78.24251197349149)" fill="#ece6d4"></ellipse><ellipse cx="53.447273720584064" cy="91.15588568773697" rx="2.3" ry="1.2" transform="rotate(14.130916044088451 53.447273720584064 91.15588568773697)" fill="#ece6d4"></ellipse><ellipse cx="84.62692481001193" cy="93.74329692347169" rx="2.3" ry="1.2" transform="rotate(52.3884736700835 84.62692481001193 93.74329692347169)" fill="#ece6d4"></ellipse><ellipse cx="108.25963903813762" cy="102.4650331879353" rx="2.3" ry="1.2" transform="rotate(37.81747326696336 108.25963903813762 102.4650331879353)" fill="#ece6d4"></ellipse><ellipse cx="120.81126061016732" cy="42.33425097712814" rx="2.3" ry="1.2" transform="rotate(125.67882427117127 120.81126061016732 42.33425097712814)" fill="#ece6d4"></ellipse><ellipse cx="134.3640800097356" cy="78.44771922026905" rx="2.3" ry="1.2" transform="rotate(40.548560068149186 134.3640800097356 78.44771922026905)" fill="#ece6d4"></ellipse><ellipse cx="105.82622869921265" cy="108.0828630875725" rx="2.3" ry="1.2" transform="rotate(20.783600894488586 105.82622869921265 108.0828630875725)" fill="#ece6d4"></ellipse><ellipse cx="89.27731514441045" cy="109.69557403334221" rx="2.3" ry="1.2" transform="rotate(84.9412060108732 89.27731514441045 109.69557403334221)" fill="#ece6d4"></ellipse><ellipse cx="85.14636428091154" cy="103.77473334638736" rx="2.3" ry="1.2" transform="rotate(56.024549966380846 85.14636428091154 103.77473334638736)" fill="#ece6d4"></ellipse><ellipse cx="83.12447160297519" cy="48.58832769395912" rx="2.3" ry="1.2" transform="rotate(41.87130122082635 83.12447160297519 48.58832769395912)" fill="#ece6d4"></ellipse><ellipse cx="129.39045125265736" cy="101.57912777478268" rx="2.3" ry="1.2" transform="rotate(5.73315876860147 129.39045125265736 101.57912777478268)" fill="#ece6d4"></ellipse><ellipse cx="92.42259582939091" cy="121.27800414121319" rx="2.3" ry="1.2" transform="rotate(106.95817080573636 92.42259582939091 121.27800414121319)" fill="#ece6d4"></ellipse><ellipse cx="116.35780174056734" cy="41.60311538508029" rx="2.3" ry="1.2" transform="rotate(94.5046121839714 116.35780174056734 41.60311538508029)" fill="#ece6d4"></ellipse><ellipse cx="131.42244956022563" cy="66.41290528993908" rx="2.3" ry="1.2" transform="rotate(19.95714692157935 131.42244956022563 66.41290528993908)" fill="#ece6d4"></ellipse><ellipse cx="89.1127250429986" cy="34.1386628077976" rx="2.3" ry="1.2" transform="rotate(83.78907530099025 89.1127250429986 34.1386628077976)" fill="#ece6d4"></ellipse><ellipse cx="102.45742831595722" cy="70.50291423227071" rx="2.3" ry="1.2" transform="rotate(177.20199821170047 102.45742831595722 70.50291423227071)" fill="#ece6d4"></ellipse><ellipse cx="116.34333253276671" cy="71.64309588549449" rx="2.3" ry="1.2" transform="rotate(94.40332772936699 116.34333253276671 71.64309588549449)" fill="#ece6d4"></ellipse><ellipse cx="66.80228401254642" cy="64.34174227657554" rx="2.3" ry="1.2" transform="rotate(107.61598808782497 66.80228401254642 64.34174227657554)" fill="#ece6d4"></ellipse><ellipse cx="132.74141084817228" cy="106.09300395008549" rx="2.3" ry="1.2" transform="rotate(29.189875937205898 132.74141084817228 106.09300395008549)" fill="#ece6d4"></ellipse><ellipse cx="77.46557323991883" cy="48.89323888382306" rx="2.3" ry="1.2" transform="rotate(2.2590126794317484 77.46557323991883 48.89323888382306)" fill="#ece6d4"></ellipse><ellipse cx="130.54761732502166" cy="101.9894420320841" rx="2.3" ry="1.2" transform="rotate(13.833321275151661 130.54761732502166 101.9894420320841)" fill="#ece6d4"></ellipse><ellipse cx="127.97184093537639" cy="63.849888793918836" rx="2.3" ry="1.2" transform="rotate(175.80288654763478 127.97184093537639 63.849888793918836)" fill="#ece6d4"></ellipse><ellipse cx="59.71270958616397" cy="48.12919088998435" rx="2.3" ry="1.2" transform="rotate(57.988967103147786 59.71270958616397 48.12919088998435)" fill="#ece6d4"></ellipse><ellipse cx="59.04573700809373" cy="50.03341965942779" rx="2.3" ry="1.2" transform="rotate(53.32015905665611 59.04573700809373 50.03341965942779)" fill="#ece6d4"></ellipse><ellipse cx="92.3257441099873" cy="39.89691537352146" rx="2.3" ry="1.2" transform="rotate(106.28020876991104 92.3257441099873 39.89691537352146)" fill="#ece6d4"></ellipse><ellipse cx="83.0051192852067" cy="67.9143098661248" rx="2.3" ry="1.2" transform="rotate(41.035834996446965 83.0051192852067 67.9143098661248)" fill="#ece6d4"></ellipse><ellipse cx="70.6640463634243" cy="42.28805766964173" rx="2.3" ry="1.2" transform="rotate(134.64832454397015 70.6640463634243 42.28805766964173)" fill="#ece6d4"></ellipse><ellipse cx="109.35775038849236" cy="37.27282496648668" rx="2.3" ry="1.2" transform="rotate(45.50425271944653 109.35775038849236 37.27282496648668)" fill="#ece6d4"></ellipse><ellipse cx="108.9471241180908" cy="117.26613515246522" rx="2.3" ry="1.2" transform="rotate(42.62986882663563 108.9471241180908 117.26613515246522)" fill="#ece6d4"></ellipse><ellipse cx="143.66951286343513" cy="57.50772700572692" rx="2.3" ry="1.2" transform="rotate(105.68659004404594 143.66951286343513 57.50772700572692)" fill="#ece6d4"></ellipse><ellipse cx="103.0927106707765" cy="45.03574697668766" rx="2.3" ry="1.2" transform="rotate(1.6489746954355269 103.0927106707765 45.03574697668766)" fill="#ece6d4"></ellipse><ellipse cx="118.92801092455831" cy="105.15833653611818" rx="2.3" ry="1.2" transform="rotate(112.49607647190817 118.92801092455831 105.15833653611818)" fill="#ece6d4"></ellipse><ellipse cx="51.303524991764945" cy="67.3563263141732" rx="2.3" ry="1.2" transform="rotate(179.1246749423546 51.303524991764945 67.3563263141732)" fill="#ece6d4"></ellipse><ellipse cx="73.48343232611555" cy="100.29770626078232" rx="2.3" ry="1.2" transform="rotate(154.3840262828088 73.48343232611555 100.29770626078232)" fill="#ece6d4"></ellipse><ellipse cx="120.64950999335673" cy="77.39740155480844" rx="2.3" ry="1.2" transform="rotate(124.54656995349706 120.64950999335673 77.39740155480844)" fill="#ece6d4"></ellipse><ellipse cx="65.1810024384523" cy="39.93012772800693" rx="2.3" ry="1.2" transform="rotate(96.26701706916606 65.1810024384523 39.93012772800693)" fill="#ece6d4"></ellipse><ellipse cx="112.38536959677421" cy="49.048138648530326" rx="2.3" ry="1.2" transform="rotate(66.69758717741945 112.38536959677421 49.048138648530326)" fill="#ece6d4"></ellipse><ellipse cx="67.50162884811104" cy="75.20748279810654" rx="2.3" ry="1.2" transform="rotate(112.51140193677725 67.50162884811104 75.20748279810654)" fill="#ece6d4"></ellipse><ellipse cx="90.94350093718157" cy="116.11427469063375" rx="2.3" ry="1.2" transform="rotate(96.60450656027092 90.94350093718157 116.11427469063375)" fill="#ece6d4"></ellipse><ellipse cx="105.81920321773195" cy="102.62092676850267" rx="2.3" ry="1.2" transform="rotate(20.734422524123715 105.81920321773195 102.62092676850267)" fill="#ece6d4"></ellipse><ellipse cx="121.39026860408777" cy="94.4127103126841" rx="2.3" ry="1.2" transform="rotate(129.7318802286144 121.39026860408777 94.4127103126841)" fill="#ece6d4"></ellipse><ellipse cx="96.72511341775261" cy="109.55822018713408" rx="2.3" ry="1.2" transform="rotate(137.07579392426828 96.72511341775261 109.55822018713408)" fill="#ece6d4"></ellipse><ellipse cx="63.94759971526365" cy="49.00146255944143" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="70.45926823372456" cy="49.37536147334575" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="63.961553929540166" cy="54.783528213878974" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="84.6994536146695" cy="52.80477860112453" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="63.76776705870665" cy="49.43741631875023" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="78.93458625736854" cy="48.479257598919524" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="63.20643242414586" cy="48.12585601003729" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="77.63849621325974" cy="60.807821244649844" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="77.81488489436681" cy="46.65467642851361" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="64.86070478865285" cy="44.76819656900487" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="70.6412063964731" cy="46.03023351070424" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="72.11874427905654" cy="45.461762844686625" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="76.67243305599875" cy="50.80225348882281" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="70.84446056209518" cy="50.308851063344854" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="81.60118878904059" cy="51.36867644539693" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><ellipse cx="75.4553621349947" cy="55.50529492996548" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"></ellipse><rect x="113.5" y="41.5" width="9" height="9" rx="1.5" fill="#f3e2b0" stroke="#d6a94b" stroke-width="1.2"></rect><rect x="123.5" y="45.5" width="9" height="9" rx="1.5" fill="#f3e2b0" stroke="#d6a94b" stroke-width="1.2"></rect><rect x="117.5" y="52.5" width="9" height="9" rx="1.5" fill="#f3e2b0" stroke="#d6a94b" stroke-width="1.2"></rect><rect x="128.5" y="55.5" width="9" height="9" rx="1.5" fill="#f3e2b0" stroke="#d6a94b" stroke-width="1.2"></rect><rect x="107.5" y="49.5" width="9" height="9" rx="1.5" fill="#f3e2b0" stroke="#d6a94b" stroke-width="1.2"></rect><path d="M68.99370266690269 92.0366736160484 q6 0.4367542767137076 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M65.11299381172414 95.50159155468813 q6 -1.0074401414056493 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M56.73589851021685 96.29472674860226 q6 -0.9950075633800624 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M61.294381028099224 100.95364851105955 q6 0.6457896575544915 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M58.51262600428427 97.03837421310601 q6 0.9734402503694595 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M62.85553278746241 104.22107069224053 q6 -2.6768582536265524 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M68.07633817957449 102.5533437797456 q6 -0.6577779751540058 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M70.09239608146953 94.49943001699067 q6 0.5985601225861163 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M66.0035441233057 98.89172911053008 q6 2.609250484783784 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M58.55451485222453 97.61820773852979 q6 -2.3903063476971846 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M68.44829651038647 91.12919474237441 q6 2.4168000544499613 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M59.41497544600536 100.63326875134568 q6 0.7796325663941133 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M58.53545728627664 100.23569825591979 q6 0.7725852410181355 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M56.79173702148662 88.73666484168142 q6 -2.263199546962604 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"></path><path d="M101.73030954129976 102.60707888992303 l12 -2.0308119491817487" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><path d="M85.03903834424179 104.21785239271222 l12 -1.5890365431965499" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><path d="M103.27799259705088 105.47799739469829 l12 -2.817549335685349" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><path d="M95.04298827782725 111.35825515168219 l12 -1.2309326707529522" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><path d="M91.47644043652173 107.78406709613688 l12 -2.0553628322926176" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><path d="M93.5958937195257 110.84633540231978 l12 -1.8611028459207635" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><path d="M92.66454250903529 99.86605942396757 l12 -2.793834438451489" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><path d="M89.9278204607845 106.80440673509642 l12 -1.503222156550373" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><path d="M94.534033199945 106.48279652893946 l12 -2.061680214973949" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"></path><circle cx="128" cy="88" r="6" fill="#d9ecb6" stroke="#5f9a3a" stroke-width="1.6"></circle><circle cx="128" cy="88" r="1.4" fill="#a6c97a"></circle><circle cx="136" cy="96" r="6" fill="#d9ecb6" stroke="#5f9a3a" stroke-width="1.6"></circle><circle cx="136" cy="96" r="1.4" fill="#a6c97a"></circle><circle cx="124" cy="100" r="6" fill="#d9ecb6" stroke="#5f9a3a" stroke-width="1.6"></circle><circle cx="124" cy="100" r="1.4" fill="#a6c97a"></circle><path transform="translate(92 66) rotate(-20)" d="M0 -14 Q6 -2 0 12 Q-4 -2 0 -14Z" fill="#a9cf54" stroke="#4f7a24" stroke-width="1"></path><path transform="translate(97 66) rotate(-8)" d="M0 -14 Q6 -2 0 12 Q-4 -2 0 -14Z" fill="#a9cf54" stroke="#4f7a24" stroke-width="1"></path><path transform="translate(102 66) rotate(4)" d="M0 -14 Q6 -2 0 12 Q-4 -2 0 -14Z" fill="#a9cf54" stroke="#4f7a24" stroke-width="1"></path><path transform="translate(107 66) rotate(16)" d="M0 -14 Q6 -2 0 12 Q-4 -2 0 -14Z" fill="#a9cf54" stroke="#4f7a24" stroke-width="1"></path><rect x="138.77509790342313" y="71.84569713678403" width="7" height="7" rx="1" fill="#ffb52e"></rect><rect x="135.42012104591817" y="59.539130539902295" width="7" height="7" rx="1" fill="#ffb52e"></rect><rect x="135.1676520252133" y="62.615665472608356" width="7" height="7" rx="1" fill="#ffb52e"></rect><rect x="137.37265252367334" y="63.22507861711104" width="7" height="7" rx="1" fill="#ffb52e"></rect><rect x="131.24674040665624" y="68.33037380830606" width="7" height="7" rx="1" fill="#ffb52e"></rect><rect x="136.89231198444318" y="73.54707631895022" width="7" height="7" rx="1" fill="#ffb52e"></rect><ellipse cx="125.56158295569048" cy="87.40314293961791" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="126.93401224198793" cy="82.40193258157339" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="122.72362903518967" cy="82.67511775078022" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="90.63781026816189" cy="117.33161469198029" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="106.41603364271273" cy="111.53260895076235" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="137.22336525508908" cy="62.8152126824309" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="137.75798344686046" cy="95.1076853255417" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="119.328239338044" cy="95.71406839775898" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="95.2880746870274" cy="36.34540048990598" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="93.69990103034078" cy="92.03740182527513" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="69.05265737701671" cy="81.2372319646294" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="127.30382650954343" cy="45.30201555040294" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="127.35736870018168" cy="46.2299584250576" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="118.76279564184702" cy="84.1893457294484" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="103.18978524334369" cy="110.14606978542925" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="66.66585798547266" cy="75.29816778881246" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="77.40993750314095" cy="112.59699646204453" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="61.296309402388" cy="64.27121474162094" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="72.76984505193718" cy="86.02491036262731" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="130.66696363947605" cy="60.52836713041627" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="113.36597877251688" cy="57.83846527030269" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="80.94437143141857" cy="97.06122050529689" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="65.61109043164092" cy="74.72859146380692" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="85.95814831588538" cy="34.964109166425374" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="73.63480628343817" cy="75.90853805039069" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><ellipse cx="89.61886627711641" cy="52.22331326849692" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"></ellipse><path transform="translate(84 82) rotate(40) scale(0.6)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3c8a3a"></path><path transform="translate(84 82) rotate(40) scale(0.6)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(112 78) rotate(-30) scale(0.6)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3c8a3a"></path><path transform="translate(112 78) rotate(-30) scale(0.6)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Fr 23.10.</span><span class="t">40 Min · 2 Portionen</span></div>
+        <h3>Vegane Poke Bowl mit Mango</h3>
+        <div class="chips"><span class="chip fav">Favorit</span><span class="chip var">Variante: mit Mango</span></div>
+        <p class="offers"><b>Günstig:</b> Mango 1,11 € (REWE)</p>
+        <details class="recipe" id="rezept-fr">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">200 g</span> Jasminreis</li><li><span class="qty">200 g</span> Edamame, tiefgekühlt</li><li><span class="qty">200 g</span> Tofu</li><li><span class="qty">150 g</span> Rotkohl</li><li><span class="qty">½ Bund</span> Lauchzwiebeln</li><li><span class="qty">2</span> Möhren</li><li><span class="qty">½</span> Gurke</li><li><span class="qty">1</span> Avocado</li><li><span class="qty">1</span> Mango</li><li><span class="qty">½ Bund</span> Koriander</li><li><span class="qty">1 EL</span> Sesam</li><li><span class="qty">1 EL</span> Rapsöl</li><li><span class="qty">1 EL + 1 EL</span> Sojasauce</li><li><span class="qty">1 TL + 2 EL</span> Limettensaft</li><li><span class="qty">3 EL</span> Erdnussmus</li><li><span class="qty">1 EL</span> Ahornsirup</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Reis und Edamame garen.</li><li>Tofu trocken pressen, würfeln und im Öl knusprig braten. Mit 1 EL Sojasauce ablöschen.</li><li>Rotkohl fein hobeln, Möhren raspeln, Gurke, Avocado und Mango schneiden, Lauchzwiebeln in Ringe schneiden. Sesam ohne Öl rösten.</li><li>Erdnussmus, Sojasauce, 2 EL Limettensaft, Ahornsirup und Pfeffer zu einem Dressing verrühren.</li><li>Alles in Schalen anrichten, Dressing darübergeben, mit Koriander und Sesam bestreuen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.einfachkochen.de/rezepte/vegane-poke-bowl" target="_blank" rel="noopener">einfach kochen</a></p>
+          </div>
+        </details>
+      </div>
+    </article>
+    <article class="day c-green" id="sa">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="82" rx="82" ry="50" fill="rgba(0,0,0,0.10)"></ellipse><rect x="18" y="26" width="168" height="100" rx="16" fill="#f5f2ea" stroke="#d9d3c6" stroke-width="2"></rect><ellipse cx="102" cy="52" rx="70" ry="17" fill="#3f7a34"></ellipse><ellipse cx="102" cy="51" rx="64" ry="12.5" fill="#cfe3a3"></ellipse><ellipse cx="102" cy="51" rx="58" ry="9.5" fill="#a5452b"></ellipse><ellipse cx="132.28431176410896" cy="51.01423353328284" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="58.51595313062076" cy="48.50353609659636" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="89.53749764457537" cy="53.63739620761945" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="85.7690612142122" cy="53.535703198068745" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="137.0597855441753" cy="50.956691257658996" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="69.44213237018288" cy="47.43350870858902" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="109.71770879317512" cy="56.95523170864316" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="105.20612674627469" cy="44.68624777719656" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="131.4613893399132" cy="53.11102065065686" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="67.73516178524943" cy="53.23291740086381" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="90.10043063930084" cy="49.23336244602095" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="83.78847955606433" cy="53.611278423557344" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="138.44959472687668" cy="48.49924980676177" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="136.07290146686353" cy="49.35272044032283" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="89.36566578014069" cy="54.908822590233775" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="126.47269221912117" cy="55.67268628294479" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="69.79053411417351" cy="55.53081419504528" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="142.99937948717402" cy="48.25304073944999" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><rect x="168" y="48" width="9" height="8" rx="2" fill="#2f5f27"></rect><ellipse cx="102" cy="98" rx="70" ry="17" fill="#3f7a34"></ellipse><ellipse cx="102" cy="97" rx="64" ry="12.5" fill="#cfe3a3"></ellipse><ellipse cx="102" cy="97" rx="58" ry="9.5" fill="#a5452b"></ellipse><ellipse cx="54.91108989076141" cy="96.6885490654704" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="98.01873203744103" cy="91.81851816339413" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="107.79717470490249" cy="103.29493002148212" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="95.13830490104768" cy="95.7058960619438" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="129.48460599017218" cy="94.17673145122524" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="105.34403680048463" cy="102.17274973604171" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="79.24424042819442" cy="91.187322052015" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="148.24140200024806" cy="96.04027447071256" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="141.20959441839042" cy="99.38370896792404" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="117.03297081200554" cy="95.54793391667312" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="75.49871340969014" cy="92.36808560455246" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="51.02877004033373" cy="96.81664827466948" rx="6" ry="3.4" fill="#f2cd5a"></ellipse><ellipse cx="61.461731173625445" cy="95.18496764874031" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="55.964289603551876" cy="99.09011708926411" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="99.90029917336167" cy="102.18051238126165" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="82.74535919072882" cy="97.10143163498736" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="70.33581101792859" cy="100.06069776503975" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><ellipse cx="59.9935237781941" cy="93.91137506645927" rx="2.4" ry="1.4" fill="#c98a2d"></ellipse><rect x="168" y="94" width="9" height="8" rx="2" fill="#2f5f27"></rect><path transform="translate(70 74) rotate(20) scale(0.7)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3f8a3a"></path><path transform="translate(70 74) rotate(20) scale(0.7)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(130 76) rotate(-25) scale(0.7)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3f8a3a"></path><path transform="translate(130 76) rotate(-25) scale(0.7)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Sa 24.10.</span><span class="t">45 Min · 2 Portionen</span></div>
+        <h3>Gefüllte Zucchini mit veganem Hack</h3>
+        <div class="chips"><span class="chip fav">Favorit</span><span class="chip veg">Vegetarisch angepasst</span></div>
+        <p class="offers"><b>Günstig:</b> Gouda gerieben 1,49 € (Lidl, Angebot)</p>
+        <details class="recipe" id="rezept-sa">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">2</span> Zucchini</li><li><span class="qty">1 Packung</span> veganes Hack (statt 250 g Rinderhack)</li><li><span class="qty">200 g</span> passierte Tomaten</li><li><span class="qty">100 g</span> Gouda, gerieben</li><li><span class="qty">1</span> Knoblauchzehe</li><li><span class="qty">½</span> Zwiebel</li><li><span class="qty">1 EL</span> Tomatenmark</li><li><span class="qty">1 EL</span> Crème fraîche</li><li><span class="qty">1 EL</span> Olivenöl</li><li><span class="qty">½ TL</span> Paprika edelsüß</li><li><span class="qty">¾ TL</span> Oregano</li><li><span class="qty">1 Prise</span> Zucker, Salz</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Ofen auf 180 °C Umluft vorheizen. Zucchini längs halbieren, aushöhlen und das Fruchtfleisch hacken.</li><li>Zwiebel und Knoblauch im Öl andünsten, veganes Hack mit Paprika und Salz anbraten.</li><li>Zucchinifleisch, Tomatenmark, passierte Tomaten, Oregano und Zucker einrühren und kurz köcheln.</li><li>Masse in die Zucchinihälften füllen, Crème fraîche daraufgeben und 15 Minuten backen.</li><li>Käse darüberstreuen und weitere 10 Minuten goldbraun backen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://emmikochteinfach.de/gefuellte-zucchini-schiffchen-hackfleisch/" target="_blank" rel="noopener">Emmi kocht einfach</a></p>
+          </div>
+        </details>
+      </div>
+    </article>
+    <article class="day c-violet" id="so">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="81" rx="62" ry="59.519999999999996" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="100" cy="76" r="62" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"></circle><circle cx="100" cy="76" r="48.36" fill="none" stroke="#ece8de" stroke-width="1"></circle><path d="M52 72 Q56 38 98 34 Q144 36 148 72 Q146 112 100 118 Q56 114 52 72Z" fill="#6f9e3c"></path><circle cx="133.62973935176723" cy="76.13246434406463" r="1.2" fill="#8dbb52"></circle><circle cx="110.96823634609095" cy="54.97479029477135" r="1.2" fill="#8dbb52"></circle><circle cx="109.98747030662686" cy="97.49825007593691" r="1.2" fill="#8dbb52"></circle><circle cx="105.54065307324294" cy="88.07466639055258" r="1.2" fill="#8dbb52"></circle><circle cx="110.67077186866288" cy="73.26969504663953" r="1.2" fill="#8dbb52"></circle><circle cx="121.26441955974522" cy="100.1410929794615" r="1.2" fill="#8dbb52"></circle><circle cx="127.7267849299643" cy="100.64028441949078" r="1.2" fill="#8dbb52"></circle><circle cx="118.56128750153984" cy="92.24375463890969" r="1.2" fill="#8dbb52"></circle><circle cx="86.31069686096446" cy="107.78492308231893" r="1.2" fill="#8dbb52"></circle><circle cx="101.95740720695173" cy="81.28453856176682" r="1.2" fill="#8dbb52"></circle><circle cx="136.3168376915856" cy="79.82771505573453" r="1.2" fill="#8dbb52"></circle><circle cx="104.59110469166957" cy="101.407784621231" r="1.2" fill="#8dbb52"></circle><circle cx="92.35127545951346" cy="95.18394307833395" r="1.2" fill="#8dbb52"></circle><circle cx="60.45136627905205" cy="72.60342333405544" r="1.2" fill="#8dbb52"></circle><circle cx="96.4052528424523" cy="83.25316776399892" r="1.2" fill="#8dbb52"></circle><circle cx="81.78177820158326" cy="79.23001613378624" r="1.2" fill="#8dbb52"></circle><circle cx="95.13228325533301" cy="108.7145914495544" r="1.2" fill="#8dbb52"></circle><circle cx="84.00834535906425" cy="74.3536301913382" r="1.2" fill="#8dbb52"></circle><circle cx="135.74189084549485" cy="70.8187368198217" r="1.2" fill="#8dbb52"></circle><circle cx="129.7696843049336" cy="54.23191207121387" r="1.2" fill="#8dbb52"></circle><circle cx="62.14877193839327" cy="72.96862340094815" r="1.2" fill="#8dbb52"></circle><circle cx="71.68311085108519" cy="96.04376056595515" r="1.2" fill="#8dbb52"></circle><circle cx="95.76090350157203" cy="66.89289418303187" r="1.2" fill="#8dbb52"></circle><circle cx="72.3579952347366" cy="65.48077971925747" r="1.2" fill="#8dbb52"></circle><circle cx="87.72642477020136" cy="58.526016414091174" r="1.2" fill="#8dbb52"></circle><circle cx="82.27234526999685" cy="102.71765901252772" r="1.2" fill="#8dbb52"></circle><circle cx="104.5906161707462" cy="49.667444146018525" r="1.2" fill="#8dbb52"></circle><circle cx="114.09747079467607" cy="95.32008805880056" r="1.2" fill="#8dbb52"></circle><circle cx="98.97051927434752" cy="82.09897783250553" r="1.2" fill="#8dbb52"></circle><circle cx="63.86977462413756" cy="62.729690508730044" r="1.2" fill="#8dbb52"></circle><circle cx="100.55946985239441" cy="57.557338836821856" r="1.2" fill="#8dbb52"></circle><circle cx="86.94971749870996" cy="50.47640178643171" r="1.2" fill="#8dbb52"></circle><circle cx="82.86545295060208" cy="45.64554220757341" r="1.2" fill="#8dbb52"></circle><circle cx="135.58626612600983" cy="69.91558835261912" r="1.2" fill="#8dbb52"></circle><circle cx="65.45389569920975" cy="63.2583481775344" r="1.2" fill="#8dbb52"></circle><circle cx="118.45997451192571" cy="59.85497160850694" r="1.2" fill="#8dbb52"></circle><circle cx="77.8925553947056" cy="67.23574451112177" r="1.2" fill="#8dbb52"></circle><circle cx="80.46736973952684" cy="63.554710136030224" r="1.2" fill="#8dbb52"></circle><circle cx="70.34231745904911" cy="53.46649655476841" r="1.2" fill="#8dbb52"></circle><circle cx="128.6434805524889" cy="64.82221654544968" r="1.2" fill="#8dbb52"></circle><g transform="translate(121.6056982053399 89.01766182966333) rotate(48.05360731112473)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(117.38298241988386 60.67603617965232) rotate(31.30987771382084)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(76.61034029866687 79.42355050759282) rotate(17.95245929525814)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(97.31410105236068 108.92317012093201) rotate(5.980149202970857)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(76.70115589619085 94.63933335853427) rotate(60.751553513459655)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(72.40643676219477 74.88578845234979) rotate(23.478713018576947)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(98.77821957170725 93.1792793294191) rotate(93.53993273039345)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(127.65292992964814 80.69624837650017) rotate(33.38802568306589)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(75.43216594269484 74.13799510076856) rotate(111.9527385532636)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(95.69128958057856 98.234208045757) rotate(86.00308020878727)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(91.16322697057 99.76748786530932) rotate(39.01351284189779)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(104.5624915721783 54.49084727191838) rotate(0.8918860465716041)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(93.28484654485926 108.84828831604304) rotate(58.57709462688169)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(90.50682674037068 77.35628783097822) rotate(72.43748515492187)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><g transform="translate(92.91188883481186 67.82026400729458) rotate(94.57040575080104)"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"></ellipse><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"></path></g><circle cx="100" cy="76" r="17" fill="#fdfbf4" stroke="#e8e1cf" stroke-width="1.2"></circle><path d="M92 72 Q100 64 108 72 Q104 84 96 82 Q90 78 92 72Z" fill="#f4ecd6"></path><path transform="translate(100.2864845592213 115.15563545929015) rotate(115.17693450449823)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(85.39097542705048 101.5380720304791) rotate(121.64027410635738)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(108.75422299679968 59.807748142908395) rotate(78.42080313638822)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(85.7230320856133 101.60901521316289) rotate(93.97896424586837)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(136.38580851763146 81.18233871969505) rotate(94.02269154508724)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(117.31762732538411 88.63695702644026) rotate(179.29228439894146)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(138.35913472405994 56.548881685966144) rotate(28.279114043470056)" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"></path><path transform="translate(84 50) rotate(-30) scale(1)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#2f7d32"></path><path transform="translate(84 50) rotate(-30) scale(1)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(122 100) rotate(20) scale(1)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#2f7d32"></path><path transform="translate(122 100) rotate(20) scale(1)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(126 56) rotate(50) scale(0.9)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#2f7d32"></path><path transform="translate(126 56) rotate(50) scale(0.9)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">So 25.10.</span><span class="t">20 Min · 2 Portionen</span></div>
+        <h3>Brokkoli-Pesto mit Gnocchi und Burrata</h3>
+        <div class="chips"><span class="chip fav">Favorit</span></div>
+        <p class="offers"><b>Günstig:</b> Gnocchi-Eigenmarke 1,98 €/kg (Lidl)</p>
+        <details class="recipe" id="rezept-so">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">1</span> Brokkoli</li><li><span class="qty">50 g</span> Walnüsse</li><li><span class="qty">1,5 Bund</span> Basilikum (oder 1 Topf)</li><li><span class="qty">2</span> Knoblauchzehen</li><li><span class="qty">1</span> Zitrone</li><li><span class="qty">4,5 EL</span> Olivenöl</li><li><span class="qty">400 g</span> Gnocchi</li><li><span class="qty">1</span> Burrata</li><li>Salz, Pfeffer</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Brokkoli in Röschen teilen und 3–4 Minuten in Salzwasser blanchieren.</li><li>Mit Walnüssen, Basilikum, Knoblauch, Zitronensaft und -abrieb, 3 EL Olivenöl, Salz und Pfeffer zu einem Pesto pürieren.</li><li>Gnocchi im restlichen Öl goldbraun und knusprig braten.</li><li>Gnocchi mit dem Pesto mischen und die Burrata in die Mitte setzen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://my.choosy.de/recipes/brokkoli-pesto-30" target="_blank" rel="noopener">choosy (Schritte ergänzt, der Ausdruck enthielt nur die Zutaten)</a></p>
+          </div>
+        </details>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="shop" id="einkauf" aria-labelledby="einkauf-h">
+    <h2 id="einkauf-h">Einkaufsliste</h2>
+
+    <section class="store" id="lidl" aria-labelledby="lidl-h">
+      <div class="store-head">
+        <div><h3 id="lidl-h" class="store-name lidl">Lidl</h3><p class="addr">Lidl-Plus-App mitnehmen</p></div>
+        <div class="sub"><span>offen</span><b id="open-lidl">37,36 €</b></div>
+      </div>
+      <div id="list-lidl" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="l-tom">
+          <input type="checkbox" id="l-tom">
+          <span class="txt">
+            <span><span class="name">Tomaten</span> <span class="amt">· ca. 200 g</span></span>
+            <span class="for">für Mi</span>
+            
+          </span>
+          <span class="price">ca. 0,40</span>
+        </label></li><li class="item"><label for="l-zuc">
+          <input type="checkbox" id="l-zuc">
+          <span class="txt">
+            <span><span class="name">Zucchini</span> <span class="amt">· 2 Stück</span></span>
+            <span class="for">für Sa</span>
+            
+          </span>
+          <span class="price">ca. 1,00</span>
+        </label></li><li class="item"><label for="l-bro">
+          <input type="checkbox" id="l-bro">
+          <span class="txt">
+            <span><span class="name">Brokkoli</span> <span class="amt">· 1 Kopf</span></span>
+            <span class="for">für So</span>
+            
+          </span>
+          <span class="price">ca. 1,49</span>
+        </label></li><li class="item"><label for="l-avo">
+          <input type="checkbox" id="l-avo">
+          <span class="txt">
+            <span><span class="name">Avocado, vorgereift</span> <span class="amt">· 1 Stück</span></span>
+            <span class="for">für Fr</span>
+            
+          </span>
+          <span class="price">0,89</span>
+        </label></li><li class="item"><label for="l-gur">
+          <input type="checkbox" id="l-gur">
+          <span class="txt">
+            <span><span class="name">Salatgurke</span> <span class="amt">· 1 Stück</span></span>
+            <span class="for">für Fr (die Hälfte)</span>
+            
+          </span>
+          <span class="price">0,79</span>
+        </label></li><li class="item"><label for="l-rot">
+          <input type="checkbox" id="l-rot">
+          <span class="txt">
+            <span><span class="name">Rotkohl</span> <span class="amt">· 1 kleiner Kopf</span></span>
+            <span class="for">für Fr (150 g)</span>
+            
+          </span>
+          <span class="price">ca. 1,29</span>
+        </label></li><li class="item"><label for="l-eis">
+          <input type="checkbox" id="l-eis">
+          <span class="txt">
+            <span><span class="name">Eisbergsalat</span> <span class="amt">· 1 Kopf</span></span>
+            <span class="for">für Mi</span>
+            
+          </span>
+          <span class="price">0,89</span>
+        </label></li><li class="item"><label for="l-lau">
+          <input type="checkbox" id="l-lau">
+          <span class="txt">
+            <span><span class="name">Lauchzwiebeln</span> <span class="amt">· 1 Bund</span></span>
+            <span class="for">für Fr</span>
+            
+          </span>
+          <span class="price">0,59</span>
+        </label></li><li class="item"><label for="l-lim">
+          <input type="checkbox" id="l-lim">
+          <span class="txt">
+            <span><span class="name">Limetten</span> <span class="amt">· 1 Netz</span></span>
+            <span class="for">für Di, Fr</span>
+            
+          </span>
+          <span class="price">ca. 1,29</span>
+        </label></li><li class="item"><label for="l-kno">
+          <input type="checkbox" id="l-kno">
+          <span class="txt">
+            <span><span class="name">Knoblauch</span> <span class="amt">· 1 Netz</span></span>
+            <span class="for">für Di, Do, Sa, So</span>
+            
+          </span>
+          <span class="price">0,79</span>
+        </label></li><li class="item"><label for="l-ing">
+          <input type="checkbox" id="l-ing">
+          <span class="txt">
+            <span><span class="name">Ingwer</span> <span class="amt">· 1 kleines Stück</span></span>
+            <span class="for">für Di</span>
+            
+          </span>
+          <span class="price">ca. 0,20</span>
+        </label></li><li class="item"><label for="l-pet">
+          <input type="checkbox" id="l-pet">
+          <span class="txt">
+            <span><span class="name">Bio-Petersilie</span> <span class="amt">· 50 g</span></span>
+            <span class="for">für Mi</span>
+            
+          </span>
+          <span class="price">0,89</span>
+        </label></li><li class="item"><label for="l-kor">
+          <input type="checkbox" id="l-kor">
+          <span class="txt">
+            <span><span class="name">Koriander</span> <span class="amt">· 1 Bund</span></span>
+            <span class="for">für Fr</span>
+            
+          </span>
+          <span class="price">ca. 0,99</span>
+        </label></li><li class="item"><label for="l-bas">
+          <input type="checkbox" id="l-bas">
+          <span class="txt">
+            <span><span class="name">Bio-Basilikum im Topf</span> <span class="amt">· 1 Topf</span></span>
+            <span class="for">für So</span>
+            
+          </span>
+          <span class="price">1,49</span>
+        </label></li><li class="item"><label for="l-ros">
+          <input type="checkbox" id="l-ros">
+          <span class="txt">
+            <span><span class="name">Rosmarin, frisch</span> <span class="amt">· 1 Packung</span></span>
+            <span class="for">für Mo</span>
+            <span class="chips"><span class="chip cond">nur falls keiner da</span></span>
+          </span>
+          <span class="price">ca. 0,99</span>
+        </label></li></ul><p class="eyebrow group-label">Kühlregal</p><ul class="items"><li class="item"><label for="l-fet">
+          <input type="checkbox" id="l-fet">
+          <span class="txt">
+            <span><span class="name">Feta</span> <span class="amt">· 200 g</span></span>
+            <span class="for">für Mo (150 g)</span>
+            
+          </span>
+          <span class="price">1,99</span>
+        </label></li><li class="item"><label for="l-moz">
+          <input type="checkbox" id="l-moz">
+          <span class="txt">
+            <span><span class="name">Mozzarella</span> <span class="amt">· 125 g</span></span>
+            <span class="for">für Do</span>
+            
+          </span>
+          <span class="price">0,85</span>
+        </label></li><li class="item"><label for="l-gou">
+          <input type="checkbox" id="l-gou">
+          <span class="txt">
+            <span><span class="name">Gouda gerieben</span> <span class="amt">· 250 g</span></span>
+            <span class="for">für Sa (100 g)</span>
+            <span class="chips"><span class="chip offer">Angebot</span></span>
+          </span>
+          <span class="price">1,49<s>1,79</s></span>
+        </label></li><li class="item"><label for="l-cre">
+          <input type="checkbox" id="l-cre">
+          <span class="txt">
+            <span><span class="name">Crème fraîche</span> <span class="amt">· 200 g</span></span>
+            <span class="for">für Do, Sa</span>
+            
+          </span>
+          <span class="price">0,99</span>
+        </label></li><li class="item"><label for="l-bur">
+          <input type="checkbox" id="l-bur">
+          <span class="txt">
+            <span><span class="name">Burrata</span> <span class="amt">· 1 Stück</span></span>
+            <span class="for">für So</span>
+            
+          </span>
+          <span class="price">1,89</span>
+        </label></li><li class="item"><label for="l-tof">
+          <input type="checkbox" id="l-tof">
+          <span class="txt">
+            <span><span class="name">Bio-Tofu natur</span> <span class="amt">· 1 Packung</span></span>
+            <span class="for">für Fr (200 g)</span>
+            
+          </span>
+          <span class="price">2,29</span>
+        </label></li><li class="item"><label for="l-hac">
+          <input type="checkbox" id="l-hac">
+          <span class="txt">
+            <span><span class="name">Veganes Hack</span> <span class="amt">· 1 Packung</span></span>
+            <span class="for">für Sa</span>
+            <span class="chips"><span class="chip swap">vegetarisch statt Rinderhack</span></span>
+          </span>
+          <span class="price">1,79</span>
+        </label></li><li class="item"><label for="l-hum">
+          <input type="checkbox" id="l-hum">
+          <span class="txt">
+            <span><span class="name">Hummus pikant</span> <span class="amt">· 1 Becher</span></span>
+            <span class="for">für Mi</span>
+            
+          </span>
+          <span class="price">0,99</span>
+        </label></li><li class="item"><label for="l-gno">
+          <input type="checkbox" id="l-gno">
+          <span class="txt">
+            <span><span class="name">Gnocchi, Eigenmarke</span> <span class="amt">· 500 g</span></span>
+            <span class="for">für So (400 g)</span>
+            <span class="chips"><span class="chip swap">Eigenmarke</span></span>
+          </span>
+          <span class="price">0,99</span>
+        </label></li></ul><p class="eyebrow group-label">Vorräte</p><ul class="items"><li class="item"><label for="l-lin">
+          <input type="checkbox" id="l-lin">
+          <span class="txt">
+            <span><span class="name">Bio rote Linsen</span> <span class="amt">· 500 g</span></span>
+            <span class="for">für Di, Do</span>
+            
+          </span>
+          <span class="price">1,45</span>
+        </label></li><li class="item"><label for="l-kok">
+          <input type="checkbox" id="l-kok">
+          <span class="txt">
+            <span><span class="name">Kokosmilch</span> <span class="amt">· 400 ml</span></span>
+            <span class="for">für Di</span>
+            
+          </span>
+          <span class="price">1,19</span>
+        </label></li><li class="item"><label for="l-las">
+          <input type="checkbox" id="l-las">
+          <span class="txt">
+            <span><span class="name">Lasagneplatten</span> <span class="amt">· 500 g</span></span>
+            <span class="for">für Do</span>
+            
+          </span>
+          <span class="price">1,19</span>
+        </label></li><li class="item"><label for="l-pas">
+          <input type="checkbox" id="l-pas">
+          <span class="txt">
+            <span><span class="name">Passierte Tomaten</span> <span class="amt">· 2 × 500 g (1,30 €/kg)</span></span>
+            <span class="for">für Do 500 g, Sa 200 g</span>
+            
+          </span>
+          <span class="price">1,30</span>
+        </label></li><li class="item"><label for="l-rei">
+          <input type="checkbox" id="l-rei">
+          <span class="txt">
+            <span><span class="name">Jasminreis</span> <span class="amt">· 1 kg</span></span>
+            <span class="for">für Di, Fr</span>
+            <span class="chips"><span class="chip cond">nur falls leer</span></span>
+          </span>
+          <span class="price">1,99</span>
+        </label></li><li class="item"><label for="l-wal">
+          <input type="checkbox" id="l-wal">
+          <span class="txt">
+            <span><span class="name">Walnusskerne</span> <span class="amt">· 200 g</span></span>
+            <span class="for">für Mo, So</span>
+            <span class="chips"><span class="chip cond">nur falls leer</span></span>
+          </span>
+          <span class="price">2,99</span>
+        </label></li></ul></div>
+    </section>
+
+    <section class="store" id="rewe" aria-labelledby="rewe-h">
+      <div class="store-head">
+        <div><h3 id="rewe-h" class="store-name rewe">REWE</h3><p class="addr">REWE-App an der Kasse scannen</p></div>
+        <div class="sub"><span>offen</span><b id="open-rewe">16,38 €</b></div>
+      </div>
+      <div id="list-rewe" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="r-kue">
+          <input type="checkbox" id="r-kue">
+          <span class="txt">
+            <span><span class="name">Hokkaido-Kürbis</span> <span class="amt">· ca. 1,3 kg (0,89 €/kg)</span></span>
+            <span class="for">für Mo, Di</span>
+            <span class="chips"><span class="chip offer">Angebot</span></span>
+          </span>
+          <span class="price">ca. 1,16</span>
+        </label></li><li class="item"><label for="r-ros">
+          <input type="checkbox" id="r-ros">
+          <span class="txt">
+            <span><span class="name">Rosenkohl</span> <span class="amt">· 500 g</span></span>
+            <span class="for">für Mo</span>
+            <span class="chips"><span class="chip offer">Angebot</span></span>
+          </span>
+          <span class="price">0,79</span>
+        </label></li><li class="item"><label for="r-che">
+          <input type="checkbox" id="r-che">
+          <span class="txt">
+            <span><span class="name">Cherrytomaten</span> <span class="amt">· 250 g</span></span>
+            <span class="for">für Di</span>
+            
+          </span>
+          <span class="price">ca. 1,49</span>
+        </label></li><li class="item"><label for="r-man">
+          <input type="checkbox" id="r-man">
+          <span class="txt">
+            <span><span class="name">Mango</span> <span class="amt">· 1 Stück</span></span>
+            <span class="for">für Fr</span>
+            <span class="chips"><span class="chip offer">Tiefpreis</span></span>
+          </span>
+          <span class="price">1,11</span>
+        </label></li><li class="item"><label for="r-zit">
+          <input type="checkbox" id="r-zit">
+          <span class="txt">
+            <span><span class="name">Zitronen</span> <span class="amt">· 500-g-Netz</span></span>
+            <span class="for">für So</span>
+            <span class="chips"><span class="chip offer">Tiefpreis</span></span>
+          </span>
+          <span class="price">0,99</span>
+        </label></li><li class="item"><label for="r-zwi">
+          <input type="checkbox" id="r-zwi">
+          <span class="txt">
+            <span><span class="name">Gelbe Zwiebeln</span> <span class="amt">· 1,5 kg</span></span>
+            <span class="for">für Mi, Do, Sa</span>
+            <span class="chips"><span class="chip offer">Tiefpreis</span></span>
+          </span>
+          <span class="price">1,39</span>
+        </label></li><li class="item"><label for="r-moe">
+          <input type="checkbox" id="r-moe">
+          <span class="txt">
+            <span><span class="name">Speisemöhren</span> <span class="amt">· 1 kg</span></span>
+            <span class="for">für Do, Fr</span>
+            <span class="chips"><span class="chip offer">0,40 € Bonus</span></span>
+          </span>
+          <span class="price">ca. 1,29</span>
+        </label></li></ul><p class="eyebrow group-label">Kühlregal &amp; TK</p><ul class="items"><li class="item"><label for="r-fal">
+          <input type="checkbox" id="r-fal">
+          <span class="txt">
+            <span><span class="name">Bio-Falafelbällchen</span> <span class="amt">· 200 g</span></span>
+            <span class="for">für Mi (6 Stück)</span>
+            <span class="chips"><span class="chip offer">Angebot</span></span>
+          </span>
+          <span class="price">1,79</span>
+        </label></li><li class="item"><label for="r-eda">
+          <input type="checkbox" id="r-eda">
+          <span class="txt">
+            <span><span class="name">Edamame, tiefgekühlt</span> <span class="amt">· 1 Packung</span></span>
+            <span class="for">für Fr (200 g)</span>
+            
+          </span>
+          <span class="price">3,69</span>
+        </label></li></ul><p class="eyebrow group-label">Vorräte &amp; Brot</p><ul class="items"><li class="item"><label for="r-pit">
+          <input type="checkbox" id="r-pit">
+          <span class="txt">
+            <span><span class="name">Pita</span> <span class="amt">· 1 Packung</span></span>
+            <span class="for">für Mi (2 Stück)</span>
+            
+          </span>
+          <span class="price">1,89</span>
+        </label></li><li class="item"><label for="r-bag">
+          <input type="checkbox" id="r-bag">
+          <span class="txt">
+            <span><span class="name">Baguette</span> <span class="amt">· 1 Stange</span></span>
+            <span class="for">für Mo</span>
+            
+          </span>
+          <span class="price">0,79</span>
+        </label></li></ul></div>
+    </section>
+
+    <button class="reset" id="reset" type="button">Alle Häkchen entfernen</button>
+
+    <div class="two" id="vorrat">
+      <section aria-labelledby="pantry-h">
+        <h3 id="pantry-h">Vorrat prüfen</h3>
+        <p class="fine">Wird für die Rezepte gebraucht, steht aber nicht auf der Liste.</p>
+        <ul class="plain">
+          <li>Olivenöl, Rapsöl</li>
+          <li>Gemüsebrühe <span class="mono">(ca. 1 l)</span></li>
+          <li>Tomatenmark</li>
+          <li>Honig, Ahornsirup</li>
+          <li>Sojasauce, Erdnussmus, Sesam</li>
+          <li>Curry, Kreuzkümmel, Zimt, Paprika edelsüß</li>
+          <li>Oregano, italienische Kräuter</li>
+          <li>Salz, Pfeffer, Zucker</li>
+        </ul>
+      </section>
+      <section aria-labelledby="extra-h">
+        <h3 id="extra-h">Fürs Frühstück</h3>
+        <p class="fine">Nur nach Bedarf, nicht in der Summe.</p>
+        <ul class="plain">
+          <li>Joghurt mild 3,5 %, 1 kg <span class="mono">1,49 · Lidl-Angebot</span></li>
+          <li>Haferdrink 1,8 % <span class="mono">0,85 · Lidl</span></li>
+          <li>Bananen <span class="mono">ca. 0,99/kg · Lidl</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <p class="fine">Preise aus den Prospekten vom 19.–24.10.2026 und aus deinen letzten Kassenbons. „ca.“ heißt geschätzt, weil der Artikel nach Gewicht verkauft wird oder nicht im Prospekt steht. Lidl-Plus-Preise gelten nur mit der App. Die Bilder sind Illustrationen.</p>
+  </section>
+</div>
+
+<script>
+/* ---------- Illustrations: small flat top-down food drawings, one per dish ---------- */
+function rng(seed) { let s = seed % 2147483647; if (s <= 0) s += 2147483646; return () => (s = s * 16807 % 2147483647) / 2147483647; }
+function scatter(r, n, cx, cy, rx, ry, fn) {
+  let out = "";
+  for (let i = 0; i < n; i++) { const a = r() * Math.PI * 2, d = Math.sqrt(r()); out += fn(cx + Math.cos(a) * d * rx, cy + Math.sin(a) * d * ry, r(), i); }
+  return out;
+}
+const shadow = (cx, cy, rx, ry) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="rgba(0,0,0,0.10)"/>`;
+const plate = (cx, cy, r) => shadow(cx + 3, cy + 5, r, r * 0.96) + `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"/><circle cx="${cx}" cy="${cy}" r="${r * 0.78}" fill="none" stroke="#ece8de" stroke-width="1"/>`;
+const bowl = (cx, cy, r, inner) => shadow(cx + 3, cy + 5, r, r * 0.96) + `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"/><circle cx="${cx}" cy="${cy}" r="${r - 6}" fill="${inner}"/>`;
+const leaf = (x, y, rot, s, c) => `<path transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="${c}"/><path transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"/>`;
+
+const ART = {
+  kuerbis() {
+    const r = rng(11); let s = shadow(103, 82, 82, 52);
+    s += `<rect x="20" y="22" width="164" height="108" rx="12" fill="#3b3d40"/><rect x="26" y="28" width="152" height="96" rx="9" fill="#e9e1cf"/>`;
+    for (let i = 0; i < 7; i++) {
+      const x = 46 + (i % 4) * 34 + (i > 3 ? 17 : 0), y = 50 + (i > 3 ? 40 : 0), rot = -25 + r() * 50;
+      s += `<path transform="translate(${x} ${y}) rotate(${rot})" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"/>`;
+    }
+    s += scatter(r, 9, 103, 76, 66, 38, (x, y) => `<circle cx="${x}" cy="${y}" r="6.5" fill="#7aa83f"/><path d="M${x - 4} ${y} Q${x} ${y - 4} ${x + 4} ${y}" stroke="#4f7d27" stroke-width="1.3" fill="none"/>`);
+    s += scatter(r, 16, 103, 76, 70, 40, (x, y, q) => `<rect x="${x}" y="${y}" width="5.5" height="5" rx="1" transform="rotate(${q * 60} ${x} ${y})" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"/>`);
+    s += scatter(r, 8, 103, 76, 66, 36, (x, y, q) => `<path transform="translate(${x} ${y}) rotate(${q * 180})" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"/>`);
+    s += scatter(r, 10, 103, 76, 70, 40, (x, y, q) => `<path d="M${x} ${y} l${6 * Math.cos(q * 6)} ${6 * Math.sin(q * 6)}" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"/>`);
+    return s;
+  },
+  curry() {
+    const r = rng(23); let s = bowl(100, 75, 60, "#e8a43c");
+    s += `<path d="M58 55 Q70 40 92 44 Q98 62 88 82 Q72 92 56 82 Q48 68 58 55Z" fill="#fbf8ef"/>`;
+    s += scatter(r, 40, 72, 64, 15, 16, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="2.6" ry="1.4" fill="#ece6d6"/>`);
+    s += scatter(r, 60, 118, 82, 28, 26, (x, y) => `<circle cx="${x}" cy="${y}" r="1.4" fill="#f4bb55"/>`);
+    s += scatter(r, 7, 120, 80, 26, 24, (x, y, q) => `<rect x="${x - 4.5}" y="${y - 4.5}" width="9" height="9" rx="1.5" transform="rotate(${q * 40} ${x} ${y})" fill="#f0862a" stroke="#cf6418" stroke-width="0.8"/>`);
+    s += scatter(r, 6, 118, 84, 30, 26, (x, y) => `<circle cx="${x}" cy="${y}" r="5.5" fill="#df3f2b"/><circle cx="${x}" cy="${y}" r="3" fill="#f2826b"/>`);
+    s += `<path d="M150 108 A14 14 0 0 1 178 108Z" fill="#7cb342" stroke="#4e8a22" stroke-width="2"/><path d="M164 108 L158 98 M164 108 L170 98 M164 108 L164 96" stroke="#c5e1a5" stroke-width="1"/>`;
+    s += leaf(110, 60, 30, 0.9, "#4f8f3a") + leaf(132, 92, -20, 0.8, "#4f8f3a");
+    return s;
+  },
+  falafel() {
+    const r = rng(37); let s = plate(98, 78, 62);
+    s += `<circle cx="72" cy="34" r="11" fill="#ead9b8"/><path d="M64 34 Q72 27 80 34 Q72 40 66 35" stroke="#d2bd94" stroke-width="1.6" fill="none"/><circle cx="73" cy="34" r="2" fill="#b9a53a"/>`;
+    s += `<path d="M44 92 Q44 58 96 54 Q148 58 148 92 Z" fill="#e9c895" stroke="#c99f62" stroke-width="2"/>`;
+    s += `<path d="M48 70 Q58 58 70 66 Q80 54 92 62 Q104 52 114 62 Q126 54 136 66 Q146 62 146 72 Q96 64 48 74Z" fill="#8cc152"/>`;
+    s += scatter(r, 7, 96, 66, 40, 6, (x, y) => `<rect x="${x - 3}" y="${y - 3}" width="6" height="6" rx="1" fill="#e2412e"/>`);
+    s += [64, 84, 104, 124].map((x, i) => `<circle cx="${x}" cy="${60 - (i % 2) * 5}" r="9" fill="#8a5a2b"/><circle cx="${x - 3}" cy="${57 - (i % 2) * 5}" r="2" fill="#a8743e"/><circle cx="${x + 3}" cy="${62 - (i % 2) * 5}" r="1.4" fill="#6f4520"/>`).join("");
+    s += `<path d="M44 92 Q96 98 148 92" stroke="#c99f62" stroke-width="2" fill="none"/>`;
+    s += leaf(62, 108, -15, 0.8, "#3e8a3a") + leaf(74, 112, 25, 0.7, "#3e8a3a");
+    return s;
+  },
+  lasagne() {
+    let s = plate(100, 84, 58);
+    s += shadow(104, 104, 50, 9);
+    const layers = [["#e9c98f", 6], ["#c8402c", 7], ["#f5efe0", 4], ["#e9c98f", 6], ["#c8402c", 7], ["#f5efe0", 4], ["#e9c98f", 6]];
+    let y = 104;
+    layers.forEach(([c, h]) => { y -= h; s += `<rect x="58" y="${y}" width="84" height="${h + 0.4}" fill="${c}"/>`; });
+    s += `<path d="M56 ${y + 2} Q60 ${y - 9} 74 ${y - 6} Q88 ${y - 11} 100 ${y - 6} Q114 ${y - 11} 128 ${y - 6} Q140 ${y - 9} 144 ${y + 2} Z" fill="#f3c85d"/>`;
+    s += [[70, y - 4], [92, y - 6], [116, y - 5], [134, y - 3]].map(([x, yy]) => `<ellipse cx="${x}" cy="${yy}" rx="4" ry="2" fill="#c9892d"/>`).join("");
+    s += `<path d="M142 ${y + 4} Q150 ${y + 20} 146 104" stroke="#c8402c" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+    s += leaf(86, y - 9, -20, 0.9, "#3f8a3a") + leaf(98, y - 11, 25, 0.8, "#3f8a3a");
+    return s;
+  },
+  poke() {
+    const r = rng(53); let s = bowl(100, 75, 62, "#f8f5ec");
+    s += scatter(r, 70, 100, 75, 50, 50, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="2.3" ry="1.2" transform="rotate(${(x * 7) % 180} ${x} ${y})" fill="#ece6d4"/>`);
+    s += scatter(r, 16, 72, 52, 13, 11, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"/>`);
+    s += [[118, 46], [128, 50], [122, 57], [133, 60], [112, 54]].map(([x, y]) => `<rect x="${x - 4.5}" y="${y - 4.5}" width="9" height="9" rx="1.5" fill="#f3e2b0" stroke="#d6a94b" stroke-width="1.2"/>`).join("");
+    s += scatter(r, 14, 70, 96, 12, 10, (x, y, q) => `<path d="M${x - 6} ${y} q6 ${-3 + q * 6} 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"/>`);
+    s += scatter(r, 9, 100, 104, 10, 6, (x, y, q) => `<path d="M${x - 6} ${y + q * 4} l12 ${-3 + q * 2}" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"/>`);
+    s += [[128, 88], [136, 96], [124, 100]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="6" fill="#d9ecb6" stroke="#5f9a3a" stroke-width="1.6"/><circle cx="${x}" cy="${y}" r="1.4" fill="#a6c97a"/>`).join("");
+    s += [0, 1, 2, 3].map(i => `<path transform="translate(${92 + i * 5} ${66}) rotate(${-20 + i * 12})" d="M0 -14 Q6 -2 0 12 Q-4 -2 0 -14Z" fill="#a9cf54" stroke="#4f7a24" stroke-width="1"/>`).join("");
+    s += scatter(r, 6, 140, 70, 7, 9, (x, y) => `<rect x="${x - 3.5}" y="${y - 3.5}" width="7" height="7" rx="1" fill="#ffb52e"/>`);
+    s += scatter(r, 26, 100, 75, 44, 44, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"/>`);
+    s += leaf(84, 82, 40, 0.6, "#3c8a3a") + leaf(112, 78, -30, 0.6, "#3c8a3a");
+    return s;
+  },
+  zucchini() {
+    const r = rng(71); let s = shadow(103, 82, 82, 50);
+    s += `<rect x="18" y="26" width="168" height="100" rx="16" fill="#f5f2ea" stroke="#d9d3c6" stroke-width="2"/>`;
+    [52, 98].forEach((cy, i) => {
+      s += `<ellipse cx="102" cy="${cy}" rx="70" ry="17" fill="#3f7a34"/><ellipse cx="102" cy="${cy - 1}" rx="64" ry="12.5" fill="#cfe3a3"/>`;
+      s += `<ellipse cx="102" cy="${cy - 1}" rx="58" ry="9.5" fill="#a5452b"/>`;
+      s += scatter(r, 12, 102, cy - 1, 52, 7, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="6" ry="3.4" fill="#f2cd5a"/>`);
+      s += scatter(r, 6, 102, cy - 1, 50, 6, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="2.4" ry="1.4" fill="#c98a2d"/>`);
+      s += `<rect x="${i ? 168 : 168}" y="${cy - 4}" width="9" height="8" rx="2" fill="#2f5f27"/>`;
+    });
+    s += leaf(70, 74, 20, 0.7, "#3f8a3a") + leaf(130, 76, -25, 0.7, "#3f8a3a");
+    return s;
+  },
+  gnocchi() {
+    const r = rng(89); let s = plate(100, 76, 62);
+    s += `<path d="M52 72 Q56 38 98 34 Q144 36 148 72 Q146 112 100 118 Q56 114 52 72Z" fill="#6f9e3c"/>`;
+    s += scatter(r, 40, 100, 76, 40, 36, (x, y) => `<circle cx="${x}" cy="${y}" r="1.2" fill="#8dbb52"/>`);
+    s += scatter(r, 15, 100, 76, 40, 34, (x, y, q) => {
+      const rot = q * 180;
+      return `<g transform="translate(${x} ${y}) rotate(${rot})"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"/><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"/></g>`;
+    });
+    s += `<circle cx="100" cy="76" r="17" fill="#fdfbf4" stroke="#e8e1cf" stroke-width="1.2"/><path d="M92 72 Q100 64 108 72 Q104 84 96 82 Q90 78 92 72Z" fill="#f4ecd6"/>`;
+    s += scatter(r, 7, 100, 76, 44, 40, (x, y, q) => `<path transform="translate(${x} ${y}) rotate(${q * 180})" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"/>`);
+    s += leaf(84, 50, -30, 1, "#2f7d32") + leaf(122, 100, 20, 1, "#2f7d32") + leaf(126, 56, 50, 0.9, "#2f7d32");
+    return s;
+  },
+};
+const svgFor = key => `<svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">${ART[key]()}</svg>`;
+
+/* ---------- Week plan with recipes ---------- */
+const DAYS = [
+  {
+    id: "mo", color: "orange", day: "Mo 19.10.", art: "kuerbis", title: "Ofenkürbis mit Feta und Rosenkohl",
+    time: "40 Min", portions: "2 Portionen", chips: [["fav", "Favorit"], ["var", "Variante: mit Rosenkohl und Baguette"]],
+    offers: "Hokkaido 0,89 €/kg, Rosenkohl 0,79 € (REWE)",
+    ingredients: [["ca. 800 g", "Hokkaido-Kürbis (der Rest ist für Dienstag)"], ["500 g", "Rosenkohl"], ["150 g", "Feta"], ["10", "Walnusshälften"], ["1 Zweig", "Rosmarin"], ["4 EL", "Olivenöl"], ["je 1 Prise", "Curry, Kreuzkümmel, Pfeffer, Salz"], ["4 TL", "Honig"], ["1", "Baguette"]],
+    steps: ["Ofen auf 180 °C Ober- und Unterhitze vorheizen.", "Kürbis vierteln, entkernen und mit Schale in Spalten schneiden. Rosenkohl putzen und halbieren.", "Beides mit Olivenöl, gehacktem Rosmarin und den Gewürzen mischen und auf ein Blech geben.", "Feta darüberbröseln, Walnüsse grob hacken und verteilen. 30–35 Minuten backen.", "Mit Honig beträufeln und mit Baguette servieren."],
+    src: ["Gaumenfreundin", "https://www.gaumenfreundin.de/ofenkuerbis/"]
+  },
+  {
+    id: "di", color: "yellow", day: "Di 20.10.", art: "curry", title: "Rote-Linsen-Curry mit Kürbis",
+    time: "30 Min", portions: "4 Portionen", chips: [["fav", "Favorit"], ["var", "Variante: mit Kürbis und Reis"], ["left", "Rest: Mi mittags"]],
+    offers: "Kürbis vom Montag, Bio rote Linsen (Lidl)",
+    ingredients: [["250 g", "rote Linsen"], ["ca. 500 g", "Hokkaido-Kürbis, gewürfelt"], ["250 g", "Cherrytomaten"], ["2", "Knoblauchzehen"], ["1 Stück", "Ingwer"], ["1 EL", "Rapsöl"], ["½ TL", "Kreuzkümmel"], ["½ TL", "Zimt"], ["1 TL", "Currypulver"], ["400 ml", "Kokosmilch"], ["250 ml", "Gemüsebrühe, plus etwas Wasser"], ["2 EL", "Limettensaft"], ["250 g", "Jasminreis"]],
+    steps: ["Reis nach Packungsangabe kochen.", "Knoblauch und Ingwer fein hacken und im Öl andünsten. Kreuzkümmel, Zimt und Curry kurz mitrösten.", "Kürbiswürfel, Kokosmilch, Brühe, geviertelte Tomaten und gewaschene Linsen zugeben.", "Etwa 20 Minuten köcheln, bis Linsen und Kürbis weich sind. Bei Bedarf Wasser nachgießen.", "Mit Salz, Pfeffer und Limettensaft abschmecken."],
+    src: ["Gaumenfreundin", "https://www.gaumenfreundin.de/rote-linsen-curry/"]
+  },
+  {
+    id: "mi", color: "sky", day: "Mi 21.10.", art: "falafel", title: "Falafel-Pita",
+    time: "25 Min", portions: "2 Portionen", chips: [["fav", "Favorit"]],
+    offers: "Bio-Falafelbällchen 1,79 € (REWE)",
+    ingredients: [["2", "Pita-Taschen"], ["6", "Falafel"], ["100 g", "Hummus"], ["200 g", "Tomaten"], ["1", "Zwiebel"], ["½ Bund", "glatte Petersilie"], ["4 Blätter", "Eisbergsalat"], ["1 TL", "Rapsöl"], ["", "Salz, Pfeffer"]],
+    steps: ["Falafel nach Packungsangabe in Öl anbraten.", "Tomate und Zwiebel fein würfeln, Petersilie hacken und alles mit Salz und Pfeffer mischen.", "Pita im Toaster aufwärmen, aufschneiden und innen mit Hummus bestreichen.", "Mit Salat, Tomatenmischung und Falafel füllen."],
+    src: ["choosy", "https://my.choosy.de/recipes/falafel-pita"]
+  },
+  {
+    id: "do", color: "red", day: "Do 22.10.", art: "lasagne", title: "Rote-Linsen-Lasagne",
+    time: "50 Min", portions: "4 Portionen", chips: [["fav", "Favorit"], ["left", "Rest: Fr mittags"]],
+    offers: "Passierte Tomaten 1,30 €/kg (Lidl), Möhren mit 0,40 € Bonus (REWE)",
+    ingredients: [["200 g", "rote Linsen"], ["1", "Zwiebel"], ["2", "Knoblauchzehen"], ["2", "Möhren"], ["2 EL", "Olivenöl"], ["600 ml", "Gemüsebrühe"], ["500 g", "passierte Tomaten"], ["1 EL", "italienische Kräuter"], ["12", "Lasagneplatten"], ["200 g", "Crème fraîche (2 EL für Samstag aufheben)"], ["100 g", "Mozzarella"]],
+    steps: ["Zwiebel, Knoblauch und Möhren fein würfeln und im Öl andünsten.", "Linsen und Brühe zugeben und zugedeckt 10–15 Minuten köcheln.", "Tomaten und Kräuter unterrühren, mit Salz und Pfeffer abschmecken. Ofen auf 200 °C vorheizen.", "Soße und Lasagneplatten abwechselnd in eine gefettete Form schichten, mit Soße enden.", "Crème fraîche mit 3 EL Wasser verrühren und verstreichen, Mozzarella zupfen und verteilen. Etwa 30 Minuten backen."],
+    src: ["Gaumenfreundin", "https://www.gaumenfreundin.de/rote-linsen-lasagne/"]
+  },
+  {
+    id: "fr", color: "pink", day: "Fr 23.10.", art: "poke", title: "Vegane Poke Bowl mit Mango",
+    time: "40 Min", portions: "2 Portionen", chips: [["fav", "Favorit"], ["var", "Variante: mit Mango"]],
+    offers: "Mango 1,11 € (REWE)",
+    ingredients: [["200 g", "Jasminreis"], ["200 g", "Edamame, tiefgekühlt"], ["200 g", "Tofu"], ["150 g", "Rotkohl"], ["½ Bund", "Lauchzwiebeln"], ["2", "Möhren"], ["½", "Gurke"], ["1", "Avocado"], ["1", "Mango"], ["½ Bund", "Koriander"], ["1 EL", "Sesam"], ["1 EL", "Rapsöl"], ["1 EL + 1 EL", "Sojasauce"], ["1 TL + 2 EL", "Limettensaft"], ["3 EL", "Erdnussmus"], ["1 EL", "Ahornsirup"]],
+    steps: ["Reis und Edamame garen.", "Tofu trocken pressen, würfeln und im Öl knusprig braten. Mit 1 EL Sojasauce ablöschen.", "Rotkohl fein hobeln, Möhren raspeln, Gurke, Avocado und Mango schneiden, Lauchzwiebeln in Ringe schneiden. Sesam ohne Öl rösten.", "Erdnussmus, Sojasauce, 2 EL Limettensaft, Ahornsirup und Pfeffer zu einem Dressing verrühren.", "Alles in Schalen anrichten, Dressing darübergeben, mit Koriander und Sesam bestreuen."],
+    src: ["einfach kochen", "https://www.einfachkochen.de/rezepte/vegane-poke-bowl"]
+  },
+  {
+    id: "sa", color: "green", day: "Sa 24.10.", art: "zucchini", title: "Gefüllte Zucchini mit veganem Hack",
+    time: "45 Min", portions: "2 Portionen", chips: [["fav", "Favorit"], ["veg", "Vegetarisch angepasst"]],
+    offers: "Gouda gerieben 1,49 € (Lidl, Angebot)",
+    ingredients: [["2", "Zucchini"], ["1 Packung", "veganes Hack (statt 250 g Rinderhack)"], ["200 g", "passierte Tomaten"], ["100 g", "Gouda, gerieben"], ["1", "Knoblauchzehe"], ["½", "Zwiebel"], ["1 EL", "Tomatenmark"], ["1 EL", "Crème fraîche"], ["1 EL", "Olivenöl"], ["½ TL", "Paprika edelsüß"], ["¾ TL", "Oregano"], ["1 Prise", "Zucker, Salz"]],
+    steps: ["Ofen auf 180 °C Umluft vorheizen. Zucchini längs halbieren, aushöhlen und das Fruchtfleisch hacken.", "Zwiebel und Knoblauch im Öl andünsten, veganes Hack mit Paprika und Salz anbraten.", "Zucchinifleisch, Tomatenmark, passierte Tomaten, Oregano und Zucker einrühren und kurz köcheln.", "Masse in die Zucchinihälften füllen, Crème fraîche daraufgeben und 15 Minuten backen.", "Käse darüberstreuen und weitere 10 Minuten goldbraun backen."],
+    src: ["Emmi kocht einfach", "https://emmikochteinfach.de/gefuellte-zucchini-schiffchen-hackfleisch/"]
+  },
+  {
+    id: "so", color: "violet", day: "So 25.10.", art: "gnocchi", title: "Brokkoli-Pesto mit Gnocchi und Burrata",
+    time: "20 Min", portions: "2 Portionen", chips: [["fav", "Favorit"]],
+    offers: "Gnocchi-Eigenmarke 1,98 €/kg (Lidl)",
+    ingredients: [["1", "Brokkoli"], ["50 g", "Walnüsse"], ["1,5 Bund", "Basilikum (oder 1 Topf)"], ["2", "Knoblauchzehen"], ["1", "Zitrone"], ["4,5 EL", "Olivenöl"], ["400 g", "Gnocchi"], ["1", "Burrata"], ["", "Salz, Pfeffer"]],
+    steps: ["Brokkoli in Röschen teilen und 3–4 Minuten in Salzwasser blanchieren.", "Mit Walnüssen, Basilikum, Knoblauch, Zitronensaft und -abrieb, 3 EL Olivenöl, Salz und Pfeffer zu einem Pesto pürieren.", "Gnocchi im restlichen Öl goldbraun und knusprig braten.", "Gnocchi mit dem Pesto mischen und die Burrata in die Mitte setzen."],
+    src: ["choosy (Schritte ergänzt, der Ausdruck enthielt nur die Zutaten)", "https://my.choosy.de/recipes/brokkoli-pesto-30"]
+  },
+];
+
+const SHORT = { mo: "Ofenkürbis", di: "Linsen-Curry", mi: "Falafel-Pita", do: "Lasagne", fr: "Poke Bowl", sa: "Zucchini", so: "Gnocchi" };
+function renderStrip() {
+  document.getElementById("strip").innerHTML = DAYS.map(d => `<a class="c-${d.color}" href="#${d.id}"><span class="sd">${d.day.slice(0, 2)}</span><span class="sn">${SHORT[d.id]}</span></a>`).join("");
+}
+function renderDays() {
+  const host = document.getElementById("days");
+  host.innerHTML = DAYS.map(d => `
+    <article class="day c-${d.color}" id="${d.id}">
+      <div class="art">${svgFor(d.art)}</div>
+      <div class="info">
+        <div class="dayline"><span class="d">${d.day}</span><span class="t">${d.time} · ${d.portions}</span></div>
+        <h3>${d.title}</h3>
+        <div class="chips">${d.chips.map(([k, t]) => `<span class="chip ${k}">${t}</span>`).join("")}</div>
+        <p class="offers"><b>Günstig:</b> ${d.offers}</p>
+        <details class="recipe" id="rezept-${d.id}">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · ${d.portions}</h4><ul>${d.ingredients.map(([q, n]) => `<li>${q ? `<span class="qty">${q}</span> ` : ""}${n}</li>`).join("")}</ul></div>
+            <div><h4>Zubereitung</h4><ol>${d.steps.map(s => `<li>${s}</li>`).join("")}</ol></div>
+            <p class="src">Originalrezept: <a href="${d.src[1]}" target="_blank" rel="noopener">${d.src[0]}</a></p>
+          </div>
+        </details>
+      </div>
+    </article>`).join("");
+}
+
+/* ---------- Shopping list ---------- */
+const ITEMS = [
+  { id: "l-tom", store: "lidl", group: "Obst & Gemüse", name: "Tomaten", amt: "ca. 200 g", for: "Mi", price: 0.40, approx: true },
+  { id: "l-zuc", store: "lidl", group: "Obst & Gemüse", name: "Zucchini", amt: "2 Stück", for: "Sa", price: 1.00, approx: true },
+  { id: "l-bro", store: "lidl", group: "Obst & Gemüse", name: "Brokkoli", amt: "1 Kopf", for: "So", price: 1.49, approx: true },
+  { id: "l-avo", store: "lidl", group: "Obst & Gemüse", name: "Avocado, vorgereift", amt: "1 Stück", for: "Fr", price: 0.89 },
+  { id: "l-gur", store: "lidl", group: "Obst & Gemüse", name: "Salatgurke", amt: "1 Stück", for: "Fr (die Hälfte)", price: 0.79 },
+  { id: "l-rot", store: "lidl", group: "Obst & Gemüse", name: "Rotkohl", amt: "1 kleiner Kopf", for: "Fr (150 g)", price: 1.29, approx: true },
+  { id: "l-eis", store: "lidl", group: "Obst & Gemüse", name: "Eisbergsalat", amt: "1 Kopf", for: "Mi", price: 0.89 },
+  { id: "l-lau", store: "lidl", group: "Obst & Gemüse", name: "Lauchzwiebeln", amt: "1 Bund", for: "Fr", price: 0.59 },
+  { id: "l-lim", store: "lidl", group: "Obst & Gemüse", name: "Limetten", amt: "1 Netz", for: "Di, Fr", price: 1.29, approx: true },
+  { id: "l-kno", store: "lidl", group: "Obst & Gemüse", name: "Knoblauch", amt: "1 Netz", for: "Di, Do, Sa, So", price: 0.79 },
+  { id: "l-ing", store: "lidl", group: "Obst & Gemüse", name: "Ingwer", amt: "1 kleines Stück", for: "Di", price: 0.20, approx: true },
+  { id: "l-pet", store: "lidl", group: "Obst & Gemüse", name: "Bio-Petersilie", amt: "50 g", for: "Mi", price: 0.89 },
+  { id: "l-kor", store: "lidl", group: "Obst & Gemüse", name: "Koriander", amt: "1 Bund", for: "Fr", price: 0.99, approx: true },
+  { id: "l-bas", store: "lidl", group: "Obst & Gemüse", name: "Bio-Basilikum im Topf", amt: "1 Topf", for: "So", price: 1.49 },
+  { id: "l-ros", store: "lidl", group: "Obst & Gemüse", name: "Rosmarin, frisch", amt: "1 Packung", for: "Mo", price: 0.99, approx: true, cond: "nur falls keiner da" },
+  { id: "l-fet", store: "lidl", group: "Kühlregal", name: "Feta", amt: "200 g", for: "Mo (150 g)", price: 1.99 },
+  { id: "l-moz", store: "lidl", group: "Kühlregal", name: "Mozzarella", amt: "125 g", for: "Do", price: 0.85 },
+  { id: "l-gou", store: "lidl", group: "Kühlregal", name: "Gouda gerieben", amt: "250 g", for: "Sa (100 g)", price: 1.49, was: 1.79, offer: "Angebot" },
+  { id: "l-cre", store: "lidl", group: "Kühlregal", name: "Crème fraîche", amt: "200 g", for: "Do, Sa", price: 0.99 },
+  { id: "l-bur", store: "lidl", group: "Kühlregal", name: "Burrata", amt: "1 Stück", for: "So", price: 1.89 },
+  { id: "l-tof", store: "lidl", group: "Kühlregal", name: "Bio-Tofu natur", amt: "1 Packung", for: "Fr (200 g)", price: 2.29 },
+  { id: "l-hac", store: "lidl", group: "Kühlregal", name: "Veganes Hack", amt: "1 Packung", for: "Sa", price: 1.79, swap: "vegetarisch statt Rinderhack" },
+  { id: "l-hum", store: "lidl", group: "Kühlregal", name: "Hummus pikant", amt: "1 Becher", for: "Mi", price: 0.99 },
+  { id: "l-gno", store: "lidl", group: "Kühlregal", name: "Gnocchi, Eigenmarke", amt: "500 g", for: "So (400 g)", price: 0.99, swap: "Eigenmarke" },
+  { id: "l-lin", store: "lidl", group: "Vorräte", name: "Bio rote Linsen", amt: "500 g", for: "Di, Do", price: 1.45 },
+  { id: "l-kok", store: "lidl", group: "Vorräte", name: "Kokosmilch", amt: "400 ml", for: "Di", price: 1.19 },
+  { id: "l-las", store: "lidl", group: "Vorräte", name: "Lasagneplatten", amt: "500 g", for: "Do", price: 1.19 },
+  { id: "l-pas", store: "lidl", group: "Vorräte", name: "Passierte Tomaten", amt: "2 × 500 g (1,30 €/kg)", for: "Do 500 g, Sa 200 g", price: 1.30 },
+  { id: "l-rei", store: "lidl", group: "Vorräte", name: "Jasminreis", amt: "1 kg", for: "Di, Fr", price: 1.99, cond: "nur falls leer" },
+  { id: "l-wal", store: "lidl", group: "Vorräte", name: "Walnusskerne", amt: "200 g", for: "Mo, So", price: 2.99, cond: "nur falls leer" },
+  { id: "r-kue", store: "rewe", group: "Obst & Gemüse", name: "Hokkaido-Kürbis", amt: "ca. 1,3 kg (0,89 €/kg)", for: "Mo, Di", price: 1.16, approx: true, offer: "Angebot" },
+  { id: "r-ros", store: "rewe", group: "Obst & Gemüse", name: "Rosenkohl", amt: "500 g", for: "Mo", price: 0.79, offer: "Angebot" },
+  { id: "r-che", store: "rewe", group: "Obst & Gemüse", name: "Cherrytomaten", amt: "250 g", for: "Di", price: 1.49, approx: true },
+  { id: "r-man", store: "rewe", group: "Obst & Gemüse", name: "Mango", amt: "1 Stück", for: "Fr", price: 1.11, offer: "Tiefpreis" },
+  { id: "r-zit", store: "rewe", group: "Obst & Gemüse", name: "Zitronen", amt: "500-g-Netz", for: "So", price: 0.99, offer: "Tiefpreis" },
+  { id: "r-zwi", store: "rewe", group: "Obst & Gemüse", name: "Gelbe Zwiebeln", amt: "1,5 kg", for: "Mi, Do, Sa", price: 1.39, offer: "Tiefpreis" },
+  { id: "r-moe", store: "rewe", group: "Obst & Gemüse", name: "Speisemöhren", amt: "1 kg", for: "Do, Fr", price: 1.29, approx: true, offer: "0,40 € Bonus" },
+  { id: "r-fal", store: "rewe", group: "Kühlregal & TK", name: "Bio-Falafelbällchen", amt: "200 g", for: "Mi (6 Stück)", price: 1.79, offer: "Angebot" },
+  { id: "r-eda", store: "rewe", group: "Kühlregal & TK", name: "Edamame, tiefgekühlt", amt: "1 Packung", for: "Fr (200 g)", price: 3.69 },
+  { id: "r-pit", store: "rewe", group: "Vorräte & Brot", name: "Pita", amt: "1 Packung", for: "Mi (2 Stück)", price: 1.89 },
+  { id: "r-bag", store: "rewe", group: "Vorräte & Brot", name: "Baguette", amt: "1 Stange", for: "Mo", price: 0.79 },
+];
+const PORTIONS = 18;
+const KEY = "wocheneinkauf-kw43-checked";
+let checked = new Set();
+try { checked = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch (e) { checked = new Set(); }
+function save() { try { localStorage.setItem(KEY, JSON.stringify([...checked])); } catch (e) {} }
+const eur = n => n.toFixed(2).replace(".", ",");
+
+function renderList(store) {
+  const host = document.getElementById("list-" + store);
+  const groups = [...new Set(ITEMS.filter(i => i.store === store).map(i => i.group))];
+  host.innerHTML = "";
+  host.style.display = "flex"; host.style.flexDirection = "column"; host.style.gap = "8px";
+  groups.forEach(g => {
+    const label = document.createElement("p"); label.className = "eyebrow group-label"; label.textContent = g;
+    const ul = document.createElement("ul"); ul.className = "items";
+    ITEMS.filter(i => i.store === store && i.group === g).forEach(i => {
+      const li = document.createElement("li"); li.className = "item" + (checked.has(i.id) ? " is-done" : "");
+      const chips = [];
+      if (i.offer) chips.push(`<span class="chip offer">${i.offer}</span>`);
+      if (i.swap) chips.push(`<span class="chip swap">${i.swap}</span>`);
+      if (i.cond) chips.push(`<span class="chip cond">${i.cond}</span>`);
+      li.innerHTML = `<label for="${i.id}">
+          <input type="checkbox" id="${i.id}" ${checked.has(i.id) ? "checked" : ""}>
+          <span class="txt">
+            <span><span class="name">${i.name}</span> <span class="amt">· ${i.amt}</span></span>
+            <span class="for">für ${i.for}</span>
+            ${chips.length ? `<span class="chips">${chips.join("")}</span>` : ""}
+          </span>
+          <span class="price">${i.approx ? "ca. " : ""}${eur(i.price)}${i.was ? `<s>${eur(i.was)}</s>` : ""}</span>
+        </label>`;
+      li.querySelector("input").addEventListener("change", ev => {
+        ev.target.checked ? checked.add(i.id) : checked.delete(i.id);
+        li.classList.toggle("is-done", ev.target.checked);
+        save(); totals();
+      });
+      ul.appendChild(li);
+    });
+    host.appendChild(label); host.appendChild(ul);
+  });
+}
+function totals() {
+  const sum = s => ITEMS.filter(i => i.store === s).reduce((a, i) => a + i.price, 0);
+  const open = s => ITEMS.filter(i => i.store === s && !checked.has(i.id)).reduce((a, i) => a + i.price, 0);
+  const all = sum("lidl") + sum("rewe");
+  document.getElementById("sum-lidl").textContent = eur(sum("lidl"));
+  document.getElementById("sum-rewe").textContent = eur(sum("rewe"));
+  document.getElementById("sum-all").textContent = eur(all);
+  document.getElementById("per-portion").textContent = eur(all / PORTIONS);
+  document.getElementById("sum-open").textContent = eur(open("lidl") + open("rewe"));
+  document.getElementById("open-lidl").textContent = eur(open("lidl")) + " €";
+  document.getElementById("open-rewe").textContent = eur(open("rewe")) + " €";
+}
+document.getElementById("reset").addEventListener("click", () => { checked.clear(); save(); renderList("lidl"); renderList("rewe"); totals(); });
+
+renderStrip(); renderDays(); renderList("lidl"); renderList("rewe"); totals();
+</script>
+
+
+</body></html>
