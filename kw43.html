@@ -95,6 +95,7 @@ nav.jump a {
   padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); white-space: nowrap;
 }
 nav.jump a:hover { border-color: var(--basil); }
+nav.jump a.kp { background: var(--basil); border-color: var(--basil); color: #ffffff; }
 nav.jump a:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
 
 /* Week strip */
@@ -241,6 +242,7 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
     <a href="#lidl">Lidl</a>
     <a href="#rewe">REWE</a>
     <a href="#vorrat">Vorrat</a>
+    <a class="kp" id="kp-link" href="https://claude.ai/artifact/Saog2ypVnKGjacX4GqFdPU" target="_blank" rel="noopener" hidden="">✓ Gekocht?</a>
   </nav>
 
   <section class="week" id="woche" aria-labelledby="woche-h">
@@ -1527,6 +1529,18 @@ function totals() {
 }
 document.getElementById("reset").addEventListener("click", () => { checked.clear(); save(); renderList("lidl"); renderList("rewe"); totals(); });
 
+(function () {
+  /* Kochprotokoll-Button: in Claude immer, auf der öffentlichen Seite nur nach einmaligem Aufruf mit ?ich */
+  let show = false;
+  try {
+    if (new URLSearchParams(location.search).has("ich")) localStorage.setItem("kochprotokoll", "1");
+    show = localStorage.getItem("kochprotokoll") === "1";
+  } catch (e) {}
+  const h = location.hostname || "";
+  if (h && !h.endsWith("github.io")) show = true;
+  const a = document.getElementById("kp-link");
+  if (a) a.hidden = !show;
+})();
 renderStrip(); renderDays(); renderList("lidl"); renderList("rewe"); totals();
 </script>
 <script>if ("serviceWorker" in navigator) { navigator.serviceWorker.register("sw.js").catch(() => {}); }</script>
