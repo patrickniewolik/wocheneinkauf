@@ -234,6 +234,34 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
 .reset:hover { border-color: var(--basil); }
 .reset:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
 
+/* Eigene Artikel: gemeinsam über Firestore, nur auf Geräten mit eingeschaltetem Abhaken */
+.add { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--sun); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.add-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.add-row input[type="text"] {
+  flex: 1 1 220px; min-width: 0; min-height: 44px; font: inherit; padding: 8px 12px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink);
+}
+.add-row input[type="text"]:focus-visible { outline: 2px solid var(--basil); outline-offset: 1px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); }
+.seg label { display: flex; cursor: pointer; position: relative; }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.seg span { display: grid; place-items: center; min-height: 44px; padding: 0 16px; font-weight: 600; font-size: 0.9rem; color: var(--muted); }
+.seg .lidl input:checked + span { background: var(--lidl); color: #ffffff; }
+.seg .rewe input:checked + span { background: var(--rewe); color: #ffffff; }
+.seg input:focus-visible + span { outline: 2px solid var(--basil); outline-offset: -3px; }
+.add-btn { font: inherit; font-weight: 600; min-height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--basil); color: #ffffff; cursor: pointer; }
+.add-btn:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+.extras { display: flex; flex-direction: column; gap: 8px; }
+.item.extra { display: flex; align-items: center; }
+.item.extra label { flex: 1; min-width: 0; grid-template-columns: 26px 1fr; }
+.item .del {
+  flex: none; width: 44px; height: 44px; margin-right: 4px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--muted); font: inherit; font-size: 1.3rem; line-height: 1; cursor: pointer;
+}
+.item .del:hover { color: var(--rewe); background: var(--rewe-soft); }
+.item .del:focus-visible { outline: 2px solid var(--basil); outline-offset: -2px; }
+.add[hidden], .extras[hidden] { display: none; }
+
 @media (max-width: 680px) {
   header { grid-template-columns: 1fr; }
   .strip { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: -20px; }
@@ -464,11 +492,26 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
   <section class="shop" id="einkauf" aria-labelledby="einkauf-h">
     <h2 id="einkauf-h">Einkaufsliste</h2>
 
+    <form class="add" id="add-form" autocomplete="off" hidden="">
+      <h4 id="add-h">Eigenen Artikel hinzufügen</h4>
+      <div class="add-row">
+        <input id="add-name" type="text" maxlength="60" required="" aria-labelledby="add-h" placeholder="z. B. Spülmittel, 2× Haferdrink" enterkeyhint="done">
+        <div class="seg" role="radiogroup" aria-label="Markt">
+          <label class="lidl"><input type="radio" name="add-store" value="lidl" checked=""><span>Lidl</span></label>
+          <label class="rewe"><input type="radio" name="add-store" value="rewe"><span>REWE</span></label>
+        </div>
+        <button class="add-btn" type="submit">Hinzufügen</button>
+      </div>
+      <p class="sync" aria-live="polite" hidden=""></p>
+      <p class="fine">Steht dann oben in der Liste des Markts, für euch beide. Was bis Sonntag nicht abgehakt ist, wandert in die nächste Woche.</p>
+    </form>
+
     <section class="store" id="lidl" aria-labelledby="lidl-h">
       <div class="store-head">
         <div><h3 id="lidl-h" class="store-name lidl">Lidl</h3><p class="addr">Lidl-Plus-App mitnehmen</p></div>
         <div class="sub"><span>offen</span><b id="open-lidl">37,36 €</b></div>
       </div>
+      <div class="extras" id="extras-lidl" hidden=""></div>
       <div id="list-lidl" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="l-tom">
           <input type="checkbox" id="l-tom">
           <span class="txt">
@@ -717,6 +760,7 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
         <div><h3 id="rewe-h" class="store-name rewe">REWE</h3><p class="addr">REWE-App an der Kasse scannen</p></div>
         <div class="sub"><span>offen</span><b id="open-rewe">16,38 €</b></div>
       </div>
+      <div class="extras" id="extras-rewe" hidden=""></div>
       <div id="list-rewe" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="r-kue">
           <input type="checkbox" id="r-kue">
           <span class="txt">
@@ -1622,12 +1666,13 @@ document.getElementById("reset").addEventListener("click", () => { checked.clear
 /* ---------- Gekocht? Gemeinsamer Stand in Firestore (Projekt wocheneinkauf-58efa) ----------
    Nur auf der App-Seite (github.io) und nur auf Geräten, die das Abhaken eingeschaltet haben
    (einmal mit ?ich geöffnet oder unten auf „Abhaken einschalten“ getippt). Die Regeln in Firestore
-   erlauben nur Status und Notiz zu ändern, nichts zu löschen. */
-const WEEK = { id: "kw43-2026", kw: 43, year: 2026, range: "19.–25. Oktober" };
+   erlauben nur Status, Notiz und eigene Artikel zu ändern, keine Woche zu löschen.
+   WEEK.prev = Vorwoche: deren nicht abgehakte eigene Artikel übernimmt die App in die neue Woche. */
+const WEEK = { id: "kw43-2026", kw: 43, year: 2026, range: "19.–25. Oktober", prev: null };
 const FS_WEEKS = "https://firestore.googleapis.com/v1/projects/wocheneinkauf-58efa/databases/(default)/documents/weeks";
 const FS_DOC = FS_WEEKS + "/" + WEEK.id;
 const FS_KEY = "AIzaSyAgs6UvqIxzMKCl2jqmu9aUXxTkd82qfjY";
-const cook = { on: false, wired: false, status: {}, pending: 0, noteTimer: null };
+const cook = { on: false, wired: false, status: {}, extras: {}, pending: 0, noteTimer: null };
 
 function cookAllowed() {
   if (!(location.hostname || "").endsWith("github.io")) return false;
@@ -1651,20 +1696,94 @@ function applyStatus() {
   });
 }
 function syncMsg(ok, writing) {
-  const el = document.getElementById("sync");
-  if (!el) return;
-  el.classList.toggle("err", !ok);
-  el.textContent = ok
+  const text = ok
     ? "Gemeinsamer Stand · aktualisiert " + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })
-    : writing ? "Nicht gespeichert, keine Verbindung. Bitte gleich noch mal tippen." : "Keine Verbindung, der Stand ist evtl. nicht aktuell.";
+    : writing ? "Nicht gespeichert, keine Verbindung. Bitte gleich noch mal versuchen." : "Keine Verbindung, der Stand ist evtl. nicht aktuell.";
+  document.querySelectorAll(".sync").forEach(el => { el.classList.toggle("err", !ok); el.textContent = text; });
+}
+function readExtras(f) {
+  const m = (f.extras && f.extras.mapValue && f.extras.mapValue.fields) || {};
+  const out = {};
+  Object.keys(m).forEach(id => {
+    const x = (m[id].mapValue && m[id].mapValue.fields) || {};
+    if (!x.name || !x.name.stringValue) return;
+    out[id] = {
+      name: x.name.stringValue, store: x.store && x.store.stringValue === "rewe" ? "rewe" : "lidl",
+      done: !!(x.done && x.done.booleanValue), at: Number((x.at && x.at.integerValue) || 0)
+    };
+  });
+  return out;
+}
+const xField = x => ({ mapValue: { fields: {
+  name: { stringValue: x.name }, store: { stringValue: x.store }, done: { booleanValue: !!x.done }, at: { integerValue: String(x.at) }
+} } });
+function renderExtras() {
+  ["lidl", "rewe"].forEach(store => {
+    const host = document.getElementById("extras-" + store);
+    const list = Object.entries(cook.extras).filter(([, x]) => x.store === store).sort((a, b) => a[1].at - b[1].at);
+    host.hidden = !cook.on || !list.length;
+    host.textContent = "";
+    if (host.hidden) return;
+    const label = document.createElement("p");
+    label.className = "eyebrow group-label"; label.textContent = "Von euch dazu";
+    const ul = document.createElement("ul");
+    ul.className = "items";
+    list.forEach(([id, x]) => {
+      const li = document.createElement("li");
+      li.className = "item extra" + (x.done ? " is-done" : ""); li.dataset.id = id;
+      const lab = document.createElement("label"); lab.htmlFor = "x-" + id;
+      const cb = document.createElement("input"); cb.type = "checkbox"; cb.id = "x-" + id; cb.checked = x.done;
+      const txt = document.createElement("span"); txt.className = "txt";
+      const name = document.createElement("span"); name.className = "name"; name.textContent = x.name;
+      txt.appendChild(name); lab.append(cb, txt);
+      const del = document.createElement("button");
+      del.type = "button"; del.className = "del"; del.textContent = "×"; del.setAttribute("aria-label", x.name + " entfernen");
+      li.append(lab, del); ul.appendChild(li);
+    });
+    host.append(label, ul);
+  });
+}
+async function addExtra(name, store) {
+  const id = "x" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  const x = { name, store, done: false, at: Date.now() };
+  cook.extras[id] = x; renderExtras();
+  const ok = await push(["extras." + id], { extras: { mapValue: { fields: { [id]: xField(x) } } } });
+  if (!ok) { delete cook.extras[id]; renderExtras(); }
+  return ok;
+}
+async function toggleExtra(id, done) {
+  const x = cook.extras[id];
+  if (!x) return;
+  x.done = done; renderExtras();
+  const ok = await push(["extras." + id + ".done"], { extras: { mapValue: { fields: { [id]: { mapValue: { fields: { done: { booleanValue: done } } } } } } } });
+  if (!ok) { x.done = !done; renderExtras(); }
+}
+async function delExtra(id) {
+  const x = cook.extras[id];
+  if (!x) return;
+  delete cook.extras[id]; renderExtras();
+  const ok = await push(["extras." + id], {});
+  if (!ok) { cook.extras[id] = x; renderExtras(); }
 }
 async function createWeek() {
-  /* Legt das Dokument der Woche an, falls es noch fehlt (409 = gibt es schon). */
+  /* Legt das Dokument der Woche an, falls es noch fehlt (409 = gibt es schon),
+     und übernimmt nicht abgehakte eigene Artikel aus der Vorwoche. */
   const S = v => ({ stringValue: v }), I = v => ({ integerValue: String(v) });
+  const carried = {};
+  if (WEEK.prev) {
+    try {
+      const pr = await fetch(FS_WEEKS + "/" + WEEK.prev + "?key=" + FS_KEY, { cache: "no-store" });
+      if (pr.ok) {
+        const px = readExtras((await pr.json()).fields || {});
+        Object.keys(px).forEach(id => { if (!px[id].done) carried[id] = xField(px[id]); });
+      }
+    } catch (e) {}
+  }
   const fields = {
     kw: I(WEEK.kw), year: I(WEEK.year), sort: I(WEEK.year * 100 + WEEK.kw), range: S(WEEK.range),
     dishes: { arrayValue: { values: DAYS.map(d => ({ mapValue: { fields: { day: S(d.day.slice(0, 2)), date: S(d.day.slice(3)), title: S(d.title) } } })) } },
-    status: { mapValue: { fields: {} } }, note: S(""), updatedAt: { timestampValue: new Date().toISOString() }
+    status: { mapValue: { fields: {} } }, note: S(""), extras: { mapValue: { fields: carried } },
+    updatedAt: { timestampValue: new Date().toISOString() }
   };
   const r = await fetch(FS_WEEKS + "?documentId=" + WEEK.id + "&key=" + FS_KEY, {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fields })
@@ -1683,6 +1802,8 @@ async function pull() {
     cook.status = {};
     Object.keys(st).forEach(k => { if (st[k].stringValue) cook.status[k] = st[k].stringValue; });
     applyStatus();
+    cook.extras = readExtras(f);
+    renderExtras();
     const ta = document.getElementById("cook-note");
     if (ta && document.activeElement !== ta && !cook.noteTimer) ta.value = (f.note && f.note.stringValue) || "";
     syncMsg(true);
@@ -1716,11 +1837,38 @@ function initCook() {
   const gate = document.getElementById("cook-gate");
   gate.hidden = !onPages;
   gate.textContent = cook.on ? "Abhaken auf diesem Gerät ausblenden" : "Ihr kocht nach diesem Plan? Abhaken auf diesem Gerät einschalten";
-  document.querySelectorAll(".cook, #cook-note-box, #sync").forEach(el => { el.hidden = !cook.on; });
+  document.querySelectorAll(".cook, #cook-note-box, .sync, #add-form").forEach(el => { el.hidden = !cook.on; });
+  renderExtras();
   if (!cook.on) return;
+  try {
+    const last = localStorage.getItem("extra-store");
+    if (last) document.querySelector(`#add-form input[value="${last === "rewe" ? "rewe" : "lidl"}"]`).checked = true;
+  } catch (e) {}
   pull();
   if (cook.wired) return;
   cook.wired = true;
+  const form = document.getElementById("add-form");
+  form.addEventListener("submit", async ev => {
+    ev.preventDefault();
+    const input = document.getElementById("add-name");
+    const name = input.value.trim().slice(0, 60);
+    if (!name) return;
+    const store = form.querySelector('input[name="add-store"]:checked').value;
+    try { localStorage.setItem("extra-store", store); } catch (e) {}
+    input.value = "";
+    input.focus();
+    const ok = await addExtra(name, store);
+    if (!ok && !input.value) input.value = name;
+  });
+  const shop = document.getElementById("einkauf");
+  shop.addEventListener("change", ev => {
+    const li = ev.target.closest(".item.extra");
+    if (li && ev.target.type === "checkbox") toggleExtra(li.dataset.id, ev.target.checked);
+  });
+  shop.addEventListener("click", ev => {
+    const b = ev.target.closest(".item.extra .del");
+    if (b) delExtra(b.closest(".item.extra").dataset.id);
+  });
   document.getElementById("days").addEventListener("click", ev => {
     const b = ev.target.closest(".cook button");
     if (b) setStatus(b.closest(".cook").dataset.day, b.dataset.s);
