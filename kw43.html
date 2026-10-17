@@ -1623,8 +1623,9 @@ document.getElementById("reset").addEventListener("click", () => { checked.clear
    Nur auf der App-Seite (github.io) und nur auf Geräten, die das Abhaken eingeschaltet haben
    (einmal mit ?ich geöffnet oder unten auf „Abhaken einschalten“ getippt). Die Regeln in Firestore
    erlauben nur Status und Notiz zu ändern, nichts zu löschen. */
-const WEEK_ID = "kw43-2026";
-const FS_DOC = "https://firestore.googleapis.com/v1/projects/wocheneinkauf-58efa/databases/(default)/documents/weeks/" + WEEK_ID;
+const WEEK = { id: "kw43-2026", kw: 43, year: 2026, range: "19.–25. Oktober" };
+const FS_WEEKS = "https://firestore.googleapis.com/v1/projects/wocheneinkauf-58efa/databases/(default)/documents/weeks";
+const FS_DOC = FS_WEEKS + "/" + WEEK.id;
 const FS_KEY = "AIzaSyAgs6UvqIxzMKCl2jqmu9aUXxTkd82qfjY";
 const cook = { on: false, wired: false, status: {}, pending: 0, noteTimer: null };
 
@@ -1657,10 +1658,24 @@ function syncMsg(ok, writing) {
     ? "Gemeinsamer Stand · aktualisiert " + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })
     : writing ? "Nicht gespeichert, keine Verbindung. Bitte gleich noch mal tippen." : "Keine Verbindung, der Stand ist evtl. nicht aktuell.";
 }
+async function createWeek() {
+  /* Legt das Dokument der Woche an, falls es noch fehlt (409 = gibt es schon). */
+  const S = v => ({ stringValue: v }), I = v => ({ integerValue: String(v) });
+  const fields = {
+    kw: I(WEEK.kw), year: I(WEEK.year), sort: I(WEEK.year * 100 + WEEK.kw), range: S(WEEK.range),
+    dishes: { arrayValue: { values: DAYS.map(d => ({ mapValue: { fields: { day: S(d.day.slice(0, 2)), date: S(d.day.slice(3)), title: S(d.title) } } })) } },
+    status: { mapValue: { fields: {} } }, note: S(""), updatedAt: { timestampValue: new Date().toISOString() }
+  };
+  const r = await fetch(FS_WEEKS + "?documentId=" + WEEK.id + "&key=" + FS_KEY, {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fields })
+  });
+  return r.ok || r.status === 409;
+}
 async function pull() {
   if (!cook.on || cook.pending) return;
   try {
-    const r = await fetch(FS_DOC + "?key=" + FS_KEY, { cache: "no-store" });
+    let r = await fetch(FS_DOC + "?key=" + FS_KEY, { cache: "no-store" });
+    if (r.status === 404 && await createWeek()) r = await fetch(FS_DOC + "?key=" + FS_KEY, { cache: "no-store" });
     if (!r.ok) throw new Error(String(r.status));
     const f = (await r.json()).fields || {};
     if (cook.pending) return;
