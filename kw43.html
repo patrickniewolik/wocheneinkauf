@@ -160,6 +160,39 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
 .recipe-body .src { grid-column: 1 / -1; font-size: 0.84rem; color: var(--muted); }
 .recipe-body .src a { color: var(--basil); }
 
+/* Gekocht? Gemeinsamer Stand für alle, die auf diesem Gerät das Abhaken eingeschaltet haben */
+.cook { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; border-top: 1px solid var(--line); padding-top: 10px; margin-top: 2px; }
+.cook .q { font-size: 0.82rem; font-weight: 600; color: var(--muted); margin-right: 2px; }
+.cook button {
+  font: inherit; font-size: 0.84rem; font-weight: 600; min-height: 36px; padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer;
+}
+.cook button:hover { border-color: var(--muted); }
+.cook button:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+.cook button[data-s="gekocht"][aria-pressed="true"] { background: var(--basil); border-color: var(--basil); color: #ffffff; }
+.cook button[data-s="verschoben"][aria-pressed="true"] { background: var(--a-sky); border-color: var(--a-sky); color: #ffffff; }
+.cook button[data-s="ausgefallen"][aria-pressed="true"] { background: var(--muted); border-color: var(--muted); color: #ffffff; }
+.day.st-gekocht .dayline .d::after { content: " ✓"; }
+.day.st-ausgefallen h3 { color: var(--done); text-decoration: line-through; }
+.strip a[data-st] .sd::after { margin-left: 5px; }
+.strip a[data-st="gekocht"] .sd::after { content: "✓"; color: var(--basil); }
+.strip a[data-st="verschoben"] .sd::after { content: "→"; color: var(--a-sky); }
+.strip a[data-st="ausgefallen"] .sd::after { content: "✕"; color: var(--muted); }
+.strip a[data-st="ausgefallen"] .sn { color: var(--muted); text-decoration: line-through; }
+.sync { display: flex; align-items: center; gap: 7px; margin: 0; font-size: 0.82rem; color: var(--muted); }
+.sync::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--basil); flex: none; }
+.sync.err::before { background: var(--rewe); }
+.note-box { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--sun); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.note-box textarea {
+  font: inherit; width: 100%; min-height: 76px; resize: vertical; padding: 8px 10px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);
+}
+.note-box textarea:focus-visible { outline: 2px solid var(--basil); outline-offset: 1px; }
+.gate { align-self: flex-start; font: inherit; font-size: 0.84rem; color: var(--muted); background: transparent; border: 0; padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.gate:hover { color: var(--basil); }
+.gate:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; border-radius: 4px; }
+.cook[hidden], .note-box[hidden], .sync[hidden], .gate[hidden] { display: none; }
+
 /* Shopping */
 .shop { display: flex; flex-direction: column; gap: 28px; }
 .store { display: flex; flex-direction: column; gap: 8px; }
@@ -209,6 +242,9 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
   .recipe-body { grid-template-columns: 1fr; }
   .two { grid-template-columns: 1fr; }
   .item label { padding: 11px 12px; gap: 10px; }
+  .cook { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cook .q { grid-column: 1 / -1; }
+  .cook button { border-radius: 12px; min-height: 46px; padding: 6px; font-size: 0.82rem; line-height: 1.2; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .item input { transition: background-color .12s ease, border-color .12s ease; }
@@ -242,7 +278,6 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
     <a href="#lidl">Lidl</a>
     <a href="#rewe">REWE</a>
     <a href="#vorrat">Vorrat</a>
-    <a class="kp" id="kp-link" href="https://claude.ai/artifact/Saog2ypVnKGjacX4GqFdPU" target="_blank" rel="noopener" hidden="">✓ Gekocht?</a>
   </nav>
 
   <section class="week" id="woche" aria-labelledby="woche-h">
@@ -254,6 +289,7 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
         <span><span class="chip var">Variante</span> leicht abgewandelt</span>
       </div>
       <p class="fine">Diese Woche stammen alle sieben Gerichte aus deiner Sammlung. Neue Rezepte bekommen ab jetzt die orange Markierung.</p>
+      <p class="sync" id="sync" aria-live="polite" hidden="">Gemeinsamer Stand wird geladen …</p>
     </div>
     <div id="days" class="week">
     <article class="day c-orange" id="mo">
@@ -271,6 +307,12 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <p class="src">Originalrezept: <a href="https://www.gaumenfreundin.de/rote-linsen-curry/" target="_blank" rel="noopener">Gaumenfreundin</a></p>
           </div>
         </details>
+        <div class="cook" data-day="Mo" role="group" aria-label="Mo: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
       </div>
     </article>
     <article class="day c-yellow" id="di">
@@ -288,6 +330,12 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <p class="src">Originalrezept: <a href="https://my.choosy.de/recipes/falafel-pita" target="_blank" rel="noopener">choosy</a></p>
           </div>
         </details>
+        <div class="cook" data-day="Di" role="group" aria-label="Di: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
       </div>
     </article>
     <article class="day c-sky" id="mi">
@@ -305,6 +353,12 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <p class="src">Originalrezept: <a href="https://my.choosy.de/recipes/brokkoli-pesto-30" target="_blank" rel="noopener">choosy (Schritte ergänzt, der Ausdruck enthielt nur die Zutaten)</a></p>
           </div>
         </details>
+        <div class="cook" data-day="Mi" role="group" aria-label="Mi: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
       </div>
     </article>
     <article class="day c-red" id="do">
@@ -322,6 +376,12 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <p class="src">Originalrezept: <a href="https://www.gaumenfreundin.de/ofenkuerbis/" target="_blank" rel="noopener">Gaumenfreundin</a></p>
           </div>
         </details>
+        <div class="cook" data-day="Do" role="group" aria-label="Do: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
       </div>
     </article>
     <article class="day c-pink" id="fr">
@@ -339,6 +399,12 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <p class="src">Originalrezept: <a href="https://www.einfachkochen.de/rezepte/vegane-poke-bowl" target="_blank" rel="noopener">einfach kochen</a></p>
           </div>
         </details>
+        <div class="cook" data-day="Fr" role="group" aria-label="Fr: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
       </div>
     </article>
     <article class="day c-green" id="sa">
@@ -356,6 +422,12 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <p class="src">Originalrezept: <a href="https://www.gaumenfreundin.de/rote-linsen-lasagne/" target="_blank" rel="noopener">Gaumenfreundin</a></p>
           </div>
         </details>
+        <div class="cook" data-day="Sa" role="group" aria-label="Sa: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
       </div>
     </article>
     <article class="day c-violet" id="so">
@@ -373,8 +445,20 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <p class="src">Originalrezept: <a href="https://emmikochteinfach.de/gefuellte-zucchini-schiffchen-hackfleisch/" target="_blank" rel="noopener">Emmi kocht einfach</a></p>
           </div>
         </details>
+        <div class="cook" data-day="So" role="group" aria-label="So: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
       </div>
     </article></div>
+    <div class="note-box" id="cook-note-box" hidden="">
+      <h4 id="cook-note-h">Notiz für den nächsten Plan</h4>
+      <textarea id="cook-note" maxlength="500" aria-labelledby="cook-note-h" placeholder="z. B. Burrata ist noch da · mehr Pasta · keine Lust auf Rosenkohl"></textarea>
+      <p class="fine">Was ihr hier abhakt und notiert, liest Claude am Sonntag. Verschobene Gerichte wandern in die nächste Woche, und was davon schon im Kühlschrank liegt, kommt nicht noch mal auf die Einkaufsliste.</p>
+    </div>
+    <button class="gate" id="cook-gate" type="button" hidden="">Ihr kocht nach diesem Plan? Abhaken auf diesem Gerät einschalten</button>
   </section>
 
   <section class="shop" id="einkauf" aria-labelledby="einkauf-h">
@@ -1427,6 +1511,12 @@ function renderDays() {
             <p class="src">Originalrezept: <a href="${d.src[1]}" target="_blank" rel="noopener">${d.src[0]}</a></p>
           </div>
         </details>
+        <div class="cook" data-day="${d.day.slice(0, 2)}" role="group" aria-label="${d.day.slice(0, 2)}: gekocht?" hidden>
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
       </div>
     </article>`).join("");
 }
@@ -1529,19 +1619,116 @@ function totals() {
 }
 document.getElementById("reset").addEventListener("click", () => { checked.clear(); save(); renderList("lidl"); renderList("rewe"); totals(); });
 
-(function () {
-  /* Kochprotokoll-Button: in Claude immer, auf der öffentlichen Seite nur nach einmaligem Aufruf mit ?ich */
-  let show = false;
+/* ---------- Gekocht? Gemeinsamer Stand in Firestore (Projekt wocheneinkauf-58efa) ----------
+   Nur auf der App-Seite (github.io) und nur auf Geräten, die das Abhaken eingeschaltet haben
+   (einmal mit ?ich geöffnet oder unten auf „Abhaken einschalten“ getippt). Die Regeln in Firestore
+   erlauben nur Status und Notiz zu ändern, nichts zu löschen. */
+const WEEK_ID = "kw43-2026";
+const FS_DOC = "https://firestore.googleapis.com/v1/projects/wocheneinkauf-58efa/databases/(default)/documents/weeks/" + WEEK_ID;
+const FS_KEY = "AIzaSyAgs6UvqIxzMKCl2jqmu9aUXxTkd82qfjY";
+const cook = { on: false, wired: false, status: {}, pending: 0, noteTimer: null };
+
+function cookAllowed() {
+  if (!(location.hostname || "").endsWith("github.io")) return false;
+  const viaLink = new URLSearchParams(location.search).has("ich");
   try {
-    if (new URLSearchParams(location.search).has("ich")) localStorage.setItem("kochprotokoll", "1");
-    show = localStorage.getItem("kochprotokoll") === "1";
-  } catch (e) {}
-  const h = location.hostname || "";
-  if (h && !h.endsWith("github.io")) show = true;
-  const a = document.getElementById("kp-link");
-  if (a) a.hidden = !show;
-})();
-renderStrip(); renderDays(); renderList("lidl"); renderList("rewe"); totals();
+    if (viaLink) localStorage.setItem("kochprotokoll", "1");
+    return localStorage.getItem("kochprotokoll") === "1";
+  } catch (e) { return viaLink; }
+}
+function applyStatus() {
+  DAYS.forEach(d => {
+    const s = cook.status[d.day.slice(0, 2)] || "";
+    const card = document.getElementById(d.id);
+    if (card) {
+      card.classList.remove("st-gekocht", "st-verschoben", "st-ausgefallen");
+      if (s) card.classList.add("st-" + s);
+      card.querySelectorAll(".cook button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.s === s)));
+    }
+    const tile = document.querySelector(`#strip a[href="#${d.id}"]`);
+    if (tile) { if (s) tile.dataset.st = s; else delete tile.dataset.st; }
+  });
+}
+function syncMsg(ok, writing) {
+  const el = document.getElementById("sync");
+  if (!el) return;
+  el.classList.toggle("err", !ok);
+  el.textContent = ok
+    ? "Gemeinsamer Stand · aktualisiert " + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })
+    : writing ? "Nicht gespeichert, keine Verbindung. Bitte gleich noch mal tippen." : "Keine Verbindung, der Stand ist evtl. nicht aktuell.";
+}
+async function pull() {
+  if (!cook.on || cook.pending) return;
+  try {
+    const r = await fetch(FS_DOC + "?key=" + FS_KEY, { cache: "no-store" });
+    if (!r.ok) throw new Error(String(r.status));
+    const f = (await r.json()).fields || {};
+    if (cook.pending) return;
+    const st = (f.status && f.status.mapValue && f.status.mapValue.fields) || {};
+    cook.status = {};
+    Object.keys(st).forEach(k => { if (st[k].stringValue) cook.status[k] = st[k].stringValue; });
+    applyStatus();
+    const ta = document.getElementById("cook-note");
+    if (ta && document.activeElement !== ta && !cook.noteTimer) ta.value = (f.note && f.note.stringValue) || "";
+    syncMsg(true);
+  } catch (e) { syncMsg(false); }
+}
+async function push(paths, fields) {
+  cook.pending++;
+  try {
+    fields.updatedAt = { timestampValue: new Date().toISOString() };
+    const mask = paths.concat("updatedAt").map(p => "updateMask.fieldPaths=" + encodeURIComponent(p)).join("&");
+    const r = await fetch(FS_DOC + "?" + mask + "&currentDocument.exists=true&key=" + FS_KEY, {
+      method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fields })
+    });
+    if (!r.ok) throw new Error(String(r.status));
+    syncMsg(true);
+    return true;
+  } catch (e) { syncMsg(false, true); return false; }
+  finally { cook.pending--; }
+}
+async function setStatus(day, s) {
+  const prev = cook.status[day] || "";
+  const next = prev === s ? "" : s;
+  if (next) cook.status[day] = next; else delete cook.status[day];
+  applyStatus();
+  const ok = await push(["status." + day], next ? { status: { mapValue: { fields: { [day]: { stringValue: next } } } } } : {});
+  if (!ok) { if (prev) cook.status[day] = prev; else delete cook.status[day]; applyStatus(); }
+}
+function initCook() {
+  const onPages = (location.hostname || "").endsWith("github.io");
+  cook.on = cookAllowed();
+  const gate = document.getElementById("cook-gate");
+  gate.hidden = !onPages;
+  gate.textContent = cook.on ? "Abhaken auf diesem Gerät ausblenden" : "Ihr kocht nach diesem Plan? Abhaken auf diesem Gerät einschalten";
+  document.querySelectorAll(".cook, #cook-note-box, #sync").forEach(el => { el.hidden = !cook.on; });
+  if (!cook.on) return;
+  pull();
+  if (cook.wired) return;
+  cook.wired = true;
+  document.getElementById("days").addEventListener("click", ev => {
+    const b = ev.target.closest(".cook button");
+    if (b) setStatus(b.closest(".cook").dataset.day, b.dataset.s);
+  });
+  const ta = document.getElementById("cook-note");
+  ta.addEventListener("input", () => {
+    clearTimeout(cook.noteTimer);
+    cook.noteTimer = setTimeout(async () => {
+      await push(["note"], { note: { stringValue: ta.value.slice(0, 500) } });
+      cook.noteTimer = null;
+    }, 800);
+  });
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") pull(); });
+  window.addEventListener("online", pull);
+  setInterval(() => { if (document.visibilityState === "visible") pull(); }, 30000);
+}
+document.getElementById("cook-gate").addEventListener("click", () => {
+  try { localStorage.setItem("kochprotokoll", cook.on ? "0" : "1"); } catch (e) {}
+  if (cook.on) { const u = new URL(location.href); u.searchParams.delete("ich"); history.replaceState(null, "", u); }
+  initCook();
+});
+
+renderStrip(); renderDays(); renderList("lidl"); renderList("rewe"); totals(); initCook();
 </script>
 <script>if ("serviceWorker" in navigator) { navigator.serviceWorker.register("sw.js").catch(() => {}); }</script>
 
