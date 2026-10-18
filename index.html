@@ -288,13 +288,13 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
       <p class="meta">Sieben Abendessen und zwei Mittagessen aus Resten. Gekauft wird immer das Produkt aus dem Rezept, in der Variante mit dem niedrigsten Kilopreis.</p>
     </div>
     <div class="bon" aria-live="polite">
-      <div class="row"><span>Lidl</span><span id="sum-lidl">39,65</span></div>
+      <div class="row"><span>Lidl</span><span id="sum-lidl">41,14</span></div>
       <div class="row"><span>REWE</span><span id="sum-rewe">21,86</span></div>
       <div class="rule"></div>
-      <div class="row sum"><span>SUMME ca. EUR</span><span id="sum-all">61,51</span></div>
-      <div class="row"><span>pro Portion (18)</span><span id="per-portion">3,42</span></div>
-      <div class="row open"><span>noch offen</span><span id="sum-open">61,51</span></div>
-      <small>4,48 € davon nur, falls Reis oder Sesamöl fehlen. 1,16 € Kürbis ist schon für KW 44.</small>
+      <div class="row sum"><span>SUMME ca. EUR</span><span id="sum-all">63,00</span></div>
+      <div class="row"><span>pro Portion (18)</span><span id="per-portion">3,35</span></div>
+      <div class="row open"><span>noch offen</span><span id="sum-open">63,00</span></div>
+      <small>4,48 € davon nur, falls Reis oder Sesamöl fehlen. 1,16 € Kürbis ist schon für KW 44, 1,49 € sind Stammartikel im Angebot. Beides zählt nicht in den Preis pro Portion.</small>
     </div>
   </header>
 
@@ -509,7 +509,7 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
     <section class="store" id="lidl" aria-labelledby="lidl-h">
       <div class="store-head">
         <div><h3 id="lidl-h" class="store-name lidl">Lidl</h3><p class="addr">Lidl-Plus-App mitnehmen</p></div>
-        <div class="sub"><span>offen</span><b id="open-lidl">39,65 €</b></div>
+        <div class="sub"><span>offen</span><b id="open-lidl">41,14 €</b></div>
       </div>
       <div class="extras" id="extras-lidl" hidden=""></div>
       <div id="list-lidl" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="l-tom">
@@ -760,6 +760,14 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <span class="chips"><span class="chip cond">nur falls leer</span></span>
           </span>
           <span class="price">1,99</span>
+        </label></li></ul><p class="eyebrow group-label">Kauft ihr oft · im Angebot</p><ul class="items"><li class="item"><label for="l-jog">
+          <input type="checkbox" id="l-jog">
+          <span class="txt">
+            <span><span class="name">Joghurt mild 3,5 %</span> <span class="amt">· 1 kg</span></span>
+            <span class="for">für Frühstück · sonst 0,89 € je 500 g (1,78 €/kg)</span>
+            <span class="chips"><span class="chip offer">Angebot</span></span>
+          </span>
+          <span class="price">1,49</span>
         </label></li></ul></div>
     </section>
 
@@ -886,12 +894,15 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
         </ul>
       </section>
       <section aria-labelledby="extra-h">
-        <h3 id="extra-h">Fürs Frühstück</h3>
-        <p class="fine">Nur nach Bedarf, nicht in der Summe.</p>
+        <h3 id="extra-h">Kauft ihr oft</h3>
+        <p class="fine">Wo es laut euren Kassenbons ohne Angebot meist günstiger ist. Was im Angebot ist, steht auf der Liste.</p>
         <ul class="plain">
-          <li>Joghurt mild 3,5 %, 1 kg <span class="mono">1,49 · Lidl-Angebot</span></li>
-          <li>Haferdrink 1,8 % <span class="mono">0,85 · Lidl</span></li>
-          <li>Bananen <span class="mono">ca. 0,99/kg · Lidl</span></li>
+          <li>Haferdrink, Joghurt, körniger Frischkäse <span class="mono">Lidl · 0,85 / 0,89 / 1,19</span></li>
+          <li>Veganes Hack, Burrata <span class="mono">Lidl · 1,79 statt 2,39 / 1,89 statt 2,09</span></li>
+          <li>Bananen, Croissants, Cashews <span class="mono">Lidl</span></li>
+          <li>Frischkäse von Buko, Spezi Zero <span class="mono">REWE · 0,99</span></li>
+          <li>Hummus pikant, Mozzarella, Tofu <span class="mono">gleich · 0,99 / 0,85 / 2,29</span></li>
+          <li>Vegane Aufstriche und Aufschnitt <span class="mono">je nach Angebot</span></li>
         </ul>
       </section>
     </div>
@@ -1694,8 +1705,9 @@ const ITEMS = [
   { id: "l-mai", store: "lidl", group: "Vorräte & Brot", name: "Mais", amt: "1 kleine Dose", for: "Mi", price: 0.79, approx: true },
   { id: "l-wra", store: "lidl", group: "Vorräte & Brot", name: "Tortilla-Wraps, Weizen", amt: "1 Packung", for: "Mi (4 Stück)", price: 1.19 },
   { id: "l-fla", store: "lidl", group: "Vorräte & Brot", name: "Fladenbrot", amt: "1 Stück", for: "Mo", price: 1.78, approx: true },
+  { id: "l-jog", store: "lidl", group: "Kauft ihr oft · im Angebot", name: "Joghurt mild 3,5 %", amt: "1 kg", for: "Frühstück · sonst 0,89 € je 500 g (1,78 €/kg)", price: 1.49, offer: "Angebot", stamm: true },
   { id: "l-rei", store: "lidl", group: "Vorräte & Brot", name: "Jasminreis", amt: "1 kg", for: "Fr, Sa", price: 1.99, cond: "nur falls leer" },
-  { id: "r-kue", store: "rewe", group: "Obst & Gemüse", name: "Hokkaido-Kürbis", amt: "1 Stück, ca. 1,3 kg (0,89 €/kg)", for: "KW 44 (ganz und kühl gelagert hält er mehrere Wochen)", price: 1.16, approx: true, offer: "Angebot" },
+  { id: "r-kue", store: "rewe", group: "Obst & Gemüse", name: "Hokkaido-Kürbis", amt: "1 Stück, ca. 1,3 kg (0,89 €/kg)", for: "KW 44 (ganz und kühl gelagert hält er mehrere Wochen)", price: 1.16, approx: true, offer: "Angebot", later: true },
   { id: "r-che", store: "rewe", group: "Obst & Gemüse", name: "Cherrytomaten", amt: "ca. 550 g", for: "Do (300 g), Sa (250 g)", price: 3.28, approx: true },
   { id: "r-thy", store: "rewe", group: "Obst & Gemüse", name: "Thymian, frisch", amt: "1 Packung", for: "Do (8 Stiele)", price: 0.99, approx: true },
   { id: "r-shi", store: "rewe", group: "Obst & Gemüse", name: "Shiitake-Pilze", amt: "1 Schale", for: "Di (120 g)", price: 2.49, approx: true },
@@ -1755,7 +1767,9 @@ function totals() {
   document.getElementById("sum-lidl").textContent = eur(sum("lidl"));
   document.getElementById("sum-rewe").textContent = eur(sum("rewe"));
   document.getElementById("sum-all").textContent = eur(all);
-  document.getElementById("per-portion").textContent = eur(all / PORTIONS);
+  /* Preis pro Portion nur aus den Zutaten dieser Woche: ohne Stammartikel (stamm) und ohne Vorrat für später (later) */
+  const meals = ITEMS.filter(i => !i.stamm && !i.later).reduce((a, i) => a + i.price, 0);
+  document.getElementById("per-portion").textContent = eur(meals / PORTIONS);
   document.getElementById("sum-open").textContent = eur(open("lidl") + open("rewe"));
   document.getElementById("open-lidl").textContent = eur(open("lidl")) + " €";
   document.getElementById("open-rewe").textContent = eur(open("rewe")) + " €";
