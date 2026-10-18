@@ -288,13 +288,13 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
       <p class="meta">Sieben Abendessen und zwei Mittagessen aus Resten. Gekauft wird immer das Produkt aus dem Rezept, in der Variante mit dem niedrigsten Kilopreis.</p>
     </div>
     <div class="bon" aria-live="polite">
-      <div class="row"><span>Lidl</span><span id="sum-lidl">41,14</span></div>
-      <div class="row"><span>REWE</span><span id="sum-rewe">21,86</span></div>
+      <div class="row"><span>Lidl</span><span id="sum-lidl">43,15</span></div>
+      <div class="row"><span>REWE</span><span id="sum-rewe">19,96</span></div>
       <div class="rule"></div>
-      <div class="row sum"><span>SUMME ca. EUR</span><span id="sum-all">63,00</span></div>
-      <div class="row"><span>pro Portion (18)</span><span id="per-portion">3,35</span></div>
-      <div class="row open"><span>noch offen</span><span id="sum-open">63,00</span></div>
-      <small>4,48 € davon nur, falls Reis oder Sesamöl fehlen. 1,16 € Kürbis ist schon für KW 44, 1,49 € sind Stammartikel im Angebot. Beides zählt nicht in den Preis pro Portion.</small>
+      <div class="row sum"><span>SUMME ca. EUR</span><span id="sum-all">63,11</span></div>
+      <div class="row"><span>pro Portion (18)</span><span id="per-portion">3,31</span></div>
+      <div class="row open"><span>noch offen</span><span id="sum-open">63,11</span></div>
+      <small>4,48 € davon nur, falls Reis oder Sesamöl fehlen. 1,16 € Kürbis ist schon für KW 44, 2,34 € sind Stammartikel im Angebot. Beides zählt nicht in den Preis pro Portion.</small>
     </div>
   </header>
 
@@ -509,7 +509,7 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
     <section class="store" id="lidl" aria-labelledby="lidl-h">
       <div class="store-head">
         <div><h3 id="lidl-h" class="store-name lidl">Lidl</h3><p class="addr">Lidl-Plus-App mitnehmen</p></div>
-        <div class="sub"><span>offen</span><b id="open-lidl">41,14 €</b></div>
+        <div class="sub"><span>offen</span><b id="open-lidl">43,15 €</b></div>
       </div>
       <div class="extras" id="extras-lidl" hidden=""></div>
       <div id="list-lidl" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="l-tom">
@@ -531,11 +531,19 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
         </label></li><li class="item"><label for="l-zuc">
           <input type="checkbox" id="l-zuc">
           <span class="txt">
-            <span><span class="name">Zucchini</span> <span class="amt">· 2 Stück</span></span>
+            <span><span class="name">Zucchini, lose</span> <span class="amt">· 2 Stück (ca. 600 g, 1,11 €/kg)</span></span>
             <span class="for">für So</span>
-            
+            <span class="chips"><span class="chip offer">Aktion</span></span>
           </span>
-          <span class="price">ca. 1,00</span>
+          <span class="price">ca. 0,67</span>
+        </label></li><li class="item"><label for="l-moe">
+          <input type="checkbox" id="l-moe">
+          <span class="txt">
+            <span><span class="name">Deutsche Möhren</span> <span class="amt">· 2-kg-Beutel (0,75 €/kg)</span></span>
+            <span class="for">für Di, Fr (je 2 Stück)</span>
+            <span class="chips"><span class="chip offer">Prospekt</span></span>
+          </span>
+          <span class="price">1,49</span>
         </label></li><li class="item"><label for="l-avo">
           <input type="checkbox" id="l-avo">
           <span class="txt">
@@ -760,7 +768,15 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <span class="chips"><span class="chip cond">nur falls leer</span></span>
           </span>
           <span class="price">1,99</span>
-        </label></li></ul><p class="eyebrow group-label">Kauft ihr oft · im Angebot</p><ul class="items"><li class="item"><label for="l-jog">
+        </label></li></ul><p class="eyebrow group-label">Kauft ihr oft · im Angebot</p><ul class="items"><li class="item"><label for="l-fri">
+          <input type="checkbox" id="l-fri">
+          <span class="txt">
+            <span><span class="name">Milbona Frischkäse (Kräuter, Classic oder Balance)</span> <span class="amt">· 175 g</span></span>
+            <span class="for">für Brot · sonst 0,99 €, Almette bei REWE 1,11 €</span>
+            <span class="chips"><span class="chip offer">Angebot</span></span>
+          </span>
+          <span class="price">0,85<s>0,99</s></span>
+        </label></li><li class="item"><label for="l-jog">
           <input type="checkbox" id="l-jog">
           <span class="txt">
             <span><span class="name">Joghurt mild 3,5 %</span> <span class="amt">· 1 kg</span></span>
@@ -774,7 +790,7 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
     <section class="store" id="rewe" aria-labelledby="rewe-h">
       <div class="store-head">
         <div><h3 id="rewe-h" class="store-name rewe">REWE</h3><p class="addr">REWE-App an der Kasse scannen</p></div>
-        <div class="sub"><span>offen</span><b id="open-rewe">21,86 €</b></div>
+        <div class="sub"><span>offen</span><b id="open-rewe">19,96 €</b></div>
       </div>
       <div class="extras" id="extras-rewe" hidden=""></div>
       <div id="list-rewe" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="r-kue">
@@ -788,11 +804,11 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
         </label></li><li class="item"><label for="r-che">
           <input type="checkbox" id="r-che">
           <span class="txt">
-            <span><span class="name">Cherrytomaten</span> <span class="amt">· ca. 550 g</span></span>
+            <span><span class="name">Cherry-Romatomaten</span> <span class="amt">· 3 Schalen à 250 g (3,56 €/kg)</span></span>
             <span class="for">für Do (300 g), Sa (250 g)</span>
-            
+            <span class="chips"><span class="chip offer">Aktion</span></span>
           </span>
-          <span class="price">ca. 3,28</span>
+          <span class="price">2,67</span>
         </label></li><li class="item"><label for="r-thy">
           <input type="checkbox" id="r-thy">
           <span class="txt">
@@ -833,14 +849,6 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
             <span class="chips"><span class="chip offer">Tiefpreis</span></span>
           </span>
           <span class="price">1,39</span>
-        </label></li><li class="item"><label for="r-moe">
-          <input type="checkbox" id="r-moe">
-          <span class="txt">
-            <span><span class="name">Speisemöhren</span> <span class="amt">· 1 kg</span></span>
-            <span class="for">für Di, Fr</span>
-            <span class="chips"><span class="chip offer">0,40 € Bonus</span></span>
-          </span>
-          <span class="price">ca. 1,29</span>
         </label></li></ul><p class="eyebrow group-label">Kühlregal &amp; TK</p><ul class="items"><li class="item"><label for="r-eda">
           <input type="checkbox" id="r-eda">
           <span class="txt">
@@ -1677,7 +1685,8 @@ function renderDays() {
 const ITEMS = [
   { id: "l-tom", store: "lidl", group: "Obst & Gemüse", name: "Tomaten", amt: "4 Stück (ca. 400 g)", for: "Mi", price: 1.00, approx: true },
   { id: "l-pap", store: "lidl", group: "Obst & Gemüse", name: "Paprika rot", amt: "2 Stück", for: "Mo, Di", price: 1.33, approx: true },
-  { id: "l-zuc", store: "lidl", group: "Obst & Gemüse", name: "Zucchini", amt: "2 Stück", for: "So", price: 1.00, approx: true },
+  { id: "l-zuc", store: "lidl", group: "Obst & Gemüse", name: "Zucchini, lose", amt: "2 Stück (ca. 600 g, 1,11 €/kg)", for: "So", price: 0.67, approx: true, offer: "Aktion" },
+  { id: "l-moe", store: "lidl", group: "Obst & Gemüse", name: "Deutsche Möhren", amt: "2-kg-Beutel (0,75 €/kg)", for: "Di, Fr (je 2 Stück)", price: 1.49, offer: "Prospekt" },
   { id: "l-avo", store: "lidl", group: "Obst & Gemüse", name: "Avocado, vorgereift", amt: "1 Stück", for: "Fr", price: 0.89 },
   { id: "l-gur", store: "lidl", group: "Obst & Gemüse", name: "Salatgurke", amt: "1 Stück", for: "Fr (die Hälfte)", price: 0.79 },
   { id: "l-rot", store: "lidl", group: "Obst & Gemüse", name: "Rotkohl", amt: "1 kleiner Kopf", for: "Fr (150 g)", price: 1.29, approx: true },
@@ -1705,16 +1714,16 @@ const ITEMS = [
   { id: "l-mai", store: "lidl", group: "Vorräte & Brot", name: "Mais", amt: "1 kleine Dose", for: "Mi", price: 0.79, approx: true },
   { id: "l-wra", store: "lidl", group: "Vorräte & Brot", name: "Tortilla-Wraps, Weizen", amt: "1 Packung", for: "Mi (4 Stück)", price: 1.19 },
   { id: "l-fla", store: "lidl", group: "Vorräte & Brot", name: "Fladenbrot", amt: "1 Stück", for: "Mo", price: 1.78, approx: true },
+  { id: "l-fri", store: "lidl", group: "Kauft ihr oft · im Angebot", name: "Milbona Frischkäse (Kräuter, Classic oder Balance)", amt: "175 g", for: "Brot · sonst 0,99 €, Almette bei REWE 1,11 €", price: 0.85, was: 0.99, offer: "Angebot", stamm: true },
   { id: "l-jog", store: "lidl", group: "Kauft ihr oft · im Angebot", name: "Joghurt mild 3,5 %", amt: "1 kg", for: "Frühstück · sonst 0,89 € je 500 g (1,78 €/kg)", price: 1.49, offer: "Angebot", stamm: true },
   { id: "l-rei", store: "lidl", group: "Vorräte & Brot", name: "Jasminreis", amt: "1 kg", for: "Fr, Sa", price: 1.99, cond: "nur falls leer" },
   { id: "r-kue", store: "rewe", group: "Obst & Gemüse", name: "Hokkaido-Kürbis", amt: "1 Stück, ca. 1,3 kg (0,89 €/kg)", for: "KW 44 (ganz und kühl gelagert hält er mehrere Wochen)", price: 1.16, approx: true, offer: "Angebot", later: true },
-  { id: "r-che", store: "rewe", group: "Obst & Gemüse", name: "Cherrytomaten", amt: "ca. 550 g", for: "Do (300 g), Sa (250 g)", price: 3.28, approx: true },
+  { id: "r-che", store: "rewe", group: "Obst & Gemüse", name: "Cherry-Romatomaten", amt: "3 Schalen à 250 g (3,56 €/kg)", for: "Do (300 g), Sa (250 g)", price: 2.67, offer: "Aktion" },
   { id: "r-thy", store: "rewe", group: "Obst & Gemüse", name: "Thymian, frisch", amt: "1 Packung", for: "Do (8 Stiele)", price: 0.99, approx: true },
   { id: "r-shi", store: "rewe", group: "Obst & Gemüse", name: "Shiitake-Pilze", amt: "1 Schale", for: "Di (120 g)", price: 2.49, approx: true },
   { id: "r-man", store: "rewe", group: "Obst & Gemüse", name: "Mango", amt: "1 Stück", for: "Fr", price: 1.11, offer: "Tiefpreis" },
   { id: "r-zit", store: "rewe", group: "Obst & Gemüse", name: "Zitronen", amt: "500-g-Netz", for: "Mi, Do", price: 0.99, offer: "Tiefpreis" },
   { id: "r-zwi", store: "rewe", group: "Obst & Gemüse", name: "Gelbe Zwiebeln", amt: "1,5 kg", for: "Mo, So", price: 1.39, offer: "Tiefpreis" },
-  { id: "r-moe", store: "rewe", group: "Obst & Gemüse", name: "Speisemöhren", amt: "1 kg", for: "Di, Fr", price: 1.29, approx: true, offer: "0,40 € Bonus" },
   { id: "r-eda", store: "rewe", group: "Kühlregal & TK", name: "Edamame, tiefgekühlt", amt: "1 Packung", for: "Fr (200 g)", price: 3.69 },
   { id: "r-mie", store: "rewe", group: "Vorräte & Asia", name: "Mie-Nudeln", amt: "250 g", for: "Di", price: 0.99, approx: true },
   { id: "r-ket", store: "rewe", group: "Vorräte & Asia", name: "Ketjap Manis", amt: "1 Flasche", for: "Di (2 EL)", price: 1.99, approx: true },
