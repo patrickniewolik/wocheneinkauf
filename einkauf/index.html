@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#fffdf7">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Einkauf">
+<title>Einkauf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600&amp;display=swap">
+<style>
+:root { --bg: #fffdf7; --ink: #1d2721; --muted: #5b675f; --line: #ebe6da; --sun: #ffd23f; --aldi: #1b2d7a; --aldi-soft: #e1e7fb; --rewe: #cc1f2f; --rewe-soft: #ffe1e3; color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 "Figtree", "Segoe UI", system-ui, sans-serif; }
+.wrap { max-width: 640px; margin: 0 auto; padding: 40px max(16px, env(safe-area-inset-left)) 56px; display: flex; flex-direction: column; gap: 22px; }
+h1 { font-family: "Bricolage Grotesque", "Segoe UI", sans-serif; font-size: clamp(2.2rem, 9vw, 3rem); line-height: 1.02; margin: 0; letter-spacing: -0.01em; }
+.hl { background: linear-gradient(transparent 58%, var(--sun) 58%, var(--sun) 92%, transparent 92%); padding-inline: 2px; }
+.eyebrow { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); font-weight: 600; }
+p { margin: 0; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+.stores { display: flex; gap: 8px; flex-wrap: wrap; }
+.store { font-weight: 600; padding: 3px 12px; border-radius: 999px; }
+.aldi { background: var(--aldi-soft); color: var(--aldi); }
+.rewe { background: var(--rewe-soft); color: var(--rewe); }
+ul { margin: 0; padding-left: 1.2em; }
+.fine { color: var(--muted); font-size: 0.88rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Essensplan und Einkaufsliste</span>
+  <h1>Ein<span class="hl">kauf</span></h1>
+  <div class="stores"><span class="store aldi">Aldi</span><span class="store rewe">REWE</span></div>
+  <div class="card">
+    <p><b>Der erste Wochenplan erscheint am Sonntag, 25. Oktober, gegen Mittag.</b></p>
+    <p>Danach gibt es hier jeden Sonntag den Plan für die neue Woche:</p>
+    <ul>
+      <li>sieben Abendessen, die Reste sind das Mittagessen am nächsten Tag,</li>
+      <li>möglichst viele vegetarische Gerichte, ausgesucht nach den Angeboten,</li>
+      <li>eine abhakbare Einkaufsliste für Aldi und REWE.</li>
+    </ul>
+  </div>
+  <p class="fine">Tipp: Über „Zum Startbildschirm hinzufügen“ (iPhone) oder „App installieren“ (Android, Chrome) liegt die Seite wie eine App auf dem Handy.</p>
+</div>
+<script>if ("serviceWorker" in navigator) { navigator.serviceWorker.register("sw.js").catch(() => {}); }</script>
+</body></html>
