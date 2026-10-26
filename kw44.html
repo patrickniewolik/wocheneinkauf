@@ -268,6 +268,16 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
 .item .del:focus-visible { outline: 2px solid var(--basil); outline-offset: -2px; }
 .add[hidden], .extras[hidden] { display: none; }
 
+/* Erledigte ausblenden: abgehakte Artikel verschwinden, leere Gruppen samt Überschrift auch */
+.hide-done { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px;
+  font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--basil); background: var(--surface);
+  border: 1px solid var(--basil); border-radius: 10px; cursor: pointer; }
+.hide-done[aria-pressed="true"] { background: var(--basil); color: #ffffff; }
+.hide-done:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+.hiding-done .item.is-done { display: none; }
+.hiding-done .items:not(:has(.item:not(.is-done))) { display: none; }
+.hiding-done .group-label:has(+ .items:not(:has(.item:not(.is-done)))) { display: none; }
+
 @media (max-width: 680px) {
   header { grid-template-columns: 1fr; }
   .strip { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: -20px; }
@@ -511,6 +521,8 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
       <p class="sync" aria-live="polite" hidden=""></p>
       <p class="fine">Steht dann oben in der Liste des Markts, für euch beide. Was bis Sonntag nicht abgehakt ist, wandert in die nächste Woche.</p>
     </form>
+
+    <button class="hide-done" id="hide-done" type="button" aria-pressed="false">Erledigte ausblenden</button>
 
     <section class="store" id="lidl" aria-labelledby="lidl-h">
       <div class="store-head">
@@ -1644,7 +1656,7 @@ function renderList(store) {
       li.querySelector("input").addEventListener("change", ev => {
         ev.target.checked ? checked.add(i.id) : checked.delete(i.id);
         li.classList.toggle("is-done", ev.target.checked);
-        save(); totals();
+        save(); totals(); doneCount();
       });
       ul.appendChild(li);
     });
@@ -1665,7 +1677,24 @@ function totals() {
   document.getElementById("open-lidl").textContent = eur(open("lidl")) + " €";
   document.getElementById("open-rewe").textContent = eur(open("rewe")) + " €";
 }
-document.getElementById("reset").addEventListener("click", () => { checked.clear(); save(); renderList("lidl"); renderList("rewe"); totals(); });
+document.getElementById("reset").addEventListener("click", () => { checked.clear(); save(); renderList("lidl"); renderList("rewe"); totals(); doneCount(); });
+
+/* Erledigte ausblenden: gilt nur auf diesem Gerät, die Einstellung bleibt über die Wochen erhalten */
+const HIDE_KEY = "wocheneinkauf-hide-done";
+const hideBtn = document.getElementById("hide-done");
+let hideDone = false;
+try { hideDone = localStorage.getItem(HIDE_KEY) === "1"; } catch (e) {}
+function doneCount() {
+  const n = document.querySelectorAll("#einkauf .item.is-done").length;
+  hideBtn.setAttribute("aria-pressed", String(hideDone));
+  hideBtn.textContent = hideDone ? `Erledigte wieder anzeigen (${n})` : n ? `Erledigte ausblenden (${n})` : "Erledigte ausblenden";
+  document.getElementById("einkauf").classList.toggle("hiding-done", hideDone);
+}
+hideBtn.addEventListener("click", () => {
+  hideDone = !hideDone;
+  try { localStorage.setItem(HIDE_KEY, hideDone ? "1" : "0"); } catch (e) {}
+  doneCount();
+});
 
 /* ---------- Gekocht? Gemeinsamer Stand in Firestore (Projekt wocheneinkauf-58efa) ----------
    Nur auf der App-Seite (github.io) und nur auf Geräten, die das Abhaken eingeschaltet haben
@@ -1746,6 +1775,7 @@ function renderExtras() {
     });
     host.append(label, ul);
   });
+  doneCount();
 }
 async function addExtra(name, store) {
   const id = "x" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -1895,7 +1925,7 @@ document.getElementById("cook-gate").addEventListener("click", () => {
   initCook();
 });
 
-renderStrip(); renderDays(); renderList("lidl"); renderList("rewe"); totals(); initCook();
+renderStrip(); renderDays(); renderList("lidl"); renderList("rewe"); totals(); doneCount(); initCook();
 </script>
 <script>if ("serviceWorker" in navigator) { navigator.serviceWorker.register("sw.js").catch(() => {}); }</script>
 
