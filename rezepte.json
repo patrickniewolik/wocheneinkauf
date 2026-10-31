@@ -1,0 +1,1292 @@
+{
+ "stand": "31.10.2026",
+ "kategorien": {
+  "Paprika": "Gemüse & Obst",
+  "Tomaten": "Gemüse & Obst",
+  "Eier": "Kühlregal",
+  "Petersilie": "Gemüse & Obst",
+  "Fladenbrot": "Brot",
+  "Mie-Nudeln": "Vorrat",
+  "Möhren": "Gemüse & Obst",
+  "Pilze": "Gemüse & Obst",
+  "Lauchzwiebeln": "Gemüse & Obst",
+  "Ingwer": "Gemüse & Obst",
+  "Tofu": "Kühlregal",
+  "Sesam": "Vorrat",
+  "Kidneybohnen": "Vorrat",
+  "Mais": "Vorrat",
+  "Koriander": "Gemüse & Obst",
+  "Cheddar": "Kühlregal",
+  "Feta": "Kühlregal",
+  "Tortillas": "Brot",
+  "Schmand": "Kühlregal",
+  "Zitrone": "Gemüse & Obst",
+  "Thymian": "Gemüse & Obst",
+  "Nudeln": "Vorrat",
+  "Reis": "Vorrat",
+  "Edamame (TK)": "Kühlregal",
+  "Rotkohl": "Gemüse & Obst",
+  "Gurke": "Gemüse & Obst",
+  "Avocado": "Gemüse & Obst",
+  "Mango": "Gemüse & Obst",
+  "Limette": "Gemüse & Obst",
+  "Erdnussmus": "Vorrat",
+  "Rote Linsen": "Vorrat",
+  "Kokosmilch": "Vorrat",
+  "Zucchini": "Gemüse & Obst",
+  "Veganes Hack": "Kühlregal",
+  "Passierte Tomaten": "Vorrat",
+  "Gouda": "Kühlregal",
+  "Crème fraîche": "Kühlregal",
+  "Brokkoli": "Gemüse & Obst",
+  "Walnüsse": "Vorrat",
+  "Basilikum": "Gemüse & Obst",
+  "Gnocchi": "Kühlregal",
+  "Burrata": "Kühlregal",
+  "Udon-Nudeln": "Vorrat",
+  "Pita": "Brot",
+  "Falafel": "Kühlregal",
+  "Hummus": "Kühlregal",
+  "Eisbergsalat": "Gemüse & Obst",
+  "Staudensellerie": "Gemüse & Obst",
+  "Kürbis": "Gemüse & Obst",
+  "Butter": "Kühlregal",
+  "Pekannüsse": "Vorrat",
+  "Dill": "Gemüse & Obst",
+  "Frischkäse": "Kühlregal",
+  "Kartoffeln": "Gemüse & Obst",
+  "Rucola": "Gemüse & Obst",
+  "Rosenkohl": "Gemüse & Obst",
+  "Rosmarin": "Gemüse & Obst",
+  "Ciabatta": "Brot",
+  "Haferflocken": "Vorrat",
+  "Hafermilch": "Kühlregal"
+ },
+ "rezepte": [
+  {
+   "id": "shakshuka-mit-fladenbrot",
+   "title": "Shakshuka mit Fladenbrot",
+   "art": "shakshuka",
+   "time": "25 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "1",
+     "große Zwiebel",
+     null
+    ],
+    [
+     "1",
+     "rote Paprika",
+     "Paprika"
+    ],
+    [
+     "2 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "1 Dose (425 ml)",
+     "Tomaten",
+     "Tomaten"
+    ],
+    [
+     "¼ TL",
+     "Chiliflocken",
+     null
+    ],
+    [
+     "¼ TL",
+     "Paprika edelsüß",
+     null
+    ],
+    [
+     "1 gestr. TL",
+     "Kreuzkümmel",
+     null
+    ],
+    [
+     "4",
+     "Eier (Größe M)",
+     "Eier"
+    ],
+    [
+     "2–3 Stiele",
+     "glatte Petersilie",
+     "Petersilie"
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ],
+    [
+     "1",
+     "Fladenbrot (dazu)",
+     "Fladenbrot"
+    ]
+   ],
+   "steps": [
+    "Zwiebel und Paprika in feine Streifen schneiden und im Olivenöl in einer großen Pfanne mit Deckel etwa 5 Minuten braten.",
+    "Tomaten, Chiliflocken, Paprikapulver und Kreuzkümmel einrühren und rund 5 Minuten einkochen lassen. Salzen und pfeffern.",
+    "Mit einem Löffel vier Mulden in die Soße drücken und je ein Ei vorsichtig hineingleiten lassen.",
+    "Halb zugedeckt bei kleiner Hitze etwa 6 Minuten garen, bis das Eiweiß gestockt ist.",
+    "Abschmecken, mit gehackter Petersilie bestreuen und mit warmem Fladenbrot servieren."
+   ],
+   "src": [
+    "lecker.de",
+    "https://www.lecker.de/shakshuka-gebackene-eier-paprika-tomaten-sugo-44730.html"
+   ],
+   "plan": "KW 43",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1590412200988-a436970781fa?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "Yoav Aziz",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/422N7Nwq5XY"
+   }
+  },
+  {
+   "id": "bunte-gemuese-bratnudeln-mit-tofu",
+   "title": "Bunte Gemüse-Bratnudeln mit Tofu",
+   "art": "bratnudeln",
+   "time": "25 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "250 g",
+     "Mie-Nudeln",
+     "Mie-Nudeln"
+    ],
+    [
+     "3 EL",
+     "Öl",
+     null
+    ],
+    [
+     "1",
+     "rote Paprika",
+     "Paprika"
+    ],
+    [
+     "2",
+     "Möhren",
+     "Möhren"
+    ],
+    [
+     "120 g",
+     "Shiitake-Pilze",
+     "Pilze"
+    ],
+    [
+     "1 Bund",
+     "Lauchzwiebeln",
+     "Lauchzwiebeln"
+    ],
+    [
+     "ca. 3 cm",
+     "Ingwer",
+     "Ingwer"
+    ],
+    [
+     "2",
+     "Knoblauchzehen",
+     null
+    ],
+    [
+     "200 g",
+     "Tofu",
+     "Tofu"
+    ],
+    [
+     "5 EL",
+     "Sojasoße",
+     null
+    ],
+    [
+     "2 EL",
+     "Ketjap Manis",
+     null
+    ],
+    [
+     "2",
+     "Eier",
+     "Eier"
+    ],
+    [
+     "1 EL",
+     "Sesamöl",
+     null
+    ],
+    [
+     "1–2 EL",
+     "Sesam (im Original schwarz)",
+     "Sesam"
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ]
+   ],
+   "steps": [
+    "Nudeln nach Packungsangabe kochen, abgießen und mit 1 EL Öl mischen.",
+    "Paprika und Möhren in Stifte, Lauchzwiebeln in Ringe und die Pilze klein schneiden. Ingwer und Knoblauch fein hacken, Tofu würfeln.",
+    "1 EL Öl erhitzen und Lauchzwiebeln, Ingwer und Knoblauch etwa 2 Minuten anbraten. Nudeln, Paprika, Möhren und Pilze zugeben und rund 3 Minuten mitbraten.",
+    "Tofu, 1 EL Sojasoße und das Ketjap Manis unterrühren.",
+    "Eier mit 2 EL Sojasoße und dem Sesamöl verquirlen, über die Nudeln gießen und etwa 4 Minuten braten, bis alles gestockt ist. Mit restlicher Sojasoße, Salz und Pfeffer abschmecken und mit Sesam bestreuen."
+   ],
+   "src": [
+    "lecker.de",
+    "https://www.lecker.de/bunte-gemuese-bratnudeln-128867.html"
+   ],
+   "plan": "KW 43",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1655427221151-870cc71a63c2?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "Drake Whitney",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/KwT-QQj1-NE"
+   }
+  },
+  {
+   "id": "kidneybohnen-quesadillas-mit-tomatensalsa",
+   "title": "Kidneybohnen-Quesadillas mit Tomatensalsa",
+   "art": "quesadilla",
+   "time": "30 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "1 Dose (425 ml)",
+     "Kidneybohnen",
+     "Kidneybohnen"
+    ],
+    [
+     "1 kleine Dose (212 ml)",
+     "Mais",
+     "Mais"
+    ],
+    [
+     "½ Bund",
+     "Koriander",
+     "Koriander"
+    ],
+    [
+     "175 g",
+     "Cheddar",
+     "Cheddar"
+    ],
+    [
+     "100 g",
+     "Feta",
+     "Feta"
+    ],
+    [
+     "3",
+     "Lauchzwiebeln",
+     "Lauchzwiebeln"
+    ],
+    [
+     "4",
+     "Weizentortillas",
+     "Tortillas"
+    ],
+    [
+     "150 g",
+     "Schmand",
+     "Schmand"
+    ],
+    [
+     "ca. 2 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "4",
+     "Tomaten",
+     "Tomaten"
+    ],
+    [
+     "1 EL",
+     "Zitronensaft",
+     "Zitrone"
+    ],
+    [
+     "",
+     "Salz, Pfeffer, Zucker",
+     null
+    ]
+   ],
+   "steps": [
+    "Ofen auf 200 °C Ober-/Unterhitze (180 °C Umluft) vorheizen. Bohnen abspülen und mit dem Mais abtropfen lassen. Koriander grob hacken.",
+    "Cheddar reiben, Feta zerbröseln, Lauchzwiebeln in feine Ringe schneiden.",
+    "Bohnen und Mais mit je der Hälfte von Koriander, Käse und Lauchzwiebeln mischen und würzen. Tortillas zur Hälfte mit etwas Schmand bestreichen, Füllung daraufgeben und zuklappen.",
+    "Auf ein Blech mit Backpapier legen, mit Öl bepinseln, mit dem restlichen Käse bestreuen und etwa 10 Minuten backen, bis er goldbraun ist.",
+    "Für die Salsa Tomaten entkernen und klein würfeln, mit den restlichen Lauchzwiebeln, Koriander, 1 EL Öl und Zitronensaft mischen und mit Salz, Pfeffer und Zucker abschmecken. Mit dem übrigen Schmand servieren."
+   ],
+   "src": [
+    "lecker.de",
+    "https://www.lecker.de/kidneybohnen-quesadillas-4937.html"
+   ],
+   "plan": "KW 43",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "Lottie Griffiths",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/pvTgyioFSTY"
+   }
+  },
+  {
+   "id": "baked-feta-pasta",
+   "title": "Baked Feta Pasta",
+   "art": "fetapasta",
+   "time": "40 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "300 g",
+     "Cherrytomaten",
+     "Tomaten"
+    ],
+    [
+     "8 Stiele",
+     "Thymian",
+     "Thymian"
+    ],
+    [
+     "2",
+     "Knoblauchzehen",
+     null
+    ],
+    [
+     "1",
+     "rote Zwiebel",
+     null
+    ],
+    [
+     "½",
+     "Zitrone",
+     "Zitrone"
+    ],
+    [
+     "200 g",
+     "Feta",
+     "Feta"
+    ],
+    [
+     "4 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "300 g",
+     "Spaghetti",
+     "Nudeln"
+    ],
+    [
+     "",
+     "frische Kräuter zum Bestreuen (Rest Petersilie oder Koriander)",
+     "Petersilie"
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ]
+   ],
+   "steps": [
+    "Ofen auf 220 °C Ober- und Unterhitze vorheizen. Tomaten waschen, Thymianblättchen abzupfen, Knoblauch hacken, Zwiebel in Spalten schneiden, Zitrone auspressen.",
+    "Feta abtropfen lassen und in eine kleine Auflaufform (ca. 20 × 15 cm) legen. Tomaten, Knoblauch, Zwiebel und Thymian drumherum verteilen.",
+    "Mit Olivenöl und Zitronensaft beträufeln, salzen, pfeffern und 20–25 Minuten im Ofen backen.",
+    "Währenddessen die Spaghetti nach Packungsangabe kochen und abgießen.",
+    "Feta und Tomaten mit einer Gabel grob zerdrücken, die Spaghetti untermischen und mit den Kräutern bestreuen."
+   ],
+   "src": [
+    "lecker.de",
+    "https://www.lecker.de/baked-feta-pasta-81430.html"
+   ],
+   "plan": "KW 43",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1565805403925-fe49242d1892?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "Roberto Arias",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/q9itiHqVO10"
+   }
+  },
+  {
+   "id": "vegane-poke-bowl-mit-mango",
+   "title": "Vegane Poke Bowl mit Mango",
+   "art": "poke",
+   "time": "40 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "200 g",
+     "Jasminreis",
+     "Reis"
+    ],
+    [
+     "200 g",
+     "Edamame, tiefgekühlt",
+     "Edamame (TK)"
+    ],
+    [
+     "200 g",
+     "Tofu",
+     "Tofu"
+    ],
+    [
+     "150 g",
+     "Rotkohl",
+     "Rotkohl"
+    ],
+    [
+     "½ Bund",
+     "Lauchzwiebeln",
+     "Lauchzwiebeln"
+    ],
+    [
+     "2",
+     "Möhren",
+     "Möhren"
+    ],
+    [
+     "½",
+     "Gurke",
+     "Gurke"
+    ],
+    [
+     "1",
+     "Avocado",
+     "Avocado"
+    ],
+    [
+     "1",
+     "Mango",
+     "Mango"
+    ],
+    [
+     "½ Bund",
+     "Koriander",
+     "Koriander"
+    ],
+    [
+     "1 EL",
+     "Sesam",
+     "Sesam"
+    ],
+    [
+     "1 EL",
+     "Rapsöl",
+     null
+    ],
+    [
+     "1 EL + 1 EL",
+     "Sojasauce",
+     null
+    ],
+    [
+     "1 TL + 2 EL",
+     "Limettensaft",
+     "Limette"
+    ],
+    [
+     "3 EL",
+     "Erdnussmus",
+     "Erdnussmus"
+    ],
+    [
+     "1 EL",
+     "Ahornsirup",
+     null
+    ]
+   ],
+   "steps": [
+    "Reis und Edamame garen.",
+    "Tofu trocken pressen, würfeln und im Öl knusprig braten. Mit 1 EL Sojasauce ablöschen.",
+    "Rotkohl fein hobeln, Möhren raspeln, Gurke, Avocado und Mango schneiden, Lauchzwiebeln in Ringe schneiden. Sesam ohne Öl rösten.",
+    "Erdnussmus, Sojasauce, 2 EL Limettensaft, Ahornsirup und Pfeffer zu einem Dressing verrühren.",
+    "Alles in Schalen anrichten, Dressing darübergeben, mit Koriander und Sesam bestreuen."
+   ],
+   "src": [
+    "einfach kochen",
+    "https://www.einfachkochen.de/rezepte/vegane-poke-bowl"
+   ],
+   "plan": "KW 43",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1764674963000-0d113663bc0d?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "XinYing Lin",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/_VWg1YZNDnM"
+   }
+  },
+  {
+   "id": "rote-linsen-curry-mit-jasminreis",
+   "title": "Rote-Linsen-Curry mit Jasminreis",
+   "art": "curry",
+   "time": "30 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "250 g",
+     "rote Linsen",
+     "Rote Linsen"
+    ],
+    [
+     "250 g",
+     "Cherrytomaten",
+     "Tomaten"
+    ],
+    [
+     "2",
+     "Knoblauchzehen",
+     null
+    ],
+    [
+     "1 Stück",
+     "Ingwer",
+     "Ingwer"
+    ],
+    [
+     "1 EL",
+     "Rapsöl",
+     null
+    ],
+    [
+     "½ TL",
+     "Kreuzkümmel",
+     null
+    ],
+    [
+     "½ TL",
+     "Zimt",
+     null
+    ],
+    [
+     "1 TL",
+     "Currypulver",
+     null
+    ],
+    [
+     "400 ml",
+     "Kokosmilch",
+     "Kokosmilch"
+    ],
+    [
+     "250 ml",
+     "Gemüsebrühe, plus etwas Wasser",
+     null
+    ],
+    [
+     "2 EL",
+     "Limettensaft",
+     "Limette"
+    ],
+    [
+     "250 g",
+     "Jasminreis (Beilage)",
+     "Reis"
+    ]
+   ],
+   "steps": [
+    "Reis nach Packungsangabe kochen. Tomaten vierteln, Linsen abspülen.",
+    "Knoblauch und Ingwer fein hacken und im Öl andünsten. Kreuzkümmel, Zimt und Curry kurz mitrösten.",
+    "Kokosmilch, Brühe, Tomaten und Linsen zugeben und aufkochen.",
+    "Bei mittlerer Hitze etwa 20 Minuten köcheln, bis die Linsen weich sind. Bei Bedarf Wasser nachgießen.",
+    "Mit Salz, Pfeffer und Limettensaft abschmecken."
+   ],
+   "src": [
+    "Gaumenfreundin",
+    "https://www.gaumenfreundin.de/rote-linsen-curry/"
+   ],
+   "plan": "KW 43",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1788604619692-120407b7207c?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "Zoshua Colah",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/ZvKo4k3xKIs"
+   }
+  },
+  {
+   "id": "gefuellte-zucchini-mit-veganem-hack",
+   "title": "Gefüllte Zucchini mit veganem Hack",
+   "art": "zucchini",
+   "time": "45 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "2",
+     "Zucchini",
+     "Zucchini"
+    ],
+    [
+     "1 Packung",
+     "veganes Hack (statt 250 g Rinderhack)",
+     "Veganes Hack"
+    ],
+    [
+     "200 g",
+     "passierte Tomaten",
+     "Passierte Tomaten"
+    ],
+    [
+     "100 g",
+     "Gouda, gerieben",
+     "Gouda"
+    ],
+    [
+     "1",
+     "Knoblauchzehe",
+     null
+    ],
+    [
+     "½",
+     "Zwiebel",
+     null
+    ],
+    [
+     "1 EL",
+     "Tomatenmark",
+     null
+    ],
+    [
+     "1 EL",
+     "Crème fraîche",
+     "Crème fraîche"
+    ],
+    [
+     "1 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "½ TL",
+     "Paprika edelsüß",
+     null
+    ],
+    [
+     "¾ TL",
+     "Oregano",
+     null
+    ],
+    [
+     "1 Prise",
+     "Zucker, Salz",
+     null
+    ]
+   ],
+   "steps": [
+    "Ofen auf 180 °C Umluft vorheizen. Zucchini längs halbieren, aushöhlen und das Fruchtfleisch hacken.",
+    "Zwiebel und Knoblauch im Öl andünsten, veganes Hack mit Paprika und Salz anbraten.",
+    "Zucchinifleisch, Tomatenmark, passierte Tomaten, Oregano und Zucker einrühren und kurz köcheln.",
+    "Masse in die Zucchinihälften füllen, Crème fraîche daraufgeben und 15 Minuten backen.",
+    "Käse darüberstreuen und weitere 10 Minuten goldbraun backen."
+   ],
+   "src": [
+    "Emmi kocht einfach",
+    "https://emmikochteinfach.de/gefuellte-zucchini-schiffchen-hackfleisch/"
+   ],
+   "plan": "KW 43",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1750190624998-ef16e3e8cf80?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "Abdul Raheem Kannath",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/EKlOw5lpdMI"
+   }
+  },
+  {
+   "id": "brokkoli-pesto-mit-gnocchi-und-burrata",
+   "title": "Brokkoli-Pesto mit Gnocchi und Burrata",
+   "art": "gnocchi",
+   "time": "20 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "1",
+     "Brokkoli",
+     "Brokkoli"
+    ],
+    [
+     "50 g",
+     "Walnüsse",
+     "Walnüsse"
+    ],
+    [
+     "1,5 Bund",
+     "Basilikum (oder 1 Topf)",
+     "Basilikum"
+    ],
+    [
+     "2",
+     "Knoblauchzehen",
+     null
+    ],
+    [
+     "1",
+     "Zitrone (Saft und etwas Abrieb)",
+     "Zitrone"
+    ],
+    [
+     "4,5 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "400 g",
+     "Gnocchi",
+     "Gnocchi"
+    ],
+    [
+     "1",
+     "Burrata",
+     "Burrata"
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ]
+   ],
+   "steps": [
+    "Brokkoli in Röschen teilen und 3–4 Minuten in Salzwasser vorgaren, dann abgießen.",
+    "Mit Walnüssen, Basilikum, Knoblauch, Zitronensaft und etwas Abrieb, 3 EL Olivenöl, Salz und Pfeffer zu einem groben Pesto mixen.",
+    "Gnocchi im restlichen Öl in einer Pfanne goldbraun und knusprig braten.",
+    "Gnocchi mit dem Pesto mischen, auf Teller verteilen und die Burrata obenauf setzen."
+   ],
+   "src": [
+    "choosy (der Ausdruck enthält nur die Zutaten, die Schritte sind ergänzt)",
+    "https://my.choosy.de/recipes/brokkoli-pesto-30"
+   ],
+   "plan": "KW 44",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1707448460889-e268eb742820?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "shibani Mishra",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/docP-fBTnjw"
+   }
+  },
+  {
+   "id": "udon-mit-tofu",
+   "title": "Udon mit Tofu",
+   "art": "udon",
+   "time": "30 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "200 g",
+     "Tofu natur",
+     "Tofu"
+    ],
+    [
+     "etwas",
+     "Ahornsirup",
+     null
+    ],
+    [
+     "5 EL",
+     "Sojasoße",
+     null
+    ],
+    [
+     "400 g",
+     "Udon-Nudeln (vorgekocht)",
+     "Udon-Nudeln"
+    ],
+    [
+     "1",
+     "Brokkoli",
+     "Brokkoli"
+    ],
+    [
+     "2 EL",
+     "Erdnussmus",
+     "Erdnussmus"
+    ],
+    [
+     "200 ml",
+     "Kokosmilch",
+     "Kokosmilch"
+    ],
+    [
+     "nach Geschmack",
+     "Knoblauchpulver, Currypulver",
+     null
+    ],
+    [
+     "1 EL",
+     "Öl zum Braten",
+     null
+    ]
+   ],
+   "steps": [
+    "Tofu mit den Fingern fein zerbröseln, mit 1 EL Sojasoße und einem Schuss Ahornsirup mischen und in Öl knusprig braten.",
+    "Brokkoli in Röschen teilen und zusammen mit den Udon-Nudeln im selben Topf kurz garen, dann abgießen.",
+    "In einer Pfanne Erdnussmus und Kokosmilch erwärmen und glatt rühren. Mit 4 EL Sojasoße, Knoblauch- und Currypulver würzen.",
+    "Nudeln und Brokkoli in der Soße schwenken, auf Teller geben und den knusprigen Tofu darüberstreuen."
+   ],
+   "src": [
+    "choosy",
+    "https://my.choosy.de/recipes/udon-mit-tofu"
+   ],
+   "plan": "KW 44",
+   "photo": {
+    "src": "img/udon-tofu.jpg",
+    "by": "Unser Foto"
+   }
+  },
+  {
+   "id": "falafel-pita",
+   "title": "Falafel-Pita",
+   "art": "falafel",
+   "time": "25 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "2",
+     "Pita-Taschen",
+     "Pita"
+    ],
+    [
+     "6",
+     "Falafel",
+     "Falafel"
+    ],
+    [
+     "100 g",
+     "Hummus",
+     "Hummus"
+    ],
+    [
+     "200 g",
+     "Tomaten",
+     "Tomaten"
+    ],
+    [
+     "1",
+     "Zwiebel",
+     null
+    ],
+    [
+     "½ Bund",
+     "glatte Petersilie",
+     "Petersilie"
+    ],
+    [
+     "4 Blätter",
+     "Eisbergsalat",
+     "Eisbergsalat"
+    ],
+    [
+     "1 TL",
+     "Rapsöl",
+     null
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ]
+   ],
+   "steps": [
+    "Falafel nach Packungsangabe in etwas Öl rundum anbraten.",
+    "Tomaten und Zwiebel fein würfeln, Petersilie hacken und alles mit Salz und Pfeffer zu einem kleinen Salat mischen.",
+    "Pita im Toaster aufwärmen, aufschneiden und innen mit Hummus bestreichen.",
+    "Mit Salatblättern, Tomatensalat und Falafel füllen."
+   ],
+   "src": [
+    "choosy",
+    "https://my.choosy.de/recipes/falafel-pita"
+   ],
+   "plan": "KW 44",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1741980597454-54f338cea614?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "lrsflx",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/1k-7E0jueTA"
+   }
+  },
+  {
+   "id": "rote-linsen-bolognese-mit-spaghetti",
+   "title": "Rote-Linsen-Bolognese mit Spaghetti",
+   "art": "bolognese",
+   "time": "30 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "150 g",
+     "rote Linsen",
+     "Rote Linsen"
+    ],
+    [
+     "1",
+     "Zwiebel",
+     null
+    ],
+    [
+     "1",
+     "Knoblauchzehe",
+     null
+    ],
+    [
+     "1 (ca. 60 g)",
+     "Möhre",
+     "Möhren"
+    ],
+    [
+     "1 Stange",
+     "Staudensellerie",
+     "Staudensellerie"
+    ],
+    [
+     "1 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "2 EL",
+     "Tomatenmark",
+     null
+    ],
+    [
+     "500 g",
+     "passierte Tomaten",
+     "Passierte Tomaten"
+    ],
+    [
+     "500 ml",
+     "Gemüsebrühe",
+     null
+    ],
+    [
+     "1 EL",
+     "italienische Kräuter",
+     null
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ],
+    [
+     "ca. 400 g",
+     "Spaghetti (dazu)",
+     "Nudeln"
+    ]
+   ],
+   "steps": [
+    "Linsen abspülen. Zwiebel und Knoblauch fein hacken, Möhre schälen und mit dem Sellerie klein würfeln.",
+    "Gemüse im Olivenöl etwa 5 Minuten bei mittlerer Hitze andünsten, dann das Tomatenmark kurz mitrösten.",
+    "Passierte Tomaten, Brühe, Linsen und Kräuter dazugeben, aufkochen und zugedeckt 15–20 Minuten köcheln, bis die Linsen weich sind.",
+    "Währenddessen die Spaghetti kochen. Soße salzen, pfeffern und bei Bedarf mit etwas Wasser cremiger rühren."
+   ],
+   "src": [
+    "Gaumenfreundin",
+    "https://www.gaumenfreundin.de/rote-linsenbolognese-einfach-und-vegan/"
+   ],
+   "plan": "KW 44"
+  },
+  {
+   "id": "cremiger-kuerbis-nudel-topf",
+   "title": "Cremiger Kürbis-Nudel-Topf",
+   "art": "kuerbisnudeln",
+   "time": "30 Min",
+   "portions": "3–4 Portionen",
+   "ingredients": [
+    [
+     "500 ml",
+     "Wasser mit 2 TL Gemüsebrühe (instant)",
+     null
+    ],
+    [
+     "200 g",
+     "kleine Champignons",
+     "Pilze"
+    ],
+    [
+     "½ (ca. 650 g)",
+     "Hokkaido-Kürbis (Original: 1 Kürbis à 750 g)",
+     "Kürbis"
+    ],
+    [
+     "2",
+     "Zwiebeln",
+     null
+    ],
+    [
+     "2",
+     "Knoblauchzehen",
+     null
+    ],
+    [
+     "2 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "1 EL",
+     "Butter",
+     "Butter"
+    ],
+    [
+     "200 g",
+     "kurze Nudeln (z. B. Fusilli)",
+     "Nudeln"
+    ],
+    [
+     "30 g",
+     "Pekannusskerne",
+     "Pekannüsse"
+    ],
+    [
+     "½ Bund",
+     "Dill",
+     "Dill"
+    ],
+    [
+     "150 g",
+     "Kräuter-Frischkäse",
+     "Frischkäse"
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ]
+   ],
+   "steps": [
+    "Wasser aufkochen und die Brühe darin auflösen. Champignons putzen, Kürbis entkernen und mit Schale in etwa 2 cm große Würfel schneiden. Zwiebeln und Knoblauch fein würfeln.",
+    "Öl und Butter in einem großen Topf erhitzen und Pilze, Kürbis, Zwiebeln und Knoblauch rund 10 Minuten anbraten.",
+    "Brühe angießen, die Nudeln roh dazugeben und alles zugedeckt etwa 10 Minuten köcheln lassen, bis die Nudeln gar sind.",
+    "Pekannüsse grob hacken, Dill fein schneiden. Frischkäse unter die Nudeln rühren, salzen, pfeffern und mit Dill und Nüssen bestreut servieren."
+   ],
+   "src": [
+    "lecker.de",
+    "https://www.lecker.de/cremiger-kuerbis-nudel-topf-82202.html"
+   ],
+   "plan": "KW 44"
+  },
+  {
+   "id": "italienische-kartoffel-power-bowl",
+   "title": "Italienische Kartoffel-Power-Bowl",
+   "art": "kartoffelbowl",
+   "time": "45 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "1,6 kg",
+     "Drillinge",
+     "Kartoffeln"
+    ],
+    [
+     "120 ml",
+     "Olivenöl (20 ml zum Rösten, 100 ml fürs Dressing)",
+     null
+    ],
+    [
+     "450 g",
+     "bunte Tomaten",
+     "Tomaten"
+    ],
+    [
+     "1",
+     "Knoblauchzehe",
+     null
+    ],
+    [
+     "2 EL",
+     "Balsamico bianco",
+     null
+    ],
+    [
+     "je 1 TL",
+     "getrocknetes Basilikum und Oregano",
+     null
+    ],
+    [
+     "1 TL",
+     "Zucker",
+     null
+    ],
+    [
+     "2 EL",
+     "Wasser",
+     null
+    ],
+    [
+     "1 TL",
+     "Salz (fürs Dressing)",
+     null
+    ],
+    [
+     "4 große Handvoll",
+     "Rucola",
+     "Rucola"
+    ],
+    [
+     "optional",
+     "etwas Feta",
+     "Feta"
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ]
+   ],
+   "steps": [
+    "Ofen auf 220 °C Ober- und Unterhitze vorheizen. Drillinge waschen, halbieren oder vierteln, mit 20 ml Öl, Salz und Pfeffer mischen und auf dem Blech 25–35 Minuten knusprig rösten.",
+    "Tomaten halbieren, Rucola waschen und trocken schleudern.",
+    "Für das Dressing Knoblauch, Balsamico, Kräuter, Zucker, 100 ml Öl, Wasser und 1 TL Salz cremig mixen.",
+    "Rucola in Schalen verteilen, Kartoffeln und Tomaten daraufgeben, nach Lust Feta darüberbröseln und mit dem Dressing beträufeln."
+   ],
+   "src": [
+    "Kochkarussell",
+    "https://kochkarussell.com/kartoffel-power-bowl/"
+   ],
+   "plan": "KW 44"
+  },
+  {
+   "id": "ofenkuerbis-mit-feta-rosenkohl-und-ciabatta",
+   "title": "Ofenkürbis mit Feta, Rosenkohl und Ciabatta",
+   "art": "kuerbis",
+   "time": "40 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "½ (ca. 650 g)",
+     "Hokkaido-Kürbis (Original: ca. 800 g)",
+     "Kürbis"
+    ],
+    [
+     "500 g",
+     "Rosenkohl (Variante)",
+     "Rosenkohl"
+    ],
+    [
+     "1 Zweig",
+     "Rosmarin",
+     "Rosmarin"
+    ],
+    [
+     "4 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "je 1 Prise",
+     "Curry, Kreuzkümmel, Pfeffer, Salz",
+     null
+    ],
+    [
+     "150 g",
+     "Feta",
+     "Feta"
+    ],
+    [
+     "10",
+     "Walnusshälften",
+     "Walnüsse"
+    ],
+    [
+     "4 TL",
+     "Honig (oder Ahornsirup)",
+     null
+    ],
+    [
+     "1",
+     "Ciabatta (Variante, dazu)",
+     "Ciabatta"
+    ]
+   ],
+   "steps": [
+    "Ofen auf 180 °C Ober- und Unterhitze vorheizen. Kürbis entkernen und mit Schale in Spalten schneiden, Rosenkohl putzen und halbieren. Rosmarinnadeln fein hacken.",
+    "Kürbis und Rosenkohl mit Olivenöl, Rosmarin und den Gewürzen mischen und auf einem Blech mit Backpapier verteilen.",
+    "Feta darüberbröseln und die grob gehackten Walnüsse verteilen. 30–35 Minuten backen.",
+    "Mit Honig beträufeln. Das Ciabatta in den letzten Minuten mit aufbacken und dazu reichen."
+   ],
+   "src": [
+    "Gaumenfreundin",
+    "https://www.gaumenfreundin.de/ofenkuerbis/"
+   ],
+   "plan": "KW 44"
+  },
+  {
+   "id": "vegane-frikadellen",
+   "title": "Vegane Frikadellen",
+   "art": null,
+   "time": "30 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "120 g",
+     "Haferflocken (zart)",
+     "Haferflocken"
+    ],
+    [
+     "0,5 TL",
+     "Salz",
+     null
+    ],
+    [
+     "1 TL",
+     "Knoblauchpulver",
+     null
+    ],
+    [
+     "1 TL",
+     "Zwiebelpulver",
+     null
+    ],
+    [
+     "1 TL",
+     "Paprikapulver (edelsüß)",
+     null
+    ],
+    [
+     "1 TL",
+     "Majoran (getrocknet)",
+     null
+    ],
+    [
+     "1 Prise",
+     "Muskatnuss (gemahlen)",
+     null
+    ],
+    [
+     "1 Prise",
+     "Kreuzkümmel (gemahlen)",
+     null
+    ],
+    [
+     "",
+     "Pfeffer",
+     null
+    ],
+    [
+     "150 ml",
+     "Hafermilch",
+     "Hafermilch"
+    ],
+    [
+     "80 g",
+     "Zwiebeln",
+     null
+    ],
+    [
+     "1 TL",
+     "Senf",
+     null
+    ]
+   ],
+   "steps": [
+    "Zwiebeln sehr fein würfeln.",
+    "Haferflocken mit allen Gewürzen, Senf und Zwiebeln mischen, Hafermilch dazugeben und 10 Minuten quellen lassen.",
+    "Mit feuchten Händen kleine Frikadellen formen.",
+    "In einer Pfanne mit etwas Öl von beiden Seiten je 4–5 Minuten goldbraun braten."
+   ],
+   "src": [
+    "choosy (der Ausdruck enthält nur die Zutaten, die Schritte sind ergänzt)",
+    "https://my.choosy.de/recipes/vegane-frikadellen-21"
+   ],
+   "plan": "Sammlung"
+  }
+ ]
+}

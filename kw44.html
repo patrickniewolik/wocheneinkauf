@@ -322,6 +322,7 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
     <a href="#lidl">Lidl</a>
     <a href="#rewe">REWE</a>
     <a href="#vorrat">Vorrat</a>
+    <a href="#kochen">Was ist da?</a>
   </nav>
 
   <section class="week" id="woche" aria-labelledby="woche-h">
@@ -834,6 +835,9 @@ details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-
     <p class="fine">Preise aus den Prospekten vom 26.–31.10.2026 und aus deinen letzten Kassenbons. „ca.“ heißt geschätzt, weil der Artikel nach Gewicht verkauft wird oder nicht im Prospekt steht. Lidl-Plus-Preise gelten nur mit der App. Fotos von Unsplash (mit Namensnennung) oder eigene, sonst Illustrationen.</p>
     <p class="fine"><a href="kw43.html" style="color: var(--basil);">Letzte Woche ansehen</a></p>
   </section>
+
+  <!-- Rezeptvorschläge aus dem, was zu Hause ist: kochen.js + rezepte.json (jede Woche mit übernehmen) -->
+  <section id="kochen" aria-labelledby="kochen-h"></section>
 </div>
 
 <script>
@@ -1925,4 +1929,5 @@ renderStrip(); renderDays(); renderList("lidl"); renderList("rewe"); totals(); d
 </script>
 <script>if ("serviceWorker" in navigator) { navigator.serviceWorker.register("sw.js").catch(() => {}); }</script>
 
+<script src="kochen.js" defer></script>
 </body></html>
