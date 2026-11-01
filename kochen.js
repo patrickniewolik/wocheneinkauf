@@ -17,6 +17,7 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
   const css = document.createElement("style");
+  css.id = "kochen-css";
   css.textContent = `
 #kochen { display: flex; flex-direction: column; gap: 14px; }
 .da-box { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--a-green); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }

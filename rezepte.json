@@ -1,5 +1,5 @@
 {
- "stand": "31.10.2026",
+ "stand": "1.11.2026",
  "kategorien": {
   "Paprika": "Gemüse & Obst",
   "Tomaten": "Gemüse & Obst",
@@ -60,7 +60,15 @@
   "Rosmarin": "Gemüse & Obst",
   "Ciabatta": "Brot",
   "Haferflocken": "Vorrat",
-  "Hafermilch": "Kühlregal"
+  "Hafermilch": "Kühlregal",
+  "Orange": "Gemüse & Obst",
+  "Brot": "Brot",
+  "Pesto": "Vorrat",
+  "Getrocknete Tomaten": "Vorrat",
+  "Pinienkerne": "Vorrat",
+  "Spinat": "Gemüse & Obst",
+  "Mozzarella": "Kühlregal",
+  "Hartkäse": "Kühlregal"
  },
  "rezepte": [
   {
@@ -1287,6 +1295,236 @@
     "https://my.choosy.de/recipes/vegane-frikadellen-21"
    ],
    "plan": "Sammlung"
+  },
+  {
+   "id": "kuerbissuppe-mit-kokosmilch",
+   "title": "Kürbissuppe mit Kokosmilch",
+   "art": "kuerbissuppe",
+   "time": "30 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "ca. 650 g",
+     "Hokkaido (die übrige Hälfte; Original: 800 g Fruchtfleisch)",
+     "Kürbis"
+    ],
+    [
+     "1",
+     "Zwiebel",
+     null
+    ],
+    [
+     "1",
+     "Knoblauchzehe",
+     null
+    ],
+    [
+     "1 daumengroßes Stück",
+     "Ingwer",
+     "Ingwer"
+    ],
+    [
+     "2 EL",
+     "Öl",
+     null
+    ],
+    [
+     "1–2 TL",
+     "Currypulver",
+     null
+    ],
+    [
+     "750 ml",
+     "Gemüsebrühe",
+     null
+    ],
+    [
+     "400 ml",
+     "Kokosmilch (etwas zum Garnieren)",
+     "Kokosmilch"
+    ],
+    [
+     "100 ml",
+     "Orangensaft (1 Orange)",
+     "Orange"
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ],
+    [
+     "optional",
+     "Chiliflocken",
+     null
+    ],
+    [
+     "1",
+     "Rosmarin-Olivenöl-Brot (dazu)",
+     "Brot"
+    ]
+   ],
+   "steps": [
+    "Kürbis waschen, entkernen und mit Schale in Stücke schneiden. Zwiebel würfeln, Knoblauch und Ingwer fein hacken.",
+    "Zwiebel, Knoblauch und Ingwer im Öl andünsten. Kürbis und Curry kurz mitbraten.",
+    "Mit Brühe und Kokosmilch aufgießen (einen Schuss Kokosmilch zurückbehalten) und 15–20 Minuten köcheln, bis der Kürbis weich ist.",
+    "Fein pürieren, Orangensaft einrühren, salzen und pfeffern. Mit der restlichen Kokosmilch und nach Lust Chiliflocken anrichten, Brot dazu."
+   ],
+   "src": [
+    "lecker.de",
+    "https://www.lecker.de/kuerbissuppe-mit-kokosmilch-19031.html"
+   ],
+   "plan": "KW 45"
+  },
+  {
+   "id": "nudelsalat-mit-pesto",
+   "title": "Nudelsalat mit Pesto",
+   "art": "nudelsalat",
+   "time": "20 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "250 g",
+     "Nudeln (eure Fusilli)",
+     "Nudeln"
+    ],
+    [
+     "ca. 95 g",
+     "veganes Pesto (½ Glas)",
+     "Pesto"
+    ],
+    [
+     "90 g",
+     "getrocknete Tomaten in Öl",
+     "Getrocknete Tomaten"
+    ],
+    [
+     "125 g",
+     "Kirschtomaten",
+     "Tomaten"
+    ],
+    [
+     "ca. 60 g",
+     "Rucola",
+     "Rucola"
+    ],
+    [
+     "25 g",
+     "Pinienkerne",
+     "Pinienkerne"
+    ],
+    [
+     "25 g",
+     "TK-Kräutermischung",
+     null
+    ],
+    [
+     "2 Stängel",
+     "Basilikum",
+     "Basilikum"
+    ],
+    [
+     "1 kleine",
+     "Knoblauchzehe",
+     null
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ]
+   ],
+   "steps": [
+    "Nudeln nach Packung kochen, abgießen und kalt abspülen.",
+    "Pinienkerne ohne Fett goldbraun rösten.",
+    "Rucola grob schneiden, Kirschtomaten halbieren, Basilikum fein schneiden, Knoblauch pressen, getrocknete Tomaten abtropfen lassen und hacken.",
+    "Alles mit Pesto und Kräutern mischen, pfeffern und nach Geschmack salzen. Hält bis zum Mittag am Samstag, dann etwas Öl oder Pesto unterrühren."
+   ],
+   "src": [
+    "Veggie Einhorn",
+    "https://veggie-einhorn.de/nudelsalat-mit-pesto/"
+   ],
+   "plan": "KW 45"
+  },
+  {
+   "id": "gnocchi-auflauf-mit-jungem-spinat-und-mozzarella",
+   "title": "Gnocchi-Auflauf mit jungem Spinat und Mozzarella",
+   "art": "gnocchiauflauf",
+   "time": "35 Min",
+   "portions": "4 Portionen",
+   "ingredients": [
+    [
+     "1",
+     "rote Zwiebel",
+     null
+    ],
+    [
+     "1 EL",
+     "Öl",
+     null
+    ],
+    [
+     "1 TL",
+     "Zucker",
+     null
+    ],
+    [
+     "2 EL",
+     "Balsamico bianco",
+     null
+    ],
+    [
+     "800 g",
+     "passierte Tomaten",
+     "Passierte Tomaten"
+    ],
+    [
+     "2 TL",
+     "Kräuter der Provence (oder italienische Kräuter)",
+     null
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ],
+    [
+     "800 g",
+     "Gnocchi",
+     "Gnocchi"
+    ],
+    [
+     "250 g",
+     "junger Blattspinat",
+     "Spinat"
+    ],
+    [
+     "150 g",
+     "Crème fraîche",
+     "Crème fraîche"
+    ],
+    [
+     "250 g",
+     "Mozzarella (Original: 2 Kugeln)",
+     "Mozzarella"
+    ],
+    [
+     "5 EL",
+     "vegetarischer Hartkäse, gerieben (statt Parmesan)",
+     "Hartkäse"
+    ]
+   ],
+   "steps": [
+    "Ofen auf 220 °C vorheizen und einen großen Topf Salzwasser aufsetzen. Zwiebel fein würfeln und mit dem Zucker 2 Minuten im Öl anschwitzen.",
+    "Mit Balsamico und passierten Tomaten ablöschen, mit Kräutern, Salz und Pfeffer würzen und leise köcheln lassen.",
+    "Gnocchi etwa 4 Minuten im nur siedenden Wasser ziehen lassen. Spinat in ein Sieb geben, mit etwas heißem Kochwasser übergießen und leicht ausdrücken, dann die Gnocchi in dasselbe Sieb abgießen.",
+    "Crème fraîche in die Soße rühren. Spinat, Gnocchi und Soße in einer Auflaufform mischen, Mozzarella darüberzupfen, mit Hartkäse bestreuen und etwa 15 Minuten goldbraun überbacken."
+   ],
+   "src": [
+    "Lidl Kochen",
+    "https://www.lidl-kochen.de/print/gnocchiauflauf-mit-jungem-spinat-und-parmesan-mozzarella-kruste-147582"
+   ],
+   "plan": "KW 45"
   }
  ]
 }
