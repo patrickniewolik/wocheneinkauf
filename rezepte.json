@@ -1,5 +1,5 @@
 {
- "stand": "1.11.2026",
+ "stand": "8.11.2026",
  "kategorien": {
   "Paprika": "Gemüse & Obst",
   "Tomaten": "Gemüse & Obst",
@@ -68,7 +68,13 @@
   "Pinienkerne": "Vorrat",
   "Spinat": "Gemüse & Obst",
   "Mozzarella": "Kühlregal",
-  "Hartkäse": "Kühlregal"
+  "Hartkäse": "Kühlregal",
+  "Spitzkohl": "Gemüse & Obst",
+  "Lasagneplatten": "Vorrat",
+  "Steinpilze (getrocknet)": "Vorrat",
+  "Schalotten": "Gemüse & Obst",
+  "Risottoreis": "Vorrat",
+  "Weißwein": "Vorrat"
  },
  "rezepte": [
   {
@@ -1525,6 +1531,233 @@
     "https://www.lidl-kochen.de/print/gnocchiauflauf-mit-jungem-spinat-und-parmesan-mozzarella-kruste-147582"
    ],
    "plan": "KW 45"
+  },
+  {
+   "id": "spitzkohl-pesto-nudeln-mit-mozzarella",
+   "title": "Spitzkohl-Pesto-Nudeln mit Mozzarella",
+   "art": "spitzkohlnudeln",
+   "time": "25 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ],
+    [
+     "250 g",
+     "Spitzkohl",
+     "Spitzkohl"
+    ],
+    [
+     "125 g",
+     "Mozzarella (1 Kugel; Original Büffelmozzarella)",
+     "Mozzarella"
+    ],
+    [
+     "150 g",
+     "Nudeln (eure Fusilli; Original Spinatbandnudeln)",
+     "Nudeln"
+    ],
+    [
+     "1–1½ EL",
+     "Pinienkerne",
+     "Pinienkerne"
+    ],
+    [
+     "1 EL",
+     "Öl",
+     null
+    ],
+    [
+     "50 g",
+     "Pesto (euer veganes Pesto; Original rotes Pesto)",
+     "Pesto"
+    ],
+    [
+     "evtl.",
+     "Kresse",
+     null
+    ]
+   ],
+   "steps": [
+    "Nudeln in reichlich Salzwasser nach Packung garen. Spitzkohl putzen, vierteln, den Strunk herausschneiden und den Kohl in feine Streifen schneiden.",
+    "Pinienkerne ohne Fett goldbraun rösten und herausnehmen. Öl in der Pfanne erhitzen und den Spitzkohl darin etwa 2 Minuten anbraten, salzen und pfeffern.",
+    "Nudeln abgießen, dabei etwa 50 ml Kochwasser auffangen. Kochwasser mit dem Pesto verrühren und mit Nudeln und Spitzkohl mischen.",
+    "Mozzarella in Stücke zupfen und mit den Pinienkernen über die Nudeln geben. Nach Lust mit Kresse bestreuen."
+   ],
+   "src": [
+    "lecker.de (Portionen auf der Seite nicht angegeben; nach Menge für 4 gerechnet, hier halbiert)",
+    "https://www.lecker.de/spitzkohl-pesto-nudeln-mit-mozzarella-74937.html"
+   ],
+   "plan": "KW 46"
+  },
+  {
+   "id": "rote-linsen-lasagne",
+   "title": "Rote-Linsen-Lasagne",
+   "art": "lasagne",
+   "time": "50 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "100 g",
+     "rote Linsen",
+     "Rote Linsen"
+    ],
+    [
+     "½",
+     "Zwiebel",
+     null
+    ],
+    [
+     "1",
+     "Knoblauchzehe",
+     null
+    ],
+    [
+     "1",
+     "mittelgroße Möhre",
+     null
+    ],
+    [
+     "1 EL",
+     "Olivenöl",
+     null
+    ],
+    [
+     "300 ml",
+     "Gemüsebrühe",
+     null
+    ],
+    [
+     "250 ml",
+     "passierte Tomaten",
+     "Passierte Tomaten"
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ],
+    [
+     "½ EL",
+     "italienische Kräuter",
+     null
+    ],
+    [
+     "6",
+     "Lasagneplatten",
+     "Lasagneplatten"
+    ],
+    [
+     "100 g",
+     "Crème fraîche (oder Schmand)",
+     "Crème fraîche"
+    ],
+    [
+     "50 g",
+     "Mozzarella (Original gerieben; die halbe zweite Kugel, klein gezupft)",
+     "Mozzarella"
+    ],
+    [
+     "etwas",
+     "Butter für die Form",
+     null
+    ]
+   ],
+   "steps": [
+    "Linsen in einem Sieb gründlich abspülen. Zwiebel und Knoblauch fein hacken, die Möhre schälen und ganz klein würfeln oder raspeln.",
+    "Olivenöl in einer Pfanne erhitzen und Zwiebel, Knoblauch und Möhre 2 Minuten andünsten. Linsen und Brühe zugeben, aufkochen und zugedeckt bei mittlerer Hitze 10–15 Minuten köcheln, bis Linsen und Möhre weich sind. Passierte Tomaten und Kräuter unterrühren, salzen und pfeffern.",
+    "Ofen auf 200 °C Ober- und Unterhitze vorheizen und eine kleine Auflaufform (ca. 15 × 20 cm) mit Butter einfetten.",
+    "Mit einer Schicht Soße beginnen und abwechselnd Lasagneplatten und Soße schichten. Oben liegt Soße.",
+    "Crème fraîche mit 1–2 EL Wasser glatt rühren, darauf verstreichen, mit dem Mozzarella bedecken und etwa 30 Minuten backen."
+   ],
+   "src": [
+    "Gaumenfreundin (für 4, hier halbiert)",
+    "https://www.gaumenfreundin.de/rote-linsen-lasagne/"
+   ],
+   "plan": "KW 46"
+  },
+  {
+   "id": "pilzrisotto-mit-getrockneten-tomaten",
+   "title": "Pilzrisotto mit getrockneten Tomaten",
+   "art": "pilzrisotto",
+   "time": "50 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "7–8 g",
+     "getrocknete Steinpilze",
+     "Steinpilze (getrocknet)"
+    ],
+    [
+     "250 ml",
+     "Gemüsebrühe",
+     null
+    ],
+    [
+     "1",
+     "Schalotte",
+     "Schalotten"
+    ],
+    [
+     "½",
+     "Knoblauchzehe",
+     null
+    ],
+    [
+     "2 EL",
+     "Öl",
+     null
+    ],
+    [
+     "125 g",
+     "Risottoreis",
+     "Risottoreis"
+    ],
+    [
+     "150 ml",
+     "trockener Weißwein",
+     "Weißwein"
+    ],
+    [
+     "ca. 90 g",
+     "Pilze (Rest Shiitake vom Donnerstag; Original z. B. Champignons, Kräuterseitlinge)",
+     "Pilze"
+    ],
+    [
+     "40 g",
+     "getrocknete Tomaten in Öl",
+     "Getrocknete Tomaten"
+    ],
+    [
+     "",
+     "Salz, Pfeffer, Zucker",
+     null
+    ],
+    [
+     "¼ Bund",
+     "Petersilie",
+     "Petersilie"
+    ],
+    [
+     "40 g",
+     "vegetarischer Hartkäse, gerieben (statt Parmesan)",
+     "Hartkäse"
+    ]
+   ],
+   "steps": [
+    "Steinpilze in knapp 100 ml warmem Wasser etwa 15 Minuten einweichen. Abgießen, das Einweichwasser auffangen und mit der Brühe auf etwa 325 ml auffüllen, warm halten. Steinpilze hacken.",
+    "Schalotte und Knoblauch fein würfeln und in 1 EL Öl glasig dünsten. Reis und Steinpilze kurz mitrösten, mit dem Wein ablöschen und einkochen lassen.",
+    "Nach und nach die heiße Brühe zugießen und unter Rühren immer wieder einkochen lassen, bis der Reis nach 30–35 Minuten cremig und bissfest ist.",
+    "Inzwischen die Pilze in Stücke schneiden und im restlichen Öl kräftig braten. Getrocknete Tomaten in Streifen schneiden, kurz mitbraten und mit Salz, Pfeffer und 1 Prise Zucker würzen.",
+    "Petersilie hacken und mit gut der Hälfte des Hartkäses unter das Risotto ziehen. Mit den Pilzen anrichten und mit dem übrigen Käse bestreuen."
+   ],
+   "src": [
+    "lecker.de (Portionen auf der Seite nicht angegeben; nach Menge für 4 gerechnet, hier halbiert)",
+    "https://www.lecker.de/pilzrisotto-37716.html"
+   ],
+   "plan": "KW 46"
   }
  ]
 }

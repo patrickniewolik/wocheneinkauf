@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#fffdf7">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Einkauf">
+<title>Wocheneinkauf KW 46</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+/* Layout: a kitchen week in one column. Summary bon, seven day cards with illustration and fold-out recipe, then the shopping checklist per store. */
+:root {
+  --bg: #fffdf7;
+  --surface: #ffffff;
+  --tile: #eef6ea;
+  --ink: #1d2721;
+  --muted: #5b675f;
+  --line: #ebe6da;
+  --basil: #1d8a4a;
+  --basil-soft: #daf4e3;
+  --pumpkin: #d4520c;
+  --pumpkin-soft: #ffe4cf;
+  --new: #ff5a1f;
+  --new-ink: #ffffff;
+  --done: #a3ada6;
+  --sun: #ffd23f;
+  --lidl: #0a5cb8; --lidl-soft: #dcebff;
+  --rewe: #d1192b; --rewe-soft: #ffe0e3;
+  --t-orange: #ffe1c7; --a-orange: #e45f0b;
+  --t-yellow: #fff0b0; --a-yellow: #a87600;
+  --t-sky: #d6efff; --a-sky: #1c74bd;
+  --t-red: #ffdcd6; --a-red: #d1372a;
+  --t-pink: #ffdcee; --a-pink: #c7347d;
+  --t-green: #e1f5c8; --a-green: #3a8410;
+  --t-violet: #e8e1ff; --a-violet: #5f43cc;
+  --acc-ink: #ffffff;
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap {
+  max-width: 880px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 64px;
+  display: flex; flex-direction: column; gap: 40px;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.05; font-weight: 700; }
+h2 { font-size: 1.45rem; font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+h4 { margin: 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); font-weight: 600; }
+.eyebrow { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); font-weight: 600; }
+.fine { color: var(--muted); font-size: 0.84rem; margin: 0; max-width: 65ch; }
+
+/* Header */
+header { display: grid; grid-template-columns: 1fr minmax(240px, 300px); gap: 20px 28px; align-items: end; }
+header .intro { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.meta { color: var(--muted); margin: 0; max-width: 52ch; }
+.hl { background: linear-gradient(transparent 58%, var(--sun) 58%, var(--sun) 92%, transparent 92%); padding-inline: 2px; }
+.bon {
+  background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--sun); border-radius: 10px;
+  padding: 14px 16px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.9rem;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.bon .row { display: flex; justify-content: space-between; gap: 12px; }
+.bon .rule { border-top: 1px dashed var(--line); margin-block: 6px; }
+.bon .sum { font-weight: 500; font-size: 1rem; }
+.bon .open { color: var(--basil); }
+.bon small { color: var(--muted); font-family: var(--font-body); font-size: 0.78rem; margin-top: 4px; }
+
+/* Section nav */
+nav.jump {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px; display: flex; gap: 6px; overflow-x: auto;
+}
+nav.jump a {
+  color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.9rem;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); white-space: nowrap;
+}
+nav.jump a:hover { border-color: var(--basil); }
+nav.jump a.kp { background: var(--basil); border-color: var(--basil); color: #ffffff; }
+nav.jump a:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+
+/* Week strip */
+.strip { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: -16px; }
+.strip a {
+  background: var(--tile-day); color: var(--ink); text-decoration: none; border-radius: 12px;
+  border-bottom: 4px solid var(--acc); padding: 9px 10px; display: flex; flex-direction: column; gap: 3px; min-width: 0;
+}
+.strip a:hover { filter: saturate(1.15); }
+.strip a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+.strip .sd { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--acc); }
+.strip .sn { font-size: 0.8rem; font-weight: 600; line-height: 1.25; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+
+/* Week */
+.week { display: flex; flex-direction: column; gap: 16px; }
+.week-head { display: flex; flex-direction: column; gap: 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 0.82rem; color: var(--muted); }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+.c-orange { --tile-day: var(--t-orange); --acc: var(--a-orange); }
+.c-yellow { --tile-day: var(--t-yellow); --acc: var(--a-yellow); }
+.c-sky { --tile-day: var(--t-sky); --acc: var(--a-sky); }
+.c-red { --tile-day: var(--t-red); --acc: var(--a-red); }
+.c-pink { --tile-day: var(--t-pink); --acc: var(--a-pink); }
+.c-green { --tile-day: var(--t-green); --acc: var(--a-green); }
+.c-violet { --tile-day: var(--t-violet); --acc: var(--a-violet); }
+.day {
+  background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--acc, var(--basil)); border-radius: 14px; overflow: hidden;
+  display: grid; grid-template-columns: 220px 1fr; scroll-margin-top: 70px;
+}
+.day .art { background: var(--tile-day, var(--tile)); display: grid; place-items: center; min-height: 100%; }
+.day .art svg { width: 100%; height: auto; display: block; max-width: 260px; }
+/* Fotos: eigene Fotos (img/…) oder frei nutzbare (Unsplash); ohne Netz oder in der Claude-Ansicht bleibt die Illustration */
+.day .art { position: relative; overflow: hidden; }
+.day .art .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.day .art.has-photo svg { visibility: hidden; }
+.photo-credit { position: absolute; right: 6px; bottom: 6px; font-size: 0.62rem; line-height: 1.5; color: #fff; background: rgba(0, 0, 0, 0.5); padding: 0 7px; border-radius: 999px; text-decoration: none; max-width: calc(100% - 12px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.photo-credit:hover { background: rgba(0, 0, 0, 0.7); }
+.day .info { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.dayline { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 0.82rem; }
+.dayline .d { font-family: var(--font-mono); background: var(--acc, var(--basil)); color: var(--acc-ink); font-weight: 600; padding: 1px 9px; border-radius: 999px; }
+.dayline .t { color: var(--muted); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.chip.new { background: var(--new); color: var(--new-ink); text-transform: uppercase; letter-spacing: 0.06em; }
+.chip.fav { background: var(--basil-soft); color: var(--basil); }
+.chip.var { background: var(--t-violet); color: var(--a-violet); }
+.chip.veg { background: var(--t-green); color: var(--a-green); }
+.chip.left { background: var(--t-sky); color: var(--a-sky); }
+.chip.prev { background: var(--t-yellow); color: var(--a-yellow); }
+.chip.offer { background: var(--pumpkin-soft); color: var(--pumpkin); }
+.chip.swap { background: var(--basil-soft); color: var(--basil); }
+.chip.cond { border: 1px solid var(--line); color: var(--muted); }
+.offers { margin: 0; font-size: 0.86rem; color: var(--muted); }
+.offers b { color: var(--pumpkin); font-weight: 600; }
+details.recipe { border-top: 1px solid var(--line); margin-top: 4px; }
+details.recipe summary {
+  cursor: pointer; list-style: none; padding-top: 10px; font-weight: 600; color: var(--acc, var(--basil));
+  display: inline-flex; align-items: center; gap: 6px;
+}
+details.recipe summary::-webkit-details-marker { display: none; }
+details.recipe summary::before { content: "+"; font-family: var(--font-mono); width: 1em; }
+details.recipe[open] summary::before { content: "–"; }
+details.recipe summary:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; border-radius: 4px; }
+.recipe-body { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 18px 24px; padding-top: 12px; }
+.recipe-body ul, .recipe-body ol { margin: 6px 0 0; padding-left: 1.15em; display: flex; flex-direction: column; gap: 4px; }
+.recipe-body ul li::marker { color: var(--muted); }
+.recipe-body ol li::marker { color: var(--acc, var(--basil)); font-family: var(--font-mono); font-size: 0.85em; }
+.recipe-body .qty { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.86rem; color: var(--muted); }
+.recipe-body .src { grid-column: 1 / -1; font-size: 0.84rem; color: var(--muted); }
+.recipe-body .src a { color: var(--basil); }
+
+/* Gekocht? Gemeinsamer Stand für alle, die auf diesem Gerät das Abhaken eingeschaltet haben */
+.cook { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; border-top: 1px solid var(--line); padding-top: 10px; margin-top: 2px; }
+.cook .q { font-size: 0.82rem; font-weight: 600; color: var(--muted); margin-right: 2px; }
+.cook button {
+  font: inherit; font-size: 0.84rem; font-weight: 600; min-height: 36px; padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer;
+}
+.cook button:hover { border-color: var(--muted); }
+.cook button:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+.cook button[data-s="gekocht"][aria-pressed="true"] { background: var(--basil); border-color: var(--basil); color: #ffffff; }
+.cook button[data-s="verschoben"][aria-pressed="true"] { background: var(--a-sky); border-color: var(--a-sky); color: #ffffff; }
+.cook button[data-s="ausgefallen"][aria-pressed="true"] { background: var(--muted); border-color: var(--muted); color: #ffffff; }
+.day.st-gekocht .dayline .d::after { content: " ✓"; }
+.day.st-ausgefallen h3 { color: var(--done); text-decoration: line-through; }
+.strip a[data-st] .sd::after { margin-left: 5px; }
+.strip a[data-st="gekocht"] .sd::after { content: "✓"; color: var(--basil); }
+.strip a[data-st="verschoben"] .sd::after { content: "→"; color: var(--a-sky); }
+.strip a[data-st="ausgefallen"] .sd::after { content: "✕"; color: var(--muted); }
+.strip a[data-st="ausgefallen"] .sn { color: var(--muted); text-decoration: line-through; }
+.sync { display: flex; align-items: center; gap: 7px; margin: 0; font-size: 0.82rem; color: var(--muted); }
+.sync::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--basil); flex: none; }
+.sync.err::before { background: var(--rewe); }
+.note-box { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--sun); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.note-box textarea {
+  font: inherit; width: 100%; min-height: 76px; resize: vertical; padding: 8px 10px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);
+}
+.note-box textarea:focus-visible { outline: 2px solid var(--basil); outline-offset: 1px; }
+.gate { align-self: flex-start; font: inherit; font-size: 0.84rem; color: var(--muted); background: transparent; border: 0; padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.gate:hover { color: var(--basil); }
+.gate:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; border-radius: 4px; }
+.cook[hidden], .note-box[hidden], .sync[hidden], .gate[hidden] { display: none; }
+
+/* Shopping */
+.shop { display: flex; flex-direction: column; gap: 28px; }
+.store { display: flex; flex-direction: column; gap: 8px; }
+.store-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.store-name { display: inline-block; padding: 2px 12px; border-radius: 8px; }
+.store-name.lidl { background: var(--lidl-soft); color: var(--lidl); }
+.store-name.rewe { background: var(--rewe-soft); color: var(--rewe); }
+#lidl .items { border-top: 4px solid var(--lidl); }
+#rewe .items { border-top: 4px solid var(--rewe); }
+.store-head .addr { color: var(--muted); font-size: 0.86rem; margin: 2px 0 0; }
+.store-head .sub { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.9rem; text-align: right; }
+.store-head .sub span { display: block; color: var(--muted); font-family: var(--font-body); font-size: 0.75rem; }
+.group-label { margin: 8px 0 0; }
+.items { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.item { border-bottom: 1px solid var(--line); }
+.item:last-child { border-bottom: 0; }
+.item label { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; align-items: start; padding: 11px 14px; cursor: pointer; }
+.item input { appearance: none; -webkit-appearance: none; margin: 2px 0 0; width: 22px; height: 22px;
+  border: 2px solid var(--muted); border-radius: 6px; display: grid; place-content: center; cursor: pointer; background: var(--surface); }
+.item input::after { content: ""; width: 11px; height: 6px; border-left: 2.5px solid var(--surface); border-bottom: 2.5px solid var(--surface); transform: rotate(-45deg) translate(1px, -1px); opacity: 0; }
+.item input:checked { background: var(--basil); border-color: var(--basil); }
+.item input:checked::after { opacity: 1; }
+.item input:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+.item .txt { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.item .name { font-weight: 600; }
+.item .amt { color: var(--muted); }
+.item .for { font-size: 0.82rem; color: var(--muted); }
+.item .price { font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; font-size: 0.92rem; }
+.item .price s { display: block; color: var(--muted); font-size: 0.75rem; }
+.item.is-done .name, .item.is-done .amt, .item.is-done .price { color: var(--done); text-decoration: line-through; }
+.item.is-done .for, .item.is-done .chips { opacity: 0.55; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.two > section { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.plain { margin: 0; padding-left: 1.1em; }
+.plain li { padding-block: 2px; }
+.plain .mono { font-family: var(--font-mono); color: var(--muted); font-size: 0.84rem; }
+.reset { align-self: flex-start; font: inherit; font-size: 0.86rem; font-weight: 600; color: var(--basil);
+  background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.reset:hover { border-color: var(--basil); }
+.reset:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+
+/* Eigene Artikel: gemeinsam über Firestore, nur auf Geräten mit eingeschaltetem Abhaken */
+.add { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--sun); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.add-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.add-row input[type="text"] {
+  flex: 1 1 220px; min-width: 0; min-height: 44px; font: inherit; padding: 8px 12px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink);
+}
+.add-row input[type="text"]:focus-visible { outline: 2px solid var(--basil); outline-offset: 1px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); }
+.seg label { display: flex; cursor: pointer; position: relative; }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.seg span { display: grid; place-items: center; min-height: 44px; padding: 0 16px; font-weight: 600; font-size: 0.9rem; color: var(--muted); }
+.seg .lidl input:checked + span { background: var(--lidl); color: #ffffff; }
+.seg .rewe input:checked + span { background: var(--rewe); color: #ffffff; }
+.seg input:focus-visible + span { outline: 2px solid var(--basil); outline-offset: -3px; }
+.add-btn { font: inherit; font-weight: 600; min-height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--basil); color: #ffffff; cursor: pointer; }
+.add-btn:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+.extras { display: flex; flex-direction: column; gap: 8px; }
+.item.extra { display: flex; align-items: center; }
+.item.extra label { flex: 1; min-width: 0; grid-template-columns: 26px 1fr; }
+.item .del {
+  flex: none; width: 44px; height: 44px; margin-right: 4px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--muted); font: inherit; font-size: 1.3rem; line-height: 1; cursor: pointer;
+}
+.item .del:hover { color: var(--rewe); background: var(--rewe-soft); }
+.item .del:focus-visible { outline: 2px solid var(--basil); outline-offset: -2px; }
+.add[hidden], .extras[hidden] { display: none; }
+
+/* Erledigte ausblenden: abgehakte Artikel verschwinden, leere Gruppen samt Überschrift auch */
+.hide-done { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px;
+  font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--basil); background: var(--surface);
+  border: 1px solid var(--basil); border-radius: 10px; cursor: pointer; }
+.hide-done[aria-pressed="true"] { background: var(--basil); color: #ffffff; }
+.hide-done:focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+.hiding-done .item.is-done { display: none; }
+.hiding-done .items:not(:has(.item:not(.is-done))) { display: none; }
+.hiding-done .group-label:has(+ .items:not(:has(.item:not(.is-done)))) { display: none; }
+
+@media (max-width: 680px) {
+  header { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: -20px; }
+  .day { grid-template-columns: 1fr; }
+  .day .art svg { max-width: 300px; }
+  .recipe-body { grid-template-columns: 1fr; }
+  .two { grid-template-columns: 1fr; }
+  .item label { padding: 11px 12px; gap: 10px; }
+  .cook { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cook .q { grid-column: 1 / -1; }
+  .cook button { border-radius: 12px; min-height: 46px; padding: 6px; font-size: 0.82rem; line-height: 1.2; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .item input { transition: background-color .12s ease, border-color .12s ease; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="intro">
+      <span class="eyebrow">9. – 15. November 2026 · 2 Personen · vegetarisch</span>
+      <h1>Wocheneinkauf <span class="hl">KW 46</span></h1>
+      <p class="meta">Sieben Abendessen für zwei. Die Frikadellen kommen aus letzter Woche, und was vom ausgefallenen Montag, Donnerstag und Freitag noch da ist, steckt in Curry, Lasagne, Spitzkohl-Nudeln und Risotto. Gekauft wird immer das Produkt aus dem Rezept, in der Variante mit dem niedrigsten Kilopreis.</p>
+    </div>
+    <div class="bon" aria-live="polite">
+      <div class="row"><span>Lidl</span><span id="sum-lidl">27,12</span></div>
+      <div class="row"><span>REWE</span><span id="sum-rewe">9,19</span></div>
+      <div class="rule"></div>
+      <div class="row sum"><span>SUMME ca. EUR</span><span id="sum-all">36,31</span></div>
+      <div class="row"><span>pro Portion (14)</span><span id="per-portion">2,46</span></div>
+      <div class="row open"><span>noch offen</span><span id="sum-open">36,31</span></div>
+      <small>1,89 € davon sind Stammartikel im Angebot und zählen nicht in den Preis pro Portion, 1,99 € nur, falls Ketjap Manis fehlt. REWE-Angebote diese Woche aus dem bundesweiten Prospekt, im Markt kann es abweichen.</small>
+    </div>
+  </header>
+
+  <nav class="strip" id="strip" lang="de" aria-label="Wochentage"><a class="c-orange" href="#mo"><span class="sd">Mo</span><span class="sn">Vegane Frika­dellen</span></a><a class="c-yellow" href="#di"><span class="sd">Di</span><span class="sn">Linsen-Curry</span></a><a class="c-sky" href="#mi"><span class="sd">Mi</span><span class="sn">Quesa­dillas</span></a><a class="c-red" href="#do"><span class="sd">Do</span><span class="sn">Brat­nudeln</span></a><a class="c-pink" href="#fr"><span class="sd">Fr</span><span class="sn">Spitzkohl-Nudeln</span></a><a class="c-green" href="#sa"><span class="sd">Sa</span><span class="sn">Linsen-Lasagne</span></a><a class="c-violet" href="#so"><span class="sd">So</span><span class="sn">Pilz­risotto</span></a></nav>
+
+  <nav class="jump" aria-label="Abschnitte">
+    <a href="#woche">Woche</a>
+    <a href="#einkauf">Einkauf</a>
+    <a href="#lidl">Lidl</a>
+    <a href="#rewe">REWE</a>
+    <a href="#vorrat">Vorrat</a>
+    <a href="#kochen">Was ist da?</a>
+  </nav>
+
+  <section class="week" id="woche" aria-labelledby="woche-h">
+    <div class="week-head">
+      <h2 id="woche-h">Essensplan</h2>
+      <div class="legend">
+        <span><span class="chip new">Neu</span> noch nie gekocht</span>
+        <span><span class="chip fav">Favorit</span> aus deiner Sammlung</span>
+        <span><span class="chip var">Variante</span> leicht abgewandelt</span>
+      </div>
+      <p class="fine">Sechs Gerichte stammen aus deiner Sammlung, eins ist neu und orange markiert. Montag bis Freitag ist alles in höchstens 30 Minuten fertig, die Ofengerichte liegen aufs Wochenende.</p>
+      <p class="sync" id="sync" aria-live="polite" hidden="">Gemeinsamer Stand wird geladen …</p>
+    </div>
+    <div id="days" class="week">
+    <article class="day c-orange" id="mo">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="81" rx="62" ry="59.519999999999996" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="100" cy="76" r="62" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"></circle><circle cx="100" cy="76" r="48.36" fill="none" stroke="#ece8de" stroke-width="1"></circle><ellipse cx="84" cy="65" rx="17" ry="13" fill="rgba(0,0,0,0.12)"></ellipse><ellipse cx="82" cy="62" rx="17" ry="13" fill="#9a6232"></ellipse><ellipse cx="79" cy="59" rx="11" ry="7" fill="#b9793f"></ellipse><ellipse cx="110" cy="59" rx="17" ry="13" fill="rgba(0,0,0,0.12)"></ellipse><ellipse cx="108" cy="56" rx="17" ry="13" fill="#9a6232"></ellipse><ellipse cx="105" cy="53" rx="11" ry="7" fill="#b9793f"></ellipse><ellipse cx="96" cy="87" rx="17" ry="13" fill="rgba(0,0,0,0.12)"></ellipse><ellipse cx="94" cy="84" rx="17" ry="13" fill="#9a6232"></ellipse><ellipse cx="91" cy="81" rx="11" ry="7" fill="#b9793f"></ellipse><circle cx="134.70301151970926" cy="86.0071333488229" r="6" fill="#6aa83a"></circle><path d="M129.70301151970926 86.0071333488229 Q134.70301151970926 83.0071333488229 139.70301151970926 86.0071333488229" stroke="#3f7d24" stroke-width="1.2" fill="none"></path><circle cx="138.98011470554147" cy="91.75442049034416" r="6" fill="#6aa83a"></circle><path d="M133.98011470554147 91.75442049034416 Q138.98011470554147 88.75442049034416 143.98011470554147 91.75442049034416" stroke="#3f7d24" stroke-width="1.2" fill="none"></path><circle cx="134.94464065848197" cy="91.73081296462819" r="6" fill="#6aa83a"></circle><path d="M129.94464065848197 91.73081296462819 Q134.94464065848197 88.73081296462819 139.94464065848197 91.73081296462819" stroke="#3f7d24" stroke-width="1.2" fill="none"></path><circle cx="141.60498344694753" cy="85.7093752152702" r="6" fill="#6aa83a"></circle><path d="M136.60498344694753 85.7093752152702 Q141.60498344694753 82.7093752152702 146.60498344694753 85.7093752152702" stroke="#3f7d24" stroke-width="1.2" fill="none"></path><circle cx="133.4762836988253" cy="96.61770806267356" r="6" fill="#6aa83a"></circle><path d="M128.4762836988253 96.61770806267356 Q133.4762836988253 93.61770806267356 138.4762836988253 96.61770806267356" stroke="#3f7d24" stroke-width="1.2" fill="none"></path><circle cx="124.52216294902306" cy="95.74536668423596" r="6" fill="#6aa83a"></circle><path d="M119.52216294902306 95.74536668423596 Q124.52216294902306 92.74536668423596 129.52216294902306 95.74536668423596" stroke="#3f7d24" stroke-width="1.2" fill="none"></path><circle cx="129.86340566851266" cy="83.09550466568217" r="6" fill="#6aa83a"></circle><path d="M124.86340566851266 83.09550466568217 Q129.86340566851266 80.09550466568217 134.86340566851266 83.09550466568217" stroke="#3f7d24" stroke-width="1.2" fill="none"></path><ellipse cx="70" cy="100" rx="10" ry="8" fill="#f2d98f" stroke="#d8b35a" stroke-width="1.2"></ellipse><ellipse cx="86" cy="108" rx="10" ry="8" fill="#f2d98f" stroke="#d8b35a" stroke-width="1.2"></ellipse><ellipse cx="114" cy="106" rx="10" ry="8" fill="#f2d98f" stroke="#d8b35a" stroke-width="1.2"></ellipse><path transform="translate(72 96) rotate(-20) scale(0.6)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3f8a3a"></path><path transform="translate(72 96) rotate(-20) scale(0.6)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Mo 9.11.</span><span class="t">35 Min · 2 Portionen</span></div>
+        <h3>Vegane Frikadellen mit Rosenkohl und Kartoffeln</h3>
+        <div class="chips"><span class="chip prev">Aus letzter Woche</span><span class="chip fav">Favorit</span><span class="chip var">Variante: mit Rosenkohl und Kartoffeln</span></div>
+        <p class="offers"><b>Günstig:</b> Alles ist schon da: Rosenkohl, Drillinge, Haferflocken und Haferdrink von letzter Woche. Nichts dafür kaufen</p>
+        <details class="recipe" id="rezept-mo">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">60 g</span> Haferflocken (zart)</li><li><span class="qty">75 ml</span> Haferdrink</li><li><span class="qty">40 g</span> Zwiebel</li><li><span class="qty">½ TL</span> Senf</li><li><span class="qty">je ½ TL</span> Knoblauch-, Zwiebel- und Paprikapulver (edelsüß), Majoran</li><li><span class="qty">je 1 Prise</span> Muskat, Kreuzkümmel</li><li><span class="qty">¼ TL</span> Salz</li><li>Pfeffer</li><li><span class="qty">1 EL</span> Öl zum Braten</li><li><span class="qty">500 g</span> Rosenkohl (die ganze Packung von letzter Woche, Variante)</li><li><span class="qty">ca. 400 g</span> Drillinge (Variante)</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Drillinge waschen und in Salzwasser etwa 20 Minuten garen. Ofen auf 200 °C vorheizen, Rosenkohl putzen, halbieren, mit etwas Öl und Salz mischen und 20–25 Minuten rösten.</li><li>Zwiebel sehr fein würfeln. Haferflocken mit allen Gewürzen, Senf und Zwiebel mischen, Haferdrink dazugeben und 10 Minuten quellen lassen.</li><li>Mit feuchten Händen kleine Frikadellen formen.</li><li>In einer Pfanne mit Öl von jeder Seite 4–5 Minuten goldbraun braten. Mit Kartoffeln und Rosenkohl servieren.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://my.choosy.de/recipes/vegane-frikadellen-21" target="_blank" rel="noopener">choosy, für 4, hier halbiert (der Ausdruck enthält nur die Zutaten, die Schritte sind ergänzt)</a></p>
+          </div>
+        </details>
+        <div class="cook" data-day="Mo" role="group" aria-label="Mo: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
+      </div>
+    </article>
+    <article class="day c-yellow" id="di">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="80" rx="60" ry="57.599999999999994" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="100" cy="75" r="60" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"></circle><circle cx="100" cy="75" r="54" fill="#e8a43c"></circle><path d="M58 55 Q70 40 92 44 Q98 62 88 82 Q72 92 56 82 Q48 68 58 55Z" fill="#fbf8ef"></path><ellipse cx="74.38915180329465" cy="64.00288231002938" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="64.80004337365125" cy="61.56036795507727" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.22601739369932" cy="70.17870550364404" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="58.413528025330315" cy="64.18789778112003" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.18719465628523" cy="73.24571364368474" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="76.0435691005394" cy="73.6500981115096" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="76.59159061965595" cy="53.34262406000204" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="75.14522337638408" cy="52.65808278907839" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="66.96594139712832" cy="65.31277071835518" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.94715176171437" cy="67.00878287870297" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.09101793616229" cy="59.531925410752244" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="84.13015928823837" cy="72.40456093718076" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="63.01908945993123" cy="60.8416018606538" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="61.85302509646921" cy="71.57747366931301" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="65.78950802454494" cy="57.68534815635997" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="66.8579277695479" cy="53.753959595397404" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="71.59400874089529" cy="67.06640144326457" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.24046811175029" cy="63.16315452667625" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="70.87714854672714" cy="78.52445837453885" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="63.299298532572266" cy="51.863896229249505" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="76.0879333193454" cy="52.35452132405896" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="65.4594292126966" cy="75.3435305199926" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="75.19728387659494" cy="67.2564106655827" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="68.42757453535566" cy="53.1536734510477" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="70.60381902348826" cy="65.52944562246918" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="67.03510825085633" cy="52.31909356439668" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="59.37396645255216" cy="62.74160169529804" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="78.73687214944577" cy="57.53544488794074" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="82.19901151410744" cy="61.902337764524674" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="66.03502624486306" cy="49.42863010452023" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="69.90929717647185" cy="66.5786956509144" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="75.94155441673136" cy="52.389641364194084" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="63.15225494801804" cy="65.32153356195344" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="63.53822428027631" cy="60.80953861953905" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="68.23960821206332" cy="60.85282328258658" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="78.04874711407801" cy="72.65659611634356" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="69.31034129180493" cy="74.52710578207206" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="75.18421589696399" cy="77.48530707470007" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="65.71668338472824" cy="71.00069245161225" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><ellipse cx="79.78095313511233" cy="57.417633689183376" rx="2.6" ry="1.4" fill="#ece6d6"></ellipse><circle cx="131.13058188336407" cy="90.03958944794766" r="1.4" fill="#f4bb55"></circle><circle cx="96.3436934927822" cy="78.32801194773785" r="1.4" fill="#f4bb55"></circle><circle cx="99.85589346164498" cy="73.85906914478764" r="1.4" fill="#f4bb55"></circle><circle cx="112.1624737997076" cy="97.54182562838515" r="1.4" fill="#f4bb55"></circle><circle cx="95.86961143907337" cy="87.59311714919438" r="1.4" fill="#f4bb55"></circle><circle cx="135.1064694096271" cy="72.96375457203486" r="1.4" fill="#f4bb55"></circle><circle cx="99.2641558969095" cy="81.42127036349501" r="1.4" fill="#f4bb55"></circle><circle cx="142.58692313702846" cy="78.29613098071945" r="1.4" fill="#f4bb55"></circle><circle cx="104.76463830134725" cy="71.02452845869713" r="1.4" fill="#f4bb55"></circle><circle cx="143.000312401319" cy="80.93002845959641" r="1.4" fill="#f4bb55"></circle><circle cx="113.76084921699731" cy="74.54263026114995" r="1.4" fill="#f4bb55"></circle><circle cx="104.40843922377763" cy="73.49053599700355" r="1.4" fill="#f4bb55"></circle><circle cx="141.78923390961808" cy="68.81952411338531" r="1.4" fill="#f4bb55"></circle><circle cx="94.96402252639936" cy="85.98597628279782" r="1.4" fill="#f4bb55"></circle><circle cx="140.05549287855695" cy="75.94180834896665" r="1.4" fill="#f4bb55"></circle><circle cx="116.17984194401866" cy="58.66922243220187" r="1.4" fill="#f4bb55"></circle><circle cx="122.85119521276008" cy="65.40919159788703" r="1.4" fill="#f4bb55"></circle><circle cx="111.36431265095861" cy="88.56878468593958" r="1.4" fill="#f4bb55"></circle><circle cx="106.20311455895515" cy="69.6591892397284" r="1.4" fill="#f4bb55"></circle><circle cx="120.4451782366085" cy="83.81939405402223" r="1.4" fill="#f4bb55"></circle><circle cx="135.24048152443356" cy="86.0092837636966" r="1.4" fill="#f4bb55"></circle><circle cx="92.93104792100526" cy="93.221097334986" r="1.4" fill="#f4bb55"></circle><circle cx="99.84012981806572" cy="63.90122693405603" r="1.4" fill="#f4bb55"></circle><circle cx="125.89125807418611" cy="59.33961585456268" r="1.4" fill="#f4bb55"></circle><circle cx="127.10320858715097" cy="60.27459837535613" r="1.4" fill="#f4bb55"></circle><circle cx="100.20239080892239" cy="64.03501103989" r="1.4" fill="#f4bb55"></circle><circle cx="139.81056684534843" cy="97.62767930905295" r="1.4" fill="#f4bb55"></circle><circle cx="131.7223326200859" cy="99.71370757886004" r="1.4" fill="#f4bb55"></circle><circle cx="98.09862829446818" cy="71.96089401078672" r="1.4" fill="#f4bb55"></circle><circle cx="126.49298051640599" cy="68.07174205219219" r="1.4" fill="#f4bb55"></circle><circle cx="116.97902082213082" cy="92.38965811318565" r="1.4" fill="#f4bb55"></circle><circle cx="123.94927016058105" cy="56.686081702463255" r="1.4" fill="#f4bb55"></circle><circle cx="105.87235219090248" cy="88.51112209836027" r="1.4" fill="#f4bb55"></circle><circle cx="102.01397033207857" cy="87.97180171837537" r="1.4" fill="#f4bb55"></circle><circle cx="107.02410162505629" cy="66.71080787441736" r="1.4" fill="#f4bb55"></circle><circle cx="118.45247592804527" cy="97.52087545088541" r="1.4" fill="#f4bb55"></circle><circle cx="111.19979667761619" cy="78.00610218255883" r="1.4" fill="#f4bb55"></circle><circle cx="98.33252148849846" cy="85.43272147879797" r="1.4" fill="#f4bb55"></circle><circle cx="102.72629615422376" cy="99.59143133686904" r="1.4" fill="#f4bb55"></circle><circle cx="117.23166674366234" cy="95.28527522220446" r="1.4" fill="#f4bb55"></circle><circle cx="116.54686047500607" cy="90.66211980809554" r="1.4" fill="#f4bb55"></circle><circle cx="101.29079779227727" cy="76.63894093692258" r="1.4" fill="#f4bb55"></circle><circle cx="138.27374008022898" cy="79.58367248618949" r="1.4" fill="#f4bb55"></circle><circle cx="119.46766659065305" cy="84.71926571203984" r="1.4" fill="#f4bb55"></circle><circle cx="123.52084562085875" cy="60.405476899148404" r="1.4" fill="#f4bb55"></circle><circle cx="99.76504456784564" cy="68.40911449642813" r="1.4" fill="#f4bb55"></circle><circle cx="115.52849673010232" cy="69.53447085468835" r="1.4" fill="#f4bb55"></circle><circle cx="128.8712687097822" cy="86.01756473732873" r="1.4" fill="#f4bb55"></circle><circle cx="100.55565151597555" cy="74.11347838947117" r="1.4" fill="#f4bb55"></circle><circle cx="140.11700187730287" cy="69.2502534537924" r="1.4" fill="#f4bb55"></circle><circle cx="138.14875230781442" cy="68.34777872447859" r="1.4" fill="#f4bb55"></circle><circle cx="127.58104681055018" cy="105.29575632070103" r="1.4" fill="#f4bb55"></circle><circle cx="121.2126655905552" cy="78.73859688018317" r="1.4" fill="#f4bb55"></circle><circle cx="99.02435212071205" cy="83.15466579538432" r="1.4" fill="#f4bb55"></circle><circle cx="99.32625296117392" cy="92.7087710101748" r="1.4" fill="#f4bb55"></circle><circle cx="124.31842557075556" cy="74.30724995234266" r="1.4" fill="#f4bb55"></circle><circle cx="121.24828020366768" cy="75.91410276565733" r="1.4" fill="#f4bb55"></circle><circle cx="101.47078120158909" cy="66.09823339195972" r="1.4" fill="#f4bb55"></circle><circle cx="106.6565918944286" cy="92.83099228576896" r="1.4" fill="#f4bb55"></circle><circle cx="115.93881922750424" cy="80.63678507518367" r="1.4" fill="#f4bb55"></circle><circle cx="134.84603590899272" cy="85.24920987411356" r="5.5" fill="#df3f2b"></circle><circle cx="134.84603590899272" cy="85.24920987411356" r="3" fill="#f2826b"></circle><circle cx="103.13008033239998" cy="78.04535001712279" r="5.5" fill="#df3f2b"></circle><circle cx="103.13008033239998" cy="78.04535001712279" r="3" fill="#f2826b"></circle><circle cx="121.11281092910305" cy="98.73365273790697" r="5.5" fill="#df3f2b"></circle><circle cx="121.11281092910305" cy="98.73365273790697" r="3" fill="#f2826b"></circle><circle cx="111.33139923680095" cy="65.80528934266411" r="5.5" fill="#df3f2b"></circle><circle cx="111.33139923680095" cy="65.80528934266411" r="3" fill="#f2826b"></circle><circle cx="116.63143474665871" cy="65.22116043830545" r="5.5" fill="#df3f2b"></circle><circle cx="116.63143474665871" cy="65.22116043830545" r="3" fill="#f2826b"></circle><circle cx="125.89390219504901" cy="96.21733190260593" r="5.5" fill="#df3f2b"></circle><circle cx="125.89390219504901" cy="96.21733190260593" r="3" fill="#f2826b"></circle><circle cx="131.89272186287437" cy="103.64227256143478" r="5.5" fill="#df3f2b"></circle><circle cx="131.89272186287437" cy="103.64227256143478" r="3" fill="#f2826b"></circle><circle cx="128.53912905317014" cy="59.69998084353588" r="5.5" fill="#df3f2b"></circle><circle cx="128.53912905317014" cy="59.69998084353588" r="3" fill="#f2826b"></circle><path d="M150 108 A14 14 0 0 1 178 108Z" fill="#7cb342" stroke="#4e8a22" stroke-width="2"></path><path d="M164 108 L158 98 M164 108 L170 98 M164 108 L164 96" stroke="#c5e1a5" stroke-width="1"></path><path transform="translate(110 60) rotate(30) scale(0.9)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#4f8f3a"></path><path transform="translate(110 60) rotate(30) scale(0.9)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(132 92) rotate(-20) scale(0.8)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#4f8f3a"></path><path transform="translate(132 92) rotate(-20) scale(0.8)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Di 10.11.</span><span class="t">30 Min · 2 Portionen</span></div>
+        <h3>Rote-Linsen-Curry mit Jasminreis</h3>
+        <div class="chips"><span class="chip fav">Favorit</span></div>
+        <p class="offers"><b>Günstig:</b> Linsen, Kokosmilch und Ingwer vom ausgefallenen Montag und Donnerstag sind noch da, nur Tomaten, Reis und Limette kommen dazu</p>
+        <details class="recipe" id="rezept-di">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">125 g</span> rote Linsen</li><li><span class="qty">125 g</span> Cherrytomaten</li><li><span class="qty">1</span> Knoblauchzehe</li><li><span class="qty">½ Stück</span> Ingwer</li><li><span class="qty">½ EL</span> Rapsöl</li><li><span class="qty">¼ TL</span> Kreuzkümmel</li><li><span class="qty">¼ TL</span> Zimt</li><li><span class="qty">½ TL</span> Currypulver</li><li><span class="qty">200 ml</span> Kokosmilch (halbe Dose)</li><li><span class="qty">125 ml</span> Gemüsebrühe, plus etwas Wasser</li><li><span class="qty">1 EL</span> Limettensaft</li><li><span class="qty">125 g</span> Jasminreis (Beilage)</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Reis nach Packungsangabe kochen. Tomaten vierteln, Linsen abspülen.</li><li>Knoblauch und Ingwer fein hacken und im Öl andünsten. Kreuzkümmel, Zimt und Curry kurz mitrösten.</li><li>Kokosmilch, Brühe, Tomaten und Linsen zugeben und aufkochen.</li><li>Bei mittlerer Hitze etwa 20 Minuten köcheln, bis die Linsen weich sind. Bei Bedarf Wasser nachgießen.</li><li>Mit Salz, Pfeffer und Limettensaft abschmecken.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.gaumenfreundin.de/rote-linsen-curry/" target="_blank" rel="noopener">Gaumenfreundin (für 4, hier halbiert)</a></p>
+          </div>
+        </details>
+        <div class="cook" data-day="Di" role="group" aria-label="Di: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
+      </div>
+    </article>
+    <article class="day c-sky" id="mi">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="93" cy="83" rx="62" ry="59.519999999999996" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="90" cy="78" r="62" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"></circle><circle cx="90" cy="78" r="48.36" fill="none" stroke="#ece8de" stroke-width="1"></circle><g transform="translate(68 64) rotate(-20)"><path d="M-26 14 L0 -26 L26 14 Q0 22 -26 14Z" fill="#efcf8a" stroke="#c99a4c" stroke-width="2"></path><path d="M-20 12 Q0 18 20 12" stroke="#f5b93a" stroke-width="3" fill="none"></path><path d="M-10 -4 l10 6 M-4 -14 l10 6 M-14 6 l12 5" stroke="#b9853f" stroke-width="2" stroke-linecap="round"></path><circle cx="-6" cy="9" r="2.4" fill="#a8341f"></circle><circle cx="8" cy="7" r="2.2" fill="#f2d94e"></circle></g><g transform="translate(104 58) rotate(30)"><path d="M-26 14 L0 -26 L26 14 Q0 22 -26 14Z" fill="#efcf8a" stroke="#c99a4c" stroke-width="2"></path><path d="M-20 12 Q0 18 20 12" stroke="#f5b93a" stroke-width="3" fill="none"></path><path d="M-10 -4 l10 6 M-4 -14 l10 6 M-14 6 l12 5" stroke="#b9853f" stroke-width="2" stroke-linecap="round"></path><circle cx="-6" cy="9" r="2.4" fill="#a8341f"></circle><circle cx="8" cy="7" r="2.2" fill="#f2d94e"></circle></g><g transform="translate(84 100) rotate(170)"><path d="M-26 14 L0 -26 L26 14 Q0 22 -26 14Z" fill="#efcf8a" stroke="#c99a4c" stroke-width="2"></path><path d="M-20 12 Q0 18 20 12" stroke="#f5b93a" stroke-width="3" fill="none"></path><path d="M-10 -4 l10 6 M-4 -14 l10 6 M-14 6 l12 5" stroke="#b9853f" stroke-width="2" stroke-linecap="round"></path><circle cx="-6" cy="9" r="2.4" fill="#a8341f"></circle><circle cx="8" cy="7" r="2.2" fill="#f2d94e"></circle></g><ellipse cx="163" cy="106" rx="24" ry="20" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="160" cy="100" r="25" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"></circle><circle cx="160" cy="100" r="20" fill="#d8402c"></circle><circle cx="174.7484819411093" cy="100.12111941316063" r="1.5" fill="#5fa83a"></circle><circle cx="147.7455927735919" cy="91.71999702345369" r="1.5" fill="#5fa83a"></circle><circle cx="165.66085920429703" cy="92.83784882900325" r="1.5" fill="#5fa83a"></circle><rect x="160.64162011920354" y="99.76420090332375" width="4" height="4" fill="#f3826b"></rect><rect x="159.75317234203013" y="84.92431876311967" width="4" height="4" fill="#f3826b"></rect><circle cx="155.8413957487975" cy="101.06963422919223" r="1.5" fill="#5fa83a"></circle><rect x="163.93943096916973" y="99.14901458755058" width="4" height="4" fill="#f3826b"></rect><circle cx="156.74586457771628" cy="91.62098108375483" r="1.5" fill="#5fa83a"></circle><circle cx="154.49744261905334" cy="113.93092531276095" r="1.5" fill="#5fa83a"></circle><circle cx="162.9079106569042" cy="109.88533708515241" r="1.5" fill="#5fa83a"></circle><rect x="165.9488375350049" y="99.18630646275109" width="4" height="4" fill="#f3826b"></rect><rect x="170.92298492385729" y="91.57557209141355" width="4" height="4" fill="#f3826b"></rect><circle cx="155.0358884895451" cy="93.10931015525904" r="1.5" fill="#5fa83a"></circle><circle cx="167.56197640037954" cy="100.55012667248938" r="1.5" fill="#5fa83a"></circle><rect x="152.581628225518" y="85.63121886221955" width="4" height="4" fill="#f3826b"></rect><rect x="164.71823998166332" y="105.97118461743213" width="4" height="4" fill="#f3826b"></rect><path d="M116 112 q8 -10 18 -2 q6 8 -4 12 q-10 3 -14 -10Z" fill="#fbf9f1" stroke="#e1d9c4" stroke-width="1"></path><path transform="translate(56 112) rotate(-20) scale(0.8)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3e8a3a"></path><path transform="translate(56 112) rotate(-20) scale(0.8)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(128 42) rotate(30) scale(0.8)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3e8a3a"></path><path transform="translate(128 42) rotate(30) scale(0.8)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Mi 11.11.</span><span class="t">30 Min · 2 Portionen</span></div>
+        <h3>Kidneybohnen-Quesadillas mit Tomatensalsa</h3>
+        <div class="chips"><span class="chip fav">Favorit</span></div>
+        <p class="offers"><b>Günstig:</b> Kerrygold Cheddar gerieben 1,59 € (REWE, Knaller), Romatomaten 400 g 1,79 € und Lauchzwiebeln 0,55 € (REWE, Aktion), Tortilla Wraps XXL 1,79 € (Lidl). Der Feta von letzter Woche reicht</p>
+        <details class="recipe" id="rezept-mi">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">1 Dose (425 ml)</span> Kidneybohnen</li><li><span class="qty">1 kleine Dose (212 ml)</span> Mais</li><li><span class="qty">½ Bund</span> Koriander</li><li><span class="qty">150 g</span> Cheddar, gerieben (Original 175 g)</li><li><span class="qty">100 g</span> Feta (Rest von letzter Woche)</li><li><span class="qty">3</span> Lauchzwiebeln</li><li><span class="qty">4</span> Weizentortillas</li><li><span class="qty">150 g</span> Schmand</li><li><span class="qty">ca. 2 EL</span> Olivenöl</li><li><span class="qty">4</span> Romatomaten</li><li><span class="qty">1 EL</span> Zitronensaft</li><li>Salz, Pfeffer, Zucker</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Ofen auf 200 °C Ober-/Unterhitze (180 °C Umluft) vorheizen. Bohnen abspülen und mit dem Mais abtropfen lassen. Koriander grob hacken.</li><li>Feta zerbröseln, Lauchzwiebeln in feine Ringe schneiden.</li><li>Bohnen und Mais mit je der Hälfte von Koriander, Käse und Lauchzwiebeln mischen und würzen. Tortillas zur Hälfte mit etwas Schmand bestreichen, Füllung daraufgeben und zuklappen.</li><li>Auf ein Blech mit Backpapier legen, mit Öl bepinseln, mit dem restlichen Käse bestreuen und etwa 10 Minuten backen, bis er goldbraun ist.</li><li>Für die Salsa Tomaten entkernen und klein würfeln, mit den restlichen Lauchzwiebeln, Koriander, 1 EL Öl und Zitronensaft mischen und mit Salz, Pfeffer und Zucker abschmecken. Mit dem übrigen Schmand servieren.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.lecker.de/kidneybohnen-quesadillas-4937.html" target="_blank" rel="noopener">lecker.de</a></p>
+          </div>
+        </details>
+        <div class="cook" data-day="Mi" role="group" aria-label="Mi: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
+      </div>
+    </article>
+    <article class="day c-red" id="do">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="101" cy="81" rx="62" ry="59.519999999999996" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="98" cy="76" r="62" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"></circle><circle cx="98" cy="76" r="56" fill="#f3d78f"></circle><path d="M124.60466175172553 76.26088019326795 q4 -3.488841957640295 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M73.93059420863504 100.1225763415423 q4 -3.250487422687229 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M106.83288919423897 77.08233825445978 q4 -5.709013182068715 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M86.91084447916231 93.19605851707314 q4 -4.6417633712486195 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M95.98456093372961 59.5303550705192 q4 -1.205298270194465 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M90.45537295470452 75.26223379585915 q4 -6.117821527234195 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M120.0645399662499 108.63866373623938 q4 -5.767538834720636 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M69.90348044816267 111.18856074747619 q4 -3.1897737133269075 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M117.96671215239644 91.65702077530078 q4 -2.783387662742001 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M47.2477302018568 94.40351032025907 q4 -4.135608566522416 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M66.54485394141322 49.606569762899454 q4 -6.367023664231889 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M122.99920339713395 92.57995983018861 q4 -1.5586018397280021 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M85.8128519563336 114.49630813539912 q4 -3.012577332562105 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M50.985729086092604 92.3194121991582 q4 -4.60004412457349 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M78.7384521507711 55.4150124408974 q4 -6.542394170324502 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M96.4850485927062 62.42448861310966 q4 -2.0718270535915284 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M84.1196460217411 70.54878322341929 q4 -5.753668578692558 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M101.47022289554539 103.40379698026439 q4 -1.233284768757077 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M48.36770153687297 68.12138988156484 q4 -4.0534595870661825 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M89.15621308360544 44.39710905407355 q4 -6.8554911724550145 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M94.15613015366587 57.52269856475482 q4 -1.4349845035164543 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M84.59011010275891 74.98781595133323 q4 -3.384843625307476 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M70.4610822438041 48.523854749825475 q4 -5.698760535893385 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M124.69858451347162 73.44134063634539 q4 -5.576919668622743 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M84.98010289712009 93.88459686928397 q4 -1.405830037037763 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M95.14824291059891 95.95301660787365 q4 -4.224918560695331 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M49.81755549451979 84.59688091527732 q4 -4.931333572571787 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M77.09055346622623 50.920179196692104 q4 -3.5209607344684004 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M61.023504491423495 106.23710743085283 q4 -2.8152842073772497 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M126.76413975069039 98.78042293093608 q4 -4.616440993555095 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M88.08234194981112 39.15532468179929 q4 -5.192368257880382 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M76.44834351597875 77.76371014921757 q4 -6.6924852615653005 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M65.90260852970478 92.77351949648123 q4 -6.230358613296579 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M97.72391115478054 69.12686337318632 q4 -2.681872561425843 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M98.62136995903815 42.60387677503362 q4 -1.5743404890291117 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M104.30395044675876 106.78110351201846 q4 -1.4499435855308285 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M72.86734120463835 58.15222219363007 q4 -4.907480595590305 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M52.41594784887136 77.01051412595668 q4 -2.6806916602331645 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M114.04948653156785 94.8186188750435 q4 -2.167834839396102 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M79.02686162826787 45.321767167162605 q4 -4.398027883562272 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M47.87558794688246 60.442612193061876 q4 -4.318356745558956 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M88.6044813993058 72.91648969135682 q4 -2.4212839777680504 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M88.17527146401804 36.25886266647373 q4 -1.2790575149837213 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M81.8277880812365 93.04474406369971 q4 -6.059534744852938 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M62.15826029505308 95.52128759735713 q4 -4.081654878836896 9 0 t9 0" stroke="#f7dd92" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M93.12558363534487 45.02692707863545 q4 -1.1054950412854065 9 0 t9 0" stroke="#e8bf62" stroke-width="2.6" fill="none" stroke-linecap="round"></path><path d="M52.25136495524635 78.29852741478372 l12 3.4094631594649814" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M69.01961032970047 105.2769727675043 l12 -3.4033379142188176" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M54.03802417475568 73.02205576420322 l12 -2.9508324372353183" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M106.52419981069346 102.38148852141612 l12 2.3093427970583287" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M103.44479673750719 89.93191248784699 l12 2.228720805714243" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M94.61539885961412 45.96199165360565 l12 2.088834467385353" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M97.59787080310687 70.75063574474594 l12 0.9877588511387625" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M70.9158790411692 43.736475349195125 l12 3.906709257469843" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M113.30222864615254 77.04634863375836 l12 -2.17678379182554" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"></path><path d="M74.691172442343 100.02889423780687 q6 -5 12 0" stroke="#d93a2b" stroke-width="3" fill="none" stroke-linecap="round"></path><path d="M98.66880366978219 89.19676980697957 q6 -5 12 0" stroke="#d93a2b" stroke-width="3" fill="none" stroke-linecap="round"></path><path d="M125.27432660334941 67.81387949494017 q6 -5 12 0" stroke="#d93a2b" stroke-width="3" fill="none" stroke-linecap="round"></path><path d="M69.57707293414244 62.07029030144174 q6 -5 12 0" stroke="#d93a2b" stroke-width="3" fill="none" stroke-linecap="round"></path><path d="M114.5442296195387 100.40231838003574 q6 -5 12 0" stroke="#d93a2b" stroke-width="3" fill="none" stroke-linecap="round"></path><path d="M114.03460264220189 87.95142818381 q6 -5 12 0" stroke="#d93a2b" stroke-width="3" fill="none" stroke-linecap="round"></path><path d="M97.22047006345586 64.81222843129154 q6 -5 12 0" stroke="#d93a2b" stroke-width="3" fill="none" stroke-linecap="round"></path><rect x="91.70411735993581" y="93.2409957782148" width="10" height="10" rx="2" transform="rotate(13.435675955114734 96.70411735993581 98.2409957782148)" fill="#f6ebc8" stroke="#d6b46a" stroke-width="1.2"></rect><rect x="91.19662090046441" y="86.77518120106855" width="10" height="10" rx="2" transform="rotate(19.37126990844089 96.19662090046441 91.77518120106855)" fill="#f6ebc8" stroke="#d6b46a" stroke-width="1.2"></rect><rect x="63.30477967188021" y="78.89011753511016" width="10" height="10" rx="2" transform="rotate(31.03431457701806 68.30477967188021 83.89011753511016)" fill="#f6ebc8" stroke="#d6b46a" stroke-width="1.2"></rect><rect x="113.80722724157599" y="50.06212953894905" width="10" height="10" rx="2" transform="rotate(13.90331474314598 118.80722724157599 55.06212953894905)" fill="#f6ebc8" stroke="#d6b46a" stroke-width="1.2"></rect><rect x="62.097952750687995" y="78.88924442994241" width="10" height="10" rx="2" transform="rotate(32.90780267347945 67.097952750688 83.88924442994241)" fill="#f6ebc8" stroke="#d6b46a" stroke-width="1.2"></rect><rect x="86.17254530026382" y="63.839320740554115" width="10" height="10" rx="2" transform="rotate(10.391025110329979 91.17254530026382 68.83932074055411)" fill="#f6ebc8" stroke="#d6b46a" stroke-width="1.2"></rect><path d="M98.64058023704004 65.41606446699646 q6 -6 12 0 q-6 4 -12 0Z" fill="#ffd54a"></path><path d="M77.76424917502149 56.20672794271187 q6 -6 12 0 q-6 4 -12 0Z" fill="#ffd54a"></path><path d="M118.87816584128191 63.51248500185431 q6 -6 12 0 q-6 4 -12 0Z" fill="#ffd54a"></path><path d="M88.9758120723294 48.757329941014106 q6 -6 12 0 q-6 4 -12 0Z" fill="#ffd54a"></path><path d="M84.99176668871954 94.60728797717485 q6 -6 12 0 q-6 4 -12 0Z" fill="#ffd54a"></path><circle cx="101.21587773243715" cy="71.25312096599971" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="132.627684190235" cy="83.76017221677941" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="115.55173500410393" cy="52.63268556303447" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="94.72567154202667" cy="44.22476834963511" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="90.99195570771718" cy="69.99296061942032" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="119.71156597745663" cy="92.14589317799454" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="89.4898978735062" cy="78.32864205908348" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="81.13061910840214" cy="101.12234021858653" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="107.75100165388137" cy="101.01203502044001" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><circle cx="124.78424811246136" cy="46.89001807884485" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"></circle><ellipse cx="104.7543392247343" cy="64.77381470622714" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="101.45965312076477" cy="102.6456631919661" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="100.10633640796355" cy="112.53189795615111" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="67.91306596184174" cy="58.45575248826414" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="85.09465534047983" cy="77.83795640053408" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="118.47773426297744" cy="42.21431402160001" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="103.12722466972839" cy="64.82711087892054" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="111.08164892303034" cy="62.379824999723176" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="110.17736619403614" cy="86.46633633958405" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="98.7417131154052" cy="36.75281335374062" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="138.37528209951154" cy="86.69905062235622" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="70.84459759705072" cy="60.679578739726324" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="114.25453919404497" cy="95.44549313491538" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="73.08682713511499" cy="67.81755172659678" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="78.195952256519" cy="75.7578704876638" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="103.78136938667491" cy="60.33793272367688" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="64.86173791009458" cy="59.6627198153073" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="96.82311852007687" cy="56.95221182197196" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="77.34330226571237" cy="95.14158145038667" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="111.94738409423502" cy="48.261706183072974" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="63.27206546188312" cy="76.41387206364683" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="64.3520924343251" cy="68.9677733147063" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="97.29123695395025" cy="51.36454617488421" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="90.88267818200364" cy="92.89641327740394" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="112.34096729648085" cy="73.12694005729905" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><ellipse cx="117.54793649428113" cy="108.81807025048072" rx="1.2" ry="0.7" fill="#2b2b2b"></ellipse><path d="M156 18 L116 84" stroke="#b98a55" stroke-width="4" stroke-linecap="round"></path><path d="M168 24 L124 88" stroke="#a87945" stroke-width="4" stroke-linecap="round"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Do 12.11.</span><span class="t">25 Min · 2 Portionen</span></div>
+        <h3>Bunte Gemüse-Bratnudeln mit Tofu</h3>
+        <div class="chips"><span class="chip fav">Favorit</span></div>
+        <p class="offers"><b>Günstig:</b> Der Rest Lauchzwiebeln vom Mittwoch und der Ingwer sind schon da</p>
+        <details class="recipe" id="rezept-do">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">125 g</span> Mie-Nudeln</li><li><span class="qty">1½ EL</span> Öl</li><li><span class="qty">½</span> rote Paprika</li><li><span class="qty">1</span> Möhre</li><li><span class="qty">60 g</span> Shiitake-Pilze</li><li><span class="qty">½ Bund</span> Lauchzwiebeln (Rest vom Mittwoch)</li><li><span class="qty">ca. 1,5 cm</span> Ingwer</li><li><span class="qty">1</span> Knoblauchzehe</li><li><span class="qty">200 g</span> Tofu (die ganze Packung; im Original für 4)</li><li><span class="qty">2½ EL</span> Sojasoße</li><li><span class="qty">1 EL</span> Ketjap Manis</li><li><span class="qty">1</span> Ei</li><li><span class="qty">½ EL</span> Sesamöl</li><li><span class="qty">1 EL</span> Sesam</li><li>Salz, Pfeffer</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Nudeln nach Packungsangabe kochen, abgießen und mit ½ EL Öl mischen.</li><li>Paprika und Möhren in Stifte, Lauchzwiebeln in Ringe und die Pilze klein schneiden. Ingwer und Knoblauch fein hacken, Tofu würfeln.</li><li>½ EL Öl erhitzen und Lauchzwiebeln, Ingwer und Knoblauch etwa 2 Minuten anbraten. Nudeln, Paprika, Möhren und Pilze zugeben und rund 3 Minuten mitbraten.</li><li>Tofu, ½ EL Sojasoße und das Ketjap Manis unterrühren.</li><li>Das Ei mit 1 EL Sojasoße und dem Sesamöl verquirlen, über die Nudeln gießen und etwa 4 Minuten braten, bis das Ei gestockt ist. Mit restlicher Sojasoße, Salz und Pfeffer abschmecken und mit Sesam bestreuen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.lecker.de/bunte-gemuese-bratnudeln-128867.html" target="_blank" rel="noopener">lecker.de (für 4, hier halbiert)</a></p>
+          </div>
+        </details>
+        <div class="cook" data-day="Do" role="group" aria-label="Do: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
+      </div>
+    </article>
+    <article class="day c-pink" id="fr">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="101" cy="81" rx="64" ry="61.44" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="98" cy="76" r="64" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"></circle><circle cx="98" cy="76" r="49.92" fill="none" stroke="#ece8de" stroke-width="1"></circle><circle cx="98" cy="76" r="46" fill="#eef3d8"></circle><g transform="translate(129.96478177821493 76.72474841877644) rotate(60.12963574385719)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(69.22332000386095 87.87505804684037) rotate(169.2332815049371)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(83.04370813773843 39.848589297194685) rotate(28.015756322078296)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(125.95373268774473 53.870355056114214) rotate(81.17055419886977)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(132.5102916128156 93.59057980437238) rotate(116.24647599470171)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(107.04638135635109 99.62093731690968) rotate(98.79549180101394)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(99.0464901173779 39.92037621974199) rotate(82.9861605088162)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(74.94246793820193 58.75117434674615) rotate(167.6203325146904)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(131.16856016619167 95.03977321452763) rotate(71.24663506226923)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(64.06964714810348 85.47928101860515) rotate(44.795527013389176)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(84.63407304195226 55.539646421591755) rotate(178.34941425283878)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(114.95825236579657 60.30236492783665) rotate(56.876084272226365)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(77.64254428013717 49.28018648302329) rotate(156.28225161520868)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(64.8985912234948 93.89353950113087) rotate(172.02275004797744)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(111.2047907386483 93.34639402551274) rotate(63.01133304974592)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(80.88303601143186 75.11817499803225) rotate(152.9975291867729)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(94.69544593691134 59.08454166484408) rotate(63.73666816565053)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(101.0783524819331 107.19208276968845) rotate(131.7696083764404)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(72.75696625081514 51.94796737077485) rotate(51.21244235486372)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><g transform="translate(104.44467084015588 62.20282673016878) rotate(165.6278998989742)"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"></path></g><path d="M118.8454816668553 84.97732466825194 q10 -5.925833325332884 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M122.42821658080885 93.32079572294319 q10 -0.9372375602541663 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M74.51858157061528 40.24242170931522 q10 0.435234620438532 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M126.1687133828217 75.59796652928478 q10 -5.373288334055473 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M85.90721765168672 54.2832011640675 q10 -4.505160547562484 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M116.86650249325476 99.73578324773165 q10 -5.37898455857252 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M97.94862969120254 79.80039551713097 q10 -1.6335720790706443 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M94.35415184214435 53.29971584626724 q10 -3.3547430538361627 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M86.52662457939992 95.62281245091063 q10 -3.203492323497074 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M56.69845421221791 94.52992873351472 q10 -1.577466539376167 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M68.55731420731807 75.65315045286485 q10 -0.273794595279635 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M66.17285960367997 55.714396513774936 q10 0.9824944753118299 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M127.88561713206681 68.19259383415903 q10 -4.913162466563826 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M52.93889629661772 76.67908376609029 q10 -1.0306518520371304 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M72.12312513938316 86.80402668403369 q10 0.054366042397155034 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M48.80656801403945 67.78892749799287 q10 -4.335534620255015 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M60.40565937112541 101.46721601800036 q10 -3.0508276084674653 20 0" stroke="#d6e8a4" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M121.27793973429345 68.10174344519473 q10 -1.5901476371056154 20 0" stroke="#b9d97a" stroke-width="4" fill="none" stroke-linecap="round"></path><circle cx="113.16186976120642" cy="81.514990671253" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="121.22449998991199" cy="88.47448370451305" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="125.44363251020864" cy="66.41962443429624" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="121.67540998116252" cy="74.39011435943733" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="77.78132249299907" cy="97.35390474604239" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="70.80937958002716" cy="99.75209677273517" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="93.95554251003949" cy="87.35408850520726" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="96.73094321046344" cy="52.59062229115654" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="86.01562176626237" cy="43.959994180274386" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="75.94026134479576" cy="84.18254622355728" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="89.64947742479296" cy="99.82680113699617" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="82.11576280146112" cy="84.95576982296217" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="106.42357618242474" cy="71.23543831322996" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><circle cx="111.48941810385648" cy="84.33279763728731" r="2.6" fill="#4f8a2e" opacity="0.85"></circle><path transform="translate(84.88284495794483 83.8349530250586) rotate(51.595733837036285)" d="M-8 -6 Q0 -10 8 -5 Q10 4 2 8 Q-7 9 -9 1Z" fill="#fbfaf3" stroke="#e6e0cc" stroke-width="0.8"></path><path transform="translate(101.36156743531086 91.8073291878474) rotate(57.15550930572465)" d="M-8 -6 Q0 -10 8 -5 Q10 4 2 8 Q-7 9 -9 1Z" fill="#fbfaf3" stroke="#e6e0cc" stroke-width="0.8"></path><path transform="translate(71.61806385366356 80.37714993783949) rotate(7.28627556808585)" d="M-8 -6 Q0 -10 8 -5 Q10 4 2 8 Q-7 9 -9 1Z" fill="#fbfaf3" stroke="#e6e0cc" stroke-width="0.8"></path><path transform="translate(86.11284929032443 53.89184676972201) rotate(42.452622508840925)" d="M-8 -6 Q0 -10 8 -5 Q10 4 2 8 Q-7 9 -9 1Z" fill="#fbfaf3" stroke="#e6e0cc" stroke-width="0.8"></path><path transform="translate(101.23351741004242 63.8526883537484) rotate(43.01217057882444)" d="M-8 -6 Q0 -10 8 -5 Q10 4 2 8 Q-7 9 -9 1Z" fill="#fbfaf3" stroke="#e6e0cc" stroke-width="0.8"></path><path transform="translate(93.25505806389201 97.93941599596924) rotate(69.61792272963464)" d="M-8 -6 Q0 -10 8 -5 Q10 4 2 8 Q-7 9 -9 1Z" fill="#fbfaf3" stroke="#e6e0cc" stroke-width="0.8"></path><ellipse cx="99.67963108814624" cy="50.091574798582165" rx="2.2" ry="1.3" transform="rotate(118.70002828477882 99.67963108814624 50.091574798582165)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="96.38146427347175" cy="83.15245528587187" rx="2.2" ry="1.3" transform="rotate(161.39843598073276 96.38146427347175 83.15245528587187)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="117.47911741981561" cy="96.90858253075962" rx="2.2" ry="1.3" transform="rotate(166.22183267316865 117.47911741981561 96.90858253075962)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="72.42584941347812" cy="75.6949139245358" rx="2.2" ry="1.3" transform="rotate(41.3109165622438 72.42584941347812 75.6949139245358)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="96.80862606275127" cy="80.4003633034229" rx="2.2" ry="1.3" transform="rotate(55.421797416835 96.80862606275127 80.4003633034229)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="110.44297264154122" cy="60.24354203881333" rx="2.2" ry="1.3" transform="rotate(44.21852040301008 110.44297264154122 60.24354203881333)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="105.44748785199724" cy="38.88013024420642" rx="2.2" ry="1.3" transform="rotate(79.8962984699273 105.44748785199724 38.88013024420642)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="123.21094506675635" cy="93.11840110220277" rx="2.2" ry="1.3" transform="rotate(124.65732313909443 123.21094506675635 93.11840110220277)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="81.10394348035695" cy="72.63610045663039" rx="2.2" ry="1.3" transform="rotate(111.63616991212413 81.10394348035695 72.63610045663039)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="95.77657827198514" cy="65.3427471669973" rx="2.2" ry="1.3" transform="rotate(177.34862599398411 95.77657827198514 65.3427471669973)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="75.50726787589652" cy="85.68031087673253" rx="2.2" ry="1.3" transform="rotate(135.58801621924528 75.50726787589652 85.68031087673253)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="116.68782534114399" cy="103.26958933661678" rx="2.2" ry="1.3" transform="rotate(156.0835334547253 116.68782534114399 103.26958933661678)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="106.31003318405675" cy="66.73621795893494" rx="2.2" ry="1.3" transform="rotate(154.40795278847588 106.31003318405675 66.73621795893494)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse><ellipse cx="68.71680431572582" cy="93.64730861619661" rx="2.2" ry="1.3" transform="rotate(164.0009384620939 68.71680431572582 93.64730861619661)" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"></ellipse></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Fr 13.11.</span><span class="t">25 Min · 2 Portionen</span></div>
+        <h3>Spitzkohl-Pesto-Nudeln mit Mozzarella</h3>
+        <div class="chips"><span class="chip new">Neu</span><span class="chip var">Variante: mit eurem Pesto und Fusilli</span></div>
+        <p class="offers"><b>Günstig:</b> Spitzkohl 0,99 €/kg (REWE, Aktion). Pesto, Pinienkerne und Fusilli vom ausgefallenen Nudelsalat sind noch da</p>
+        <details class="recipe" id="rezept-fr">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li>Salz, Pfeffer</li><li><span class="qty">250 g</span> Spitzkohl</li><li><span class="qty">125 g</span> Mozzarella (1 Kugel; Original Büffelmozzarella)</li><li><span class="qty">150 g</span> Nudeln (eure Fusilli; Original Spinatbandnudeln)</li><li><span class="qty">1–1½ EL</span> Pinienkerne</li><li><span class="qty">1 EL</span> Öl</li><li><span class="qty">50 g</span> Pesto (euer veganes Pesto; Original rotes Pesto)</li><li><span class="qty">evtl.</span> Kresse</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Nudeln in reichlich Salzwasser nach Packung garen. Spitzkohl putzen, vierteln, den Strunk herausschneiden und den Kohl in feine Streifen schneiden.</li><li>Pinienkerne ohne Fett goldbraun rösten und herausnehmen. Öl in der Pfanne erhitzen und den Spitzkohl darin etwa 2 Minuten anbraten, salzen und pfeffern.</li><li>Nudeln abgießen, dabei etwa 50 ml Kochwasser auffangen. Kochwasser mit dem Pesto verrühren und mit Nudeln und Spitzkohl mischen.</li><li>Mozzarella in Stücke zupfen und mit den Pinienkernen über die Nudeln geben. Nach Lust mit Kresse bestreuen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.lecker.de/spitzkohl-pesto-nudeln-mit-mozzarella-74937.html" target="_blank" rel="noopener">lecker.de (Portionen auf der Seite nicht angegeben; nach Menge für 4 gerechnet, hier halbiert)</a></p>
+          </div>
+        </details>
+        <div class="cook" data-day="Fr" role="group" aria-label="Fr: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
+      </div>
+    </article>
+    <article class="day c-green" id="sa">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="103" cy="89" rx="58" ry="55.68" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="100" cy="84" r="58" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"></circle><circle cx="100" cy="84" r="45.24" fill="none" stroke="#ece8de" stroke-width="1"></circle><ellipse cx="104" cy="104" rx="50" ry="9" fill="rgba(0,0,0,0.10)"></ellipse><rect x="58" y="98" width="84" height="6.4" fill="#e9c98f"></rect><rect x="58" y="91" width="84" height="7.4" fill="#c8402c"></rect><rect x="58" y="87" width="84" height="4.4" fill="#f5efe0"></rect><rect x="58" y="81" width="84" height="6.4" fill="#e9c98f"></rect><rect x="58" y="74" width="84" height="7.4" fill="#c8402c"></rect><rect x="58" y="70" width="84" height="4.4" fill="#f5efe0"></rect><rect x="58" y="64" width="84" height="6.4" fill="#e9c98f"></rect><path d="M56 66 Q60 55 74 58 Q88 53 100 58 Q114 53 128 58 Q140 55 144 66 Z" fill="#f3c85d"></path><ellipse cx="70" cy="60" rx="4" ry="2" fill="#c9892d"></ellipse><ellipse cx="92" cy="58" rx="4" ry="2" fill="#c9892d"></ellipse><ellipse cx="116" cy="59" rx="4" ry="2" fill="#c9892d"></ellipse><ellipse cx="134" cy="61" rx="4" ry="2" fill="#c9892d"></ellipse><path d="M142 68 Q150 84 146 104" stroke="#c8402c" stroke-width="3" fill="none" stroke-linecap="round"></path><path transform="translate(86 55) rotate(-20) scale(0.9)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3f8a3a"></path><path transform="translate(86 55) rotate(-20) scale(0.9)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path><path transform="translate(98 53) rotate(25) scale(0.8)" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="#3f8a3a"></path><path transform="translate(98 53) rotate(25) scale(0.8)" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"></path></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">Sa 14.11.</span><span class="t">50 Min · 2 Portionen</span></div>
+        <h3>Rote-Linsen-Lasagne</h3>
+        <div class="chips"><span class="chip fav">Favorit</span></div>
+        <p class="offers"><b>Günstig:</b> Passierte Tomaten und Crème fraîche von letzter Woche sind noch da, Lasagneplatten und Mozzarella kommen von Lidl</p>
+        <details class="recipe" id="rezept-sa">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">100 g</span> rote Linsen</li><li><span class="qty">½</span> Zwiebel</li><li><span class="qty">1</span> Knoblauchzehe</li><li><span class="qty">1</span> mittelgroße Möhre</li><li><span class="qty">1 EL</span> Olivenöl</li><li><span class="qty">300 ml</span> Gemüsebrühe</li><li><span class="qty">250 ml</span> passierte Tomaten</li><li>Salz, Pfeffer</li><li><span class="qty">½ EL</span> italienische Kräuter</li><li><span class="qty">6</span> Lasagneplatten</li><li><span class="qty">100 g</span> Crème fraîche (oder Schmand)</li><li><span class="qty">50 g</span> Mozzarella (Original gerieben; die halbe zweite Kugel, klein gezupft)</li><li><span class="qty">etwas</span> Butter für die Form</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Linsen in einem Sieb gründlich abspülen. Zwiebel und Knoblauch fein hacken, die Möhre schälen und ganz klein würfeln oder raspeln.</li><li>Olivenöl in einer Pfanne erhitzen und Zwiebel, Knoblauch und Möhre 2 Minuten andünsten. Linsen und Brühe zugeben, aufkochen und zugedeckt bei mittlerer Hitze 10–15 Minuten köcheln, bis Linsen und Möhre weich sind. Passierte Tomaten und Kräuter unterrühren, salzen und pfeffern.</li><li>Ofen auf 200 °C Ober- und Unterhitze vorheizen und eine kleine Auflaufform (ca. 15 × 20 cm) mit Butter einfetten.</li><li>Mit einer Schicht Soße beginnen und abwechselnd Lasagneplatten und Soße schichten. Oben liegt Soße.</li><li>Crème fraîche mit 1–2 EL Wasser glatt rühren, darauf verstreichen, mit dem Mozzarella bedecken und etwa 30 Minuten backen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.gaumenfreundin.de/rote-linsen-lasagne/" target="_blank" rel="noopener">Gaumenfreundin (für 4, hier halbiert)</a></p>
+          </div>
+        </details>
+        <div class="cook" data-day="Sa" role="group" aria-label="Sa: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
+      </div>
+    </article>
+    <article class="day c-violet" id="so">
+      <div class="art"><svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="101" cy="81" rx="64" ry="61.44" fill="rgba(0,0,0,0.10)"></ellipse><circle cx="98" cy="76" r="64" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"></circle><circle cx="98" cy="76" r="49.92" fill="none" stroke="#ece8de" stroke-width="1"></circle><circle cx="98" cy="76" r="46" fill="#f2e7c9"></circle><ellipse cx="125.47459177317958" cy="76.63105132894668" rx="2.4" ry="1.4" transform="rotate(156.1833837144931 125.47459177317958 76.63105132894668)" fill="#fbf4de"></ellipse><ellipse cx="111.93412637660626" cy="110.94419973925321" rx="2.4" ry="1.4" transform="rotate(45.70920273927469 111.93412637660626 110.94419973925321)" fill="#efe2bc"></ellipse><ellipse cx="105.12321602806435" cy="74.63355463473312" rx="2.4" ry="1.4" transform="rotate(41.65587462561944 105.12321602806435 74.63355463473312)" fill="#efe2bc"></ellipse><ellipse cx="85.02337625557766" cy="75.87097514952694" rx="2.4" ry="1.4" transform="rotate(102.14023603226069 85.02337625557766 75.87097514952694)" fill="#fbf4de"></ellipse><ellipse cx="112.84860938559247" cy="81.96729306390301" rx="2.4" ry="1.4" transform="rotate(173.98504184278895 112.84860938559247 81.96729306390301)" fill="#fbf4de"></ellipse><ellipse cx="79.2190541398293" cy="96.00212195794754" rx="2.4" ry="1.4" transform="rotate(107.10953290905316 79.2190541398293 96.00212195794754)" fill="#fbf4de"></ellipse><ellipse cx="116.33259434922203" cy="82.61431367319034" rx="2.4" ry="1.4" transform="rotate(173.87101292324763 116.33259434922203 82.61431367319034)" fill="#fbf4de"></ellipse><ellipse cx="96.37306093483303" cy="66.55310976988618" rx="2.4" ry="1.4" transform="rotate(92.49174682073843 96.37306093483303 66.55310976988618)" fill="#fbf4de"></ellipse><ellipse cx="104.197277246588" cy="85.75692497074024" rx="2.4" ry="1.4" transform="rotate(170.56871708043326 104.197277246588 85.75692497074024)" fill="#fbf4de"></ellipse><ellipse cx="82.02648590323525" cy="90.97080588868663" rx="2.4" ry="1.4" transform="rotate(82.08136901356343 82.02648590323525 90.97080588868663)" fill="#efe2bc"></ellipse><ellipse cx="127.8164249469172" cy="103.93885322981848" rx="2.4" ry="1.4" transform="rotate(101.79864741014254 127.8164249469172 103.93885322981848)" fill="#fbf4de"></ellipse><ellipse cx="116.33548789684959" cy="107.42027088343238" rx="2.4" ry="1.4" transform="rotate(51.369048492689174 116.33548789684959 107.42027088343238)" fill="#efe2bc"></ellipse><ellipse cx="78.61822545214383" cy="83.36398101065868" rx="2.4" ry="1.4" transform="rotate(146.60262799197932 78.61822545214383 83.36398101065868)" fill="#fbf4de"></ellipse><ellipse cx="78.71678717197581" cy="59.3919539371509" rx="2.4" ry="1.4" transform="rotate(153.17705915923094 78.71678717197581 59.3919539371509)" fill="#fbf4de"></ellipse><ellipse cx="60.26467526759473" cy="80.18830002195496" rx="2.4" ry="1.4" transform="rotate(46.651393783582094 60.26467526759473 80.18830002195496)" fill="#efe2bc"></ellipse><ellipse cx="136.92668324054992" cy="61.793857415719685" rx="2.4" ry="1.4" transform="rotate(28.48122804820595 136.92668324054992 61.793857415719685)" fill="#efe2bc"></ellipse><ellipse cx="74.81272677992061" cy="105.67877017529263" rx="2.4" ry="1.4" transform="rotate(171.55102827192798 74.81272677992061 105.67877017529263)" fill="#fbf4de"></ellipse><ellipse cx="104.82858405363066" cy="81.0095520007965" rx="2.4" ry="1.4" transform="rotate(68.66899590411643 104.82858405363066 81.0095520007965)" fill="#efe2bc"></ellipse><ellipse cx="104.11945612269449" cy="39.92804589945523" rx="2.4" ry="1.4" transform="rotate(36.65121600807235 104.11945612269449 39.92804589945523)" fill="#efe2bc"></ellipse><ellipse cx="106.98240125449652" cy="107.27363273839138" rx="2.4" ry="1.4" transform="rotate(51.0373736503708 106.98240125449652 107.27363273839138)" fill="#efe2bc"></ellipse><ellipse cx="65.61002169318317" cy="81.5493892199701" rx="2.4" ry="1.4" transform="rotate(19.502463796875656 65.61002169318317 81.5493892199701)" fill="#efe2bc"></ellipse><ellipse cx="134.5620749615063" cy="73.32664078026518" rx="2.4" ry="1.4" transform="rotate(123.68013966068632 134.5620749615063 73.32664078026518)" fill="#fbf4de"></ellipse><ellipse cx="91.70754727135815" cy="100.84099527296495" rx="2.4" ry="1.4" transform="rotate(109.06285162505827 91.70754727135815 100.84099527296495)" fill="#fbf4de"></ellipse><ellipse cx="62.34668237246067" cy="89.90457283150359" rx="2.4" ry="1.4" transform="rotate(70.98896270198233 62.34668237246067 89.90457283150359)" fill="#efe2bc"></ellipse><ellipse cx="68.90101952490566" cy="97.93381478190094" rx="2.4" ry="1.4" transform="rotate(70.56591396712042 68.90101952490566 97.93381478190094)" fill="#efe2bc"></ellipse><ellipse cx="120.08208688577653" cy="59.13655899115617" rx="2.4" ry="1.4" transform="rotate(70.05967090374774 120.08208688577653 59.13655899115617)" fill="#efe2bc"></ellipse><ellipse cx="73.74678335967593" cy="51.07923267102741" rx="2.4" ry="1.4" transform="rotate(106.3222593843575 73.74678335967593 51.07923267102741)" fill="#fbf4de"></ellipse><ellipse cx="72.19781670652937" cy="68.39281695628945" rx="2.4" ry="1.4" transform="rotate(91.55261818857521 72.19781670652937 68.39281695628945)" fill="#fbf4de"></ellipse><ellipse cx="56.742472816500445" cy="83.49196831864282" rx="2.4" ry="1.4" transform="rotate(147.03267284996468 56.742472816500445 83.49196831864282)" fill="#fbf4de"></ellipse><ellipse cx="101.96100171129754" cy="39.92067511350718" rx="2.4" ry="1.4" transform="rotate(173.3802797335108 101.96100171129754 39.92067511350718)" fill="#fbf4de"></ellipse><ellipse cx="105.84090957988668" cy="70.4530429303565" rx="2.4" ry="1.4" transform="rotate(166.34174971205263 105.84090957988668 70.4530429303565)" fill="#fbf4de"></ellipse><ellipse cx="95.03039344765118" cy="67.08611414201543" rx="2.4" ry="1.4" transform="rotate(13.209942855504316 95.03039344765118 67.08611414201543)" fill="#efe2bc"></ellipse><ellipse cx="59.0705645338678" cy="90.92868739353906" rx="2.4" ry="1.4" transform="rotate(138.8099048839928 59.0705645338678 90.92868739353906)" fill="#fbf4de"></ellipse><ellipse cx="138.2146209023524" cy="73.28859985419442" rx="2.4" ry="1.4" transform="rotate(93.13399606995935 138.2146209023524 73.28859985419442)" fill="#fbf4de"></ellipse><ellipse cx="113.37162308888261" cy="91.99799268513249" rx="2.4" ry="1.4" transform="rotate(141.70127348122247 113.37162308888261 91.99799268513249)" fill="#fbf4de"></ellipse><ellipse cx="132.75249366557898" cy="67.72514525176447" rx="2.4" ry="1.4" transform="rotate(78.49859306518854 132.75249366557898 67.72514525176447)" fill="#efe2bc"></ellipse><ellipse cx="66.23703087386919" cy="56.37720461564899" rx="2.4" ry="1.4" transform="rotate(27.6254822535559 66.23703087386919 56.37720461564899)" fill="#efe2bc"></ellipse><ellipse cx="58.03170946092754" cy="88.24969104882136" rx="2.4" ry="1.4" transform="rotate(175.392683490828 58.03170946092754 88.24969104882136)" fill="#fbf4de"></ellipse><ellipse cx="104.81436647518572" cy="56.929270511781915" rx="2.4" ry="1.4" transform="rotate(110.0579456379907 104.81436647518572 56.929270511781915)" fill="#fbf4de"></ellipse><ellipse cx="75.42571896044856" cy="105.1186660660752" rx="2.4" ry="1.4" transform="rotate(163.71563323015144 75.42571896044856 105.1186660660752)" fill="#fbf4de"></ellipse><ellipse cx="77.76371476018582" cy="76.9559478771387" rx="2.4" ry="1.4" transform="rotate(72.14645634039606 77.76371476018582 76.9559478771387)" fill="#efe2bc"></ellipse><ellipse cx="67.20254281931743" cy="80.88697068767229" rx="2.4" ry="1.4" transform="rotate(87.434976318588 67.20254281931743 80.88697068767229)" fill="#efe2bc"></ellipse><ellipse cx="106.22385409591642" cy="75.89865646573361" rx="2.4" ry="1.4" transform="rotate(86.11009540320843 106.22385409591642 75.89865646573361)" fill="#efe2bc"></ellipse><ellipse cx="92.932846394333" cy="95.25065043510835" rx="2.4" ry="1.4" transform="rotate(92.05314244704934 92.932846394333 95.25065043510835)" fill="#fbf4de"></ellipse><ellipse cx="102.92750667201896" cy="93.56571720286466" rx="2.4" ry="1.4" transform="rotate(31.583994278490543 102.92750667201896 93.56571720286466)" fill="#efe2bc"></ellipse><ellipse cx="121.55201996735934" cy="86.67558080754884" rx="2.4" ry="1.4" transform="rotate(161.6242581986004 121.55201996735934 86.67558080754884)" fill="#fbf4de"></ellipse><ellipse cx="106.33403961714664" cy="114.59566221896073" rx="2.4" ry="1.4" transform="rotate(104.52975938307576 106.33403961714664 114.59566221896073)" fill="#fbf4de"></ellipse><ellipse cx="113.99792233693597" cy="107.85249929605948" rx="2.4" ry="1.4" transform="rotate(33.62031453923337 113.99792233693597 107.85249929605948)" fill="#efe2bc"></ellipse><ellipse cx="109.44310714307312" cy="114.02830929256947" rx="2.4" ry="1.4" transform="rotate(41.36998768959659 109.44310714307312 114.02830929256947)" fill="#efe2bc"></ellipse><ellipse cx="110.83621860721297" cy="42.14826925569865" rx="2.4" ry="1.4" transform="rotate(24.533016376445545 110.83621860721297 42.14826925569865)" fill="#efe2bc"></ellipse><ellipse cx="86.68329961480248" cy="39.41344357041993" rx="2.4" ry="1.4" transform="rotate(154.14955614793558 86.68329961480248 39.41344357041993)" fill="#fbf4de"></ellipse><ellipse cx="95.1334130936604" cy="88.24063063236161" rx="2.4" ry="1.4" transform="rotate(156.36528970504426 95.1334130936604 88.24063063236161)" fill="#fbf4de"></ellipse><ellipse cx="105.05526023676595" cy="89.75647254700422" rx="2.4" ry="1.4" transform="rotate(54.55621562644663 105.05526023676595 89.75647254700422)" fill="#efe2bc"></ellipse><ellipse cx="133.30524342545982" cy="83.9124064483365" rx="2.4" ry="1.4" transform="rotate(88.85736592526425 133.30524342545982 83.9124064483365)" fill="#efe2bc"></ellipse><ellipse cx="112.74651809570204" cy="38.56035630590733" rx="2.4" ry="1.4" transform="rotate(45.21774702948414 112.74651809570204 38.56035630590733)" fill="#efe2bc"></ellipse><ellipse cx="113.28381335774705" cy="84.59394822040831" rx="2.4" ry="1.4" transform="rotate(58.28795970337836 113.28381335774705 84.59394822040831)" fill="#efe2bc"></ellipse><ellipse cx="65.39505523954071" cy="80.88595015525816" rx="2.4" ry="1.4" transform="rotate(47.707955142347124 65.39505523954071 80.88595015525816)" fill="#efe2bc"></ellipse><ellipse cx="90.71309546547438" cy="70.85886289907596" rx="2.4" ry="1.4" transform="rotate(134.41028162576737 90.71309546547438 70.85886289907596)" fill="#fbf4de"></ellipse><ellipse cx="110.74282896612289" cy="106.32372310280051" rx="2.4" ry="1.4" transform="rotate(32.00198093056771 110.74282896612289 106.32372310280051)" fill="#efe2bc"></ellipse><ellipse cx="127.59386525124525" cy="96.40553167055671" rx="2.4" ry="1.4" transform="rotate(113.13030282646898 127.59386525124525 96.40553167055671)" fill="#fbf4de"></ellipse><ellipse cx="100.7678640818761" cy="95.6924034758472" rx="2.4" ry="1.4" transform="rotate(139.8819866775917 100.7678640818761 95.6924034758472)" fill="#fbf4de"></ellipse><ellipse cx="117.86291218683508" cy="88.94855875321458" rx="2.4" ry="1.4" transform="rotate(93.77917144157885 117.86291218683508 88.94855875321458)" fill="#fbf4de"></ellipse><ellipse cx="78.4103438688978" cy="96.95679814915927" rx="2.4" ry="1.4" transform="rotate(145.55743903180465 78.4103438688978 96.95679814915927)" fill="#fbf4de"></ellipse><ellipse cx="109.73443647155604" cy="77.59815802455259" rx="2.4" ry="1.4" transform="rotate(50.650865570945136 109.73443647155604 77.59815802455259)" fill="#efe2bc"></ellipse><ellipse cx="69.97633206532853" cy="101.06018619004661" rx="2.4" ry="1.4" transform="rotate(176.20731320055543 69.97633206532853 101.06018619004661)" fill="#fbf4de"></ellipse><ellipse cx="113.27986927266454" cy="59.39834897806628" rx="2.4" ry="1.4" transform="rotate(88.01511910185923 113.27986927266454 59.39834897806628)" fill="#efe2bc"></ellipse><ellipse cx="105.62846230858041" cy="89.32732108598944" rx="2.4" ry="1.4" transform="rotate(135.73555607150104 105.62846230858041 89.32732108598944)" fill="#fbf4de"></ellipse><ellipse cx="136.00116774134406" cy="58.265056301920154" rx="2.4" ry="1.4" transform="rotate(128.1167209093071 136.00116774134406 58.265056301920154)" fill="#fbf4de"></ellipse><ellipse cx="84.53334945233051" cy="72.27633861427982" rx="2.4" ry="1.4" transform="rotate(176.00781686418122 84.53334945233051 72.27633861427982)" fill="#fbf4de"></ellipse><ellipse cx="99.30962926386664" cy="99.10657004479718" rx="2.4" ry="1.4" transform="rotate(63.234295278431055 99.30962926386664 99.10657004479718)" fill="#efe2bc"></ellipse><ellipse cx="86.38629507222586" cy="98.21356237313904" rx="2.4" ry="1.4" transform="rotate(89.64970488550593 86.38629507222586 98.21356237313904)" fill="#efe2bc"></ellipse><ellipse cx="108.69768654495819" cy="36.57163974032675" rx="2.4" ry="1.4" transform="rotate(36.89466000389991 108.69768654495819 36.57163974032675)" fill="#efe2bc"></ellipse><ellipse cx="135.751513396985" cy="60.05420097901314" rx="2.4" ry="1.4" transform="rotate(68.63835946127695 135.751513396985 60.05420097901314)" fill="#efe2bc"></ellipse><ellipse cx="129.99238382826348" cy="57.391147709402134" rx="2.4" ry="1.4" transform="rotate(30.44129880631403 129.99238382826348 57.391147709402134)" fill="#efe2bc"></ellipse><ellipse cx="78.58976677557382" cy="96.22802607158852" rx="2.4" ry="1.4" transform="rotate(30.28027381295351 78.58976677557382 96.22802607158852)" fill="#efe2bc"></ellipse><ellipse cx="78.50832335075674" cy="108.2812069050232" rx="2.4" ry="1.4" transform="rotate(93.04900172774168 78.50832335075674 108.2812069050232)" fill="#fbf4de"></ellipse><ellipse cx="101.90005305784963" cy="86.23685212071393" rx="2.4" ry="1.4" transform="rotate(66.0971601242652 101.90005305784963 86.23685212071393)" fill="#efe2bc"></ellipse><ellipse cx="93.82473793835425" cy="71.03461211289168" rx="2.4" ry="1.4" transform="rotate(0.7316121555546354 93.82473793835425 71.03461211289168)" fill="#efe2bc"></ellipse><ellipse cx="95.12278155606232" cy="82.97685413127738" rx="2.4" ry="1.4" transform="rotate(117.61841668636465 95.12278155606232 82.97685413127738)" fill="#fbf4de"></ellipse><ellipse cx="90.51513963811755" cy="103.0656538787847" rx="2.4" ry="1.4" transform="rotate(62.274007034615614 90.51513963811755 103.0656538787847)" fill="#efe2bc"></ellipse><ellipse cx="84.97295044996463" cy="54.7647039068614" rx="2.4" ry="1.4" transform="rotate(60.72154412079674 84.97295044996463 54.7647039068614)" fill="#efe2bc"></ellipse><ellipse cx="89.57325984953829" cy="46.643259647667506" rx="2.4" ry="1.4" transform="rotate(140.2835572046617 89.57325984953829 46.643259647667506)" fill="#fbf4de"></ellipse><ellipse cx="67.33158989153483" cy="57.21235394906108" rx="2.4" ry="1.4" transform="rotate(78.84395857287755 67.33158989153483 57.21235394906108)" fill="#efe2bc"></ellipse><ellipse cx="109.34452482215765" cy="56.98709351612061" rx="2.4" ry="1.4" transform="rotate(73.88873507915471 109.34452482215765 56.98709351612061)" fill="#efe2bc"></ellipse><ellipse cx="117.18793962898211" cy="104.3841460532556" rx="2.4" ry="1.4" transform="rotate(10.068058283099932 117.18793962898211 104.3841460532556)" fill="#efe2bc"></ellipse><ellipse cx="129.65573626228843" cy="92.62747683229388" rx="2.4" ry="1.4" transform="rotate(148.04035899603755 129.65573626228843 92.62747683229388)" fill="#fbf4de"></ellipse><ellipse cx="118.44517556032994" cy="50.41377759797571" rx="2.4" ry="1.4" transform="rotate(11.866555033189503 118.44517556032994 50.41377759797571)" fill="#efe2bc"></ellipse><ellipse cx="114.48332183594718" cy="76.68534731366405" rx="2.4" ry="1.4" transform="rotate(30.863464507676408 114.48332183594718 76.68534731366405)" fill="#efe2bc"></ellipse><ellipse cx="99.05380525453818" cy="71.92405212647591" rx="2.4" ry="1.4" transform="rotate(156.41403843481746 99.05380525453818 71.92405212647591)" fill="#fbf4de"></ellipse><ellipse cx="92.25030385651712" cy="37.583164780294304" rx="2.4" ry="1.4" transform="rotate(104.4813792894042 92.25030385651712 37.583164780294304)" fill="#fbf4de"></ellipse><g transform="translate(86.4316005434021 55.32068815030819) rotate(-35.070038510053436)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><g transform="translate(95.5297073976237 58.393816446979834) rotate(11.548980014188672)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><g transform="translate(100.1964140995405 65.15920715114336) rotate(-16.901211169036667)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><g transform="translate(100.41284283042538 50.743202108665784) rotate(-17.225766730134268)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><g transform="translate(87.19082114347569 66.30992023640886) rotate(37.86666072805723)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><g transform="translate(107.71018642159547 49.95825608032924) rotate(34.64828569192825)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><g transform="translate(86.99720845099068 52.832380492375506) rotate(27.332232812108572)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><g transform="translate(88.3118373762667 57.660013032215815) rotate(-32.17901672803751)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><g transform="translate(115.20934398655005 82.31020420398818) rotate(-2.8182874074290893)"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"></path><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"></rect></g><rect x="88.53333795464167" y="79.33321696349995" width="8" height="3.2" rx="1.2" transform="rotate(28.350459378375884 92.53333795464167 80.93321696349994)" fill="#b8321f"></rect><rect x="110.39800831115375" y="95.14855997494422" width="8" height="3.2" rx="1.2" transform="rotate(119.90516558285113 114.39800831115375 96.74855997494421)" fill="#b8321f"></rect><rect x="101.69604782505746" y="59.789827302296615" width="8" height="3.2" rx="1.2" transform="rotate(66.09045451790581 105.69604782505746 61.38982730229662)" fill="#b8321f"></rect><rect x="125.6003994664074" y="78.61310527958135" width="8" height="3.2" rx="1.2" transform="rotate(148.0830456819772 129.6003994664074 80.21310527958134)" fill="#b8321f"></rect><rect x="100.51452596169968" y="67.71474580403812" width="8" height="3.2" rx="1.2" transform="rotate(125.92263864629093 104.51452596169968 69.31474580403811)" fill="#b8321f"></rect><rect x="82.36983628077586" y="55.74973379868021" width="8" height="3.2" rx="1.2" transform="rotate(171.75660676870336 86.36983628077586 57.34973379868021)" fill="#b8321f"></rect><rect x="85.3106996188572" y="102.1514952010317" width="8" height="3.2" rx="1.2" transform="rotate(91.46881860283614 89.3106996188572 103.75149520103169)" fill="#b8321f"></rect><rect x="76.5196511492701" y="56.02930781386424" width="8" height="3.2" rx="1.2" transform="rotate(143.11582173365903 80.5196511492701 57.629307813864244)" fill="#b8321f"></rect><circle cx="110.88260881172721" cy="79.50779552615029" r="1.4" fill="#3f8a3a"></circle><circle cx="109.24339859245076" cy="110.71097484948189" r="1.4" fill="#3f8a3a"></circle><circle cx="75.46724839609529" cy="44.30881258596807" r="1.4" fill="#3f8a3a"></circle><circle cx="125.52532578852501" cy="50.01096907616379" r="1.4" fill="#3f8a3a"></circle><circle cx="90.3195016915956" cy="57.81571360139161" r="1.4" fill="#3f8a3a"></circle><circle cx="71.1965212557271" cy="88.642894203262" r="1.4" fill="#3f8a3a"></circle><circle cx="68.36847679974105" cy="59.29398455867784" r="1.4" fill="#3f8a3a"></circle><circle cx="118.37258825614191" cy="77.06158608043451" r="1.4" fill="#3f8a3a"></circle><circle cx="102.75681446706655" cy="90.5059925149185" r="1.4" fill="#3f8a3a"></circle><circle cx="100.95475357027257" cy="81.26150965996855" r="1.4" fill="#3f8a3a"></circle><circle cx="117.53568717675334" cy="50.1561655086025" r="1.4" fill="#3f8a3a"></circle><circle cx="91.64662311900345" cy="57.725735890201776" r="1.4" fill="#3f8a3a"></circle><circle cx="61.470068650146466" cy="60.78808777011498" r="1.4" fill="#3f8a3a"></circle><circle cx="96.88536773842047" cy="115.62098684198635" r="1.4" fill="#3f8a3a"></circle><circle cx="96.8664015596394" cy="84.4842787957554" r="1.4" fill="#3f8a3a"></circle><circle cx="91.02672443509528" cy="75.63069771156337" r="1.4" fill="#3f8a3a"></circle><circle cx="106.6418069683511" cy="85.99010911744502" r="1.4" fill="#3f8a3a"></circle><circle cx="78.83042128101626" cy="64.44716374191788" r="1.4" fill="#3f8a3a"></circle><rect x="115.26090702129049" y="98.43460311547472" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="106.36399396664477" y="75.50867673345502" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="118.46030984835305" y="57.303462484683735" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="133.14231553555175" y="62.22892830976558" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="91.44952747670887" y="89.6555842060843" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="80.5165936741121" y="49.468509153383636" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="109.40979593982689" y="73.19008468004186" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="99.78955399888939" y="85.02362026440369" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="101.77524544747513" y="61.55724527005549" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="101.32995444363739" y="57.202891241478596" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="104.02711403267395" y="71.32046982480382" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="68.50227135661804" y="94.85967312389629" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="77.88038131836385" y="79.40317205363563" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="129.90302318399944" y="88.62295708895215" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="119.90658822332533" y="45.00442496210512" width="2.4" height="1.6" fill="#fbf8ec"></rect><rect x="88.5464029302885" y="65.7523023759947" width="2.4" height="1.6" fill="#fbf8ec"></rect></svg></div>
+      <div class="info">
+        <div class="dayline"><span class="d">So 15.11.</span><span class="t">50 Min · 2 Portionen</span></div>
+        <h3>Pilzrisotto mit getrockneten Tomaten</h3>
+        <div class="chips"><span class="chip new">Neu</span><span class="chip veg">Vegetarisch angepasst</span></div>
+        <p class="offers"><b>Günstig:</b> Die getrockneten Tomaten vom ausgefallenen Nudelsalat und der Hartkäse von letzter Woche sind noch da. Die Pilze sind der Rest Shiitake vom Donnerstag</p>
+        <details class="recipe" id="rezept-so">
+          <summary>Rezept anzeigen</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · 2 Portionen</h4><ul><li><span class="qty">7–8 g</span> getrocknete Steinpilze</li><li><span class="qty">250 ml</span> Gemüsebrühe</li><li><span class="qty">1</span> Schalotte</li><li><span class="qty">½</span> Knoblauchzehe</li><li><span class="qty">2 EL</span> Öl</li><li><span class="qty">125 g</span> Risottoreis</li><li><span class="qty">150 ml</span> trockener Weißwein</li><li><span class="qty">ca. 90 g</span> Pilze (Rest Shiitake vom Donnerstag; Original z. B. Champignons, Kräuterseitlinge)</li><li><span class="qty">40 g</span> getrocknete Tomaten in Öl</li><li>Salz, Pfeffer, Zucker</li><li><span class="qty">¼ Bund</span> Petersilie</li><li><span class="qty">40 g</span> vegetarischer Hartkäse, gerieben (statt Parmesan)</li></ul></div>
+            <div><h4>Zubereitung</h4><ol><li>Steinpilze in knapp 100 ml warmem Wasser etwa 15 Minuten einweichen. Abgießen, das Einweichwasser auffangen und mit der Brühe auf etwa 325 ml auffüllen, warm halten. Steinpilze hacken.</li><li>Schalotte und Knoblauch fein würfeln und in 1 EL Öl glasig dünsten. Reis und Steinpilze kurz mitrösten, mit dem Wein ablöschen und einkochen lassen.</li><li>Nach und nach die heiße Brühe zugießen und unter Rühren immer wieder einkochen lassen, bis der Reis nach 30–35 Minuten cremig und bissfest ist.</li><li>Inzwischen die Pilze in Stücke schneiden und im restlichen Öl kräftig braten. Getrocknete Tomaten in Streifen schneiden, kurz mitbraten und mit Salz, Pfeffer und 1 Prise Zucker würzen.</li><li>Petersilie hacken und mit gut der Hälfte des Hartkäses unter das Risotto ziehen. Mit den Pilzen anrichten und mit dem übrigen Käse bestreuen.</li></ol></div>
+            <p class="src">Originalrezept: <a href="https://www.lecker.de/pilzrisotto-37716.html" target="_blank" rel="noopener">lecker.de (Portionen auf der Seite nicht angegeben; nach Menge für 4 gerechnet, hier halbiert)</a></p>
+          </div>
+        </details>
+        <div class="cook" data-day="So" role="group" aria-label="So: gekocht?" hidden="">
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
+      </div>
+    </article></div>
+    <div class="note-box" id="cook-note-box" hidden="">
+      <h4 id="cook-note-h">Notiz für den nächsten Plan</h4>
+      <textarea id="cook-note" maxlength="500" aria-labelledby="cook-note-h" placeholder="z. B. Burrata ist noch da · mehr Pasta · keine Lust auf Rosenkohl"></textarea>
+      <p class="fine">Was ihr hier abhakt und notiert, liest Claude am Sonntag. Verschobene Gerichte wandern in die nächste Woche, und was davon schon im Kühlschrank liegt, kommt nicht noch mal auf die Einkaufsliste.</p>
+    </div>
+    <button class="gate" id="cook-gate" type="button" hidden="">Ihr kocht nach diesem Plan? Abhaken auf diesem Gerät einschalten</button>
+  </section>
+
+  <section class="shop" id="einkauf" aria-labelledby="einkauf-h">
+    <h2 id="einkauf-h">Einkaufsliste</h2>
+
+    <form class="add" id="add-form" autocomplete="off" hidden="">
+      <h4 id="add-h">Eigenen Artikel hinzufügen</h4>
+      <div class="add-row">
+        <input id="add-name" type="text" maxlength="60" required="" aria-labelledby="add-h" placeholder="z. B. Spülmittel, 2× Haferdrink" enterkeyhint="done">
+        <div class="seg" role="radiogroup" aria-label="Markt">
+          <label class="lidl"><input type="radio" name="add-store" value="lidl" checked=""><span>Lidl</span></label>
+          <label class="rewe"><input type="radio" name="add-store" value="rewe"><span>REWE</span></label>
+        </div>
+        <button class="add-btn" type="submit">Hinzufügen</button>
+      </div>
+      <p class="sync" aria-live="polite" hidden=""></p>
+      <p class="fine">Steht dann oben in der Liste des Markts, für euch beide. Was bis Sonntag nicht abgehakt ist, wandert in die nächste Woche.</p>
+    </form>
+
+    <button class="hide-done" id="hide-done" type="button" aria-pressed="false">Erledigte ausblenden</button>
+
+    <section class="store" id="lidl" aria-labelledby="lidl-h">
+      <div class="store-head">
+        <div><h3 id="lidl-h" class="store-name lidl">Lidl</h3><p class="addr">Lidl-Plus-App mitnehmen (Falafel, Barista)</p></div>
+        <div class="sub"><span>offen</span><b id="open-lidl">27,12 €</b></div>
+      </div>
+      <div class="extras" id="extras-lidl" hidden=""></div>
+      <div id="list-lidl" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="l-kir">
+          <input type="checkbox" id="l-kir">
+          <span class="txt">
+            <span><span class="name">Kirschtomaten</span> <span class="amt">· 250 g</span></span>
+            <span class="for">für Di (125 g), Rest zum Snacken</span>
+            
+          </span>
+          <span class="price">ca. 1,29</span>
+        </label></li><li class="item"><label for="l-kor">
+          <input type="checkbox" id="l-kor">
+          <span class="txt">
+            <span><span class="name">Koriander</span> <span class="amt">· 1 Bund</span></span>
+            <span class="for">für Mi (½ Bund)</span>
+            
+          </span>
+          <span class="price">ca. 0,99</span>
+        </label></li><li class="item"><label for="l-pap">
+          <input type="checkbox" id="l-pap">
+          <span class="txt">
+            <span><span class="name">Rote Paprika</span> <span class="amt">· 1 Stück</span></span>
+            <span class="for">für Do (½)</span>
+            
+          </span>
+          <span class="price">ca. 0,69</span>
+        </label></li><li class="item"><label for="l-pet">
+          <input type="checkbox" id="l-pet">
+          <span class="txt">
+            <span><span class="name">Bio-Petersilie</span> <span class="amt">· 1 Bund</span></span>
+            <span class="for">für So (¼ Bund), Rest fürs Brot</span>
+            
+          </span>
+          <span class="price">ca. 0,99</span>
+        </label></li></ul><p class="eyebrow group-label">Kühlregal</p><ul class="items"><li class="item"><label for="l-sch">
+          <input type="checkbox" id="l-sch">
+          <span class="txt">
+            <span><span class="name">Schmand</span> <span class="amt">· 200 g</span></span>
+            <span class="for">für Mi (150 g)</span>
+            
+          </span>
+          <span class="price">ca. 0,79</span>
+        </label></li><li class="item"><label for="l-moz">
+          <input type="checkbox" id="l-moz">
+          <span class="txt">
+            <span><span class="name">Mozzarella</span> <span class="amt">· 2 × 125 g</span></span>
+            <span class="for">für Fr (1 Kugel), Sa (½ Kugel)</span>
+            
+          </span>
+          <span class="price">1,70</span>
+        </label></li><li class="item"><label for="l-tof">
+          <input type="checkbox" id="l-tof">
+          <span class="txt">
+            <span><span class="name">Bio-Tofu natur</span> <span class="amt">· 200 g</span></span>
+            <span class="for">für Do</span>
+            
+          </span>
+          <span class="price">2,29</span>
+        </label></li></ul><p class="eyebrow group-label">Vorräte &amp; Brot</p><ul class="items"><li class="item"><label for="l-kid">
+          <input type="checkbox" id="l-kid">
+          <span class="txt">
+            <span><span class="name">Kidneybohnen</span> <span class="amt">· 1 Dose à 425 ml</span></span>
+            <span class="for">für Mi (ganze Dose) · günstiger als Bonduelle bei REWE</span>
+            
+          </span>
+          <span class="price">ca. 0,79</span>
+        </label></li><li class="item"><label for="l-mai">
+          <input type="checkbox" id="l-mai">
+          <span class="txt">
+            <span><span class="name">Mais</span> <span class="amt">· 1 kleine Dose (212 ml)</span></span>
+            <span class="for">für Mi</span>
+            
+          </span>
+          <span class="price">ca. 0,69</span>
+        </label></li><li class="item"><label for="l-wra">
+          <input type="checkbox" id="l-wra">
+          <span class="txt">
+            <span><span class="name">Grafschafter Weizen Tortilla Wraps XXL</span> <span class="amt">· 740 g (2,42 €/kg)</span></span>
+            <span class="for">für Mi (4), der Rest hält wochenlang</span>
+            <span class="chips"><span class="chip offer">Aktion</span></span>
+          </span>
+          <span class="price">1,79</span>
+        </label></li><li class="item"><label for="l-lin">
+          <input type="checkbox" id="l-lin">
+          <span class="txt">
+            <span><span class="name">Rote Linsen</span> <span class="amt">· 500 g</span></span>
+            <span class="for">für Sa (100 g), Di nimmt die 150 g von zu Hause</span>
+            
+          </span>
+          <span class="price">ca. 1,49</span>
+        </label></li><li class="item"><label for="l-rei">
+          <input type="checkbox" id="l-rei">
+          <span class="txt">
+            <span><span class="name">Jasminreis</span> <span class="amt">· 500 g</span></span>
+            <span class="for">für Di (125 g)</span>
+            
+          </span>
+          <span class="price">ca. 1,49</span>
+        </label></li><li class="item"><label for="l-mie">
+          <input type="checkbox" id="l-mie">
+          <span class="txt">
+            <span><span class="name">Mie-Nudeln</span> <span class="amt">· 250 g</span></span>
+            <span class="for">für Do (125 g)</span>
+            
+          </span>
+          <span class="price">ca. 1,29</span>
+        </label></li><li class="item"><label for="l-las">
+          <input type="checkbox" id="l-las">
+          <span class="txt">
+            <span><span class="name">Lasagneplatten</span> <span class="amt">· 500 g</span></span>
+            <span class="for">für Sa (6 Platten)</span>
+            
+          </span>
+          <span class="price">ca. 0,99</span>
+        </label></li><li class="item"><label for="l-ris">
+          <input type="checkbox" id="l-ris">
+          <span class="txt">
+            <span><span class="name">Risottoreis</span> <span class="amt">· 500 g</span></span>
+            <span class="for">für So (125 g)</span>
+            
+          </span>
+          <span class="price">ca. 1,49</span>
+        </label></li><li class="item"><label for="l-stp">
+          <input type="checkbox" id="l-stp">
+          <span class="txt">
+            <span><span class="name">Getrocknete Steinpilze</span> <span class="amt">· 1 Tüte (ca. 20 g)</span></span>
+            <span class="for">für So (7–8 g)</span>
+            
+          </span>
+          <span class="price">ca. 1,99</span>
+        </label></li><li class="item"><label for="l-wei">
+          <input type="checkbox" id="l-wei">
+          <span class="txt">
+            <span><span class="name">Trockener Weißwein</span> <span class="amt">· 0,75 l</span></span>
+            <span class="for">für So (150 ml)</span>
+            
+          </span>
+          <span class="price">ca. 2,49</span>
+        </label></li><li class="item"><label for="l-ket">
+          <input type="checkbox" id="l-ket">
+          <span class="txt">
+            <span><span class="name">Ketjap Manis</span> <span class="amt">· 1 Flasche</span></span>
+            <span class="for">für Do (1 EL)</span>
+            <span class="chips"><span class="chip cond">nur falls keins da</span></span>
+          </span>
+          <span class="price">ca. 1,99</span>
+        </label></li></ul><p class="eyebrow group-label">Kauft ihr oft · im Angebot</p><ul class="items"><li class="item"><label for="l-cas">
+          <input type="checkbox" id="l-cas">
+          <span class="txt">
+            <span><span class="name">Alesto Cashewkerne naturbelassen</span> <span class="amt">· 200 g</span></span>
+            <span class="for">für Knabbern, Müsli · 9,45 €/kg, sonst 2,49 €</span>
+            <span class="chips"><span class="chip offer">Lidl Plus</span></span>
+          </span>
+          <span class="price">1,89<s>2,49</s></span>
+        </label></li></ul></div>
+    </section>
+
+    <section class="store" id="rewe" aria-labelledby="rewe-h">
+      <div class="store-head">
+        <div><h3 id="rewe-h" class="store-name rewe">REWE</h3><p class="addr">REWE-App an der Kasse scannen</p></div>
+        <div class="sub"><span>offen</span><b id="open-rewe">9,19 €</b></div>
+      </div>
+      <div class="extras" id="extras-rewe" hidden=""></div>
+      <div id="list-rewe" style="display: flex; flex-direction: column; gap: 8px;"><p class="eyebrow group-label">Obst &amp; Gemüse</p><ul class="items"><li class="item"><label for="r-lau">
+          <input type="checkbox" id="r-lau">
+          <span class="txt">
+            <span><span class="name">Lauchzwiebeln</span> <span class="amt">· 1 Bund</span></span>
+            <span class="for">für Mi (3), Do (Rest)</span>
+            <span class="chips"><span class="chip offer">Aktion</span></span>
+          </span>
+          <span class="price">0,55</span>
+        </label></li><li class="item"><label for="r-rom">
+          <input type="checkbox" id="r-rom">
+          <span class="txt">
+            <span><span class="name">Romatomaten</span> <span class="amt">· 400 g (4,48 €/kg)</span></span>
+            <span class="for">für Mi (4 für die Salsa)</span>
+            <span class="chips"><span class="chip offer">Aktion</span></span>
+          </span>
+          <span class="price">1,79</span>
+        </label></li><li class="item"><label for="r-zit">
+          <input type="checkbox" id="r-zit">
+          <span class="txt">
+            <span><span class="name">Zitrone</span> <span class="amt">· 1 Stück</span></span>
+            <span class="for">für Mi (1 EL Saft)</span>
+            <span class="chips"><span class="chip offer">Aktion</span></span>
+          </span>
+          <span class="price">0,59</span>
+        </label></li><li class="item"><label for="r-lim">
+          <input type="checkbox" id="r-lim">
+          <span class="txt">
+            <span><span class="name">Limette</span> <span class="amt">· 1 Stück, lose</span></span>
+            <span class="for">für Di (1 EL Saft)</span>
+            
+          </span>
+          <span class="price">ca. 0,39</span>
+        </label></li><li class="item"><label for="r-moe">
+          <input type="checkbox" id="r-moe">
+          <span class="txt">
+            <span><span class="name">Möhren</span> <span class="amt">· 2 Stück, lose</span></span>
+            <span class="for">für Do (1), Sa (1)</span>
+            
+          </span>
+          <span class="price">ca. 0,30</span>
+        </label></li><li class="item"><label for="r-shi">
+          <input type="checkbox" id="r-shi">
+          <span class="txt">
+            <span><span class="name">Shiitake-Pilze</span> <span class="amt">· 150 g</span></span>
+            <span class="for">für Do (60 g), So (Rest)</span>
+            
+          </span>
+          <span class="price">ca. 2,49</span>
+        </label></li><li class="item"><label for="r-spk">
+          <input type="checkbox" id="r-spk">
+          <span class="txt">
+            <span><span class="name">Spitzkohl</span> <span class="amt">· 1 kleiner Kopf, ca. 500 g (0,99 €/kg)</span></span>
+            <span class="for">für Fr (250 g), Rest hält 1–2 Wochen</span>
+            <span class="chips"><span class="chip offer">Aktion</span></span>
+          </span>
+          <span class="price">ca. 0,50</span>
+        </label></li><li class="item"><label for="r-sca">
+          <input type="checkbox" id="r-sca">
+          <span class="txt">
+            <span><span class="name">Schalotten</span> <span class="amt">· 1 kleines Netz</span></span>
+            <span class="for">für So (1)</span>
+            
+          </span>
+          <span class="price">ca. 0,99</span>
+        </label></li></ul><p class="eyebrow group-label">Kühlregal</p><ul class="items"><li class="item"><label for="r-che">
+          <input type="checkbox" id="r-che">
+          <span class="txt">
+            <span><span class="name">Kerrygold Cheddar gerieben</span> <span class="amt">· 150 g (10,60 €/kg)</span></span>
+            <span class="for">für Mi · günstiger pro kg als der Lidl-Cheddar im Angebot</span>
+            <span class="chips"><span class="chip offer">Knaller</span></span>
+          </span>
+          <span class="price">1,59</span>
+        </label></li></ul></div>
+    </section>
+
+    <button class="reset" id="reset" type="button">Alle Häkchen entfernen</button>
+
+    <div class="two" id="vorrat">
+      <section aria-labelledby="pantry-h">
+        <h3 id="pantry-h">Vorrat prüfen</h3>
+        <p class="fine">Wird für die Rezepte gebraucht, steht aber nicht auf der Liste.</p>
+        <ul class="plain">
+          <li>Rosenkohl 500 g, Drillinge <span class="mono">(ca. 1,2 kg)</span>, Haferflocken, Haferdrink <span class="mono">(Mo, aus KW 45/44)</span></li>
+          <li>Rote Linsen 150 g, Kokosmilch, Ingwer <span class="mono">(Di, vom ausgefallenen Mo und Do)</span></li>
+          <li>Feta-Rest <span class="mono">(ca. 100 g, Mi)</span>, Crème fraîche-Rest <span class="mono">(ca. 100 g, Sa – vorher riechen)</span>, vegetarischer Hartkäse <span class="mono">(So)</span></li>
+          <li>Passierte Tomaten <span class="mono">(ca. 600 g, Sa 250 g)</span>, Spaghetti</li>
+          <li>Pesto, Pinienkerne, Fusilli <span class="mono">(Fr)</span>, getrocknete Tomaten <span class="mono">(So 40 g)</span></li>
+          <li>Der angeschnittene Hokkaido vom 2.11. ist wahrscheinlich nicht mehr gut – bitte ansehen</li>
+          <li>Eier <span class="mono">(1, Do)</span>, Butter, Senf, Sojasoße, Sesamöl, Sesam</li>
+          <li>Zwiebeln <span class="mono">(ca. 1½)</span>, Knoblauch <span class="mono">(ca. 5 Zehen)</span>, Olivenöl, Rapsöl, Gemüsebrühe <span class="mono">(ca. 700 ml)</span></li>
+          <li>Currypulver, Kreuzkümmel, Zimt, Knoblauch-, Zwiebel- und Paprikapulver, Majoran, Muskat, italienische Kräuter</li>
+          <li>Salz, Pfeffer, Zucker</li>
+        </ul>
+      </section>
+      <section aria-labelledby="extra-h">
+        <h3 id="extra-h">Kauft ihr oft</h3>
+        <p class="fine">Wo es laut euren Kassenbons ohne Angebot meist günstiger ist. Was im Angebot ist, steht auf der Liste.</p>
+        <ul class="plain">
+          <li>Haferdrink, Joghurt, körniger Frischkäse <span class="mono">Lidl · 0,85 / 0,89 / 1,19</span></li>
+          <li>Veganes Hack, Burrata <span class="mono">Lidl · 1,79 statt 2,39 / 1,89 statt 2,09</span></li>
+          <li>Bananen, Croissants, Cashews <span class="mono">Lidl</span></li>
+          <li>Frischkäse von Buko, Spezi Zero <span class="mono">REWE · 0,99</span></li>
+          <li>Hummus pikant, Mozzarella, Tofu <span class="mono">gleich · 0,99 / 0,85 / 2,29</span></li>
+          <li>Vegane Aufstriche und Aufschnitt <span class="mono">je nach Angebot</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <p class="fine">Preise aus den Prospekten vom 9.–14.11.2026 (REWE über den bundesweiten Prospekt) und aus deinen letzten Kassenbons. „ca.“ heißt geschätzt, weil der Artikel nach Gewicht verkauft wird oder nicht im Prospekt steht. Lidl-Plus-Preise gelten nur mit der App. Fotos von Unsplash (mit Namensnennung) oder eigene, sonst Illustrationen.</p>
+    <p class="fine"><a href="kw45.html" style="color: var(--basil);">Letzte Woche ansehen</a></p>
+  </section>
+
+  <!-- Rezeptvorschläge aus dem, was zu Hause ist: kochen.js + rezepte.json (jede Woche mit übernehmen) -->
+  <section id="kochen" aria-labelledby="kochen-h"></section>
+</div>
+
+<script>
+/* ---------- Illustrations: small flat top-down food drawings, one per dish ---------- */
+function rng(seed) { let s = seed % 2147483647; if (s <= 0) s += 2147483646; return () => (s = s * 16807 % 2147483647) / 2147483647; }
+function scatter(r, n, cx, cy, rx, ry, fn) {
+  let out = "";
+  for (let i = 0; i < n; i++) { const a = r() * Math.PI * 2, d = Math.sqrt(r()); out += fn(cx + Math.cos(a) * d * rx, cy + Math.sin(a) * d * ry, r(), i); }
+  return out;
+}
+const shadow = (cx, cy, rx, ry) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="rgba(0,0,0,0.10)"/>`;
+const plate = (cx, cy, r) => shadow(cx + 3, cy + 5, r, r * 0.96) + `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fbfaf6" stroke="#e4e0d6" stroke-width="1.5"/><circle cx="${cx}" cy="${cy}" r="${r * 0.78}" fill="none" stroke="#ece8de" stroke-width="1"/>`;
+const bowl = (cx, cy, r, inner) => shadow(cx + 3, cy + 5, r, r * 0.96) + `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"/><circle cx="${cx}" cy="${cy}" r="${r - 6}" fill="${inner}"/>`;
+const leaf = (x, y, rot, s, c) => `<path transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" d="M-7 0 Q0 -5 7 0 Q0 5 -7 0Z" fill="${c}"/><path transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" d="M-6 0 L6 0" stroke="rgba(0,0,0,0.18)" stroke-width="0.7"/>`;
+
+const ART = {
+  spitzkohlnudeln() {
+    const r = rng(461); let s = plate(98, 76, 64);
+    s += `<circle cx="98" cy="76" r="46" fill="#eef3d8"/>`;
+    s += scatter(r, 20, 98, 76, 40, 40, (x, y, q) => `<g transform="translate(${x} ${y}) rotate(${q * 180})"><path d="M-9 -2.5 Q-4 -5 0 -2.5 Q4 0 9 -2.5 L9 2.5 Q4 5 0 2.5 Q-4 0 -9 2.5Z" fill="#e9c46a" stroke="#c99a3a" stroke-width="0.8"/></g>`);
+    s += scatter(r, 18, 98, 76, 42, 42, (x, y, q) => `<path d="M${x - 10} ${y} q10 ${-6 + q * 7} 20 0" stroke="${q > 0.5 ? "#b9d97a" : "#d6e8a4"}" stroke-width="4" fill="none" stroke-linecap="round"/>`);
+    s += scatter(r, 14, 98, 76, 38, 38, (x, y) => `<circle cx="${x}" cy="${y}" r="2.6" fill="#4f8a2e" opacity="0.85"/>`);
+    s += scatter(r, 6, 98, 76, 32, 32, (x, y, q) => `<path transform="translate(${x} ${y}) rotate(${q * 90})" d="M-8 -6 Q0 -10 8 -5 Q10 4 2 8 Q-7 9 -9 1Z" fill="#fbfaf3" stroke="#e6e0cc" stroke-width="0.8"/>`);
+    s += scatter(r, 14, 98, 76, 40, 40, (x, y, q) => `<ellipse cx="${x}" cy="${y}" rx="2.2" ry="1.3" transform="rotate(${q * 180} ${x} ${y})" fill="#f2dca0" stroke="#c9a65a" stroke-width="0.5"/>`);
+    return s;
+  },
+  pilzrisotto() {
+    const r = rng(467); let s = plate(98, 76, 64);
+    s += `<circle cx="98" cy="76" r="46" fill="#f2e7c9"/>`;
+    s += scatter(r, 90, 98, 76, 42, 42, (x, y, q) => `<ellipse cx="${x}" cy="${y}" rx="2.4" ry="1.4" transform="rotate(${q * 180} ${x} ${y})" fill="${q > 0.5 ? "#fbf4de" : "#efe2bc"}"/>`);
+    s += scatter(r, 9, 98, 72, 30, 28, (x, y, q) => `<g transform="translate(${x} ${y}) rotate(${q * 80 - 40})"><path d="M-9 0 a9 6.5 0 0 1 18 0Z" fill="#8a5a3a"/><rect x="-2.8" y="-0.5" width="5.6" height="7" rx="1.5" fill="#e8d6b8"/></g>`);
+    s += scatter(r, 8, 98, 78, 34, 30, (x, y, q) => `<rect x="${x - 4}" y="${y - 1.6}" width="8" height="3.2" rx="1.2" transform="rotate(${q * 180} ${x} ${y})" fill="#b8321f"/>`);
+    s += scatter(r, 18, 98, 76, 40, 40, (x, y) => `<circle cx="${x}" cy="${y}" r="1.4" fill="#3f8a3a"/>`);
+    s += scatter(r, 16, 98, 76, 38, 38, (x, y) => `<rect x="${x}" y="${y}" width="2.4" height="1.6" fill="#fbf8ec"/>`);
+    return s;
+  },
+  kuerbissuppe() {
+    const r = rng(45); let s = bowl(96, 76, 58, "#f08a24");
+    s += `<path d="M70 70 Q84 58 100 68 Q116 78 126 66" stroke="#fdf3e2" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M76 86 Q92 80 108 88" stroke="#fdf3e2" stroke-width="3.5" fill="none" stroke-linecap="round"/>`;
+    s += scatter(r, 14, 96, 76, 36, 32, (x, y) => `<circle cx="${x}" cy="${y}" r="1.3" fill="#b33a12"/>`);
+    s += leaf(108, 58, 20, 0.8, "#3f8a3a") + leaf(84, 96, -30, 0.7, "#3f8a3a");
+    s += shadow(170, 112, 22, 8) + `<path d="M150 112 Q148 92 170 90 Q192 92 190 112Z" fill="#d9a25c" stroke="#b97e3a" stroke-width="1.5"/><path d="M158 100 L162 94 M170 98 L172 92 M181 101 L184 95" stroke="#9c6a2e" stroke-width="1.6" stroke-linecap="round"/>`;
+    return s;
+  },
+  frikadellen() {
+    const r = rng(46); let s = plate(100, 76, 62);
+    [[82, 62], [108, 56], [94, 84]].forEach(([x, y]) => { s += `<ellipse cx="${x + 2}" cy="${y + 3}" rx="17" ry="13" fill="rgba(0,0,0,0.12)"/><ellipse cx="${x}" cy="${y}" rx="17" ry="13" fill="#9a6232"/><ellipse cx="${x - 3}" cy="${y - 3}" rx="11" ry="7" fill="#b9793f"/>`; });
+    s += scatter(r, 7, 132, 86, 12, 14, (x, y) => `<circle cx="${x}" cy="${y}" r="6" fill="#6aa83a"/><path d="M${x - 5} ${y} Q${x} ${y - 3} ${x + 5} ${y}" stroke="#3f7d24" stroke-width="1.2" fill="none"/>`);
+    s += [[70, 100], [86, 108], [114, 106]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="10" ry="8" fill="#f2d98f" stroke="#d8b35a" stroke-width="1.2"/>`).join("");
+    s += leaf(72, 96, -20, 0.6, "#3f8a3a");
+    return s;
+  },
+  nudelsalat() {
+    const r = rng(47); let s = bowl(100, 76, 60, "#f3e3b5");
+    s += scatter(r, 22, 100, 76, 40, 36, (x, y, q) => `<g transform="translate(${x} ${y}) rotate(${q * 180})"><path d="M-8 -2 Q-4 -6 0 -2 Q4 2 8 -2" stroke="#e5b84f" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M-8 -2 Q-4 -6 0 -2 Q4 2 8 -2" stroke="#f3d27a" stroke-width="2" fill="none" stroke-linecap="round"/></g>`);
+    s += scatter(r, 9, 100, 76, 38, 34, (x, y) => `<circle cx="${x}" cy="${y}" r="5" fill="#df3f2b"/><circle cx="${x - 1}" cy="${y - 1}" r="2" fill="#f2826b"/>`);
+    s += scatter(r, 8, 100, 76, 40, 36, (x, y, q) => leaf(x, y, q * 180, 1, "#4f8f3a"));
+    s += scatter(r, 6, 100, 76, 34, 30, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="2.6" ry="1.5" fill="#f6ead0" stroke="#d9c39a" stroke-width="0.6"/>`);
+    return s;
+  },
+  gnocchiauflauf() {
+    const r = rng(48); let s = shadow(104, 82, 80, 52);
+    s += `<rect x="22" y="26" width="160" height="104" rx="16" fill="#e7e2d8" stroke="#cfc7b6" stroke-width="2"/><rect x="30" y="34" width="144" height="88" rx="11" fill="#c8402c"/>`;
+    s += scatter(r, 16, 102, 78, 62, 36, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="6" ry="4.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1"/>`);
+    s += scatter(r, 10, 102, 78, 60, 34, (x, y, q) => leaf(x, y, q * 180, 1.1, "#2f6f2a"));
+    s += scatter(r, 9, 102, 78, 56, 32, (x, y) => `<path d="M${x - 9} ${y} Q${x - 6} ${y - 8} ${x + 2} ${y - 6} Q${x + 10} ${y - 4} ${x + 8} ${y + 4} Q${x} ${y + 8} ${x - 9} ${y}Z" fill="#fbf4dc" stroke="#e8c97e" stroke-width="1"/><circle cx="${x}" cy="${y - 1}" r="2" fill="#e6b450"/>`);
+    return s;
+  },
+  kuerbis() {
+    const r = rng(11); let s = shadow(103, 82, 82, 52);
+    s += `<rect x="20" y="22" width="164" height="108" rx="12" fill="#3b3d40"/><rect x="26" y="28" width="152" height="96" rx="9" fill="#e9e1cf"/>`;
+    for (let i = 0; i < 7; i++) {
+      const x = 46 + (i % 4) * 34 + (i > 3 ? 17 : 0), y = 50 + (i > 3 ? 40 : 0), rot = -25 + r() * 50;
+      s += `<path transform="translate(${x} ${y}) rotate(${rot})" d="M-19 4 Q0 -18 19 4 Q0 -6 -19 4Z" fill="#ec7d26" stroke="#c4551a" stroke-width="2.2" stroke-linejoin="round"/>`;
+    }
+    s += scatter(r, 9, 103, 76, 66, 38, (x, y) => `<circle cx="${x}" cy="${y}" r="6.5" fill="#7aa83f"/><path d="M${x - 4} ${y} Q${x} ${y - 4} ${x + 4} ${y}" stroke="#4f7d27" stroke-width="1.3" fill="none"/>`);
+    s += scatter(r, 16, 103, 76, 70, 40, (x, y, q) => `<rect x="${x}" y="${y}" width="5.5" height="5" rx="1" transform="rotate(${q * 60} ${x} ${y})" fill="#fbf9f1" stroke="#e1dbc8" stroke-width="0.6"/>`);
+    s += scatter(r, 8, 103, 76, 66, 36, (x, y, q) => `<path transform="translate(${x} ${y}) rotate(${q * 180})" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"/>`);
+    s += scatter(r, 10, 103, 76, 70, 40, (x, y, q) => `<path d="M${x} ${y} l${6 * Math.cos(q * 6)} ${6 * Math.sin(q * 6)}" stroke="#4d7a3a" stroke-width="1.6" stroke-linecap="round"/>`);
+    return s;
+  },
+  curry() {
+    const r = rng(23); let s = bowl(100, 75, 60, "#e8a43c");
+    s += `<path d="M58 55 Q70 40 92 44 Q98 62 88 82 Q72 92 56 82 Q48 68 58 55Z" fill="#fbf8ef"/>`;
+    s += scatter(r, 40, 72, 64, 15, 16, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="2.6" ry="1.4" fill="#ece6d6"/>`);
+    s += scatter(r, 60, 118, 82, 28, 26, (x, y) => `<circle cx="${x}" cy="${y}" r="1.4" fill="#f4bb55"/>`);
+    s += scatter(r, 8, 118, 84, 30, 26, (x, y) => `<circle cx="${x}" cy="${y}" r="5.5" fill="#df3f2b"/><circle cx="${x}" cy="${y}" r="3" fill="#f2826b"/>`);
+    s += `<path d="M150 108 A14 14 0 0 1 178 108Z" fill="#7cb342" stroke="#4e8a22" stroke-width="2"/><path d="M164 108 L158 98 M164 108 L170 98 M164 108 L164 96" stroke="#c5e1a5" stroke-width="1"/>`;
+    s += leaf(110, 60, 30, 0.9, "#4f8f3a") + leaf(132, 92, -20, 0.8, "#4f8f3a");
+    return s;
+  },
+  falafel() {
+    const r = rng(37); let s = plate(98, 78, 62);
+    s += `<circle cx="72" cy="34" r="11" fill="#ead9b8"/><path d="M64 34 Q72 27 80 34 Q72 40 66 35" stroke="#d2bd94" stroke-width="1.6" fill="none"/><circle cx="73" cy="34" r="2" fill="#b9a53a"/>`;
+    s += `<path d="M44 92 Q44 58 96 54 Q148 58 148 92 Z" fill="#e9c895" stroke="#c99f62" stroke-width="2"/>`;
+    s += `<path d="M48 70 Q58 58 70 66 Q80 54 92 62 Q104 52 114 62 Q126 54 136 66 Q146 62 146 72 Q96 64 48 74Z" fill="#8cc152"/>`;
+    s += scatter(r, 7, 96, 66, 40, 6, (x, y) => `<rect x="${x - 3}" y="${y - 3}" width="6" height="6" rx="1" fill="#e2412e"/>`);
+    s += [64, 84, 104, 124].map((x, i) => `<circle cx="${x}" cy="${60 - (i % 2) * 5}" r="9" fill="#8a5a2b"/><circle cx="${x - 3}" cy="${57 - (i % 2) * 5}" r="2" fill="#a8743e"/><circle cx="${x + 3}" cy="${62 - (i % 2) * 5}" r="1.4" fill="#6f4520"/>`).join("");
+    s += `<path d="M44 92 Q96 98 148 92" stroke="#c99f62" stroke-width="2" fill="none"/>`;
+    s += leaf(62, 108, -15, 0.8, "#3e8a3a") + leaf(74, 112, 25, 0.7, "#3e8a3a");
+    return s;
+  },
+  lasagne() {
+    let s = plate(100, 84, 58);
+    s += shadow(104, 104, 50, 9);
+    const layers = [["#e9c98f", 6], ["#c8402c", 7], ["#f5efe0", 4], ["#e9c98f", 6], ["#c8402c", 7], ["#f5efe0", 4], ["#e9c98f", 6]];
+    let y = 104;
+    layers.forEach(([c, h]) => { y -= h; s += `<rect x="58" y="${y}" width="84" height="${h + 0.4}" fill="${c}"/>`; });
+    s += `<path d="M56 ${y + 2} Q60 ${y - 9} 74 ${y - 6} Q88 ${y - 11} 100 ${y - 6} Q114 ${y - 11} 128 ${y - 6} Q140 ${y - 9} 144 ${y + 2} Z" fill="#f3c85d"/>`;
+    s += [[70, y - 4], [92, y - 6], [116, y - 5], [134, y - 3]].map(([x, yy]) => `<ellipse cx="${x}" cy="${yy}" rx="4" ry="2" fill="#c9892d"/>`).join("");
+    s += `<path d="M142 ${y + 4} Q150 ${y + 20} 146 104" stroke="#c8402c" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+    s += leaf(86, y - 9, -20, 0.9, "#3f8a3a") + leaf(98, y - 11, 25, 0.8, "#3f8a3a");
+    return s;
+  },
+  poke() {
+    const r = rng(53); let s = bowl(100, 75, 62, "#f8f5ec");
+    s += scatter(r, 70, 100, 75, 50, 50, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="2.3" ry="1.2" transform="rotate(${(x * 7) % 180} ${x} ${y})" fill="#ece6d4"/>`);
+    s += scatter(r, 16, 72, 52, 13, 11, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="3.6" ry="2.6" fill="#6fae3a" stroke="#4f8a24" stroke-width="0.6"/>`);
+    s += [[118, 46], [128, 50], [122, 57], [133, 60], [112, 54]].map(([x, y]) => `<rect x="${x - 4.5}" y="${y - 4.5}" width="9" height="9" rx="1.5" fill="#f3e2b0" stroke="#d6a94b" stroke-width="1.2"/>`).join("");
+    s += scatter(r, 14, 70, 96, 12, 10, (x, y, q) => `<path d="M${x - 6} ${y} q6 ${-3 + q * 6} 12 0" stroke="#8e3b8f" stroke-width="2" fill="none" stroke-linecap="round"/>`);
+    s += scatter(r, 9, 100, 104, 10, 6, (x, y, q) => `<path d="M${x - 6} ${y + q * 4} l12 ${-3 + q * 2}" stroke="#ef7d1f" stroke-width="2.2" stroke-linecap="round"/>`);
+    s += [[128, 88], [136, 96], [124, 100]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="6" fill="#d9ecb6" stroke="#5f9a3a" stroke-width="1.6"/><circle cx="${x}" cy="${y}" r="1.4" fill="#a6c97a"/>`).join("");
+    s += [0, 1, 2, 3].map(i => `<path transform="translate(${92 + i * 5} ${66}) rotate(${-20 + i * 12})" d="M0 -14 Q6 -2 0 12 Q-4 -2 0 -14Z" fill="#a9cf54" stroke="#4f7a24" stroke-width="1"/>`).join("");
+    s += scatter(r, 6, 140, 70, 7, 9, (x, y) => `<rect x="${x - 3.5}" y="${y - 3.5}" width="7" height="7" rx="1" fill="#ffb52e"/>`);
+    s += scatter(r, 26, 100, 75, 44, 44, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="1" ry="0.6" fill="#f6efdc" stroke="#cbbf9f" stroke-width="0.3"/>`);
+    s += leaf(84, 82, 40, 0.6, "#3c8a3a") + leaf(112, 78, -30, 0.6, "#3c8a3a");
+    return s;
+  },
+  zucchini() {
+    const r = rng(71); let s = shadow(103, 82, 82, 50);
+    s += `<rect x="18" y="26" width="168" height="100" rx="16" fill="#f5f2ea" stroke="#d9d3c6" stroke-width="2"/>`;
+    [52, 98].forEach((cy, i) => {
+      s += `<ellipse cx="102" cy="${cy}" rx="70" ry="17" fill="#3f7a34"/><ellipse cx="102" cy="${cy - 1}" rx="64" ry="12.5" fill="#cfe3a3"/>`;
+      s += `<ellipse cx="102" cy="${cy - 1}" rx="58" ry="9.5" fill="#a5452b"/>`;
+      s += scatter(r, 12, 102, cy - 1, 52, 7, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="6" ry="3.4" fill="#f2cd5a"/>`);
+      s += scatter(r, 6, 102, cy - 1, 50, 6, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="2.4" ry="1.4" fill="#c98a2d"/>`);
+      s += `<rect x="${i ? 168 : 168}" y="${cy - 4}" width="9" height="8" rx="2" fill="#2f5f27"/>`;
+    });
+    s += leaf(70, 74, 20, 0.7, "#3f8a3a") + leaf(130, 76, -25, 0.7, "#3f8a3a");
+    return s;
+  },
+  gnocchi() {
+    const r = rng(89); let s = plate(100, 76, 62);
+    s += `<path d="M52 72 Q56 38 98 34 Q144 36 148 72 Q146 112 100 118 Q56 114 52 72Z" fill="#6f9e3c"/>`;
+    s += scatter(r, 40, 100, 76, 40, 36, (x, y) => `<circle cx="${x}" cy="${y}" r="1.2" fill="#8dbb52"/>`);
+    s += scatter(r, 15, 100, 76, 40, 34, (x, y, q) => {
+      const rot = q * 180;
+      return `<g transform="translate(${x} ${y}) rotate(${rot})"><ellipse rx="8" ry="5.5" fill="#f1d38f" stroke="#d29a45" stroke-width="1.4"/><path d="M-4 -4 v8 M0 -5 v10 M4 -4 v8" stroke="#d9b06a" stroke-width="0.9"/></g>`;
+    });
+    s += `<circle cx="100" cy="76" r="17" fill="#fdfbf4" stroke="#e8e1cf" stroke-width="1.2"/><path d="M92 72 Q100 64 108 72 Q104 84 96 82 Q90 78 92 72Z" fill="#f4ecd6"/>`;
+    s += scatter(r, 7, 100, 76, 44, 40, (x, y, q) => `<path transform="translate(${x} ${y}) rotate(${q * 180})" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#9a6532"/>`);
+    s += leaf(84, 50, -30, 1, "#2f7d32") + leaf(122, 100, 20, 1, "#2f7d32") + leaf(126, 56, 50, 0.9, "#2f7d32");
+    return s;
+  },
+  fetapasta() {
+    const r = rng(97); let s = shadow(103, 84, 84, 50);
+    s += `<rect x="18" y="24" width="168" height="104" rx="18" fill="#f7f4ec" stroke="#d6cfbf" stroke-width="2"/><rect x="28" y="33" width="148" height="86" rx="12" fill="#f1d595"/>`;
+    s += scatter(r, 38, 102, 76, 62, 33, (x, y, q) => `<path d="M${x - 10} ${y} q5 ${-6 + q * 4} 10 0 t10 0" stroke="${q > 0.5 ? "#e6b24a" : "#f6d47a"}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`);
+    s += scatter(r, 6, 102, 76, 56, 30, (x, y) => `<path d="M${x - 7} ${y + 2} a7 5 0 0 1 14 0" stroke="#9b3a72" stroke-width="2" fill="none"/>`);
+    s += scatter(r, 12, 102, 76, 60, 32, (x, y, q) => q > 0.65
+      ? `<path d="M${x - 7} ${y} q3 -8 8 -6 q6 2 5 8 q-4 6 -9 4 q-4 -2 -4 -6Z" fill="#c9311f"/>`
+      : `<circle cx="${x}" cy="${y}" r="7" fill="#e2432c"/><circle cx="${x - 2.4}" cy="${y - 2.4}" r="2" fill="#f58b74"/>`);
+    s += `<path d="M84 60 L118 56 L124 82 L112 94 L88 92 L80 76Z" fill="#fbf9f1" stroke="#e1d9c4" stroke-width="1.4"/><path d="M98 60 L104 76 L96 92 M104 76 L121 72" stroke="#ebe3cf" stroke-width="1.2" fill="none"/>`;
+    s += scatter(r, 10, 102, 78, 42, 26, (x, y, q) => `<rect x="${x}" y="${y}" width="5" height="4.5" rx="1" transform="rotate(${q * 70} ${x} ${y})" fill="#fbf9f1" stroke="#e1d9c4" stroke-width="0.6"/>`);
+    s += scatter(r, 16, 102, 76, 62, 32, (x, y, q) => `<ellipse cx="${x}" cy="${y}" rx="2.2" ry="1.1" transform="rotate(${q * 180} ${x} ${y})" fill="#557a2e"/>`);
+    s += leaf(150, 46, 30, 0.9, "#2f7d32") + leaf(58, 108, -20, 0.9, "#2f7d32");
+    return s;
+  },
+  shakshuka() {
+    const r = rng(131); let s = shadow(100, 82, 66, 58);
+    s += `<rect x="148" y="68" width="50" height="13" rx="6.5" fill="#34363a"/>`;
+    s += `<circle cx="96" cy="76" r="62" fill="#3b3d40"/><circle cx="96" cy="76" r="55" fill="#c83a23"/>`;
+    s += scatter(r, 50, 96, 76, 48, 48, (x, y) => `<circle cx="${x}" cy="${y}" r="1.6" fill="#e0573a"/>`);
+    s += scatter(r, 10, 96, 76, 44, 44, (x, y, q) => `<path d="M${x - 7} ${y} q7 ${-6 + q * 4} 14 0" stroke="${q > 0.5 ? "#ef5a3a" : "#f2a03d"}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`);
+    [[72, 58], [118, 60], [76, 98], [120, 96]].forEach(([x, y]) => {
+      s += `<path d="M${x - 15} ${y} q2 -13 15 -13 q15 1 15 12 q-1 13 -15 14 q-14 -1 -15 -13Z" fill="#fbf8ef"/><circle cx="${x + 1}" cy="${y}" r="6.5" fill="#f4b223"/><circle cx="${x - 1}" cy="${y - 2}" r="2" fill="#f9d36b"/>`;
+    });
+    s += scatter(r, 18, 96, 76, 46, 46, (x, y, q) => `<ellipse cx="${x}" cy="${y}" rx="2.4" ry="1.3" transform="rotate(${q * 180} ${x} ${y})" fill="#3e8a3a"/>`);
+    return s;
+  },
+  bratnudeln() {
+    const r = rng(149); let s = bowl(98, 76, 62, "#f3d78f");
+    s += scatter(r, 46, 98, 76, 46, 46, (x, y, q) => `<path d="M${x - 9} ${y} q4 ${-7 + q * 6} 9 0 t9 0" stroke="${q > 0.5 ? "#e8bf62" : "#f7dd92"}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`);
+    s += scatter(r, 9, 98, 76, 40, 40, (x, y, q) => `<path d="M${x - 6} ${y} l12 ${-4 + q * 8}" stroke="#ef7d1f" stroke-width="3" stroke-linecap="round"/>`);
+    s += scatter(r, 7, 98, 76, 40, 40, (x, y) => `<path d="M${x - 6} ${y} q6 -5 12 0" stroke="#d93a2b" stroke-width="3" fill="none" stroke-linecap="round"/>`);
+    s += scatter(r, 6, 98, 76, 34, 34, (x, y, q) => `<rect x="${x - 5}" y="${y - 5}" width="10" height="10" rx="2" transform="rotate(${q * 50} ${x} ${y})" fill="#f6ebc8" stroke="#d6b46a" stroke-width="1.2"/>`);
+    s += scatter(r, 5, 98, 76, 38, 38, (x, y) => `<path d="M${x - 6} ${y} q6 -6 12 0 q-6 4 -12 0Z" fill="#ffd54a"/>`);
+    s += scatter(r, 10, 98, 76, 42, 42, (x, y) => `<circle cx="${x}" cy="${y}" r="3.2" fill="none" stroke="#5fa83a" stroke-width="1.8"/>`);
+    s += scatter(r, 26, 98, 76, 44, 44, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="1.2" ry="0.7" fill="#2b2b2b"/>`);
+    s += `<path d="M156 18 L116 84" stroke="#b98a55" stroke-width="4" stroke-linecap="round"/><path d="M168 24 L124 88" stroke="#a87945" stroke-width="4" stroke-linecap="round"/>`;
+    return s;
+  },
+  quesadilla() {
+    const r = rng(167); let s = plate(90, 78, 62);
+    const wedge = (cx, cy, rot) => `<g transform="translate(${cx} ${cy}) rotate(${rot})"><path d="M-26 14 L0 -26 L26 14 Q0 22 -26 14Z" fill="#efcf8a" stroke="#c99a4c" stroke-width="2"/><path d="M-20 12 Q0 18 20 12" stroke="#f5b93a" stroke-width="3" fill="none"/><path d="M-10 -4 l10 6 M-4 -14 l10 6 M-14 6 l12 5" stroke="#b9853f" stroke-width="2" stroke-linecap="round"/><circle cx="-6" cy="9" r="2.4" fill="#a8341f"/><circle cx="8" cy="7" r="2.2" fill="#f2d94e"/></g>`;
+    s += wedge(68, 64, -20) + wedge(104, 58, 30) + wedge(84, 100, 170);
+    s += shadow(163, 106, 24, 20) + `<circle cx="160" cy="100" r="25" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"/><circle cx="160" cy="100" r="20" fill="#d8402c"/>`;
+    s += scatter(r, 16, 160, 100, 15, 15, (x, y, q) => q > 0.6 ? `<rect x="${x - 2}" y="${y - 2}" width="4" height="4" fill="#f3826b"/>` : `<circle cx="${x}" cy="${y}" r="1.5" fill="#5fa83a"/>`);
+    s += `<path d="M116 112 q8 -10 18 -2 q6 8 -4 12 q-10 3 -14 -10Z" fill="#fbf9f1" stroke="#e1d9c4" stroke-width="1"/>`;
+    s += leaf(56, 112, -20, 0.8, "#3e8a3a") + leaf(128, 42, 30, 0.8, "#3e8a3a");
+    return s;
+  },
+  udon() {
+    const r = rng(181); let s = bowl(98, 76, 62, "#f2d9a6");
+    s += scatter(r, 34, 98, 76, 46, 46, (x, y, q) => `<path d="M${x - 12} ${y} q6 ${-8 + q * 6} 12 0 t12 0" stroke="${q > 0.5 ? "#f7e7bf" : "#fbf1d4"}" stroke-width="4.2" fill="none" stroke-linecap="round"/>`);
+    s += scatter(r, 9, 98, 76, 40, 40, (x, y, q) => `<g transform="translate(${x} ${y}) rotate(${q * 90})"><rect x="-1.6" y="0" width="3.2" height="8" rx="1" fill="#6a9a3a"/><circle cx="-3.5" cy="-1" r="4" fill="#3f8a2e"/><circle cx="3.5" cy="-1" r="4" fill="#3f8a2e"/><circle cx="0" cy="-4.5" r="4.4" fill="#4a9a34"/></g>`);
+    s += scatter(r, 22, 98, 64, 26, 14, (x, y) => `<circle cx="${x}" cy="${y}" r="2.6" fill="#e6b45a" stroke="#c48a32" stroke-width="0.7"/>`);
+    s += scatter(r, 20, 98, 76, 44, 44, (x, y) => `<ellipse cx="${x}" cy="${y}" rx="1.1" ry="0.7" fill="#fbf3dc"/>`);
+    s += `<path d="M150 20 L112 82" stroke="#2b2b2b" stroke-width="3.5" stroke-linecap="round"/><path d="M162 26 L120 86" stroke="#3a3a3a" stroke-width="3.5" stroke-linecap="round"/>`;
+    return s;
+  },
+  bolognese() {
+    const r = rng(193); let s = plate(100, 78, 62);
+    s += `<circle cx="100" cy="78" r="44" fill="#f3d58c"/>`;
+    s += scatter(r, 40, 100, 78, 40, 40, (x, y, q) => `<path d="M${x - 10} ${y} q5 ${-7 + q * 6} 10 0 t10 0" stroke="${q > 0.5 ? "#e9bf5f" : "#f8de95"}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`);
+    s += `<path d="M72 70 Q76 52 98 50 Q122 50 128 68 Q130 88 108 96 Q84 98 74 86 Q68 78 72 70Z" fill="#b8381f"/>`;
+    s += scatter(r, 40, 100, 74, 24, 18, (x, y, q) => `<circle cx="${x}" cy="${y}" r="${1.4 + q * 1.4}" fill="${q > 0.5 ? "#d1572c" : "#8f2a17"}"/>`);
+    s += scatter(r, 8, 100, 74, 22, 16, (x, y) => `<rect x="${x - 2}" y="${y - 2}" width="4" height="4" rx="0.8" fill="#f08a2a"/>`);
+    s += leaf(92, 62, -20, 0.9, "#3f8a3a") + leaf(106, 64, 30, 0.8, "#3f8a3a");
+    return s;
+  },
+  kuerbisnudeln() {
+    const r = rng(211); let s = shadow(104, 84, 80, 52);
+    s += `<rect x="22" y="22" width="164" height="110" rx="54" fill="#3b3d40"/><rect x="30" y="30" width="148" height="94" rx="46" fill="#f0a64a"/>`;
+    s += scatter(r, 30, 104, 77, 60, 34, (x, y, q) => `<g transform="translate(${x} ${y}) rotate(${q * 180})"><path d="M-8 -2 q4 -4 8 0 t8 0" stroke="#f9d27c" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M-8 3 q4 -4 8 0 t8 0" stroke="#e8b052" stroke-width="2" fill="none" stroke-linecap="round"/></g>`);
+    s += scatter(r, 8, 104, 77, 56, 30, (x, y, q) => `<g transform="translate(${x} ${y}) rotate(${q * 120})"><path d="M-7 0 a7 6 0 0 1 14 0Z" fill="#a07a58"/><rect x="-2.2" y="0" width="4.4" height="6" rx="1" fill="#e9dccb"/></g>`);
+    s += scatter(r, 9, 104, 77, 56, 30, (x, y, q) => `<rect x="${x - 5}" y="${y - 5}" width="10" height="10" rx="2" transform="rotate(${q * 60} ${x} ${y})" fill="#ef7d1f" stroke="#c8581a" stroke-width="1"/>`);
+    s += scatter(r, 6, 104, 77, 50, 26, (x, y) => `<circle cx="${x}" cy="${y}" r="5" fill="#fbf6ea" stroke="#e6dcc6" stroke-width="0.8"/>`);
+    s += scatter(r, 14, 104, 77, 58, 32, (x, y, q) => `<path d="M${x} ${y} l${5 * Math.cos(q * 6)} ${5 * Math.sin(q * 6)} M${x} ${y} l${4 * Math.cos(q * 6 + 1)} ${4 * Math.sin(q * 6 + 1)}" stroke="#4d8a3a" stroke-width="1.1" stroke-linecap="round"/>`);
+    s += scatter(r, 5, 104, 77, 46, 24, (x, y, q) => `<path transform="translate(${x} ${y}) rotate(${q * 180})" d="M-4 -2 Q-1 -5 3 -3 Q5 0 2 3 Q-2 4 -4 1Z" fill="#8a5a2f"/>`);
+    s += `<rect x="170" y="70" width="30" height="12" rx="6" fill="#34363a"/>`;
+    return s;
+  },
+  kartoffelbowl() {
+    const r = rng(229); let s = bowl(100, 76, 62, "#f6f2e6");
+    s += scatter(r, 26, 100, 76, 50, 50, (x, y, q) => leaf(x, y, q * 360, 1.1, q > 0.5 ? "#5a9a32" : "#3f7f2a"));
+    s += scatter(r, 13, 92, 82, 32, 30, (x, y, q) => `<path transform="translate(${x} ${y}) rotate(${q * 180})" d="M-9 -5 Q0 -10 9 -4 Q11 4 3 7 Q-6 9 -10 2Z" fill="#e7b85a" stroke="#c48a32" stroke-width="1.2"/><path transform="translate(${x} ${y}) rotate(${q * 180})" d="M-5 -3 Q0 -5 5 -2" stroke="#f6d88f" stroke-width="1.4" fill="none"/>`);
+    s += scatter(r, 9, 120, 58, 18, 14, (x, y, q) => `<circle cx="${x}" cy="${y}" r="6" fill="${q > 0.66 ? "#f2c230" : q > 0.33 ? "#e2432c" : "#f08a2a"}"/><circle cx="${x - 2}" cy="${y - 2}" r="1.6" fill="rgba(255,255,255,0.45)"/>`);
+    s += scatter(r, 7, 74, 104, 14, 8, (x, y, q) => `<rect x="${x}" y="${y}" width="6" height="5" rx="1" transform="rotate(${q * 60} ${x} ${y})" fill="#fbf9f1" stroke="#e1d9c4" stroke-width="0.6"/>`);
+    s += shadow(165, 108, 16, 14) + `<circle cx="162" cy="104" r="17" fill="#f1ede4" stroke="#d9d3c6" stroke-width="1.5"/><circle cx="162" cy="104" r="12" fill="#c9cf7a"/>`;
+    s += scatter(r, 10, 162, 104, 8, 8, (x, y) => `<circle cx="${x}" cy="${y}" r="1" fill="#6f7a2e"/>`);
+    return s;
+  },
+};
+const svgFor = key => `<svg viewBox="0 0 204 150" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">${ART[key]()}</svg>`;
+
+/* ---------- Week plan with recipes ---------- */
+const DAYS = [
+  {
+    "id": "mo",
+    "color": "orange",
+    "day": "Mo 9.11.",
+    "art": "frikadellen",
+    "title": "Vegane Frikadellen mit Rosenkohl und Kartoffeln",
+    "time": "35 Min",
+    "portions": "2 Portionen",
+    "chips": [
+      [
+        "prev",
+        "Aus letzter Woche"
+      ],
+      [
+        "fav",
+        "Favorit"
+      ],
+      [
+        "var",
+        "Variante: mit Rosenkohl und Kartoffeln"
+      ]
+    ],
+    "offers": "Alles ist schon da: Rosenkohl, Drillinge, Haferflocken und Haferdrink von letzter Woche. Nichts dafür kaufen",
+    "ingredients": [
+      [
+        "60 g",
+        "Haferflocken (zart)"
+      ],
+      [
+        "75 ml",
+        "Haferdrink"
+      ],
+      [
+        "40 g",
+        "Zwiebel"
+      ],
+      [
+        "½ TL",
+        "Senf"
+      ],
+      [
+        "je ½ TL",
+        "Knoblauch-, Zwiebel- und Paprikapulver (edelsüß), Majoran"
+      ],
+      [
+        "je 1 Prise",
+        "Muskat, Kreuzkümmel"
+      ],
+      [
+        "¼ TL",
+        "Salz"
+      ],
+      [
+        "",
+        "Pfeffer"
+      ],
+      [
+        "1 EL",
+        "Öl zum Braten"
+      ],
+      [
+        "500 g",
+        "Rosenkohl (die ganze Packung von letzter Woche, Variante)"
+      ],
+      [
+        "ca. 400 g",
+        "Drillinge (Variante)"
+      ]
+    ],
+    "steps": [
+      "Drillinge waschen und in Salzwasser etwa 20 Minuten garen. Ofen auf 200 °C vorheizen, Rosenkohl putzen, halbieren, mit etwas Öl und Salz mischen und 20–25 Minuten rösten.",
+      "Zwiebel sehr fein würfeln. Haferflocken mit allen Gewürzen, Senf und Zwiebel mischen, Haferdrink dazugeben und 10 Minuten quellen lassen.",
+      "Mit feuchten Händen kleine Frikadellen formen.",
+      "In einer Pfanne mit Öl von jeder Seite 4–5 Minuten goldbraun braten. Mit Kartoffeln und Rosenkohl servieren."
+    ],
+    "src": [
+      "choosy, für 4, hier halbiert (der Ausdruck enthält nur die Zutaten, die Schritte sind ergänzt)",
+      "https://my.choosy.de/recipes/vegane-frikadellen-21"
+    ]
+  },
+  {
+    "id": "di",
+    "color": "yellow",
+    "day": "Di 10.11.",
+    "art": "curry",
+    "photo": {
+      "src": "https://images.unsplash.com/photo-1788604619692-120407b7207c?w=800&h=600&fit=crop&q=70&auto=format",
+      "by": "Zoshua Colah",
+      "via": "Unsplash",
+      "href": "https://unsplash.com/photos/ZvKo4k3xKIs"
+    },
+    "title": "Rote-Linsen-Curry mit Jasminreis",
+    "time": "30 Min",
+    "portions": "2 Portionen",
+    "chips": [
+      [
+        "fav",
+        "Favorit"
+      ]
+    ],
+    "offers": "Linsen, Kokosmilch und Ingwer vom ausgefallenen Montag und Donnerstag sind noch da, nur Tomaten, Reis und Limette kommen dazu",
+    "ingredients": [
+      [
+        "125 g",
+        "rote Linsen"
+      ],
+      [
+        "125 g",
+        "Cherrytomaten"
+      ],
+      [
+        "1",
+        "Knoblauchzehe"
+      ],
+      [
+        "½ Stück",
+        "Ingwer"
+      ],
+      [
+        "½ EL",
+        "Rapsöl"
+      ],
+      [
+        "¼ TL",
+        "Kreuzkümmel"
+      ],
+      [
+        "¼ TL",
+        "Zimt"
+      ],
+      [
+        "½ TL",
+        "Currypulver"
+      ],
+      [
+        "200 ml",
+        "Kokosmilch (halbe Dose)"
+      ],
+      [
+        "125 ml",
+        "Gemüsebrühe, plus etwas Wasser"
+      ],
+      [
+        "1 EL",
+        "Limettensaft"
+      ],
+      [
+        "125 g",
+        "Jasminreis (Beilage)"
+      ]
+    ],
+    "steps": [
+      "Reis nach Packungsangabe kochen. Tomaten vierteln, Linsen abspülen.",
+      "Knoblauch und Ingwer fein hacken und im Öl andünsten. Kreuzkümmel, Zimt und Curry kurz mitrösten.",
+      "Kokosmilch, Brühe, Tomaten und Linsen zugeben und aufkochen.",
+      "Bei mittlerer Hitze etwa 20 Minuten köcheln, bis die Linsen weich sind. Bei Bedarf Wasser nachgießen.",
+      "Mit Salz, Pfeffer und Limettensaft abschmecken."
+    ],
+    "src": [
+      "Gaumenfreundin (für 4, hier halbiert)",
+      "https://www.gaumenfreundin.de/rote-linsen-curry/"
+    ]
+  },
+  {
+    "id": "mi",
+    "color": "sky",
+    "day": "Mi 11.11.",
+    "art": "quesadilla",
+    "photo": {
+      "src": "https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=800&h=600&fit=crop&q=70&auto=format",
+      "by": "Lottie Griffiths",
+      "via": "Unsplash",
+      "href": "https://unsplash.com/photos/pvTgyioFSTY"
+    },
+    "title": "Kidneybohnen-Quesadillas mit Tomatensalsa",
+    "time": "30 Min",
+    "portions": "2 Portionen",
+    "chips": [
+      [
+        "fav",
+        "Favorit"
+      ]
+    ],
+    "offers": "Kerrygold Cheddar gerieben 1,59 € (REWE, Knaller), Romatomaten 400 g 1,79 € und Lauchzwiebeln 0,55 € (REWE, Aktion), Tortilla Wraps XXL 1,79 € (Lidl). Der Feta von letzter Woche reicht",
+    "ingredients": [
+      [
+        "1 Dose (425 ml)",
+        "Kidneybohnen"
+      ],
+      [
+        "1 kleine Dose (212 ml)",
+        "Mais"
+      ],
+      [
+        "½ Bund",
+        "Koriander"
+      ],
+      [
+        "150 g",
+        "Cheddar, gerieben (Original 175 g)"
+      ],
+      [
+        "100 g",
+        "Feta (Rest von letzter Woche)"
+      ],
+      [
+        "3",
+        "Lauchzwiebeln"
+      ],
+      [
+        "4",
+        "Weizentortillas"
+      ],
+      [
+        "150 g",
+        "Schmand"
+      ],
+      [
+        "ca. 2 EL",
+        "Olivenöl"
+      ],
+      [
+        "4",
+        "Romatomaten"
+      ],
+      [
+        "1 EL",
+        "Zitronensaft"
+      ],
+      [
+        "",
+        "Salz, Pfeffer, Zucker"
+      ]
+    ],
+    "steps": [
+      "Ofen auf 200 °C Ober-/Unterhitze (180 °C Umluft) vorheizen. Bohnen abspülen und mit dem Mais abtropfen lassen. Koriander grob hacken.",
+      "Feta zerbröseln, Lauchzwiebeln in feine Ringe schneiden.",
+      "Bohnen und Mais mit je der Hälfte von Koriander, Käse und Lauchzwiebeln mischen und würzen. Tortillas zur Hälfte mit etwas Schmand bestreichen, Füllung daraufgeben und zuklappen.",
+      "Auf ein Blech mit Backpapier legen, mit Öl bepinseln, mit dem restlichen Käse bestreuen und etwa 10 Minuten backen, bis er goldbraun ist.",
+      "Für die Salsa Tomaten entkernen und klein würfeln, mit den restlichen Lauchzwiebeln, Koriander, 1 EL Öl und Zitronensaft mischen und mit Salz, Pfeffer und Zucker abschmecken. Mit dem übrigen Schmand servieren."
+    ],
+    "src": [
+      "lecker.de",
+      "https://www.lecker.de/kidneybohnen-quesadillas-4937.html"
+    ]
+  },
+  {
+    "id": "do",
+    "color": "red",
+    "day": "Do 12.11.",
+    "art": "bratnudeln",
+    "photo": {
+      "src": "https://images.unsplash.com/photo-1655427221151-870cc71a63c2?w=800&h=600&fit=crop&q=70&auto=format",
+      "by": "Drake Whitney",
+      "via": "Unsplash",
+      "href": "https://unsplash.com/photos/KwT-QQj1-NE"
+    },
+    "title": "Bunte Gemüse-Bratnudeln mit Tofu",
+    "time": "25 Min",
+    "portions": "2 Portionen",
+    "chips": [
+      [
+        "fav",
+        "Favorit"
+      ]
+    ],
+    "offers": "Der Rest Lauchzwiebeln vom Mittwoch und der Ingwer sind schon da",
+    "ingredients": [
+      [
+        "125 g",
+        "Mie-Nudeln"
+      ],
+      [
+        "1½ EL",
+        "Öl"
+      ],
+      [
+        "½",
+        "rote Paprika"
+      ],
+      [
+        "1",
+        "Möhre"
+      ],
+      [
+        "60 g",
+        "Shiitake-Pilze"
+      ],
+      [
+        "½ Bund",
+        "Lauchzwiebeln (Rest vom Mittwoch)"
+      ],
+      [
+        "ca. 1,5 cm",
+        "Ingwer"
+      ],
+      [
+        "1",
+        "Knoblauchzehe"
+      ],
+      [
+        "200 g",
+        "Tofu (die ganze Packung; im Original für 4)"
+      ],
+      [
+        "2½ EL",
+        "Sojasoße"
+      ],
+      [
+        "1 EL",
+        "Ketjap Manis"
+      ],
+      [
+        "1",
+        "Ei"
+      ],
+      [
+        "½ EL",
+        "Sesamöl"
+      ],
+      [
+        "1 EL",
+        "Sesam"
+      ],
+      [
+        "",
+        "Salz, Pfeffer"
+      ]
+    ],
+    "steps": [
+      "Nudeln nach Packungsangabe kochen, abgießen und mit ½ EL Öl mischen.",
+      "Paprika und Möhren in Stifte, Lauchzwiebeln in Ringe und die Pilze klein schneiden. Ingwer und Knoblauch fein hacken, Tofu würfeln.",
+      "½ EL Öl erhitzen und Lauchzwiebeln, Ingwer und Knoblauch etwa 2 Minuten anbraten. Nudeln, Paprika, Möhren und Pilze zugeben und rund 3 Minuten mitbraten.",
+      "Tofu, ½ EL Sojasoße und das Ketjap Manis unterrühren.",
+      "Das Ei mit 1 EL Sojasoße und dem Sesamöl verquirlen, über die Nudeln gießen und etwa 4 Minuten braten, bis das Ei gestockt ist. Mit restlicher Sojasoße, Salz und Pfeffer abschmecken und mit Sesam bestreuen."
+    ],
+    "src": [
+      "lecker.de (für 4, hier halbiert)",
+      "https://www.lecker.de/bunte-gemuese-bratnudeln-128867.html"
+    ]
+  },
+  {
+    "id": "fr",
+    "color": "pink",
+    "day": "Fr 13.11.",
+    "art": "spitzkohlnudeln",
+    "title": "Spitzkohl-Pesto-Nudeln mit Mozzarella",
+    "time": "25 Min",
+    "portions": "2 Portionen",
+    "chips": [
+      [
+        "new",
+        "Neu"
+      ],
+      [
+        "var",
+        "Variante: mit eurem Pesto und Fusilli"
+      ]
+    ],
+    "offers": "Spitzkohl 0,99 €/kg (REWE, Aktion). Pesto, Pinienkerne und Fusilli vom ausgefallenen Nudelsalat sind noch da",
+    "ingredients": [
+      [
+        "",
+        "Salz, Pfeffer"
+      ],
+      [
+        "250 g",
+        "Spitzkohl"
+      ],
+      [
+        "125 g",
+        "Mozzarella (1 Kugel; Original Büffelmozzarella)"
+      ],
+      [
+        "150 g",
+        "Nudeln (eure Fusilli; Original Spinatbandnudeln)"
+      ],
+      [
+        "1–1½ EL",
+        "Pinienkerne"
+      ],
+      [
+        "1 EL",
+        "Öl"
+      ],
+      [
+        "50 g",
+        "Pesto (euer veganes Pesto; Original rotes Pesto)"
+      ],
+      [
+        "evtl.",
+        "Kresse"
+      ]
+    ],
+    "steps": [
+      "Nudeln in reichlich Salzwasser nach Packung garen. Spitzkohl putzen, vierteln, den Strunk herausschneiden und den Kohl in feine Streifen schneiden.",
+      "Pinienkerne ohne Fett goldbraun rösten und herausnehmen. Öl in der Pfanne erhitzen und den Spitzkohl darin etwa 2 Minuten anbraten, salzen und pfeffern.",
+      "Nudeln abgießen, dabei etwa 50 ml Kochwasser auffangen. Kochwasser mit dem Pesto verrühren und mit Nudeln und Spitzkohl mischen.",
+      "Mozzarella in Stücke zupfen und mit den Pinienkernen über die Nudeln geben. Nach Lust mit Kresse bestreuen."
+    ],
+    "src": [
+      "lecker.de (Portionen auf der Seite nicht angegeben; nach Menge für 4 gerechnet, hier halbiert)",
+      "https://www.lecker.de/spitzkohl-pesto-nudeln-mit-mozzarella-74937.html"
+    ]
+  },
+  {
+    "id": "sa",
+    "color": "green",
+    "day": "Sa 14.11.",
+    "art": "lasagne",
+    "title": "Rote-Linsen-Lasagne",
+    "time": "50 Min",
+    "portions": "2 Portionen",
+    "chips": [
+      [
+        "fav",
+        "Favorit"
+      ]
+    ],
+    "offers": "Passierte Tomaten und Crème fraîche von letzter Woche sind noch da, Lasagneplatten und Mozzarella kommen von Lidl",
+    "ingredients": [
+      [
+        "100 g",
+        "rote Linsen"
+      ],
+      [
+        "½",
+        "Zwiebel"
+      ],
+      [
+        "1",
+        "Knoblauchzehe"
+      ],
+      [
+        "1",
+        "mittelgroße Möhre"
+      ],
+      [
+        "1 EL",
+        "Olivenöl"
+      ],
+      [
+        "300 ml",
+        "Gemüsebrühe"
+      ],
+      [
+        "250 ml",
+        "passierte Tomaten"
+      ],
+      [
+        "",
+        "Salz, Pfeffer"
+      ],
+      [
+        "½ EL",
+        "italienische Kräuter"
+      ],
+      [
+        "6",
+        "Lasagneplatten"
+      ],
+      [
+        "100 g",
+        "Crème fraîche (oder Schmand)"
+      ],
+      [
+        "50 g",
+        "Mozzarella (Original gerieben; die halbe zweite Kugel, klein gezupft)"
+      ],
+      [
+        "etwas",
+        "Butter für die Form"
+      ]
+    ],
+    "steps": [
+      "Linsen in einem Sieb gründlich abspülen. Zwiebel und Knoblauch fein hacken, die Möhre schälen und ganz klein würfeln oder raspeln.",
+      "Olivenöl in einer Pfanne erhitzen und Zwiebel, Knoblauch und Möhre 2 Minuten andünsten. Linsen und Brühe zugeben, aufkochen und zugedeckt bei mittlerer Hitze 10–15 Minuten köcheln, bis Linsen und Möhre weich sind. Passierte Tomaten und Kräuter unterrühren, salzen und pfeffern.",
+      "Ofen auf 200 °C Ober- und Unterhitze vorheizen und eine kleine Auflaufform (ca. 15 × 20 cm) mit Butter einfetten.",
+      "Mit einer Schicht Soße beginnen und abwechselnd Lasagneplatten und Soße schichten. Oben liegt Soße.",
+      "Crème fraîche mit 1–2 EL Wasser glatt rühren, darauf verstreichen, mit dem Mozzarella bedecken und etwa 30 Minuten backen."
+    ],
+    "src": [
+      "Gaumenfreundin (für 4, hier halbiert)",
+      "https://www.gaumenfreundin.de/rote-linsen-lasagne/"
+    ]
+  },
+  {
+    "id": "so",
+    "color": "violet",
+    "day": "So 15.11.",
+    "art": "pilzrisotto",
+    "title": "Pilzrisotto mit getrockneten Tomaten",
+    "time": "50 Min",
+    "portions": "2 Portionen",
+    "chips": [
+      [
+        "new",
+        "Neu"
+      ],
+      [
+        "veg",
+        "Vegetarisch angepasst"
+      ]
+    ],
+    "offers": "Die getrockneten Tomaten vom ausgefallenen Nudelsalat und der Hartkäse von letzter Woche sind noch da. Die Pilze sind der Rest Shiitake vom Donnerstag",
+    "ingredients": [
+      [
+        "7–8 g",
+        "getrocknete Steinpilze"
+      ],
+      [
+        "250 ml",
+        "Gemüsebrühe"
+      ],
+      [
+        "1",
+        "Schalotte"
+      ],
+      [
+        "½",
+        "Knoblauchzehe"
+      ],
+      [
+        "2 EL",
+        "Öl"
+      ],
+      [
+        "125 g",
+        "Risottoreis"
+      ],
+      [
+        "150 ml",
+        "trockener Weißwein"
+      ],
+      [
+        "ca. 90 g",
+        "Pilze (Rest Shiitake vom Donnerstag; Original z. B. Champignons, Kräuterseitlinge)"
+      ],
+      [
+        "40 g",
+        "getrocknete Tomaten in Öl"
+      ],
+      [
+        "",
+        "Salz, Pfeffer, Zucker"
+      ],
+      [
+        "¼ Bund",
+        "Petersilie"
+      ],
+      [
+        "40 g",
+        "vegetarischer Hartkäse, gerieben (statt Parmesan)"
+      ]
+    ],
+    "steps": [
+      "Steinpilze in knapp 100 ml warmem Wasser etwa 15 Minuten einweichen. Abgießen, das Einweichwasser auffangen und mit der Brühe auf etwa 325 ml auffüllen, warm halten. Steinpilze hacken.",
+      "Schalotte und Knoblauch fein würfeln und in 1 EL Öl glasig dünsten. Reis und Steinpilze kurz mitrösten, mit dem Wein ablöschen und einkochen lassen.",
+      "Nach und nach die heiße Brühe zugießen und unter Rühren immer wieder einkochen lassen, bis der Reis nach 30–35 Minuten cremig und bissfest ist.",
+      "Inzwischen die Pilze in Stücke schneiden und im restlichen Öl kräftig braten. Getrocknete Tomaten in Streifen schneiden, kurz mitbraten und mit Salz, Pfeffer und 1 Prise Zucker würzen.",
+      "Petersilie hacken und mit gut der Hälfte des Hartkäses unter das Risotto ziehen. Mit den Pilzen anrichten und mit dem übrigen Käse bestreuen."
+    ],
+    "src": [
+      "lecker.de (Portionen auf der Seite nicht angegeben; nach Menge für 4 gerechnet, hier halbiert)",
+      "https://www.lecker.de/pilzrisotto-37716.html"
+    ]
+  }
+];
+const SHORT = {"mo": "Vegane Frika\u00addellen", "di": "Linsen-Curry", "mi": "Quesa\u00addillas", "do": "Brat\u00adnudeln", "fr": "Spitzkohl-Nudeln", "sa": "Linsen-Lasagne", "so": "Pilz\u00adrisotto"};
+function renderStrip() {
+  document.getElementById("strip").innerHTML = DAYS.map(d => `<a class="c-${d.color}" href="#${d.id}"><span class="sd">${d.day.slice(0, 2)}</span><span class="sn">${SHORT[d.id]}</span></a>`).join("");
+}
+function renderDays() {
+  const host = document.getElementById("days");
+  host.innerHTML = DAYS.map(d => `
+    <article class="day c-${d.color}" id="${d.id}">
+      <div class="art${d.photo ? " has-photo" : ""}">${svgFor(d.art)}${d.photo ? `<img class="photo" src="${d.photo.src}" alt="${d.title}" loading="lazy" decoding="async" referrerpolicy="no-referrer">${d.photo.href ? `<a class="photo-credit" href="${d.photo.href}" target="_blank" rel="noopener">Foto: ${d.photo.by} / ${d.photo.via}</a>` : `<span class="photo-credit">${d.photo.by}</span>`}` : ""}</div>
+      <div class="info">
+        <div class="dayline"><span class="d">${d.day}</span><span class="t">${d.time} · ${d.portions}</span></div>
+        <h3>${d.title}</h3>
+        <div class="chips">${d.chips.map(([k, t]) => `<span class="chip ${k}">${t}</span>`).join("")}</div>
+        <p class="offers"><b>${d.offersLabel || "Günstig"}:</b> ${d.offers}</p>
+        <details class="recipe" id="rezept-${d.id}">
+          <summary>${d.recipeLabel || "Rezept anzeigen"}</summary>
+          <div class="recipe-body">
+            <div><h4>Zutaten · ${d.portions}</h4><ul>${d.ingredients.map(([q, n]) => `<li>${q ? `<span class="qty">${q}</span> ` : ""}${n}</li>`).join("")}</ul></div>
+            <div><h4>Zubereitung</h4><ol>${d.steps.map(s => `<li>${s}</li>`).join("")}</ol></div>
+            <p class="src">Originalrezept: <a href="${d.src[1]}" target="_blank" rel="noopener">${d.src[0]}</a></p>
+          </div>
+        </details>
+        <div class="cook" data-day="${d.day.slice(0, 2)}" role="group" aria-label="${d.day.slice(0, 2)}: gekocht?" hidden>
+          <span class="q">Gekocht?</span>
+          <button type="button" data-s="gekocht" aria-pressed="false">✓ Gekocht</button>
+          <button type="button" data-s="verschoben" aria-pressed="false">→ Nächste Woche</button>
+          <button type="button" data-s="ausgefallen" aria-pressed="false">✕ Fällt aus</button>
+        </div>
+      </div>
+    </article>`).join("");
+  // Foto nicht ladbar (offline, Claude-Ansicht): Illustration zeigen
+  host.querySelectorAll("img.photo").forEach(img => {
+    const off = () => { const art = img.closest(".art"); art.classList.remove("has-photo"); art.querySelectorAll(".photo, .photo-credit").forEach(n => n.remove()); };
+    if (img.complete && !img.naturalWidth) off(); else img.addEventListener("error", off, { once: true });
+  });
+}
+
+/* ---------- Shopping list ---------- */
+const ITEMS = [
+  {"id": "l-kir", "store": "lidl", "group": "Obst & Gemüse", "name": "Kirschtomaten", "amt": "250 g", "price": 1.29, "for": "Di (125 g), Rest zum Snacken", "approx": true},
+  {"id": "l-kor", "store": "lidl", "group": "Obst & Gemüse", "name": "Koriander", "amt": "1 Bund", "price": 0.99, "for": "Mi (½ Bund)", "approx": true},
+  {"id": "l-pap", "store": "lidl", "group": "Obst & Gemüse", "name": "Rote Paprika", "amt": "1 Stück", "price": 0.69, "for": "Do (½)", "approx": true},
+  {"id": "l-pet", "store": "lidl", "group": "Obst & Gemüse", "name": "Bio-Petersilie", "amt": "1 Bund", "price": 0.99, "for": "So (¼ Bund), Rest fürs Brot", "approx": true},
+  {"id": "l-sch", "store": "lidl", "group": "Kühlregal", "name": "Schmand", "amt": "200 g", "price": 0.79, "for": "Mi (150 g)", "approx": true},
+  {"id": "l-moz", "store": "lidl", "group": "Kühlregal", "name": "Mozzarella", "amt": "2 × 125 g", "price": 1.7, "for": "Fr (1 Kugel), Sa (½ Kugel)"},
+  {"id": "l-tof", "store": "lidl", "group": "Kühlregal", "name": "Bio-Tofu natur", "amt": "200 g", "price": 2.29, "for": "Do"},
+  {"id": "l-kid", "store": "lidl", "group": "Vorräte & Brot", "name": "Kidneybohnen", "amt": "1 Dose à 425 ml", "price": 0.79, "for": "Mi (ganze Dose) · günstiger als Bonduelle bei REWE", "approx": true},
+  {"id": "l-mai", "store": "lidl", "group": "Vorräte & Brot", "name": "Mais", "amt": "1 kleine Dose (212 ml)", "price": 0.69, "for": "Mi", "approx": true},
+  {"id": "l-wra", "store": "lidl", "group": "Vorräte & Brot", "name": "Grafschafter Weizen Tortilla Wraps XXL", "amt": "740 g (2,42 €/kg)", "price": 1.79, "for": "Mi (4), der Rest hält wochenlang", "offer": "Aktion"},
+  {"id": "l-lin", "store": "lidl", "group": "Vorräte & Brot", "name": "Rote Linsen", "amt": "500 g", "price": 1.49, "for": "Sa (100 g), Di nimmt die 150 g von zu Hause", "approx": true},
+  {"id": "l-rei", "store": "lidl", "group": "Vorräte & Brot", "name": "Jasminreis", "amt": "500 g", "price": 1.49, "for": "Di (125 g)", "approx": true},
+  {"id": "l-mie", "store": "lidl", "group": "Vorräte & Brot", "name": "Mie-Nudeln", "amt": "250 g", "price": 1.29, "for": "Do (125 g)", "approx": true},
+  {"id": "l-las", "store": "lidl", "group": "Vorräte & Brot", "name": "Lasagneplatten", "amt": "500 g", "price": 0.99, "for": "Sa (6 Platten)", "approx": true},
+  {"id": "l-ris", "store": "lidl", "group": "Vorräte & Brot", "name": "Risottoreis", "amt": "500 g", "price": 1.49, "for": "So (125 g)", "approx": true},
+  {"id": "l-stp", "store": "lidl", "group": "Vorräte & Brot", "name": "Getrocknete Steinpilze", "amt": "1 Tüte (ca. 20 g)", "price": 1.99, "for": "So (7–8 g)", "approx": true},
+  {"id": "l-wei", "store": "lidl", "group": "Vorräte & Brot", "name": "Trockener Weißwein", "amt": "0,75 l", "price": 2.49, "for": "So (150 ml)", "approx": true},
+  {"id": "l-ket", "store": "lidl", "group": "Vorräte & Brot", "name": "Ketjap Manis", "amt": "1 Flasche", "price": 1.99, "for": "Do (1 EL)", "approx": true, "cond": "nur falls keins da"},
+  {"id": "l-cas", "store": "lidl", "group": "Kauft ihr oft · im Angebot", "name": "Alesto Cashewkerne naturbelassen", "amt": "200 g", "price": 1.89, "for": "Knabbern, Müsli · 9,45 €/kg, sonst 2,49 €", "offer": "Lidl Plus", "stamm": true, "was": 2.49},
+  {"id": "r-lau", "store": "rewe", "group": "Obst & Gemüse", "name": "Lauchzwiebeln", "amt": "1 Bund", "price": 0.55, "for": "Mi (3), Do (Rest)", "offer": "Aktion"},
+  {"id": "r-rom", "store": "rewe", "group": "Obst & Gemüse", "name": "Romatomaten", "amt": "400 g (4,48 €/kg)", "price": 1.79, "for": "Mi (4 für die Salsa)", "offer": "Aktion"},
+  {"id": "r-zit", "store": "rewe", "group": "Obst & Gemüse", "name": "Zitrone", "amt": "1 Stück", "price": 0.59, "for": "Mi (1 EL Saft)", "offer": "Aktion"},
+  {"id": "r-lim", "store": "rewe", "group": "Obst & Gemüse", "name": "Limette", "amt": "1 Stück, lose", "price": 0.39, "for": "Di (1 EL Saft)", "approx": true},
+  {"id": "r-moe", "store": "rewe", "group": "Obst & Gemüse", "name": "Möhren", "amt": "2 Stück, lose", "price": 0.3, "for": "Do (1), Sa (1)", "approx": true},
+  {"id": "r-shi", "store": "rewe", "group": "Obst & Gemüse", "name": "Shiitake-Pilze", "amt": "150 g", "price": 2.49, "for": "Do (60 g), So (Rest)", "approx": true},
+  {"id": "r-spk", "store": "rewe", "group": "Obst & Gemüse", "name": "Spitzkohl", "amt": "1 kleiner Kopf, ca. 500 g (0,99 €/kg)", "price": 0.5, "for": "Fr (250 g), Rest hält 1–2 Wochen", "approx": true, "offer": "Aktion"},
+  {"id": "r-sca", "store": "rewe", "group": "Obst & Gemüse", "name": "Schalotten", "amt": "1 kleines Netz", "price": 0.99, "for": "So (1)", "approx": true},
+  {"id": "r-che", "store": "rewe", "group": "Kühlregal", "name": "Kerrygold Cheddar gerieben", "amt": "150 g (10,60 €/kg)", "price": 1.59, "for": "Mi · günstiger pro kg als der Lidl-Cheddar im Angebot", "offer": "Knaller"},
+];
+const PORTIONS = 14;
+const KEY = "wocheneinkauf-kw46-checked";
+let checked = new Set();
+try { checked = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch (e) { checked = new Set(); }
+function save() { try { localStorage.setItem(KEY, JSON.stringify([...checked])); } catch (e) {} }
+const eur = n => n.toFixed(2).replace(".", ",");
+
+function renderList(store) {
+  const host = document.getElementById("list-" + store);
+  const groups = [...new Set(ITEMS.filter(i => i.store === store).map(i => i.group))];
+  host.innerHTML = "";
+  host.style.display = "flex"; host.style.flexDirection = "column"; host.style.gap = "8px";
+  groups.forEach(g => {
+    const label = document.createElement("p"); label.className = "eyebrow group-label"; label.textContent = g;
+    const ul = document.createElement("ul"); ul.className = "items";
+    ITEMS.filter(i => i.store === store && i.group === g).forEach(i => {
+      const li = document.createElement("li"); li.className = "item" + (checked.has(i.id) ? " is-done" : "");
+      const chips = [];
+      if (i.offer) chips.push(`<span class="chip offer">${i.offer}</span>`);
+      if (i.swap) chips.push(`<span class="chip swap">${i.swap}</span>`);
+      if (i.cond) chips.push(`<span class="chip cond">${i.cond}</span>`);
+      li.innerHTML = `<label for="${i.id}">
+          <input type="checkbox" id="${i.id}" ${checked.has(i.id) ? "checked" : ""}>
+          <span class="txt">
+            <span><span class="name">${i.name}</span> <span class="amt">· ${i.amt}</span></span>
+            <span class="for">für ${i.for}</span>
+            ${chips.length ? `<span class="chips">${chips.join("")}</span>` : ""}
+          </span>
+          <span class="price">${i.approx ? "ca. " : ""}${eur(i.price)}${i.was ? `<s>${eur(i.was)}</s>` : ""}</span>
+        </label>`;
+      li.querySelector("input").addEventListener("change", ev => {
+        ev.target.checked ? checked.add(i.id) : checked.delete(i.id);
+        li.classList.toggle("is-done", ev.target.checked);
+        save(); totals(); doneCount();
+      });
+      ul.appendChild(li);
+    });
+    host.appendChild(label); host.appendChild(ul);
+  });
+}
+function totals() {
+  const sum = s => ITEMS.filter(i => i.store === s).reduce((a, i) => a + i.price, 0);
+  const open = s => ITEMS.filter(i => i.store === s && !checked.has(i.id)).reduce((a, i) => a + i.price, 0);
+  const all = sum("lidl") + sum("rewe");
+  document.getElementById("sum-lidl").textContent = eur(sum("lidl"));
+  document.getElementById("sum-rewe").textContent = eur(sum("rewe"));
+  document.getElementById("sum-all").textContent = eur(all);
+  /* Preis pro Portion nur aus den Zutaten dieser Woche: ohne Stammartikel (stamm) und ohne Vorrat für später (later) */
+  const meals = ITEMS.filter(i => !i.stamm && !i.later).reduce((a, i) => a + i.price, 0);
+  document.getElementById("per-portion").textContent = eur(meals / PORTIONS);
+  document.getElementById("sum-open").textContent = eur(open("lidl") + open("rewe"));
+  document.getElementById("open-lidl").textContent = eur(open("lidl")) + " €";
+  document.getElementById("open-rewe").textContent = eur(open("rewe")) + " €";
+}
+document.getElementById("reset").addEventListener("click", () => { checked.clear(); save(); renderList("lidl"); renderList("rewe"); totals(); doneCount(); });
+
+/* Erledigte ausblenden: gilt nur auf diesem Gerät, die Einstellung bleibt über die Wochen erhalten */
+const HIDE_KEY = "wocheneinkauf-hide-done";
+const hideBtn = document.getElementById("hide-done");
+let hideDone = false;
+try { hideDone = localStorage.getItem(HIDE_KEY) === "1"; } catch (e) {}
+function doneCount() {
+  const n = document.querySelectorAll("#einkauf .item.is-done").length;
+  hideBtn.setAttribute("aria-pressed", String(hideDone));
+  hideBtn.textContent = hideDone ? `Erledigte wieder anzeigen (${n})` : n ? `Erledigte ausblenden (${n})` : "Erledigte ausblenden";
+  document.getElementById("einkauf").classList.toggle("hiding-done", hideDone);
+}
+hideBtn.addEventListener("click", () => {
+  hideDone = !hideDone;
+  try { localStorage.setItem(HIDE_KEY, hideDone ? "1" : "0"); } catch (e) {}
+  doneCount();
+});
+
+/* ---------- Gekocht? Gemeinsamer Stand in Firestore (Projekt wocheneinkauf-58efa) ----------
+   Nur auf der App-Seite (github.io) und nur auf Geräten, die das Abhaken eingeschaltet haben
+   (einmal mit ?ich geöffnet oder unten auf „Abhaken einschalten“ getippt). Die Regeln in Firestore
+   erlauben nur Status, Notiz und eigene Artikel zu ändern, keine Woche zu löschen.
+   WEEK.prev = Vorwoche: deren nicht abgehakte eigene Artikel übernimmt die App in die neue Woche. */
+const WEEK = { id: "kw46-2026", kw: 46, year: 2026, range: "9. – 15. November", prev: "kw45-2026" };
+const FS_WEEKS = "https://firestore.googleapis.com/v1/projects/wocheneinkauf-58efa/databases/(default)/documents/weeks";
+const FS_DOC = FS_WEEKS + "/" + WEEK.id;
+const FS_KEY = "AIzaSyAgs6UvqIxzMKCl2jqmu9aUXxTkd82qfjY";
+const cook = { on: false, wired: false, status: {}, extras: {}, pending: 0, noteTimer: null };
+
+function cookAllowed() {
+  if (!(location.hostname || "").endsWith("github.io")) return false;
+  const viaLink = new URLSearchParams(location.search).has("ich");
+  try {
+    if (viaLink) localStorage.setItem("kochprotokoll", "1");
+    return localStorage.getItem("kochprotokoll") === "1";
+  } catch (e) { return viaLink; }
+}
+function applyStatus() {
+  DAYS.forEach(d => {
+    const s = cook.status[d.day.slice(0, 2)] || "";
+    const card = document.getElementById(d.id);
+    if (card) {
+      card.classList.remove("st-gekocht", "st-verschoben", "st-ausgefallen");
+      if (s) card.classList.add("st-" + s);
+      card.querySelectorAll(".cook button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.s === s)));
+    }
+    const tile = document.querySelector(`#strip a[href="#${d.id}"]`);
+    if (tile) { if (s) tile.dataset.st = s; else delete tile.dataset.st; }
+  });
+}
+function syncMsg(ok, writing) {
+  const text = ok
+    ? "Gemeinsamer Stand · aktualisiert " + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })
+    : writing ? "Nicht gespeichert, keine Verbindung. Bitte gleich noch mal versuchen." : "Keine Verbindung, der Stand ist evtl. nicht aktuell.";
+  document.querySelectorAll(".sync").forEach(el => { el.classList.toggle("err", !ok); el.textContent = text; });
+}
+function readExtras(f) {
+  const m = (f.extras && f.extras.mapValue && f.extras.mapValue.fields) || {};
+  const out = {};
+  Object.keys(m).forEach(id => {
+    const x = (m[id].mapValue && m[id].mapValue.fields) || {};
+    if (!x.name || !x.name.stringValue) return;
+    out[id] = {
+      name: x.name.stringValue, store: x.store && x.store.stringValue === "rewe" ? "rewe" : "lidl",
+      done: !!(x.done && x.done.booleanValue), at: Number((x.at && x.at.integerValue) || 0)
+    };
+  });
+  return out;
+}
+const xField = x => ({ mapValue: { fields: {
+  name: { stringValue: x.name }, store: { stringValue: x.store }, done: { booleanValue: !!x.done }, at: { integerValue: String(x.at) }
+} } });
+function renderExtras() {
+  ["lidl", "rewe"].forEach(store => {
+    const host = document.getElementById("extras-" + store);
+    const list = Object.entries(cook.extras).filter(([, x]) => x.store === store).sort((a, b) => a[1].at - b[1].at);
+    host.hidden = !cook.on || !list.length;
+    host.textContent = "";
+    if (host.hidden) return;
+    const label = document.createElement("p");
+    label.className = "eyebrow group-label"; label.textContent = "Von euch dazu";
+    const ul = document.createElement("ul");
+    ul.className = "items";
+    list.forEach(([id, x]) => {
+      const li = document.createElement("li");
+      li.className = "item extra" + (x.done ? " is-done" : ""); li.dataset.id = id;
+      const lab = document.createElement("label"); lab.htmlFor = "x-" + id;
+      const cb = document.createElement("input"); cb.type = "checkbox"; cb.id = "x-" + id; cb.checked = x.done;
+      const txt = document.createElement("span"); txt.className = "txt";
+      const name = document.createElement("span"); name.className = "name"; name.textContent = x.name;
+      txt.appendChild(name); lab.append(cb, txt);
+      const del = document.createElement("button");
+      del.type = "button"; del.className = "del"; del.textContent = "×"; del.setAttribute("aria-label", x.name + " entfernen");
+      li.append(lab, del); ul.appendChild(li);
+    });
+    host.append(label, ul);
+  });
+  doneCount();
+}
+async function addExtra(name, store) {
+  const id = "x" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  const x = { name, store, done: false, at: Date.now() };
+  cook.extras[id] = x; renderExtras();
+  const ok = await push(["extras." + id], { extras: { mapValue: { fields: { [id]: xField(x) } } } });
+  if (!ok) { delete cook.extras[id]; renderExtras(); }
+  return ok;
+}
+async function toggleExtra(id, done) {
+  const x = cook.extras[id];
+  if (!x) return;
+  x.done = done; renderExtras();
+  const ok = await push(["extras." + id + ".done"], { extras: { mapValue: { fields: { [id]: { mapValue: { fields: { done: { booleanValue: done } } } } } } } });
+  if (!ok) { x.done = !done; renderExtras(); }
+}
+async function delExtra(id) {
+  const x = cook.extras[id];
+  if (!x) return;
+  delete cook.extras[id]; renderExtras();
+  const ok = await push(["extras." + id], {});
+  if (!ok) { cook.extras[id] = x; renderExtras(); }
+}
+async function createWeek() {
+  /* Legt das Dokument der Woche an, falls es noch fehlt (409 = gibt es schon),
+     und übernimmt nicht abgehakte eigene Artikel aus der Vorwoche. */
+  const S = v => ({ stringValue: v }), I = v => ({ integerValue: String(v) });
+  const carried = {};
+  if (WEEK.prev) {
+    try {
+      const pr = await fetch(FS_WEEKS + "/" + WEEK.prev + "?key=" + FS_KEY, { cache: "no-store" });
+      if (pr.ok) {
+        const px = readExtras((await pr.json()).fields || {});
+        Object.keys(px).forEach(id => { if (!px[id].done) carried[id] = xField(px[id]); });
+      }
+    } catch (e) {}
+  }
+  const fields = {
+    kw: I(WEEK.kw), year: I(WEEK.year), sort: I(WEEK.year * 100 + WEEK.kw), range: S(WEEK.range),
+    dishes: { arrayValue: { values: DAYS.map(d => ({ mapValue: { fields: { day: S(d.day.slice(0, 2)), date: S(d.day.slice(3)), title: S(d.title) } } })) } },
+    status: { mapValue: { fields: {} } }, note: S(""), extras: { mapValue: { fields: carried } },
+    updatedAt: { timestampValue: new Date().toISOString() }
+  };
+  const r = await fetch(FS_WEEKS + "?documentId=" + WEEK.id + "&key=" + FS_KEY, {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fields })
+  });
+  return r.ok || r.status === 409;
+}
+async function pull() {
+  if (!cook.on || cook.pending) return;
+  try {
+    let r = await fetch(FS_DOC + "?key=" + FS_KEY, { cache: "no-store" });
+    if (r.status === 404 && await createWeek()) r = await fetch(FS_DOC + "?key=" + FS_KEY, { cache: "no-store" });
+    if (!r.ok) throw new Error(String(r.status));
+    const f = (await r.json()).fields || {};
+    if (cook.pending) return;
+    const st = (f.status && f.status.mapValue && f.status.mapValue.fields) || {};
+    cook.status = {};
+    Object.keys(st).forEach(k => { if (st[k].stringValue) cook.status[k] = st[k].stringValue; });
+    applyStatus();
+    cook.extras = readExtras(f);
+    renderExtras();
+    const ta = document.getElementById("cook-note");
+    if (ta && document.activeElement !== ta && !cook.noteTimer) ta.value = (f.note && f.note.stringValue) || "";
+    syncMsg(true);
+  } catch (e) { syncMsg(false); }
+}
+async function push(paths, fields) {
+  cook.pending++;
+  try {
+    fields.updatedAt = { timestampValue: new Date().toISOString() };
+    const mask = paths.concat("updatedAt").map(p => "updateMask.fieldPaths=" + encodeURIComponent(p)).join("&");
+    const r = await fetch(FS_DOC + "?" + mask + "&currentDocument.exists=true&key=" + FS_KEY, {
+      method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fields })
+    });
+    if (!r.ok) throw new Error(String(r.status));
+    syncMsg(true);
+    return true;
+  } catch (e) { syncMsg(false, true); return false; }
+  finally { cook.pending--; }
+}
+async function setStatus(day, s) {
+  const prev = cook.status[day] || "";
+  const next = prev === s ? "" : s;
+  if (next) cook.status[day] = next; else delete cook.status[day];
+  applyStatus();
+  const ok = await push(["status." + day], next ? { status: { mapValue: { fields: { [day]: { stringValue: next } } } } } : {});
+  if (!ok) { if (prev) cook.status[day] = prev; else delete cook.status[day]; applyStatus(); }
+}
+function initCook() {
+  const onPages = (location.hostname || "").endsWith("github.io");
+  cook.on = cookAllowed();
+  const gate = document.getElementById("cook-gate");
+  gate.hidden = !onPages;
+  gate.textContent = cook.on ? "Abhaken auf diesem Gerät ausblenden" : "Ihr kocht nach diesem Plan? Abhaken auf diesem Gerät einschalten";
+  document.querySelectorAll(".cook, #cook-note-box, .sync, #add-form").forEach(el => { el.hidden = !cook.on; });
+  renderExtras();
+  if (!cook.on) return;
+  try {
+    const last = localStorage.getItem("extra-store");
+    if (last) document.querySelector(`#add-form input[value="${last === "rewe" ? "rewe" : "lidl"}"]`).checked = true;
+  } catch (e) {}
+  pull();
+  if (cook.wired) return;
+  cook.wired = true;
+  const form = document.getElementById("add-form");
+  form.addEventListener("submit", async ev => {
+    ev.preventDefault();
+    const input = document.getElementById("add-name");
+    const name = input.value.trim().slice(0, 60);
+    if (!name) return;
+    const store = form.querySelector('input[name="add-store"]:checked').value;
+    try { localStorage.setItem("extra-store", store); } catch (e) {}
+    input.value = "";
+    input.focus();
+    const ok = await addExtra(name, store);
+    if (!ok && !input.value) input.value = name;
+  });
+  const shop = document.getElementById("einkauf");
+  shop.addEventListener("change", ev => {
+    const li = ev.target.closest(".item.extra");
+    if (li && ev.target.type === "checkbox") toggleExtra(li.dataset.id, ev.target.checked);
+  });
+  shop.addEventListener("click", ev => {
+    const b = ev.target.closest(".item.extra .del");
+    if (b) delExtra(b.closest(".item.extra").dataset.id);
+  });
+  document.getElementById("days").addEventListener("click", ev => {
+    const b = ev.target.closest(".cook button");
+    if (b) setStatus(b.closest(".cook").dataset.day, b.dataset.s);
+  });
+  const ta = document.getElementById("cook-note");
+  ta.addEventListener("input", () => {
+    clearTimeout(cook.noteTimer);
+    cook.noteTimer = setTimeout(async () => {
+      await push(["note"], { note: { stringValue: ta.value.slice(0, 500) } });
+      cook.noteTimer = null;
+    }, 800);
+  });
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") pull(); });
+  window.addEventListener("online", pull);
+  setInterval(() => { if (document.visibilityState === "visible") pull(); }, 30000);
+}
+document.getElementById("cook-gate").addEventListener("click", () => {
+  try { localStorage.setItem("kochprotokoll", cook.on ? "0" : "1"); } catch (e) {}
+  if (cook.on) { const u = new URL(location.href); u.searchParams.delete("ich"); history.replaceState(null, "", u); }
+  initCook();
+});
+
+renderStrip(); renderDays(); renderList("lidl"); renderList("rewe"); totals(); doneCount(); initCook();
+</script>
+<script>if ("serviceWorker" in navigator) { navigator.serviceWorker.register("sw.js").catch(() => {}); }</script>
+
+<script src="kochen.js" defer=""></script>
+</body></html>
