@@ -1,5 +1,5 @@
 {
- "stand": "8.11.2026",
+ "stand": "15.11.2026",
  "kategorien": {
   "Paprika": "Gemüse & Obst",
   "Tomaten": "Gemüse & Obst",
@@ -74,7 +74,13 @@
   "Steinpilze (getrocknet)": "Vorrat",
   "Schalotten": "Gemüse & Obst",
   "Risottoreis": "Vorrat",
-  "Weißwein": "Vorrat"
+  "Weißwein": "Vorrat",
+  "Schupfnudeln": "Kühlregal",
+  "Sahne": "Kühlregal",
+  "Panko": "Vorrat",
+  "Porree": "Gemüse & Obst",
+  "Milch": "Kühlregal",
+  "Chili": "Gemüse & Obst"
  },
  "rezepte": [
   {
@@ -1758,6 +1764,153 @@
     "https://www.lecker.de/pilzrisotto-37716.html"
    ],
    "plan": "KW 46"
+  },
+  {
+   "id": "knusper-feta-mit-schupfnudel-spinat-pfanne",
+   "title": "Knusper-Feta mit Schupfnudel-Spinat-Pfanne",
+   "art": "schupfnudeln",
+   "time": "20 Min",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "200 g",
+     "Babyspinat",
+     "Spinat"
+    ],
+    [
+     "1½ EL",
+     "Butterschmalz (oder Öl)",
+     null
+    ],
+    [
+     "250 g",
+     "Schupfnudeln aus dem Kühlregal (halbe Packung)",
+     "Schupfnudeln"
+    ],
+    [
+     "50 ml",
+     "Gemüsebrühe",
+     null
+    ],
+    [
+     "50 g",
+     "Schlagsahne",
+     "Sahne"
+    ],
+    [
+     "",
+     "Muskat, Chiliflocken, Salz, Pfeffer",
+     null
+    ],
+    [
+     "1",
+     "Ei (Größe M)",
+     "Eier"
+    ],
+    [
+     "200 g",
+     "Feta (1 Packung)",
+     "Feta"
+    ],
+    [
+     "ca. 40 g",
+     "Mehl",
+     null
+    ],
+    [
+     "ca. 60 g",
+     "Panko (japanische Semmelbrösel)",
+     "Panko"
+    ]
+   ],
+   "steps": [
+    "Spinat waschen und abtropfen lassen. ½ EL Butterschmalz in einer großen Pfanne erhitzen und die Schupfnudeln darin etwa 3 Minuten anbraten.",
+    "Spinat dazugeben und zugedeckt etwa 2 Minuten zusammenfallen lassen. Brühe und Sahne angießen, aufkochen, mit Muskat, Chiliflocken, Salz und Pfeffer würzen und rund 3 Minuten köcheln.",
+    "Das Ei in einem tiefen Teller verquirlen. Feta trocken tupfen und diagonal halbieren. Die Stücke erst in Mehl, dann im Ei und zuletzt im Panko wenden.",
+    "Feta im übrigen heißen Butterschmalz in einer zweiten Pfanne etwa 6 Minuten braten, einmal wenden. Auf die Schupfnudel-Pfanne setzen."
+   ],
+   "src": [
+    "lecker.de (Portionen auf der Seite nicht angegeben; nach Menge für 4 gerechnet, hier halbiert)",
+    "https://www.lecker.de/knusper-feta-und-schupfnudel-pfanne-132299.html"
+   ],
+   "plan": "KW 47"
+  },
+  {
+   "id": "einfache-lauch-quiche",
+   "title": "Einfache Lauch-Quiche",
+   "art": "quiche",
+   "time": "ca. 1 Std. 45 Min (davon 30 Min Kühlen)",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "ca. 115 g",
+     "Mehl, plus etwas für Arbeitsfläche und Form",
+     null
+    ],
+    [
+     "ca. 60 g",
+     "kalte Butter, plus etwas für die Form",
+     "Butter"
+    ],
+    [
+     "2–3 EL",
+     "kaltes Wasser",
+     null
+    ],
+    [
+     "1 Stange",
+     "Porree",
+     "Porree"
+    ],
+    [
+     "½",
+     "rote Chilischote",
+     "Chili"
+    ],
+    [
+     "1 EL",
+     "Öl",
+     null
+    ],
+    [
+     "",
+     "Salz, Pfeffer",
+     null
+    ],
+    [
+     "2",
+     "Eier (Größe M; Original für die ganze Quiche 3)",
+     "Eier"
+    ],
+    [
+     "50 g",
+     "Schlagsahne (Rest vom Donnerstag)",
+     "Sahne"
+    ],
+    [
+     "50 ml",
+     "Milch",
+     "Milch"
+    ]
+   ],
+   "steps": [
+    "Mehl, Butter in Stückchen und das kalte Wasser rasch zu einem glatten Teig verkneten. Auf wenig Mehl rund ausrollen, in die gefettete, bemehlte Form legen, den Rand andrücken und zugedeckt etwa 30 Minuten kalt stellen.",
+    "Ofen auf 200 °C Ober-/Unterhitze (180 °C Umluft) vorheizen. Den Boden mehrmals mit einer Gabel einstechen und etwa 10 Minuten vorbacken.",
+    "Inzwischen Porree in Streifen schneiden, Chili entkernen und fein hacken. Beides im Öl etwa 3 Minuten andünsten und kurz ausdampfen lassen, damit der Boden nicht durchweicht.",
+    "Eier, Sahne und Milch verquirlen, Porree unterrühren und kräftig salzen und pfeffern.",
+    "Füllung auf den vorgebackenen Boden geben, Ofen auf 180 °C (160 °C Umluft) herunterschalten und 30–40 Minuten backen, bis die Eimasse gestockt ist. 10 Minuten ruhen lassen, dann lösen und warm servieren."
+   ],
+   "src": [
+    "lecker.de (Stückzahl auf der Seite nicht angegeben; für eine 22-cm-Form, hier halbiert)",
+    "https://www.lecker.de/einfache-lauch-quiche-wenige-zutaten-herrlich-cremig-128527.html"
+   ],
+   "plan": "KW 47",
+   "photo": {
+    "src": "https://images.unsplash.com/photo-1767065584177-9ceb902eec7a?w=800&h=600&fit=crop&q=70&auto=format",
+    "by": "Diego Arenas de Rodrigo",
+    "via": "Unsplash",
+    "href": "https://unsplash.com/photos/slice-of-quiche-with-a-side-salad-qr-8HqqjqGQ"
+   }
   }
  ]
 }
