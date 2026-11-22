@@ -1,5 +1,5 @@
 {
- "stand": "15.11.2026",
+ "stand": "22.11.2026",
  "kategorien": {
   "Paprika": "Gemüse & Obst",
   "Tomaten": "Gemüse & Obst",
@@ -80,7 +80,9 @@
   "Panko": "Vorrat",
   "Porree": "Gemüse & Obst",
   "Milch": "Kühlregal",
-  "Chili": "Gemüse & Obst"
+  "Chili": "Gemüse & Obst",
+  "Wildreis": "Vorrat",
+  "Kichererbsen": "Vorrat"
  },
  "rezepte": [
   {
@@ -1911,6 +1913,87 @@
     "via": "Unsplash",
     "href": "https://unsplash.com/photos/slice-of-quiche-with-a-side-salad-qr-8HqqjqGQ"
    }
+  },
+  {
+   "id": "spitzkohlpfanne-mit-kichererbsen",
+   "title": "Spitzkohlpfanne mit Kichererbsen und Wildreis",
+   "art": "spitzkohlpfanne",
+   "time": "40 Min (davon 20 Min Reis)",
+   "portions": "2 Portionen",
+   "ingredients": [
+    [
+     "100 g",
+     "Wildreismischung",
+     "Wildreis"
+    ],
+    [
+     "",
+     "Salz, weißer Pfeffer",
+     null
+    ],
+    [
+     "1 Dose (425 ml)",
+     "Kichererbsen (die ganze Dose statt einer halben)",
+     null
+    ],
+    [
+     "1 kleiner (ca. 500 g)",
+     "Spitzkohl",
+     "Spitzkohl"
+    ],
+    [
+     "1 kleine",
+     "Knoblauchzehe",
+     null
+    ],
+    [
+     "1½–2 EL",
+     "Öl",
+     null
+    ],
+    [
+     "½–1 TL",
+     "Currypulver",
+     null
+    ],
+    [
+     "½ Dose (ca. 210 ml)",
+     "gehackte Tomaten",
+     "Tomaten"
+    ],
+    [
+     "¼ TL",
+     "Gemüsebrühe (Pulver)",
+     null
+    ],
+    [
+     "ca. 60 ml",
+     "Wasser",
+     null
+    ],
+    [
+     "1 TL",
+     "Zitronensaft, plus Zitronenspalten zum Servieren",
+     "Zitrone"
+    ],
+    [
+     "evtl.",
+     "etwas Kreuzkümmel",
+     null
+    ]
+   ],
+   "steps": [
+    "Reis in gut 200 ml kochendem Salzwasser zugedeckt etwa 20 Minuten garen.",
+    "Kichererbsen abspülen und abtropfen lassen. Spitzkohl putzen, längs vierteln, den Strunk herausschneiden und den Kohl in Streifen schneiden. Knoblauch hacken.",
+    "Öl in einem Topf erhitzen, Kohl und Knoblauch unter Rühren etwa 5 Minuten andünsten, mit Curry bestäuben und kurz anschwitzen.",
+    "Kichererbsen, Tomaten und das Wasser dazugeben, aufkochen und das Brühpulver einrühren. Zugedeckt etwa 10 Minuten köcheln.",
+    "Mit Salz, Pfeffer, Zitronensaft und nach Lust Kreuzkümmel abschmecken. Mit dem Reis und Zitronenspalten servieren."
+   ],
+   "src": [
+    "lecker.de (Portionen auf der Seite nicht angegeben; nach kcal für 4 gerechnet und halbiert)",
+    "https://www.lecker.de/spitzkohlpfanne-mit-kichererbsen-15921.html"
+   ],
+   "plan": "KW 48"
   }
  ]
 }
